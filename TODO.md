@@ -28,8 +28,10 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
       pages; shrink CLAUDE.md to rules; fix stale memories (since 2026-10-10)
 - [x] (2026-10-10) rom ssh keys: id_ed25519_github, id_ed25519_roberta, id_ed25519_epita_forge, random
       passphrases in the login keyring, loaded at login (dotfiles 4e6d64d), `IdentityAgent` in
-      ~/.ssh/config; GitHub and roberta verified; old id_ed25519_server retired everywhere
-- [ ] User: remove the old keys from GitHub and EPITA's GitLab (web), run one interactive
+      ~/.ssh/config; roberta verified, old id_ed25519_server retired everywhere. (A first GitHub check was
+      wrong: the old key answered; ssh-retire-old.sh now tests with the config ignored.)
+- [ ] User: old keys removed from GitHub and EPITA (done); add the new public keys there
+      (`~/.ssh/id_ed25519_github.pub`, `~/.ssh/id_ed25519_epita_forge.pub`), run one interactive
       `ssh -T romain.teyssier@git.forge.epita.fr` (host key SHA256:gZ8Qs8edzRAZePNnaubNQYbdSPyFlEQX18/I/NuMP1s),
       then `~/claude/issues/nexus/pending/ssh-retire-old.sh` (deletes id_ed25519 and id_ed25519_epita
       after checking their replacements log in) (since 2026-10-10)
