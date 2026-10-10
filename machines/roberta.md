@@ -34,7 +34,13 @@ bluemap :8100, portal :80, dockge :5001, monitoring (prometheus internal :9090, 
 node-exporter :9100, cadvisor, mc-monitor), terraria (stopped). Data `/srv/data/<stack>` (1.8 TB),
 local restic repos `/backup/<stack>` (117 GB), deployed checkout `/srv/home-server`. Host units
 from `host/systemd/`: cpu-cap, gpu-metrics, mc-restart (daily 10:00), offsite-backup (04:30,
-latest Minecraft snapshot + Terraria to `gdrive:backups/home-server`), terraria-backup.
+latest Minecraft snapshot + Terraria to `gdrive:backups/home-server`), terraria-backup (disabled by
+setup.sh while the Terraria stack is stopped).
+
+Gotcha: `docker.service` stops with `TimeoutStopSec` 90 s, but the minecraft container's
+`stop_grace_period` is 3 min. Before a reboot or a Docker upgrade, `save-all flush` over RCON and stop
+the minecraft stack by hand; afterwards `bin/hs up minecraft` (`unless-stopped` does not restart a
+container stopped by hand).
 
 ## Open
 
