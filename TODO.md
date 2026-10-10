@@ -47,6 +47,16 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Agents and access
 
+- [ ] Use the Claude plan's spare quota: a user timer reads `~/.claude/claude-rate-limits.json` and,
+      when a lot of the 5h/7d quota is left, runs queued agent tasks (`claude -p`, one at a time,
+      logged, never pushing without review) from 00:00 to 05:00 every day and 08:00 to 19:00 on
+      weekdays (since 2026-10-10). Task ideas, none queued yet:
+      docs audit (topic pages and machine pages against reality, stale `verified` dates); tests and
+      dependency updates of Camille and Ciel (cargo, npm) as review branches; security sweep (gitleaks
+      over every repo, open ports, server drift vs its repo); review of the day's commits; research
+      items from this TODO (Vaultwarden plan, iPhone recovery, GitHub repos inventory); Ciel
+      milestones in a worktree once coding starts; mod update changelogs for the Minecraft pack;
+      monthly restore test of the backups; refresh of the apartment and plot searches
 - [ ] 2026-10-24: review cache-keepalive with its counters (`consumed.log`, nudge returns in
       the logs): keep or drop the exit background resume, the 80% rotation, `relaunch_cmd`
       (since 2026-10-10)
