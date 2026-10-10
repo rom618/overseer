@@ -35,6 +35,10 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] 2026-10-24: review cache-keepalive with its counters (`consumed.log`, nudge returns in
       the logs): keep or drop the exit background resume, the 80% rotation, `relaunch_cmd`
       (since 2026-10-10)
+- [ ] nier multi-device: `nier register` (machine page from detection), install profiles
+      (minimal, server, desktop-arch), `nier doctor`, Linux bootstrap script (since 2026-10-10)
+- [ ] Session registry across agents and devices (JSONL per device, later synced to Ciel)
+- [ ] Agents on servers run as a scoped `agent` user, not the NOPASSWD `server` user
 - [ ] Try pi on a throwaway repo (skills, extension blocking, sessions) before relying on it
 - [ ] Media privacy enforced at the OS level for every agent, not only by Claude's deny rules
 - [ ] Phone access to agents: Tailscale + tmux on an always-on host + Termius; Claude Remote
@@ -45,8 +49,8 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 ## Network
 
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
-- [ ] vesscam Headscale tailnet (Forgejo): currently logged out, control server unreachable;
-      make it work-owned (`tailscale set --operator=work`)
+- [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
+      morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
 - [ ] Pi-hole
 - [ ] Replace `camille.local` (avahi mDNS, kept on mikaela for the app) with a Tailscale MagicDNS
       name; first agree on one naming rule for devices and apps (since 2026-10-10)

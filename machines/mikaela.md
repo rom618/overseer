@@ -100,7 +100,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 | Agent hooks | guard, session-start, cache-keepalive, statusline (`/opt/nier/CLAUDE.md`) | shared |
 | Ollama | system service, iGPU via `ollama-vulkan` | shared |
 | Surfshark | autostart for rom; Docker bridges need MTU 1280 while it is up | rom |
-| Tailscale | `tailscaled`; tailnet `hs.vesscam.com` (Headscale, Forgejo), logged out | work-to-be |
+| Tailscale | `tailscaled`; tailnet `hs.vesscam.com` (someone else's Headscale, for a Forgejo), connected (3 peers on 2026-10-10 afternoon; its control server timed out that morning) | work-to-be |
 
 ## User differences
 

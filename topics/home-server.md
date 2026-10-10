@@ -1,0 +1,65 @@
+---
+name: home-server
+summary: roberta as a project: Docker stacks deployed with bin/hs push, audited 2026-10-10, to be split personal/work
+status: active
+owner: shared
+host: roberta
+repos: ~/Desktop/perso/projects/home-server
+folder: ~/claude/issues/nexus
+verified: 2026-10-10
+source: ~/Desktop/perso/projects/home-server/README.md, machines/roberta.md, nexus audit-2026-10-10.md sections 9 and 10, notes/history.md 2026-10-04
+---
+
+# Home server (roberta)
+
+The repo `home-server` (GitHub rom618/home-server) defines the machine and its Docker stacks;
+nothing is configured by hand. Hardware, address, key and hard rules: `machines/roberta.md`.
+How to run, deploy, restore and the per-stack gotchas: the repo's `README.md` (its only owner).
+Personal game content on it (Minecraft, Terraria) is documented in 9s; here only the stacks.
+
+## Facts
+
+- Stacks (`stacks/`): minecraft (+ minecraft-backup), playit (tunnels, host network), bluemap,
+  portal (start page :80), dockge (:5001), monitoring (prometheus, grafana :3000, node-exporter
+  :9100, cadvisor, mc-monitor), terraria (stopped). Data `/srv/data/<stack>`, restic repos
+  `/backup/<stack>`, checkout `/srv/home-server`.
+- Deploy: edit and commit in the repo on the laptop, then `bin/hs push` (git push into the
+  server's checked-out branch, then idempotent `host/setup.sh` owning timezone, swap, sleep
+  settings, Docker, unattended security updates, timers, secrets generation). The push refuses if
+  files were edited on the server. Editing compose files in Dockge makes the server differ from
+  git: edit in the repo instead.
+- Secrets: `stacks/*/.env` (0600, generated, not in git), `/etc/home-server/restic.pw`, the rclone
+  config; they exist only on the box. `bin/hs secrets` shows them to the owner. Never copy values
+  into a doc.
+- Monitoring: Prometheus keeps 365 days; Grafana (anonymous read-only) shows node, container and
+  game metrics. Wall power is not measured. Both are to be replaced by Ciel (`topics/ciel.md`).
+- Public access: the Flybox 4G is behind CGNAT, so nothing can be port-forwarded; players reach the
+  servers through playit.gg tunnels, and every player appears with a playit address (no IP bans).
+- Backups: local restic repos per stack; off-site copy of the latest game snapshot to Google Drive
+  (see `topics/backups.md`). Restic on the Minecraft repo only through the backup container
+  (`docker exec minecraft-backup restic`), because a root restic leaves root-owned locks that break
+  the next backup. The off-site job runs as uid 1000, never root on `/backup/minecraft`.
+- Timers: `offsite-backup` (04:30), `mc-restart` (10:00), `terraria-backup` (hourly, still running
+  although the Terraria stack is stopped).
+- Personal and work today: games, playit, BlueMap and the Drive account are personal; Docker,
+  monitoring, Dockge, the `server` user, the `hs` tooling and the off-site script are shared; one
+  restic password covers everything.
+
+## Open
+
+- [ ] Split into personal and work servers (roberta shared only for now): own restic password, repo, Drive account and proxy; parameterize `offsite-backup.sh` (TODO)
+- [ ] Hardening before Ciel and Vaultwarden: HTTPS reverse proxy; sshd `PasswordAuthentication no`, `PermitRootLogin no`, `AllowUsers server` in `host/setup.sh`; firewall or loopback binds; Dockge not open on the LAN without auth; cAdvisor not privileged; review sudo NOPASSWD (TODO)
+- [ ] Reboot for the pending kernel; Docker repo in unattended-upgrades or a monthly upgrade; pin image versions (now `:latest`, pulled daily) and prune old ones (TODO)
+- [ ] Backups for monitoring, grafana, dockge, worlds-archive; secrets only on the box; rehearse a restore on another machine (TODO)
+- [ ] Terraria timer runs while the stack is stopped; check the playit tunnel (TODO)
+- [ ] Ethernet instead of Wi-Fi if possible (many retries, no UPS, dead battery); the README's memory figures are stale (live heap 16 GB, limit 20 GB) (TODO)
+- [ ] Agent access: agents should run as a scoped `agent` user, not the NOPASSWD `server` (since 2026-10-10)
+
+## Log
+
+- 2026-09-27: CPU capped at 85% (80 C instead of 93-99 C under load); daily restart and Chunky tuning recorded in the README.
+- 2026-10-04: off-site job reshaped after the Drive filled (latest snapshot only, no trash, daily trash empty); see `topics/backups.md`.
+- 2026-10-10 inventory (read-only ssh plus the repo): no drift between repo and server in units or stacks. Docker, kernel and container list as in the README.
+- 2026-10-10 security audit: LAN-reachable and unprotected: no firewall, `server` has passwordless sudo, sshd on defaults (password login allowed), Dockge on 0.0.0.0:5001 with docker.sock and no auth, cAdvisor privileged, node-exporter :9100, Grafana anonymous; playit uses host networking, so a wrong tunnel could expose anything. Not exposed to the internet today (CGNAT). Detail: `audit-2026-10-10.md` section 9 in the nexus folder.
+- 2026-10-10 readiness audit for hosting Ciel and Vaultwarden: resources are enough (31 GB RAM, 1.8 TB data). Needed first: HTTPS proxy, sshd and firewall, auth on admin UIs, backups per stack with secrets kept off the box, the reboot. Single-host data loss risk: restic repos on the same machine, off-site only the latest game snapshot on one 15 GB Drive.
+- 2026-10-10 decision: roberta stays shared only temporarily; personal and work will get separate servers, and every fact is keyed by host and owner from now on. A clean split later needs a history-free repo, so personal detail stays out of overseer.

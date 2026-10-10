@@ -1,0 +1,106 @@
+---
+name: nier
+summary: Agent config repo /opt/nier (was claude-config): AGENTS.md rules, hooks, skills; going agent-agnostic
+status: active
+owner: shared
+host: mikaela
+repos: /opt/nier
+folder: ~/claude/issues/nexus
+verified: 2026-10-10
+source: /opt/nier (AGENTS.md, README.md, tools/cache-keepalive/README.md, skills/README.md), notes/history.md 2026-09-24 to 2026-10-10, nexus README and audit-2026-10-10.md, git log of /opt/nier
+---
+
+# nier (agent configuration)
+
+Configuration for every AI agent on the laptop, shared by rom and work: rules, hooks, permission
+policy, skills, helper tools. Repo `/opt/nier` (GitHub rom618/nier), linked into each home by
+`bootstrap/link.sh`. Renamed from `claude-config` on 2026-10-10. Currently Claude Code only; the
+plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
+
+## Facts
+
+- Layout and install commands: `/opt/nier/README.md`. The dotfiles installer asks whether to set
+  nier up. Pre-commit hook runs gitleaks. No secrets in the repo.
+- Old paths `/opt/claude-config` and `/opt/dotfiles/claude` are links to `/opt/nier` until work
+  relinks; `settings.json` carries both old and new path rules meanwhile.
+- `AGENTS.md` is the rule file for every agent. `CLAUDE.md` is a link to it and
+  `/etc/claude-code/CLAUDE.md` points to it. `managed-settings.json` (deny list) is a root-owned
+  copy in `/etc/claude-code`: after changing it, `sudo /opt/nier/bootstrap/setup-machine.sh`.
+- `bin/nier context` prints the session context in layers: AGENTS.md, device found by
+  `/etc/machine-id`, `os/<family>.md`, `roles/<role>.md`, `overseer/machines/<host>.md`, the docs
+  indexes, TODO. Unknown host: banner UNREGISTERED or NAME COLLISION, agent must stop and ask.
+  Claude gets it from the SessionStart hook; other agents run it first.
+- Hooks (`settings.json`, scripts in `tools/`, linked as `~/claude/tools`):
+  - `guard.sh` (PreToolUse): hard-blocks the never-run commands and private paths, judged on the
+    target. It matches path text and does not resolve symlinks, so no symlinks into vaults.
+    Tests in `tools/tests/`.
+  - `session-start.sh` (SessionStart): titles sessions started under `~/claude/issues/<name>`
+    (via `hookSpecificOutput.sessionTitle`, not on resume), reports other sessions' uncommitted
+    work, injects `nier context` and the folder's `handoffs/latest.md`, logs each injection to
+    `~/.claude/hooks/cache-keepalive/consumed.log`.
+  - `claude-statusline.py` (statusLine, every 10 s): writes `~/.claude/claude-rate-limits.json`
+    (5h/7d windows) read by the bar's Claude icon and the keepalive.
+  - `cache-keepalive/` (Stop with asyncRewake, SessionEnd): see next block.
+- cache-keepalive: upstream C port (`upstream/`, unmodified, received 2026-09-26) plus 12 local
+  changes listed in `tools/cache-keepalive/README.md`. Behavior: nudges an idle interactive
+  session (max 2, none under 20k context tokens, none at 5h or 7d usage >= 90%, nothing at all at
+  100%) to keep the prompt cache warm, then asks for a handoff and closes it; also on exit and at
+  80% context. Never arms for `claude -p`. Never hands off or closes while the session works
+  (registry status not idle, a Bash-tool process alive, or a subagent transcript written in the
+  last 2 min). Config copied per user to `~/.claude/cache-keepalive.json` (later runs only add
+  missing keys, so a changed default needs a manual edit). CLI: `keepalive --status|--disable|--enable|--exclude`.
+- Handoffs are session state only: English, under 1.5 KB, `~/claude/issues/<name>/handoffs/latest.md`
+  (else `~/claude/issues/_unfiled/handoffs/<start-dir-slug>.md`), overwritten. Decisions go to topic pages.
+- Skills (shared via `~/.claude/skills`, authoring rules in `skills/README.md`): `config`
+  (device config changes, thin pointer plus scripts), `comprehension` (profile in
+  `people/rom/comprehension.md`), `chat-review` (Claude-only, reads `~/.claude` transcripts).
+  Retired 2026-10-10 as unused: agent-review, cold-review, skill-review, inbox; their scripts live
+  on as `tools/collect-changes.sh` and `tools/skill-lint.sh`. `skills/synced/` (Anthropic
+  skills) stays out of the shared set. Do not name a skill like a bundled command (`code-review`,
+  `simplify`, `init`): it would replace the bundled one.
+- Working directories per user: `~/claude/issues/<name>/` is the unit of work (`README.md` goal and
+  rerun command, `in/`, `out/`, `pending/` for sudo scripts, `handoffs/latest.md`); sessions outside
+  one use `issues/_unfiled/`; `~/claude/scratch/tmp/` is throwaway, cleaned after 30 days by a
+  user timer. The inbox hook, inbox/outbox folders and fish helpers are retired. Backup keeps only
+  small documents of `issues/` (`topics/backups.md`).
+- Memory is per starting directory and holds user preferences only.
+- Gotchas with root cause:
+  - `Write(path)` permission rules are never matched by Claude Code, only `Edit(path)` covers writes.
+  - Permission prompts match the whole Bash text, heredoc bodies included: write long files with the Write tool.
+  - The hook payload `cwd` follows every `cd` into an allowed dir, so handoffs landed under `/opt/...`:
+    the keepalive keys on the transcript's first `cwd`.
+  - Registry status written at the end of a turn still says busy: read `~/.claude/sessions/<pid>.json`
+    fresh at the deadline (else it nudged forever, 2026-09-27).
+  - `claude -p` registers as `kind: interactive` (only `entrypoint` is `sdk-cli`) and waits for async Stop hooks.
+  - `pkill -f` kills the agent's own shell; use `pkill -x` or a pid file.
+  - Upstream `read_file` sized reads by fstat, which is 0 for `/proc`: the recycled-pid check never worked.
+
+## Open
+
+- [ ] work: run `/opt/nier/bootstrap/link.sh`, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and old-path rules (TODO)
+- [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (TODO)
+- [ ] Agent-agnostic: AGENTS.md canonical, `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/` (TODO)
+- [ ] Comprehension skill: audited draft installed for every agent (TODO)
+- [ ] Try pi (pi-coding-agent) on a throwaway repo; it has no permission system or sandbox, so deny rules need an extension or OS isolation (TODO)
+- [ ] Media privacy at OS level for every agent, not only Claude deny rules (TODO)
+- [ ] Phone access: Tailscale + tmux on an always-on host + Termius; Claude Remote Control for laptop sessions; laptop sleeps, roberta is tight on RAM (TODO)
+- [ ] Conversations hub: per-agent adapters into SQLite FTS5 plus Markdown mirror, claude.ai exports, rom/work split, never in docs repos (TODO)
+- [ ] Multi-device: `nier register` (machine page from detection, on a device branch), `nier install --profile minimal|server|desktop-arch`, `$NIER_HOME` instead of hard-coded paths, laptop-only parts in a desktop module, host paths in `policy/paths.d/`, enrollment through Ciel, macOS and Windows undecided (since 2026-10-10)
+- [ ] Session registry: append-only JSONL per device (agent, device, user, cwd/topic, status, resume command) fed by hooks, later synced to Ciel (since 2026-10-10)
+- [ ] Shrink CLAUDE.md content to rules and triage `notes/history.md` into topic pages, then freeze it (TODO)
+
+## Log
+
+- 2026-09-24: Claude config split out of dotfiles into its own repo (history kept by subtree split); dotfiles installer offers it. 587cb44.
+- 2026-09-26: overhaul from a review of the replicant repo: CLAUDE.md cut from 83 KB to 21 KB (log moved to history.md), commit attribution off, guard/session-start/keepalive/statusline hooks, skills hardened. 1b1889b.
+- 2026-09-26: keepalive switched to the upstream C port plus local patches (8c514ca); guards for subscription limits and "never while working" added (a4a5866); 100/100 upstream tests, tests-local.sh passes.
+- 2026-09-27: keepalive stale-busy fix: status re-read at the deadline. 51ba8ba.
+- 2026-10-08: sessions in `~/claude/issues/<name>` titled after the folder. 479308b.
+- 2026-10-09: handoffs per issue folder keyed on the start dir; three memory-only rules (no Chrome, chmod after Write, ydotool) moved into CLAUDE.md because memory is per start dir. 5aefbed.
+- 2026-10-10 decisions (audit of five read-only agents, `audit-2026-10-10.md`): AGENTS.md plus one policy so skills and rules do not depend on Claude; agent from the phone and one conversations hub wanted; the installer stays separate from dotfiles and keeps asking; CLAUDE.md was 86% of the fixed session load (about 6.4k tokens, 44% machine facts), target AGENTS.md under 3k tokens plus capped indexes.
+- 2026-10-10: skills pruned after a month of transcripts (config 7 uses, inbox 14, chat-review 2, others 0; unused descriptions cost about 400 tokens per session). d001f85.
+- 2026-10-10: rename to nier, old paths kept as links. d4d14a5. Guard protects Camille's new paths and every `app-data*` name. 78bdfdc.
+- 2026-10-10: AGENTS.md universal, `nier context` layers injected at session start, comprehension skill. d8fb35c.
+- 2026-10-10: issue folders with `in/ out/ pending/ handoffs/latest.md`, `_unfiled`; inbox hook, `commit.sh` (`git add -A`) and `append-current-state.sh` retired; scratch cleaner limited to `scratch/tmp`. 46c7ddd. Reason: inbox dead since 2026-09-17, scratch held a 793 MB ISO, and a Read consumed inbox files.
+- 2026-10-10: handoffs reshaped (state only, one `latest.md`, no chains), consumed counter added. Reason: 34 handoffs in 14 days, about 1 in 5 read, mixed languages, copy-forward chains as a second source of truth. 61b7a33.
+- 2026-10-10: keepalive kept (44 nudges, about half the idle episodes ended with the user back); heavy parts to be judged on 2026-10-24.
