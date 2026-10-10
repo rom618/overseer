@@ -86,6 +86,9 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
       Camille's CA: prepared in `~/claude/issues/ciel/pending/proxy-camille.md`, applied only after
       `camille-to-roberta.sh` has copied the CA (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
+- [ ] The vesscam tailnet sets the laptop's DNS for everything (100.100.100.100, search `labo.internal`):
+      a work network deciding rom's name resolution. When it becomes work-owned, decide
+      `tailscale set --accept-dns=false` (or split DNS) (since 2026-10-10)
 - [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
       morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
 - [ ] Pi-hole

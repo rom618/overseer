@@ -73,3 +73,6 @@ is on `machines/roberta.md`.
 - 2026-10-10: naming and HTTPS decided: an own domain (to buy), names like `<app>.<domain>` used
   inside the LAN and the tailnet only, real certificates from Let's Encrypt through a DNS challenge
   (no port opened, works behind the CGNAT), served by a reverse proxy on the server.
+- 2026-10-10: gotcha: a new `<name>.wuling.dev` queried before its DNS record exists stays
+  "not found" for up to 30 minutes (Cloudflare negative TTL 1800 s) in the laptop's resolver, which is
+  Tailscale's 100.100.100.100 while the vesscam tailnet is up. Create the record before the first query.
