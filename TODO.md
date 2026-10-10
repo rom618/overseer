@@ -78,10 +78,17 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Passwords
 
+- [ ] Decide whether ssh keys go into Vaultwarden (Bitwarden's ssh agent) and how keys are handled:
+      one per device and purpose, passphrases, rotation, revocation when a device is lost (since 2026-10-10)
 - [ ] Vaultwarden on the server: VPN only, HTTPS, its own backup, 2FA, master password and a
       recovery copy offline
 - [ ] Pass over every password into it (inventory: security audit, 2026-10-10); machine secrets
       read by timers stay 0600 files, with a recovery copy in the vault
+
+## GitHub
+
+- [ ] Sort out the GitHub repos: list them, name and describe them consistently, archive or delete the
+      dead ones, check visibility (private/public), topics (since 2026-10-10)
 
 ## Backups
 
