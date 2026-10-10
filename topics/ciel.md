@@ -71,3 +71,5 @@ only after the cleanup listed under Open.
 - 2026-10-10: agents and tools get the same data as the UI: versioned JSON API, an MCP server
   (`ciel mcp`) with read tools, owner-scoped tokens, management actions human-confirmed (SPEC 18).
   The planning folder was renamed `~/claude/issues/ciel` (was `nexus`).
+- 2026-10-10: look decided: "Ciel Atmos" (sky hero, apps as animated dots joined by wisps, light
+  glass theme from the user's reference image, dark space theme, one overview with drill-down), SPEC 10.1.
