@@ -6,7 +6,7 @@ owner: shared
 host: roberta
 repos: ~/Desktop/perso/projects/home-server
 folder: ~/claude/issues/ciel
-verified: 2026-10-10
+verified: 2026-10-11
 source: ~/Desktop/perso/projects/home-server/README.md, machines/roberta.md, nexus audit-2026-10-10.md sections 9 and 10, notes/history.md 2026-10-04
 ---
 

@@ -8,9 +8,9 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 ## Structure (before coding Ciel, in this order)
 
 - [x] (2026-10-10, nier d001f85) Skills: cold-review, agent-review, skill-review retired, scripts kept in tools/
-- [ ] Docs rules: topic front matter (status, owner, host, verified, source), `gen-index.sh`
-      generating INDEX.md and this TODO, AGENTS.md rule "update the owning page when you change
-      something", pre-commit `Docs:` check, Stop hook for Claude (since 2026-10-10)
+- [x] (2026-10-11, nier) Docs rules: front matter check in `gen-index.sh` (pre-commit in docs repos),
+      `Docs:` commit-msg hook on the watched repos, Claude Stop hook `stop-docs-check.sh`
+- [ ] Decide: TODO.md generated from the topics' Open blocks, or kept by hand (since 2026-10-10)
 - [ ] Issue folders: README cut to goal + topic link + rerun command; decisions and open items go
       to the topic page at decision time; handoffs become session state only (keepalive prompt
       change); split the `nexus` folder into topic pages (since 2026-10-10)
@@ -126,12 +126,9 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 
 ## Ciel
 
-- [ ] rom: `! ~/claude/issues/ciel/pending/restore-planning.sh` restores the Ciel planning folder
-      (README, audit-2026-10-10.md, drafts/, pending/), deleted with the `nexus` link at 2026-10-10
-      20:39, from the last laptop snapshot before then; agent checks it after (since 2026-10-11)
-
-- [ ] Remove the link `~/claude/issues/nexus -> ciel` once the session started there has ended
-      (since 2026-10-10)
+- [x] (2026-10-11) Link `~/claude/issues/nexus` removed by rom; removing it also emptied the
+      planning folder, restored by rom from the 18:30 laptop snapshot (edits between 18:52 and
+      20:39 are lost; only the finished camille-move job was in that window)
 - [ ] Code it (after the structure section); retire Dockge (milestone 6) and Grafana (7)
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later
 

@@ -6,7 +6,7 @@ owner: shared
 host: mikaela
 repos: /opt/nier
 folder: ~/claude/issues/ciel
-verified: 2026-10-10
+verified: 2026-10-11
 source: /opt/nier (AGENTS.md, README.md, tools/cache-keepalive/README.md, skills/README.md), notes/history.md 2026-09-24 to 2026-10-10, nexus README and audit-2026-10-10.md, git log of /opt/nier
 ---
 
@@ -41,6 +41,12 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
   - `claude-statusline.py` (statusLine, every 10 s): writes `~/.claude/claude-rate-limits.json`
     (5h/7d windows) read by the bar's Claude icon and the keepalive.
   - `cache-keepalive/` (Stop with asyncRewake, SessionEnd): see next block.
+  - `stop-docs-check.sh` (Stop): files edited this turn (Edit, Write, NotebookEdit since the last
+    user message) that are uncommitted or unpushed in a git repo send the session back once
+    (`stop_hook_active` stops a loop). Edits made through Bash are not seen.
+- Git hooks `bootstrap/githooks/`: pre-commit (gitleaks; docs repos: `gen-index.sh --check`),
+  commit-msg (a `Docs:` line is required). Applied by `link.sh` to the repos in
+  `bootstrap/watched-repos.txt` that have no hooks of their own (since 2026-10-11).
 - cache-keepalive: upstream C port (`upstream/`, unmodified, received 2026-09-26) plus 12 local
   changes listed in `tools/cache-keepalive/README.md`. Behavior: nudges an idle interactive
   session (max 2, none under 20k context tokens, none at 5h or 7d usage >= 90%, nothing at all at

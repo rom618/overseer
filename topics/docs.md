@@ -6,7 +6,7 @@ owner: shared
 host: mikaela
 repos: ~/Playground/overseer, ~/Playground/9s, /opt/nier
 folder: ~/claude/issues/ciel
-verified: 2026-10-10
+verified: 2026-10-11
 source: /opt/nier/AGENTS.md section 2, /opt/nier/tools/gen-index.sh, ciel SPEC.md section 17, nexus README and audit-2026-10-10.md sections 1 and 7, overseer TODO.md
 ---
 
@@ -29,8 +29,9 @@ on every device, so a change is written down where the next session will look. T
   owner (rom, work, shared), host, repos, folder, verified (date), source. Template:
   `~/claude/issues/ciel/drafts/topic-page-template.md`. Machine pages have their own front matter.
 - `/opt/nier/tools/gen-index.sh <repo> [--check]` builds `INDEX.md` from the front matter, warns
-  about active topics not verified for 30 days and pages over 150 lines. `--check` fails when the
-  index is stale. Never edit `INDEX.md` by hand.
+  about active topics not verified for 30 days and pages over 150 lines, and reports front matter
+  errors (missing keys, bad status or owner, summary over 120 characters). `--check` fails on a
+  stale index or an error; the pre-commit hook runs it in overseer and 9s. Never edit `INDEX.md` by hand.
 - One owner per fact; elsewhere link: rules for agents in AGENTS.md; machine facts in
   `overseer/machines/<host>.md`; how to build, run and deploy a project in its repo README;
   decisions, open items and current state in the topic page; change history in git log (later the
@@ -43,7 +44,9 @@ on every device, so a change is written down where the next session will look. T
   check. Reason: the plaintext copy that a script told the user to delete "yourself" lived only in
   that script's output and was forgotten for three weeks. Until the generator exists TODO.md is hand-kept;
   a topic Open line already in TODO.md is written as a short line plus "(TODO)".
-- Commits in watched repos carry a `Docs:` line naming the page, or `Docs: none (reason)`.
+- Commits in watched repos (`/opt/nier/bootstrap/watched-repos.txt`) carry a `Docs:` line naming
+  the page, or `Docs: none (reason)`; the commit-msg hook refuses others. Claude's Stop hook
+  `stop-docs-check.sh` catches files left uncommitted or unpushed at the end of a turn.
 - rom and work: overseer is for both; sessions of work read it by absolute path; overseer never
   links into 9s. A personal project on shared infrastructure has its topic in 9s and only its
   footprint (stack, ports, jobs, checks) in overseer.
@@ -57,7 +60,8 @@ on every device, so a change is written down where the next session will look. T
 
 ## Open
 
-- [ ] Docs rules in force: front matter check and generated INDEX and TODO from Open blocks, AGENTS.md rule to update the owning page, pre-commit `Docs:` check, Stop hook for Claude (TODO)
+- [x] (2026-10-11, nier) Docs rules in force: front matter check, `Docs:` commit-msg hook, Stop hook for Claude; the owning-page rule was already in AGENTS.md section 2
+- [ ] TODO generated from the topics' Open blocks instead of hand-kept (decision pending, TODO)
 - [ ] Seed overseer and 9s: topic pages from `notes/history.md` (a triage, not a copy), then freeze history.md with a pointer; fix stale memories (TODO)
 - [ ] Move overseer to `/opt/overseer` (owner rom:dots, group writable; needs a step in nier `setup-machine.sh`, so a sudo handoff); 9s stays under rom's home; the server gets both read-only (TODO)
 - [ ] Issue folders: README cut to goal plus topic link plus rerun command; split the `nexus` folder into topics ciel, docs, nier and cleanup (TODO)
