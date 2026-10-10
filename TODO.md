@@ -79,8 +79,12 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [ ] User: create your Vaultwarden account at https://vault.wuling.dev (sign-ups are open until then);
       write the master password down offline; then an agent closes sign-ups (SIGNUPS_ALLOWED=false in
       roberta's stacks/vaultwarden/.env and `docker compose up -d`) (since 2026-10-10)
+- [ ] Note for every agent: home-server 39c18c6 (Camille's stack, LUKS box, avahi) is committed but
+      not deployed; the next `bin/hs push` deploys it too, so none happens before rom starts the Camille
+      migration (9s TODO, Camille) (since 2026-10-10)
 - [ ] Camille behind the proxy: camille.wuling.dev, camille.local and https://192.168.1.53 from
-      Camille's CA, once the camille session says its roberta stack is up (since 2026-10-10)
+      Camille's CA: prepared in `~/claude/issues/ciel/pending/proxy-camille.md`, applied only after
+      `camille-to-roberta.sh` has copied the CA (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
       morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
