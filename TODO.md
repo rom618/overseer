@@ -90,9 +90,8 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
       terraria-backup timer off while its stack is stopped
 - [ ] roberta before Ciel and Vaultwarden: HTTPS reverse proxy; firewall or loopback binds;
       Dockge not open on the LAN without auth; cAdvisor not privileged; review sudo NOPASSWD
-- [ ] roberta: upgrade (Docker, containerd, ghostscript) and reboot for the pending kernel. rom said yes
-      2026-10-10; the agent's remote apt was blocked by its permissions, so rom runs
-      `! ~/claude/issues/minecraft/pending/roberta-upgrade-reboot.sh` (rom's home; aborts if players are on)
+- [x] (2026-10-10, rom ran it) roberta: upgrade (Docker 29.9.0, containerd 2.4.1, ghostscript) and reboot;
+      kernel 6.12.111 at 19:02, every stack back, Minecraft healthy
 - [ ] roberta: Docker repo in unattended-upgrades or a monthly upgrade; pin image versions; prune old images
 - [ ] roberta backups: monitoring, grafana, dockge, worlds-archive have none; restic.pw, .env
       files and rclone.conf exist only on the box; rehearse a restore on another machine
