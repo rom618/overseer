@@ -54,6 +54,9 @@ deployed yet.
 
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
+- [ ] Deploy milestone 1 on roberta: home-server `stacks/ciel`, ciel.wuling.dev, a portal card and a
+      `setup.sh` step are prepared but uncommitted; rom's go, then `bin/hs push`, `bin/deploy` in the
+      ciel repo, create users rom and work (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
