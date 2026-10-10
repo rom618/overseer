@@ -45,7 +45,7 @@ back on their workspaces. Scripts in `/opt/dotfiles/config/hypr/custom/scripts/`
 
 - [ ] Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
 - [ ] work: `systemctl --user disable --now hypr-session-save.service` if the old service was ever
-      enabled there; CLAUDE.md text about it is stale, the unit is now a timer (since 2026-10-10)
+      enabled there; the unit is now a timer (since 2026-10-10)
 
 ## Log
 

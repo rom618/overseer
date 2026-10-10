@@ -60,7 +60,7 @@ front end for a local Ollama, no API key, no cloud. Code in `/opt/dotfiles/confi
 
 ## Open
 
-- [ ] Track the Ollama drop-in in `system/` (since 2026-10-10)
+- [x] (2026-10-10, dotfiles 4163eb5) Ollama drop-in tracked in `system/`
 - [ ] "UI broke after /key, fixed by reopening" never reproduced; ask for a description if it recurs (since 2026-09-13)
 
 ## Log

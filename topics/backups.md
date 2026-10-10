@@ -63,13 +63,13 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 
 ## Open
 
-- [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots` (TODO)
-- [ ] `git-restore.sh` checks out the remote tip, not the recorded HEAD, and `git apply ... || true` drops patches silently (TODO)
-- [ ] Re-run `system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (TODO)
-- [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (TODO)
-- [ ] Separate project: back up every GitHub repo and its commits (TODO)
-- [ ] Server backups: monitoring, grafana, dockge and worlds-archive have none; secrets exist only on the box; no restore rehearsal on another machine (TODO)
-- [ ] Vaultwarden, when it exists, needs its own backup and must not depend on a vault inside the backed-up system (TODO)
+- [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots`, delete `/home/work/.local/state/dotfiles-backup/*` (since 2026-10-10)
+- [ ] `git-restore.sh` checks out the remote tip, not the recorded HEAD, and `git apply ... || true` drops patches silently (since 2026-10-10)
+- [ ] rom: re-run `sudo /opt/dotfiles/backup/system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (since 2026-09-26)
+- [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
+- [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
+- [ ] Rehearse a restore of roberta's backups on another machine (since 2026-10-10)
+- [x] (2026-10-10, home-server) Server backups: worlds-archive weekly, Vaultwarden daily plus off-site; Prometheus, Grafana, Dockge declared disposable; server secrets copied into the laptop backup
 
 ## Log
 

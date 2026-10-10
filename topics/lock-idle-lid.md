@@ -46,7 +46,7 @@ Screen locking, idle steps, suspend and lid behaviour on mikaela. Files: `config
 ## Open
 
 - [ ] hyprlock crash of 2026-09-14: root cause unknown, investigate only if it recurs (since 2026-09-14)
-- [ ] Stale text: `system/README.md` says lid.conf needs a reboot (since 2026-10-10)
+- [x] (2026-10-11) `system/README.md` lid.conf text found already corrected
 
 ## Log
 

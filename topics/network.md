@@ -52,13 +52,12 @@ is on `machines/roberta.md`.
 
 ## Open
 
-- [ ] Own Tailscale tailnet for remote access to self-hosted apps; see `overseer/TODO.md` (since 2026-10-10)
-- [ ] Decide the vesscam Headscale tailnet: make it work (work-owned) or leave; status unclear (since 2026-10-10)
-- [ ] MagicDNS name replacing `camille.local`, after one naming rule for devices and apps (since 2026-10-10)
-- [ ] Pi-hole; see `overseer/TODO.md` (since 2026-10-10)
-- [ ] Caddy bound to every interface on untrusted Wi-Fi (since 2026-10-10)
+- [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS) (since 2026-10-10)
+- [ ] vesscam Headscale tailnet (Forgejo): make it work-owned (`sudo tailscale set --operator=work`); it sets the laptop's DNS for everything (100.100.100.100, search `labo.internal`), so then decide `tailscale set --accept-dns=false` or split DNS (since 2026-10-10)
+- [x] (2026-10-10) `camille.local` retired; apps are named under wuling.dev
+- [ ] Pi-hole (since 2026-10-10)
+- [x] (2026-10-11) Laptop Caddy gone with the laptop Camille stack
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
-- [ ] Re-run `system-secrets.sh`: Wi-Fi profiles changed (since 2026-09-26)
 
 ## Log
 

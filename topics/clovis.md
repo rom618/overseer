@@ -47,7 +47,7 @@ Project files sit unsorted in one folder on another machine, not on the laptop.
 
 ## Open
 
-- [ ] Move the Clovis notes from rom's `~/Desktop/work` (personal backup) into the work account; keep company code and notes out of rom's backup (TODO)
+- [ ] Move the Clovis notes from rom's `~/Desktop/work` (personal backup) into the work account; keep company code and notes out of rom's backup (since 2026-10-10)
 - [ ] Ask the user for the project's proper name and the repo names before creating anything (since 2026-10-10)
 - [ ] Get the answers to the questions above before building the repo skeleton and the ssh config template (since 2026-09-26)
 

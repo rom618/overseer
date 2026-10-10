@@ -83,17 +83,17 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 
 ## Open
 
-- [ ] work: run `/opt/nier/bootstrap/link.sh`, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and old-path rules (TODO)
-- [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (TODO)
-- [ ] Agent-agnostic: AGENTS.md canonical, `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/` (TODO)
-- [ ] Comprehension skill: audited draft installed for every agent (TODO)
-- [ ] Try pi (pi-coding-agent) on a throwaway repo; it has no permission system or sandbox, so deny rules need an extension or OS isolation (TODO)
-- [ ] Media privacy at OS level for every agent, not only Claude deny rules (TODO)
-- [ ] Phone access: Tailscale + tmux on an always-on host + Termius; Claude Remote Control for laptop sessions; laptop sleeps, roberta is tight on RAM (TODO)
-- [ ] Conversations hub: per-agent adapters into SQLite FTS5 plus Markdown mirror, claude.ai exports, rom/work split, never in docs repos (TODO)
+- [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
+- [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (since 2026-10-10)
+- [ ] Agent-agnostic, deferred until a second agent is adopted (decision 2026-10-11): `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/`, the comprehension skill for every agent, the dotfiles installer asking for which agents (since 2026-10-10)
+- [ ] Try pi (pi-coding-agent) on a throwaway repo; it has no permission system or sandbox, so deny rules need an extension or OS isolation (since 2026-10-10)
+- [ ] Media privacy at OS level for every agent, not only Claude deny rules (since 2026-10-10)
+- [ ] Phone access: Tailscale + tmux on an always-on host + Termius; Claude Remote Control for laptop sessions; laptop sleeps, roberta is tight on RAM (since 2026-10-10)
+- [ ] Conversations hub: per-agent adapters into SQLite FTS5 plus Markdown mirror, claude.ai exports, rom/work split, never in docs repos (since 2026-10-10)
+- [ ] Spare quota: a user timer reads `~/.claude/claude-rate-limits.json` and, when much of the 5h/7d quota is left, runs queued `claude -p` tasks one at a time, logged, never pushing without review (00:00 to 05:00 daily, 08:00 to 19:00 weekdays). Ideas: docs audit, Camille and Ciel dependency updates as review branches, security sweep, review of the day's commits, research items, monthly restore test (since 2026-10-10)
 - [ ] Multi-device: `nier register` (machine page from detection, on a device branch), `nier install --profile minimal|server|desktop-arch`, `$NIER_HOME` instead of hard-coded paths, laptop-only parts in a desktop module, host paths in `policy/paths.d/`, enrollment through Ciel, macOS and Windows undecided (since 2026-10-10)
 - [ ] Session registry: append-only JSONL per device (agent, device, user, cwd/topic, status, resume command) fed by hooks, later synced to Ciel (since 2026-10-10)
-- [ ] Shrink CLAUDE.md content to rules and triage `notes/history.md` into topic pages, then freeze it (TODO)
+- [x] (2026-10-11) CLAUDE.md is AGENTS.md (rules only, about 2.6k tokens); `notes/history.md` triaged and frozen
 
 ## Log
 

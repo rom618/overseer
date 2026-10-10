@@ -51,12 +51,11 @@ How to run the scripts: `/opt/dotfiles/README.md`. Agent config is a separate re
 
 ## Open
 
-- [ ] Track `/etc/systemd/system/ollama.service.d/override.conf` in `system/` (since 2026-10-10)
-- [ ] `packages-aur.txt` metapackage names: fixed by the next `ii-update.sh --deps` (since 2026-09-12)
-- [ ] work: run `/opt/nier/bootstrap/link.sh`, then remove the old links (since 2026-10-10)
-- [ ] Stale text: `system/README.md` says lid.conf needs a reboot (it was applied) (since 2026-10-10)
+- [x] (2026-10-10, dotfiles 4163eb5) Ollama override tracked in `system/`
+- [ ] `packages-aur.txt` still lists `illogical-impulse-*` metapackage names: fixed by the next `ii-update.sh --deps` (since 2026-09-12)
+- [x] (2026-10-11) `system/README.md` lid.conf text found already corrected
 - [ ] Uncommitted work of other sessions: `bootstrap/packages.txt`, `config/fish/config.fish`
-      (an alias with a hard-coded home path) (since 2026-10-10)
+      (`alias cd-mcs` with a hard-coded home path): commit or drop (since 2026-10-10)
 
 ## Log
 

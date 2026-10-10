@@ -42,8 +42,11 @@ on every device, so a change is written down where the next session will look. T
 - TODO rule: anything the user must do later goes to `overseer/TODO.md` (rom-only items to
   `9s/TODO.md`) in the same turn: a handed-over step, a script's follow-up message, an unverified
   check. Reason: the plaintext copy that a script told the user to delete "yourself" lived only in
-  that script's output and was forgotten for three weeks. Until the generator exists TODO.md is hand-kept;
-  a topic Open line already in TODO.md is written as a short line plus "(TODO)".
+  that script's output and was forgotten for three weeks.
+- TODO.md is hybrid (since 2026-10-11): the hand-written part above the BEGIN marker holds only items
+  that belong to no topic, plus recently closed ones under Done; below it `gen-index.sh` writes every
+  active and dormant topic's open `- [ ]` items (with their indented continuation lines). An item
+  that belongs to a topic lives only in that topic's Open block, never in both.
 - Commits in watched repos (`/opt/nier/bootstrap/watched-repos.txt`) carry a `Docs:` line naming
   the page, or `Docs: none (reason)`; the commit-msg hook refuses others. Claude's Stop hook
   `stop-docs-check.sh` catches files left uncommitted or unpushed at the end of a turn.
@@ -61,10 +64,11 @@ on every device, so a change is written down where the next session will look. T
 ## Open
 
 - [x] (2026-10-11, nier) Docs rules in force: front matter check, `Docs:` commit-msg hook, Stop hook for Claude; the owning-page rule was already in AGENTS.md section 2
-- [ ] TODO generated from the topics' Open blocks instead of hand-kept (decision pending, TODO)
-- [ ] Seed overseer and 9s: topic pages from `notes/history.md` (a triage, not a copy), then freeze history.md with a pointer; fix stale memories (TODO)
-- [ ] Move overseer to `/opt/overseer` (owner rom:dots, group writable; needs a step in nier `setup-machine.sh`, so a sudo handoff); 9s stays under rom's home; the server gets both read-only (TODO)
-- [ ] Issue folders: README cut to goal plus topic link plus rerun command; split the `nexus` folder into topics ciel, docs, nier and cleanup (TODO)
+- [x] (2026-10-11, nier) TODO.md hybrid: hand-written part for items with no topic, generated part with every topic's Open items (decision by rom)
+- [x] (2026-10-11) Seed overseer and 9s: history.md triaged and frozen, stale memories fixed
+- [x] (2026-10-10, nier c5bf44e) overseer in `/opt/overseer`
+- [ ] The server gets overseer and 9s read-only (since 2026-10-10)
+- [x] (2026-10-11) Issue folders: READMEs cut, nexus split and its scratch-rescue triaged
 - [ ] Session start shows the topic's Open block and the top of TODO (since 2026-10-10)
 
 ## Log

@@ -52,14 +52,13 @@ only after the cleanup listed under Open.
 
 ## Open
 
-- [ ] Before coding, in this order (TODO "Structure"): docs rules and `gen-index.sh`; issue folders cut to goal plus topic link; work relinks nier; agent-agnostic nier; comprehension skill; seed overseer and 9s and move overseer to `/opt/overseer`; ssh config cleanup (TODO)
-- [ ] Then code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (TODO)
+- [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
+- [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
-- [ ] Own Tailscale tailnet; vesscam Headscale tailnet (Forgejo) is logged out and must become work-owned (TODO)
-- [ ] Watch Vaultwarden and the other self-hosted apps; network gear later (TODO)
-- [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD) (TODO)
-- [ ] Hub on roberta needs the server hardening first (`topics/home-server.md`)
+- [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
+- [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD) (since 2026-10-10)
+- [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
 
 ## Log
 
