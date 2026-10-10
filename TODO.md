@@ -11,9 +11,9 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [x] (2026-10-11, nier) Docs rules: front matter check in `gen-index.sh` (pre-commit in docs repos),
       `Docs:` commit-msg hook on the watched repos, Claude Stop hook `stop-docs-check.sh`
 - [ ] Decide: TODO.md generated from the topics' Open blocks, or kept by hand (since 2026-10-10)
-- [ ] Issue folders: README cut to goal + topic link + rerun command; decisions and open items go
-      to the topic page at decision time; handoffs become session state only (keepalive prompt
-      change); split the `nexus` folder into topic pages (since 2026-10-10)
+- [x] (2026-10-11) Issue folders: READMEs cut, decisions on topic pages, keepalive handoff prompt
+      sends decisions to the topic page, nexus split and its scratch-rescue triaged; leftovers
+      (location, perfect_plot READMEs) in the Laptop section
 - [x] (2026-10-10, nier d4d14a5) `/opt/claude-config` -> `/opt/nier`, rom relinked, memory dir copied
 - [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session; then remove the links
       `/opt/claude-config` and `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
@@ -25,8 +25,8 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
       installer keeps asking whether to set nier up, and for which agents (since 2026-10-10)
 - [ ] Comprehension skill: draft audited, installed for every agent (since 2026-10-10)
 - [x] (2026-10-10) overseer moved to /opt/overseer (shared with dots); seeded with topic pages
-- [ ] Seed overseer and 9s; triage history.md into topic
-      pages; shrink CLAUDE.md to rules; fix stale memories (since 2026-10-10)
+- [x] (2026-10-11) Seed overseer and 9s: history.md triaged and frozen, AGENTS.md about 2.6k tokens
+      of rules, Camille memory paths fixed (the `~/Playground/media-library` memories are inert, the folder is gone)
 - [x] (2026-10-10) rom ssh keys: id_ed25519_github, id_ed25519_roberta, id_ed25519_epita_forge, random
       passphrases in the login keyring, loaded at login (dotfiles 4e6d64d), `IdentityAgent` in
       ~/.ssh/config; roberta verified, old id_ed25519_server retired everywhere. (A first GitHub check was
