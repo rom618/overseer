@@ -128,8 +128,7 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
       each kind of thing (since 2026-10-10)
 - [x] (2026-10-10, dotfiles 4163eb5) Untracked /etc changes now in `system/` and setup-machine.sh:
       avahi, nsswitch, fuse, Camille CA, Ollama override
-- [ ] User: `sudo ~/claude/issues/nexus/pending/mcvpn-remove.sh` (Crafty-era wg0 tunnel config with its
-      private key and the mcvpn sudo rule; shows them, asks before deleting) (since 2026-10-10)
+- [x] (2026-10-10) Crafty-era wg0.conf and the mcvpn sudo rule removed by the user
 - [ ] `packages-aur.txt` still lists `illogical-impulse-*` (next `ii-update.sh --deps`)
 - [ ] Verify: notification left click focuses the sender; session restore at a real login;
       Surfshark after the stale-kernel reboot
