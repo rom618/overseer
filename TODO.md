@@ -76,9 +76,8 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [x] (2026-10-10) Domain: wuling.dev, DNS at Cloudflare
 - [x] (2026-10-10, home-server 2a8d036, a6782be) HTTPS proxy on roberta: *.wuling.dev wildcard
       certificate by DNS challenge; home, map, grafana, dockge and vault .wuling.dev live
-- [ ] User: create your Vaultwarden account at https://vault.wuling.dev (sign-ups are open until then);
-      write the master password down offline; then an agent closes sign-ups (SIGNUPS_ALLOWED=false in
-      roberta's stacks/vaultwarden/.env and `docker compose up -d`) (since 2026-10-10)
+- [x] (2026-10-10) Vaultwarden: rom's account created, sign-ups closed, first backup verified (daily 03:00,
+      off-site nightly)
 - [ ] Note for every agent: home-server 39c18c6 (Camille's stack, LUKS box, avahi) is committed but
       not deployed; the next `bin/hs push` deploys it too, so none happens before rom starts the Camille
       migration (9s TODO, Camille) (since 2026-10-10)
