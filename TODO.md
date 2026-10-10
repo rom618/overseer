@@ -76,7 +76,7 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 ## Backups
 
 - [ ] Separate project: back up every GitHub repo and its commits
-- [ ] Never-backup list in `git-snapshot.sh` (untracked files of Camille were archived)
+- [x] (2026-10-10, dotfiles 387c6a8) Never-backup list `backup/never.txt`, used by restic and git-snapshot
 - [ ] `git-restore.sh` checks out the remote tip, not the recorded HEAD; drops patches silently
 - [ ] Re-run `system-secrets.sh` (Wi-Fi profiles changed since 2026-09-12)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`,
