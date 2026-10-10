@@ -93,8 +93,12 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [x] (2026-10-10, rom ran it) roberta: upgrade (Docker 29.9.0, containerd 2.4.1, ghostscript) and reboot;
       kernel 6.12.111 at 19:02, every stack back, Minecraft healthy
 - [ ] roberta: Docker repo in unattended-upgrades or a monthly upgrade; pin image versions; prune old images
-- [ ] roberta backups: monitoring, grafana, dockge, worlds-archive have none; restic.pw, .env
-      files and rclone.conf exist only on the box; rehearse a restore on another machine
+- [x] (2026-10-10, home-server repo) roberta: worlds-archive backed up weekly to /backup/archive and
+      off-site; Prometheus, Grafana, Dockge data declared disposable (config in the repo, Ciel replaces)
+- [ ] User: `~/claude/issues/ciel/pending/server-secrets-copy.sh` (copies roberta's restic password,
+      rclone config and stack .env files into ~/.config/home-server on the laptop, which the
+      encrypted laptop backup now includes, dotfiles a3b7baf) (since 2026-10-10)
+- [ ] Rehearse a restore of roberta's backups on another machine
 - [ ] Terraria stack stopped but `terraria-backup.timer` runs hourly; check the playit tunnel
 - [ ] Ethernet instead of Wi-Fi if possible (no UPS either); README memory figures are stale
 
