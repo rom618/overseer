@@ -74,4 +74,6 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   old Caddyfile after a push); start page served at wuling.dev, home.wuling.dev only redirects to it
   (decision: one entry point, the apex).
 - 2026-10-10 23:45: the backup SSD nvme0 (`/backup`) dropped off the bus (NVMe power-saving
-  fault, first time in this boot's journal); fix and reboot waiting for rom (overseer TODO).
+  fault, first time in this boot's journal). 2026-10-11 00:10: rebooted with NVMe power saving off
+  (home-server 87bf15d); journal replayed, fsck clean, restic check clean (vaultwarden, archive,
+  terraria, minecraft). If it drops again with the option on, suspect the drive itself.
