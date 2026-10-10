@@ -162,10 +162,10 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [ ] Clean up the issue folders: done 2026-10-10 for READMEs and topic links (all folders) and
       nexus; left: trim location and perfect_plot READMEs to method + rerun (from their own
       sessions), prune location's 1.3 GB of raw data (since 2026-10-10)
-- [ ] rom: delete `~/claude/issues/ciel/scratch-rescue/` except `build-test-media.sh` (triaged
-      2026-10-11: every change in it is tracked in dotfiles `system/`, `setup-machine.sh`,
-      `packages.txt`, home-server `setup.sh` or a topic page; the agent's delete was blocked by the
-      permission check). `build-test-media.sh` waits for the camille session to adopt it (since 2026-10-11)
+- [ ] rom: `! rm -r ~/claude/issues/ciel/scratch-rescue` (triaged 2026-10-11: every change in it is
+      tracked in dotfiles `system/`, `setup-machine.sh`, `packages.txt`, home-server `setup.sh` or a
+      topic page; `build-test-media.sh` is in the camille repo since 62040f6; the agent's delete was
+      blocked by the permission check) (since 2026-10-11)
 - [ ] Clean up the laptop's file system: home layout (Desktop, Playground, Documents, Downloads),
       leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
       each kind of thing (since 2026-10-10)
