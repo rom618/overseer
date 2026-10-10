@@ -32,6 +32,9 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Agents and access
 
+- [ ] 2026-10-24: review cache-keepalive with its counters (`consumed.log`, nudge returns in
+      the logs): keep or drop the exit background resume, the 80% rotation, `relaunch_cmd`
+      (since 2026-10-10)
 - [ ] Try pi on a throwaway repo (skills, extension blocking, sessions) before relying on it
 - [ ] Media privacy enforced at the OS level for every agent, not only by Claude's deny rules
 - [ ] Phone access to agents: Tailscale + tmux on an always-on host + Termius; Claude Remote
