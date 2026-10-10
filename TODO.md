@@ -73,9 +73,11 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 
 ## Network
 
-- [ ] User: choose and buy a domain at a registrar with a DNS API (Cloudflare, Porkbun or OVH); then
-      an agent sets up a Caddy proxy on roberta with DNS-01 certificates and `<app>.<domain>` records
-      pointing at LAN and tailnet addresses; Vaultwarden follows (since 2026-10-10)
+- [x] (2026-10-10) Domain: wuling.dev, DNS at Cloudflare
+- [ ] User: `~/claude/issues/ciel/pending/cloudflare-token.sh` (Cloudflare API token limited to the DNS
+      of wuling.dev, stored root-only on roberta); then an agent builds the Caddy proxy on roberta
+      (DNS-01 certificates, `<app>.wuling.dev` records to LAN and tailnet addresses), then Vaultwarden
+      (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
       morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
@@ -86,6 +88,15 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 
 ## Servers
 
+- [x] (2026-10-10) /backup budget 25 GB (weekly check `backup-budget.timer`, emergency retention when
+      over); Minecraft retention 2 days full, 7 daily, 4 weekly, 3 monthly
+- [ ] Clean up roberta's disk so it never spends its storage on useless things: old Docker images
+      (`docker image prune`, about 5 GB of old tModLoader tags), `/srv/staging`, leftover networks, logs;
+      a disk budget per data dir watched by Ciel (since 2026-10-10)
+- [ ] Camille's 1 TB of media moves to roberta: decide where (`/srv/data/camille/...`), keep it
+      encrypted, never backed up, add the path to the device's private paths (roberta page, guard
+      for commands sent over ssh) BEFORE it is copied, and decide whether Camille runs there too
+      (since 2026-10-10)
 - [ ] Separate personal and work servers (roberta is shared only for now): own restic password,
       repo, Drive account, proxy; parameterize `offsite-backup.sh`
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD)
