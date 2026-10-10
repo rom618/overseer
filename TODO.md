@@ -24,7 +24,8 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
       Claude-only skills (chat-review, part of skill-review) under `agents/claude/`; the dotfiles
       installer keeps asking whether to set nier up, and for which agents (since 2026-10-10)
 - [ ] Comprehension skill: draft audited, installed for every agent (since 2026-10-10)
-- [ ] Seed overseer and 9s; move overseer to `/opt/overseer` (sudo); triage history.md into topic
+- [x] (2026-10-10) overseer moved to /opt/overseer (shared with dots); seeded with topic pages
+- [ ] Seed overseer and 9s; triage history.md into topic
       pages; shrink CLAUDE.md to rules; fix stale memories (since 2026-10-10)
 - [x] (2026-10-10) rom ssh keys: id_ed25519_github, id_ed25519_roberta, id_ed25519_epita_forge, random
       passphrases in the login keyring, loaded at login (dotfiles 4e6d64d), `IdentityAgent` in
@@ -118,6 +119,11 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Laptop
 
+- [ ] Clean up the issue folders: README per folder (goal, topic link, rerun), decisions moved to
+      topic pages, old handoffs, raw data that is no longer needed (since 2026-10-10)
+- [ ] Clean up the laptop's file system: home layout (Desktop, Playground, Documents, Downloads),
+      leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
+      each kind of thing (since 2026-10-10)
 - [ ] Track `/etc/systemd/system/ollama.service.d/override.conf` in `system/`
 - [ ] `packages-aur.txt` still lists `illogical-impulse-*` (next `ii-update.sh --deps`)
 - [ ] Verify: notification left click focuses the sender; session restore at a real login;
