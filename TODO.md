@@ -98,7 +98,7 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
       over); Minecraft retention 2 days full, 7 daily, 4 weekly, 3 monthly
 - [x] (2026-10-11, home-server 87bf15d) roberta's backup SSD dropped off the bus 2026-10-10 23:45: NVMe
       power saving off, rebooted 00:10, fsck clean, restic check clean on all four repos, Minecraft up
-- [ ] rom: `bin/hs camille-unlock` in a real terminal (Camille is down since the 2026-10-11 reboot)
+- [x] (2026-10-11, rom) `bin/hs camille-unlock` after the reboot; camille.wuling.dev answers 200
 - [ ] Clean up roberta's disk so it never spends its storage on useless things: old Docker images
       (`docker image prune`, about 5 GB of old tModLoader tags), `/srv/staging`, leftover networks, logs;
       a disk budget per data dir watched by Ciel (since 2026-10-10)
@@ -111,8 +111,9 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD)
 - [x] (2026-10-10) roberta sshd: keys only, no root, AllowUsers server (setup.sh, verified);
       terraria-backup timer off while its stack is stopped
-- [ ] roberta before Ciel and Vaultwarden: HTTPS reverse proxy; firewall or loopback binds;
-      Dockge not open on the LAN without auth; cAdvisor not privileged; review sudo NOPASSWD
+- [x] (2026-10-11, home-server) roberta hardening: web apps only through https names, host firewall
+      (ssh only to host processes). Kept on purpose: sudo NOPASSWD (until the agent user), privileged
+      cAdvisor (no port); see topics/home-server.md
 - [x] (2026-10-10, rom ran it) roberta: upgrade (Docker 29.9.0, containerd 2.4.1, ghostscript) and reboot;
       kernel 6.12.111 at 19:02, every stack back, Minecraft healthy
 - [ ] roberta: Docker repo in unattended-upgrades or a monthly upgrade; pin image versions; prune old images

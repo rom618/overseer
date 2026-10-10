@@ -20,9 +20,11 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 ## Facts
 
 - Stacks (`stacks/`): minecraft (+ minecraft-backup), playit (tunnels, host network), bluemap,
-  portal (start page :80), dockge (:5001), monitoring (prometheus, grafana :3000, node-exporter
-  :9100, cadvisor, mc-monitor), terraria (stopped). Data `/srv/data/<stack>`, restic repos
-  `/backup/<stack>`, checkout `/srv/home-server`.
+  portal (start page), dockge, monitoring (prometheus, grafana, node-exporter, cadvisor,
+  mc-monitor), vaultwarden, camille, proxy, registry, terraria (stopped). Web apps only through
+  https://*.wuling.dev (no LAN ports since 2026-10-11, except Camille 8081 for AirPlay and
+  qBittorrent 8090); host firewall lets only ssh reach host processes. Data `/srv/data/<stack>`,
+  restic repos `/backup/<stack>`, checkout `/srv/home-server`.
 - Deploy: edit and commit in the repo on the laptop, then `bin/hs push` (git push into the
   server's checked-out branch, then idempotent `host/setup.sh` owning timezone, swap, sleep
   settings, Docker, unattended security updates, timers, secrets generation). The push refuses if
@@ -50,7 +52,9 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 ## Open
 
 - [ ] Split into personal and work servers (roberta shared only for now): own restic password, repo, Drive account and proxy; parameterize `offsite-backup.sh` (TODO)
-- [ ] Hardening before Ciel and Vaultwarden: HTTPS reverse proxy; sshd `PasswordAuthentication no`, `PermitRootLogin no`, `AllowUsers server` in `host/setup.sh`; firewall or loopback binds; Dockge not open on the LAN without auth; cAdvisor not privileged; review sudo NOPASSWD (TODO)
+- [ ] Hardening left: sudo NOPASSWD stays until the scoped agent user exists (the docker group is
+  root-equivalent anyway, decision 2026-10-11); cAdvisor stays privileged (no port, Ciel replaces it);
+  Camille 8081 closes once AirPlay works over https (TODO)
 - [ ] Reboot for the pending kernel; Docker repo in unattended-upgrades or a monthly upgrade; pin image versions (now `:latest`, pulled daily) and prune old ones (TODO)
 - [ ] Backups for monitoring, grafana, dockge, worlds-archive; secrets only on the box; rehearse a restore on another machine (TODO)
 - [ ] Terraria timer runs while the stack is stopped; check the playit tunnel (TODO)
@@ -77,3 +81,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   fault, first time in this boot's journal). 2026-10-11 00:10: rebooted with NVMe power saving off
   (home-server 87bf15d); journal replayed, fsck clean, restic check clean (vaultwarden, archive,
   terraria, minecraft). If it drops again with the option on, suspect the drive itself.
+- 2026-10-11 (home-server, "Web apps only through their https names"): Dockge, Grafana, BlueMap
+  and the start page publish no port, Caddy reaches them over the `proxy` network; nftables
+  `host-firewall.service` drops everything from outside to host processes except ssh and ping
+  (node-exporter :9100 closed). Checked from the laptop: all names answer, 80/3000/5001/8100/9100
+  closed, 25565/8081/8090 open, Prometheus targets up.
