@@ -74,10 +74,13 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 ## Network
 
 - [x] (2026-10-10) Domain: wuling.dev, DNS at Cloudflare
-- [ ] User, in a normal terminal (not "!"): `~/claude/issues/ciel/pending/cloudflare-token.sh` (Cloudflare API token limited to the DNS
-      of wuling.dev, stored root-only on roberta); then an agent builds the Caddy proxy on roberta
-      (DNS-01 certificates, `<app>.wuling.dev` records to LAN and tailnet addresses), then Vaultwarden
-      (since 2026-10-10)
+- [x] (2026-10-10, home-server 2a8d036, a6782be) HTTPS proxy on roberta: *.wuling.dev wildcard
+      certificate by DNS challenge; home, map, grafana, dockge and vault .wuling.dev live
+- [ ] User: create your Vaultwarden account at https://vault.wuling.dev (sign-ups are open until then);
+      write the master password down offline; then an agent closes sign-ups (SIGNUPS_ALLOWED=false in
+      roberta's stacks/vaultwarden/.env and `docker compose up -d`) (since 2026-10-10)
+- [ ] Camille behind the proxy: camille.wuling.dev, camille.local and https://192.168.1.53 from
+      Camille's CA, once the camille session says its roberta stack is up (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
       morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
