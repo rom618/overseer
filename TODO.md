@@ -34,9 +34,9 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] vesscam-dev and forgejo (mirador:2222) belong to the work account, with its Tailscale tunnel: a
       work-owned key created in the work account and registered there; the two Host blocks leave
       rom's `~/.ssh/config` (user's decision, 2026-10-10)
-- [ ] The old history of rom618/config (replaced 2026-09-12) held ssh keys and a Firefox
-      `logins.db`: GitHub may still serve it by commit id. Recreate rom618/config like camille, and
-      change the passwords Firefox held then during the Vaultwarden pass (since 2026-10-10)
+- [x] (2026-10-10) rom618/config: the leaking commits are on no branch or tag (only main, fresh since
+      2026-09-12); no recreation (user's decision). The leaked keys get replaced; the passwords Firefox
+      held on 2026-09-12 get changed during the Vaultwarden pass
 - [ ] Then: code Ciel (SPEC.md milestones)
 
 ## Agents and access
