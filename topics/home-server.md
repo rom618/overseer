@@ -44,6 +44,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - Personal and work today: games, playit, BlueMap and the Drive account are personal; Docker,
   monitoring, Dockge, the `server` user, the `hs` tooling and the off-site script are shared; one
   restic password covers everything.
+- Memory (2026-10-10 night): 22 of 31 GB used, of which Minecraft 18.3 GB (16 GB heap, 20 GB
+  limit) and BlueMap 2.3 GB; the Camille stack about 0.4 GB.
 
 ## Open
 
@@ -68,3 +70,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   capped at 5 GB, its history not backed up; Grafana and Dockge data disposable (Ciel replaces them).
 - 2026-10-10: HTTPS proxy (Caddy, *.wuling.dev via Cloudflare DNS-01) and Vaultwarden 1.37.3 at
   vault.wuling.dev (1.33.2 was too old for current clients); sign-ups closed after rom's account.
+- 2026-10-10 (home-server accbc67, f3ee7bd): the proxy mounts the `caddy/` folder (a file mount kept the
+  old Caddyfile after a push); start page served at wuling.dev, home.wuling.dev only redirects to it
+  (decision: one entry point, the apex).
+- 2026-10-10 23:45: the backup SSD nvme0 (`/backup`) dropped off the bus (NVMe power-saving
+  fault, first time in this boot's journal); fix and reboot waiting for rom (overseer TODO).

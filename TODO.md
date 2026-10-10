@@ -96,6 +96,11 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 
 - [x] (2026-10-10) /backup budget 25 GB (weekly check `backup-budget.timer`, emergency retention when
       over); Minecraft retention 2 days full, 7 daily, 4 weekly, 3 monthly
+- [ ] URGENT: roberta's backup SSD (nvme0, Toshiba 128 GB, `/backup`) dropped off the bus at
+      2026-10-10 23:45 (NVMe power-saving fault); every local backup fails until fixed. rom decides:
+      kernel option `nvme_core.default_ps_max_latency_us=0` through `host/setup.sh`, then the reboot
+      procedure (Minecraft save-all and stop, reboot, `bin/hs camille-unlock`), fsck of /backup,
+      check the restic repos (since 2026-10-10)
 - [ ] Clean up roberta's disk so it never spends its storage on useless things: old Docker images
       (`docker image prune`, about 5 GB of old tModLoader tags), `/srv/staging`, leftover networks, logs;
       a disk budget per data dir watched by Ciel (since 2026-10-10)

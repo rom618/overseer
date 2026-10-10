@@ -32,8 +32,9 @@ personal and work servers will replace it.
   keys under `/srv/data/proxy`. The guard blocks commands that name the Camille folder.
 - HTTPS front door: the `proxy` stack (Caddy, port 443, Let's Encrypt wildcard `*.wuling.dev` by
   DNS challenge; token root-only in `/etc/home-server/cloudflare-api-token`). Names and their DNS
-  records: `stacks/proxy/hosts.txt` + `Caddyfile`, records kept by `scripts/dns-records.sh`
-  (DNS-only, LAN address 192.168.1.53). Today: home, map, grafana, dockge.
+  records: `stacks/proxy/hosts.txt` + `caddy/Caddyfile`, records kept by `scripts/dns-records.sh`
+  (DNS-only, LAN address 192.168.1.53). Today: wuling.dev (start page), map, grafana, dockge,
+  vault, camille; home redirects to wuling.dev.
 
 ## Layout
 
