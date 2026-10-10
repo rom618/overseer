@@ -74,7 +74,7 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 ## Network
 
 - [x] (2026-10-10) Domain: wuling.dev, DNS at Cloudflare
-- [ ] User: `~/claude/issues/ciel/pending/cloudflare-token.sh` (Cloudflare API token limited to the DNS
+- [ ] User, in a normal terminal (not "!"): `~/claude/issues/ciel/pending/cloudflare-token.sh` (Cloudflare API token limited to the DNS
       of wuling.dev, stored root-only on roberta); then an agent builds the Caddy proxy on roberta
       (DNS-01 certificates, `<app>.wuling.dev` records to LAN and tailnet addresses), then Vaultwarden
       (since 2026-10-10)
@@ -109,9 +109,7 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [ ] roberta: Docker repo in unattended-upgrades or a monthly upgrade; pin image versions; prune old images
 - [x] (2026-10-10, home-server repo) roberta: worlds-archive backed up weekly to /backup/archive and
       off-site; Prometheus, Grafana, Dockge data declared disposable (config in the repo, Ciel replaces)
-- [ ] User: `~/claude/issues/ciel/pending/server-secrets-copy.sh` (copies roberta's restic password,
-      rclone config and stack .env files into ~/.config/home-server on the laptop, which the
-      encrypted laptop backup now includes, dotfiles a3b7baf) (since 2026-10-10)
+- [x] (2026-10-10) roberta's secrets copied off the server into ~/.config/home-server (in the laptop backup)
 - [ ] Rehearse a restore of roberta's backups on another machine
 - [ ] Terraria stack stopped but `terraria-backup.timer` runs hourly; check the playit tunnel
 - [ ] Ethernet instead of Wi-Fi if possible (no UPS either); README memory figures are stale
