@@ -7,15 +7,16 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Structure (before coding Ciel, in this order)
 
+- [x] (2026-10-10, nier d001f85) Skills: cold-review, agent-review, skill-review retired, scripts kept in tools/
 - [ ] Docs rules: topic front matter (status, owner, host, verified, source), `gen-index.sh`
       generating INDEX.md and this TODO, AGENTS.md rule "update the owning page when you change
       something", pre-commit `Docs:` check, Stop hook for Claude (since 2026-10-10)
 - [ ] Issue folders: README cut to goal + topic link + rerun command; decisions and open items go
       to the topic page at decision time; handoffs become session state only (keepalive prompt
       change); split the `nexus` folder into topic pages (since 2026-10-10)
-- [ ] Rename `/opt/claude-config` -> `/opt/nier` (user runs `sudo ~/claude/issues/nexus/pending/nier-move.sh`) (GitHub done: rom618/nier): compat symlink,
-      /etc/claude-code link, settings paths, guard tests, link.sh for rom and work, memory dir
-      `-opt-claude-config` copied (since 2026-10-10)
+- [x] (2026-10-10, nier d4d14a5) `/opt/claude-config` -> `/opt/nier`, rom relinked, memory dir copied
+- [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session; then remove the links
+      `/opt/claude-config` and `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
 - [x] (2026-10-10) Hostname `camille` -> `mikaela`: script run, avahi keeps `camille.local`
       (resolves), 39 restic snapshots relabelled `mikaela`; relogin pending (user restarts when needed)
 - [ ] nier agent-agnostic: AGENTS.md canonical (CLAUDE.md imports it), `policy/` generating each
