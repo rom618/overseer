@@ -26,8 +26,17 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] Comprehension skill: draft audited, installed for every agent (since 2026-10-10)
 - [ ] Seed overseer and 9s; move overseer to `/opt/overseer` (sudo); triage history.md into topic
       pages; shrink CLAUDE.md to rules; fix stale memories (since 2026-10-10)
-- [ ] ssh config: one alias per host, keys named for what they open; unused EPITA key and
-      `known_hosts.old`; passphrases; rotate the two keys leaked in the old dotfiles history
+- [ ] ssh (inventory 2026-10-10: 3 ed25519 keys, none with a passphrase, no agent running):
+      `id_ed25519` (GitHub, vesscam-dev, forgejo) and `id_ed25519_epita` were in the old dotfiles
+      history: replace both. Plan: one key per purpose with a passphrase (GitHub, roberta, EPITA if
+      still needed), an ssh agent at login, Host aliases `github.com` and `roberta`; old keys
+      revoked on GitHub and every host; `known_hosts.old` deleted (since 2026-10-10)
+- [ ] vesscam-dev and forgejo (mirador:2222) belong to the work account, with its Tailscale tunnel: a
+      work-owned key created in the work account and registered there; the two Host blocks leave
+      rom's `~/.ssh/config` (user's decision, 2026-10-10)
+- [ ] The old history of rom618/config (replaced 2026-09-12) held ssh keys and a Firefox
+      `logins.db`: GitHub may still serve it by commit id. Recreate rom618/config like camille, and
+      change the passwords Firefox held then during the Vaultwarden pass (since 2026-10-10)
 - [ ] Then: code Ciel (SPEC.md milestones)
 
 ## Agents and access
@@ -61,8 +70,9 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] Separate personal and work servers (roberta is shared only for now): own restic password,
       repo, Drive account, proxy; parameterize `offsite-backup.sh`
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD)
-- [ ] roberta before Ciel and Vaultwarden: HTTPS reverse proxy; sshd `PasswordAuthentication no`,
-      `PermitRootLogin no`, `AllowUsers server` in `host/setup.sh`; firewall or loopback binds;
+- [x] (2026-10-10) roberta sshd: keys only, no root, AllowUsers server (setup.sh, verified);
+      terraria-backup timer off while its stack is stopped
+- [ ] roberta before Ciel and Vaultwarden: HTTPS reverse proxy; firewall or loopback binds;
       Dockge not open on the LAN without auth; cAdvisor not privileged; review sudo NOPASSWD
 - [ ] roberta: reboot for the pending kernel; Docker repo in unattended-upgrades or a monthly
       upgrade; pin image versions; prune old images

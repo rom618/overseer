@@ -24,6 +24,8 @@ personal and work servers will replace it.
 - The Minecraft restic repo is used only through `docker exec minecraft-backup restic`.
 - No `/locate` on the live Minecraft server with players online (10 s freeze).
 - `server` has passwordless sudo and docker: anything run there is root. Ask before any change.
+- ssh: keys only, no root login, only `server` (`host/setup.sh`, since 2026-10-10). A change to
+  sshd settings goes through setup.sh, which reverts it after 5 minutes unless a new login confirms.
 
 ## Layout
 
