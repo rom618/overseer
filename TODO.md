@@ -119,12 +119,17 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Laptop
 
-- [ ] Clean up the issue folders: README per folder (goal, topic link, rerun), decisions moved to
-      topic pages, old handoffs, raw data that is no longer needed (since 2026-10-10)
+- [ ] Clean up the issue folders: done 2026-10-10 for READMEs and topic links (all folders) and
+      nexus; left: trim location and perfect_plot READMEs to method + rerun (from their own
+      sessions), file `nexus/scratch-rescue/` into topic pages, prune location's 1.3 GB of raw data
+      (since 2026-10-10)
 - [ ] Clean up the laptop's file system: home layout (Desktop, Playground, Documents, Downloads),
       leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
       each kind of thing (since 2026-10-10)
-- [ ] Track `/etc/systemd/system/ollama.service.d/override.conf` in `system/`
+- [x] (2026-10-10, dotfiles 4163eb5) Untracked /etc changes now in `system/` and setup-machine.sh:
+      avahi, nsswitch, fuse, Camille CA, Ollama override
+- [ ] User: `sudo ~/claude/issues/nexus/pending/mcvpn-remove.sh` (Crafty-era wg0 tunnel config with its
+      private key and the mcvpn sudo rule; shows them, asks before deleting) (since 2026-10-10)
 - [ ] `packages-aur.txt` still lists `illogical-impulse-*` (next `ii-update.sh --deps`)
 - [ ] Verify: notification left click focuses the sender; session restore at a real login;
       Surfshark after the stale-kernel reboot
