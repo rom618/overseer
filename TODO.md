@@ -16,8 +16,9 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] Rename `/opt/claude-config` -> `/opt/nier` (GitHub done: rom618/nier): compat symlink,
       /etc/claude-code link, settings paths, guard tests, link.sh for rom and work, memory dir
       `-opt-claude-config` copied (since 2026-10-10)
-- [ ] Hostname `camille` -> `mikaela`: pin the restic repo and `--host` first, `/etc/hosts`, avahi
-      `host-name=camille` so the app keeps `camille.local` (since 2026-10-10)
+- [ ] Hostname `camille` -> `mikaela`: restic repo pinned (dotfiles 387c6a8); user runs
+      `sudo ~/claude/issues/nexus/pending/set-hostname-mikaela.sh`; followups: relogin, then an agent
+      runs `restic rewrite --host camille --new-host mikaela --forget` for rom (since 2026-10-10)
 - [ ] nier agent-agnostic: AGENTS.md canonical (CLAUDE.md imports it), `policy/` generating each
       agent's deny rules, shared skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names),
       Claude-only skills (chat-review, part of skill-review) under `agents/claude/`; the dotfiles
