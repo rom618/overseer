@@ -39,7 +39,7 @@ until 2026-10-10; avahi still announces `camille.local` for the app Camille.
 Hyprland (Lua config since 0.55, see `overseer/runbooks/hyprland-lua-dispatch.md`), Quickshell
 (end-4's illogical-impulse, "ii": https://github.com/end-4/dots-hyprland, docs
 https://ii.clsty.link; upstream ships configuration only), kitty, fish, neovim, SDDM (X11
-greeter, SilentSDDM theme), yay. Firefox is the browser; Chrome (`/opt/google/chrome`) stays
+greeter, SilentSDDM theme), yay. Markdown files open in Apostrophe (installed). Firefox is the browser; Chrome (`/opt/google/chrome`) stays
 installed for `work` and is hidden for rom. Intel Lunar Lake, Arc 130V iGPU. `/` 98 GB and
 `/home` 823 GB on separate partitions. Wi-Fi only (`wlo1`).
 
