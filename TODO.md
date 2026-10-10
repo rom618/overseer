@@ -26,13 +26,13 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] Comprehension skill: draft audited, installed for every agent (since 2026-10-10)
 - [ ] Seed overseer and 9s; move overseer to `/opt/overseer` (sudo); triage history.md into topic
       pages; shrink CLAUDE.md to rules; fix stale memories (since 2026-10-10)
-- [ ] rom ssh keys: user runs `~/claude/issues/nexus/pending/ssh-keys-setup.sh` (new keys github,
-      roberta, epita_forge, random passphrases in the login keyring, loaded at login by
-      `config/hypr/custom/scripts/ssh-keys-load.sh`, dotfiles 4e6d64d); followups: user adds the GitHub
-      and EPITA public keys on their web pages; an agent tests both, then retires `id_ed25519`,
-      `id_ed25519_epita` (leaked in the old dotfiles history) and `id_ed25519_server` (removed from
-      GitHub, EPITA and roberta's authorized_keys, files deleted, config and docs updated, `bin/hs`
-      HS_KEY default) (since 2026-10-10)
+- [x] (2026-10-10) rom ssh keys: id_ed25519_github, id_ed25519_roberta, id_ed25519_epita_forge, random
+      passphrases in the login keyring, loaded at login (dotfiles 4e6d64d), `IdentityAgent` in
+      ~/.ssh/config; GitHub and roberta verified; old id_ed25519_server retired everywhere
+- [ ] User: remove the old keys from GitHub and EPITA's GitLab (web), run one interactive
+      `ssh -T romain.teyssier@git.forge.epita.fr` (host key SHA256:gZ8Qs8edzRAZePNnaubNQYbdSPyFlEQX18/I/NuMP1s),
+      then `~/claude/issues/nexus/pending/ssh-retire-old.sh` (deletes id_ed25519 and id_ed25519_epita
+      after checking their replacements log in) (since 2026-10-10)
 - [ ] WORK SESSION: vesscam-dev (user `associe`) and forgejo (`mirador`, port 2222, user `git`) are
       work's now and were removed from rom's ssh config on 2026-10-10. In the work account: create
       `~/.ssh/id_ed25519_vesscam` the same way (random passphrase in work's login keyring:

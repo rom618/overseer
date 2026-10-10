@@ -100,6 +100,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 | Agent hooks | guard, session-start, cache-keepalive, statusline (`/opt/nier/CLAUDE.md`) | shared |
 | Ollama | system service, iGPU via `ollama-vulkan` | shared |
 | Surfshark | autostart for rom; Docker bridges need MTU 1280 while it is up | rom |
+| ssh | one key per purpose (`id_ed25519_github`, `_roberta`, `_epita_forge`), random passphrases in the login keyring, loaded at login into `ssh-agent.socket` by `custom/scripts/ssh-keys-load.sh`; `~/.ssh/config` aliases `github.com`, `roberta`, `git.forge.epita.fr` | rom |
 | Tailscale | `tailscaled`; tailnet `hs.vesscam.com` (someone else's Headscale, for a Forgejo), connected (3 peers on 2026-10-10 afternoon; its control server timed out that morning) | work-to-be |
 
 ## User differences
