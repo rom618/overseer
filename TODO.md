@@ -44,6 +44,8 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] vesscam Headscale tailnet (Forgejo): currently logged out, control server unreachable;
       make it work-owned (`tailscale set --operator=work`)
 - [ ] Pi-hole
+- [ ] Replace `camille.local` (avahi mDNS, kept on mikaela for the app) with a Tailscale MagicDNS
+      name; first agree on one naming rule for devices and apps (since 2026-10-10)
 - [ ] Laptop: Caddy 80/443 listens on every interface, also on untrusted Wi-Fi
 
 ## Servers
