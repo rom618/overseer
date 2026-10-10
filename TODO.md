@@ -30,11 +30,8 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
       passphrases in the login keyring, loaded at login (dotfiles 4e6d64d), `IdentityAgent` in
       ~/.ssh/config; roberta verified, old id_ed25519_server retired everywhere. (A first GitHub check was
       wrong: the old key answered; ssh-retire-old.sh now tests with the config ignored.)
-- [ ] User: old keys removed from GitHub and EPITA (done); add the new public keys there
-      (`~/.ssh/id_ed25519_github.pub`, `~/.ssh/id_ed25519_epita_forge.pub`), run one interactive
-      `ssh -T romain.teyssier@git.forge.epita.fr` (host key SHA256:gZ8Qs8edzRAZePNnaubNQYbdSPyFlEQX18/I/NuMP1s),
-      then `~/claude/issues/nexus/pending/ssh-retire-old.sh` (deletes id_ed25519 and id_ed25519_epita
-      after checking their replacements log in) (since 2026-10-10)
+- [x] (2026-10-10) New keys registered on GitHub and EPITA, verified with the config ignored; old
+      id_ed25519 and id_ed25519_epita deleted. Keys left: id_ed25519_github, _roberta, _epita_forge
 - [ ] WORK SESSION: vesscam-dev (user `associe`) and forgejo (`mirador`, port 2222, user `git`) are
       work's now and were removed from rom's ssh config on 2026-10-10. In the work account: create
       `~/.ssh/id_ed25519_vesscam` the same way (random passphrase in work's login keyring:
