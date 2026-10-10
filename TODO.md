@@ -82,9 +82,9 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [ ] Note for every agent: home-server 39c18c6 (Camille's stack, LUKS box, avahi) is committed but
       not deployed; the next `bin/hs push` deploys it too, so none happens before rom starts the Camille
       migration (9s TODO, Camille) (since 2026-10-10)
-- [ ] Camille behind the proxy: camille.wuling.dev, camille.local and https://192.168.1.53 from
-      Camille's CA: prepared in `~/claude/issues/ciel/pending/proxy-camille.md`, applied only after
-      `camille-to-roberta.sh` has copied the CA (since 2026-10-10)
+- [x] (2026-10-10, home-server ee9907c) camille.wuling.dev -> Camille on roberta:8081 (camille.local retired)
+- [ ] Once Camille runs on roberta: drop `host-name=camille` from mikaela's avahi (dotfiles
+      system/etc/avahi/avahi-daemon.conf, then `sudo /opt/dotfiles/bootstrap/setup-machine.sh`) (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] The vesscam tailnet sets the laptop's DNS for everything (100.100.100.100, search `labo.internal`):
       a work network deciding rom's name resolution. When it becomes work-owned, decide
@@ -92,8 +92,7 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 - [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
       morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
 - [ ] Pi-hole
-- [ ] Replace `camille.local` with `camille.<domain>` once the domain exists (naming rule decided
-      2026-10-10: own domain) (since 2026-10-10)
+- [x] (2026-10-10) camille.local retired by rom; Camille is camille.wuling.dev
 - [ ] Laptop: Caddy 80/443 listens on every interface, also on untrusted Wi-Fi
 
 ## Servers
