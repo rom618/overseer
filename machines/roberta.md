@@ -41,7 +41,7 @@ personal and work servers will replace it.
 Stacks under `stacks/` (Docker Compose): minecraft (+ minecraft-backup), playit (public tunnels),
 bluemap, portal, dockge, monitoring (prometheus, grafana, node-exporter, cadvisor, mc-monitor),
 vaultwarden, camille, proxy, registry, terraria (stopped). Open to the LAN: 22, 443, Minecraft
-25565 and 24454/udp, Camille 8081, qBittorrent 8090; everything else is closed (no published
+25565 and 24454/udp, qBittorrent 8090; everything else is closed (no published
 port, plus `host-firewall.service` for host processes). Data `/srv/data/<stack>` (1.8 TB),
 local restic repos `/backup/<stack>` (117 GB), deployed checkout `/srv/home-server`. Host units
 from `host/systemd/`: cpu-cap, gpu-metrics, mc-restart (daily 10:00), offsite-backup (04:30,
