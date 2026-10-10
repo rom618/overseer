@@ -80,8 +80,8 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
       off-site nightly)
 - [x] (2026-10-10) Camille's stack deployed on roberta and the migration done (avahi part dropped)
 - [x] (2026-10-10, home-server ee9907c) camille.wuling.dev -> Camille on roberta:8081 (camille.local retired)
-- [ ] rom: `! sudo /opt/dotfiles/bootstrap/setup-machine.sh` (applies the dotfiles avahi change: mikaela
-      stops announcing camille.local; Camille runs on roberta since 2026-10-10) (since 2026-10-10)
+- [ ] rom: `! sudo /opt/dotfiles/bootstrap/setup-machine.sh` (applies dotfiles 2c96eda: mikaela
+      stops announcing camille.local, Firefox and the system stop trusting Camille's retired CA) (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] The vesscam tailnet sets the laptop's DNS for everything (100.100.100.100, search `labo.internal`):
       a work network deciding rom's name resolution. When it becomes work-owned, decide
