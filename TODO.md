@@ -26,14 +26,20 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 - [ ] Comprehension skill: draft audited, installed for every agent (since 2026-10-10)
 - [ ] Seed overseer and 9s; move overseer to `/opt/overseer` (sudo); triage history.md into topic
       pages; shrink CLAUDE.md to rules; fix stale memories (since 2026-10-10)
-- [ ] ssh (inventory 2026-10-10: 3 ed25519 keys, none with a passphrase, no agent running):
-      `id_ed25519` (GitHub, vesscam-dev, forgejo) and `id_ed25519_epita` were in the old dotfiles
-      history: replace both. Plan: one key per purpose with a passphrase (GitHub, roberta, EPITA if
-      still needed), an ssh agent at login, Host aliases `github.com` and `roberta`; old keys
-      revoked on GitHub and every host; `known_hosts.old` deleted (since 2026-10-10)
-- [ ] vesscam-dev and forgejo (mirador:2222) belong to the work account, with its Tailscale tunnel: a
-      work-owned key created in the work account and registered there; the two Host blocks leave
-      rom's `~/.ssh/config` (user's decision, 2026-10-10)
+- [ ] rom ssh keys: user runs `~/claude/issues/nexus/pending/ssh-keys-setup.sh` (new keys github,
+      roberta, epita_forge, random passphrases in the login keyring, loaded at login by
+      `config/hypr/custom/scripts/ssh-keys-load.sh`, dotfiles 4e6d64d); followups: user adds the GitHub
+      and EPITA public keys on their web pages; an agent tests both, then retires `id_ed25519`,
+      `id_ed25519_epita` (leaked in the old dotfiles history) and `id_ed25519_server` (removed from
+      GitHub, EPITA and roberta's authorized_keys, files deleted, config and docs updated, `bin/hs`
+      HS_KEY default) (since 2026-10-10)
+- [ ] WORK SESSION: vesscam-dev (user `associe`) and forgejo (`mirador`, port 2222, user `git`) are
+      work's now and were removed from rom's ssh config on 2026-10-10. In the work account: create
+      `~/.ssh/id_ed25519_vesscam` the same way (random passphrase in work's login keyring:
+      `secret-tool store --label=... nier ssh-key path <file>`, then `ssh-keygen -N`), enable
+      `ssh-agent.socket` for work, add Host blocks for both with that key, have the key registered
+      on both (Forgejo profile > SSH keys; vesscam-dev through its admin), and make work the
+      operator of the vesscam tailnet (`sudo tailscale set --operator=work`) (since 2026-10-10)
 - [x] (2026-10-10) rom618/config: the leaking commits are on no branch or tag (only main, fresh since
       2026-09-12); no recreation (user's decision). The leaked keys get replaced; the passwords Firefox
       held on 2026-09-12 get changed during the Vaultwarden pass
