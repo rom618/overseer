@@ -5,7 +5,7 @@ status: active
 owner: shared
 host: mikaela
 repos: /opt/nier
-folder: ~/claude/issues/nexus
+folder: ~/claude/issues/ciel
 verified: 2026-10-10
 source: /opt/nier (AGENTS.md, README.md, tools/cache-keepalive/README.md, skills/README.md), notes/history.md 2026-09-24 to 2026-10-10, nexus README and audit-2026-10-10.md, git log of /opt/nier
 ---

@@ -5,7 +5,7 @@ status: active
 owner: shared
 host: mikaela, roberta
 repos: /opt/dotfiles, ~/Desktop/perso/projects/home-server
-folder: ~/claude/issues/nexus
+folder: ~/claude/issues/ciel
 verified: 2026-10-10
 source: /opt/dotfiles/backup/README.md, notes/history.md (2026-10-04 Drive, 2026-10-09 issues backup, 2026-10-10 audit, fixes, rename), nexus audit-2026-10-10.md, dotfiles commits 975b42b 387c6a8
 ---

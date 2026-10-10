@@ -5,9 +5,9 @@ status: active
 owner: shared
 host: roberta, mikaela
 repos: ~/Playground/ciel
-folder: ~/claude/issues/nexus
+folder: ~/claude/issues/ciel
 verified: 2026-10-10
-source: ~/Playground/ciel/SPEC.md (draft 2), ~/claude/issues/nexus/README.md and audit-2026-10-10.md, overseer TODO.md, history.md 2026-10-10
+source: ~/Playground/ciel/SPEC.md (draft 2), ~/claude/issues/ciel/README.md and audit-2026-10-10.md, overseer TODO.md, history.md 2026-10-10
 ---
 
 # Ciel
@@ -68,3 +68,6 @@ only after the cleanup listed under Open.
 - 2026-10-10: scope decisions: manage only levels 1 and 2; not the phone; LAN first; hub movable; ownership rule rom/work as above. Every agent watches the hub; agents agree on the network being fine before paging the phone, so a laptop on bad Wi-Fi does not cry wolf.
 - 2026-10-10: GitHub renames done by the user: nexus to ciel, media-library to camille. The `nexus` issue folder keeps its name (session titles) and covers Ciel, the docs repos and the cleanup that comes first.
 - 2026-10-10: coding order decision: finish the config cleanup (docs rules, nier reshape, renames, ssh) before writing code, because renames change the paths the docs quote.
+- 2026-10-10: agents and tools get the same data as the UI: versioned JSON API, an MCP server
+  (`ciel mcp`) with read tools, owner-scoped tokens, management actions human-confirmed (SPEC 18).
+  The planning folder was renamed `~/claude/issues/ciel` (was `nexus`).

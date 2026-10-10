@@ -2,7 +2,7 @@
 
 Hand-kept until `gen-index.sh` generates it from the topic pages' Open blocks. Add `- [ ] text
 (since YYYY-MM-DD)`, close with `[x]`, the date and the commit. rom's personal list is `9s/TODO.md`.
-Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-2026-10-10.md`),
+Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-2026-10-10.md`),
 `/opt/claude-config/notes/history.md`, CLAUDE.md "Open, user action".
 
 ## Structure (before coding Ciel, in this order)
@@ -99,6 +99,8 @@ Sources: the Ciel planning folder (`~/claude/issues/nexus`, README and `audit-20
 
 ## Ciel
 
+- [ ] Remove the link `~/claude/issues/nexus -> ciel` once the session started there has ended
+      (since 2026-10-10)
 - [ ] Code it (after the structure section); retire Dockge (milestone 6) and Grafana (7)
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later
 

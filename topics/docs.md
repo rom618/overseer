@@ -5,7 +5,7 @@ status: active
 owner: shared
 host: mikaela
 repos: ~/Playground/overseer, ~/Playground/9s, /opt/nier
-folder: ~/claude/issues/nexus
+folder: ~/claude/issues/ciel
 verified: 2026-10-10
 source: /opt/nier/AGENTS.md section 2, /opt/nier/tools/gen-index.sh, ciel SPEC.md section 17, nexus README and audit-2026-10-10.md sections 1 and 7, overseer TODO.md
 ---
@@ -27,7 +27,7 @@ on every device, so a change is written down where the next session will look. T
   `people/rom/` (the comprehension profile). Later Ciel writes `inventory/` and `journal/` (generated, never edited by hand).
 - Topic front matter: name, summary (one line, under 120 chars), status (active, dormant, done),
   owner (rom, work, shared), host, repos, folder, verified (date), source. Template:
-  `~/claude/issues/nexus/drafts/topic-page-template.md`. Machine pages have their own front matter.
+  `~/claude/issues/ciel/drafts/topic-page-template.md`. Machine pages have their own front matter.
 - `/opt/nier/tools/gen-index.sh <repo> [--check]` builds `INDEX.md` from the front matter, warns
   about active topics not verified for 30 days and pages over 150 lines. `--check` fails when the
   index is stale. Never edit `INDEX.md` by hand.

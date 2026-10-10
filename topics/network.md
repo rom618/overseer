@@ -5,7 +5,7 @@ status: active
 owner: shared
 host: mikaela
 repos: /opt/dotfiles
-folder: ~/claude/issues/nexus
+folder: ~/claude/issues/ciel
 verified: 2026-10-10
 source: nmcli, /etc/avahi/avahi-daemon.conf, tailscale status, history.md 2026-09-13/14/17/26, 2026-10-10, overseer/TODO.md
 ---
