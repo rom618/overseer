@@ -70,3 +70,6 @@ is on `machines/roberta.md`.
 - 2026-09-26: Flybox identified as Orange 4G behind CGNAT; its profile set back to `auto` at the
   user's request (if Surfshark breaks on it, that is why). `wg0` noted as no inbound path.
 - 2026-10-10: laptop renamed `mikaela`, avahi keeps `camille.local`; `wg0` deleted.
+- 2026-10-10: naming and HTTPS decided: an own domain (to buy), names like `<app>.<domain>` used
+  inside the LAN and the tailnet only, real certificates from Let's Encrypt through a DNS challenge
+  (no port opened, works behind the CGNAT), served by a reverse proxy on the server.

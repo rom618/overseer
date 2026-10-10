@@ -73,12 +73,15 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 
 ## Network
 
+- [ ] User: choose and buy a domain at a registrar with a DNS API (Cloudflare, Porkbun or OVH); then
+      an agent sets up a Caddy proxy on roberta with DNS-01 certificates and `<app>.<domain>` records
+      pointing at LAN and tailnet addresses; Vaultwarden follows (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] vesscam Headscale tailnet (Forgejo): connected again (control server was unreachable on the
       morning of 2026-10-10); make it work-owned (`tailscale set --operator=work`)
 - [ ] Pi-hole
-- [ ] Replace `camille.local` (avahi mDNS, kept on mikaela for the app) with a Tailscale MagicDNS
-      name; first agree on one naming rule for devices and apps (since 2026-10-10)
+- [ ] Replace `camille.local` with `camille.<domain>` once the domain exists (naming rule decided
+      2026-10-10: own domain) (since 2026-10-10)
 - [ ] Laptop: Caddy 80/443 listens on every interface, also on untrusted Wi-Fi
 
 ## Servers
