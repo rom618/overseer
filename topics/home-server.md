@@ -66,3 +66,5 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - 2026-10-10: backups get a 25 GB budget (`backup-budget.timer`), Minecraft retention 7 daily, 4
   weekly, 3 monthly; worlds-archive backed up weekly; Prometheus kept as the metrics store Ciel reads,
   capped at 5 GB, its history not backed up; Grafana and Dockge data disposable (Ciel replaces them).
+- 2026-10-10: HTTPS proxy (Caddy, *.wuling.dev via Cloudflare DNS-01) and Vaultwarden 1.37.3 at
+  vault.wuling.dev (1.33.2 was too old for current clients); sign-ups closed after rom's account.
