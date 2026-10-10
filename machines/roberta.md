@@ -26,6 +26,14 @@ personal and work servers will replace it.
 - `server` has passwordless sudo and docker: anything run there is root. Ask before any change.
 - ssh: keys only, no root login, only `server` (`host/setup.sh`, since 2026-10-10). A change to
   sshd settings goes through setup.sh, which reverts it after 5 minutes unless a new login confirms.
+- Private, never read, listed, probed or backed up, by any route (ssh, `docker exec`, the app's API):
+  everything under `/srv/data/camille` (Camille's 1 TB LUKS container `box.luks`, its mount point
+  `box` with media and app data, and Camille's local CA in `caddy`), plus the proxy's certificate
+  keys under `/srv/data/proxy`. The guard blocks commands that name the Camille folder.
+- HTTPS front door: the `proxy` stack (Caddy, port 443, Let's Encrypt wildcard `*.wuling.dev` by
+  DNS challenge; token root-only in `/etc/home-server/cloudflare-api-token`). Names and their DNS
+  records: `stacks/proxy/hosts.txt` + `Caddyfile`, records kept by `scripts/dns-records.sh`
+  (DNS-only, LAN address 192.168.1.53). Today: home, map, grafana, dockge.
 
 ## Layout
 
