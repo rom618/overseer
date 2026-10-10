@@ -126,6 +126,10 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
 
 ## Ciel
 
+- [ ] rom: `! ~/claude/issues/ciel/pending/restore-planning.sh` restores the Ciel planning folder
+      (README, audit-2026-10-10.md, drafts/, pending/), deleted with the `nexus` link at 2026-10-10
+      20:39, from the last laptop snapshot before then; agent checks it after (since 2026-10-11)
+
 - [ ] Remove the link `~/claude/issues/nexus -> ciel` once the session started there has ended
       (since 2026-10-10)
 - [ ] Code it (after the structure section); retire Dockge (milestone 6) and Grafana (7)
