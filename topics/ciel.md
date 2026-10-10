@@ -6,7 +6,7 @@ owner: shared
 host: roberta, mikaela
 repos: ~/Playground/ciel
 folder: ~/claude/issues/ciel
-verified: 2026-10-10
+verified: 2026-10-11
 source: ~/Playground/ciel/SPEC.md (draft 2), ~/claude/issues/ciel/README.md and audit-2026-10-10.md, overseer TODO.md, history.md 2026-10-10
 ---
 
@@ -14,9 +14,9 @@ source: ~/Playground/ciel/SPEC.md (draft 2), ~/claude/issues/ciel/README.md and 
 
 One app that receives the failures of all the user's apps and shows and manages the health of
 every device, app and the network: a personal sysadmin. Repo rom618/ciel at `~/Playground/ciel`
-(renamed from nexus, which collides with Sonatype Nexus). Today the repo holds only `SPEC.md`
-(vision, scope, architecture, milestones); the product spec lives there, not here. Coding starts
-only after the cleanup listed under Open.
+(renamed from nexus, which collides with Sonatype Nexus). The product spec is its `SPEC.md`; how
+to build, run and deploy is its `README.md`. Milestone 1 (foundation) coded on 2026-10-11, not
+deployed yet.
 
 ## Facts
 
@@ -72,3 +72,7 @@ only after the cleanup listed under Open.
   The planning folder was renamed `~/claude/issues/ciel` (was `nexus`).
 - 2026-10-10: look decided: "Ciel Atmos" (sky hero, apps as animated dots joined by wisps, light
   glass theme from the user's reference image, dark space theme, one overview with drill-down), SPEC 10.1.
+- 2026-10-11 (ciel b80531e): milestone 1 code: Rust workspace (hub, proto), SQLite migrations, users
+  (argon2) and sessions with CSRF and a login lockout, `/health`, React UI shell with the sky hero and
+  theme switch, Dockerfile, `bin/deploy`. 5 integration tests, clippy clean. Prepared but not
+  deployed: home-server `stacks/ciel`, ciel.wuling.dev (waits for rom's go).
