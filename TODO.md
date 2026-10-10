@@ -78,12 +78,10 @@ Sources: the Ciel planning folder (`~/claude/issues/ciel`, README and `audit-202
       certificate by DNS challenge; home, map, grafana, dockge and vault .wuling.dev live
 - [x] (2026-10-10) Vaultwarden: rom's account created, sign-ups closed, first backup verified (daily 03:00,
       off-site nightly)
-- [ ] Note for every agent: home-server 39c18c6 (Camille's stack, LUKS box, avahi) is committed but
-      not deployed; the next `bin/hs push` deploys it too, so none happens before rom starts the Camille
-      migration (9s TODO, Camille) (since 2026-10-10)
+- [x] (2026-10-10) Camille's stack deployed on roberta and the migration done (avahi part dropped)
 - [x] (2026-10-10, home-server ee9907c) camille.wuling.dev -> Camille on roberta:8081 (camille.local retired)
-- [ ] Once Camille runs on roberta: drop `host-name=camille` from mikaela's avahi (dotfiles
-      system/etc/avahi/avahi-daemon.conf, then `sudo /opt/dotfiles/bootstrap/setup-machine.sh`) (since 2026-10-10)
+- [ ] rom: `! sudo /opt/dotfiles/bootstrap/setup-machine.sh` (applies the dotfiles avahi change: mikaela
+      stops announcing camille.local; Camille runs on roberta since 2026-10-10) (since 2026-10-10)
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS)
 - [ ] The vesscam tailnet sets the laptop's DNS for everything (100.100.100.100, search `labo.internal`):
       a work network deciding rom's name resolution. When it becomes work-owned, decide

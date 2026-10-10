@@ -13,7 +13,8 @@ source: /opt/nier/CLAUDE.md before the 2026-10-10 split, notes/history.md
 
 Arch Linux laptop shared by two accounts, `rom` and `work`. Both can sudo, so either can read the
 other's home through root: a convenience setup, not an isolation boundary. Hostname was `camille`
-until 2026-10-10; avahi still announces `camille.local` for the app Camille.
+until 2026-10-10. The app Camille moved to roberta on 2026-10-10 (camille.wuling.dev); camille.local
+is retired (avahi stops announcing it once `setup-machine.sh` has run).
 
 ## Hard rules on this device
 
@@ -94,7 +95,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 
 | What | Where | Owner |
 |---|---|---|
-| Camille (media app) | `~/Playground/media-library` (moving to `~/srv/camille`), containers `media-library-*`, Caddy 80/443, `camille.local` | rom (9s: camille) |
+| Camille (media app) | moved to roberta 2026-10-10; the stopped laptop stack in `~/srv/camille` and the vaults in `~/srv/data/camille` remain as a fallback until rom removes them | rom (9s: camille) |
 | location tools | containers `location-chromium`, `location-cdp-proxy` (Chromium in a closed container, allowed) | rom (9s: location) |
 | Session restore | `hypr-session-save.timer` + `session-restore.py` at login, both users | shared |
 | Agent hooks | guard, session-start, cache-keepalive, statusline (`/opt/nier/CLAUDE.md`) | shared |
