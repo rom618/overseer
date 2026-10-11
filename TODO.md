@@ -102,9 +102,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [ciel](topics/ciel.md)
 
 - [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
-- [ ] rom: in a laptop terminal (not through `!`), `cd ~/Playground/ciel && bin/user rom admin`, later
-      `bin/user work member` (since 2026-10-11)
-- [ ] Back up `/srv/data/ciel` (SQLite online backup) once it holds real data, with milestone 2 (since 2026-10-11)
+- [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
+- [ ] Camille reports its errors to Ciel (app 1), scrubbed of every media name, path and query (handed to the camille session 2026-10-11) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)

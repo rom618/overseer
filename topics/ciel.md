@@ -15,8 +15,9 @@ source: ~/Playground/ciel/SPEC.md (draft 2), ~/claude/issues/ciel/README.md and 
 One app that receives the failures of all the user's apps and shows and manages the health of
 every device, app and the network: a personal sysadmin. Repo rom618/ciel at `~/Playground/ciel`
 (renamed from nexus, which collides with Sonatype Nexus). The product spec is its `SPEC.md`; how
-to build, run and deploy is its `README.md`. Milestone 1 (foundation) coded on 2026-10-11, not
-deployed yet.
+to build, run and deploy is its `README.md`. Live at https://ciel.wuling.dev (roberta, home-server
+`stacks/ciel`): milestones 1 (foundation) and 2 (failures) done on 2026-10-11, except Camille
+reporting to it.
 
 ## Facts
 
@@ -55,9 +56,10 @@ deployed yet.
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
 - [x] (2026-10-11, home-server fd5610e) Milestone 1 deployed at https://ciel.wuling.dev
-- [ ] rom: in a laptop terminal (not through `!`), `cd ~/Playground/ciel && bin/user rom admin`, later
-      `bin/user work member` (since 2026-10-11)
-- [ ] Back up `/srv/data/ciel` (SQLite online backup) once it holds real data, with milestone 2 (since 2026-10-11)
+- [x] (2026-10-11) rom's Ciel account set and used
+- [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
+- [x] (2026-10-11, home-server 75d159d) `/srv/data/ciel` backed up daily (restic, off-site)
+- [ ] Camille reports its errors to Ciel (app 1), scrubbed of every media name, path and query (handed to the camille session 2026-10-11) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
@@ -80,3 +82,10 @@ deployed yet.
   (argon2) and sessions with CSRF and a login lockout, `/health`, React UI shell with the sky hero and
   theme switch, Dockerfile, `bin/deploy`. 5 integration tests, clippy clean. Prepared but not
   deployed: home-server `stacks/ciel`, ciel.wuling.dev (waits for rom's go).
+- 2026-10-11: milestone 1 deployed (home-server fd5610e). Docker builds on mikaela need `--network
+  host` while Surfshark is up (the bridge MTU stalls downloads); `bin/deploy` does it.
+- 2026-10-11 (ciel c985682, home-server 75d159d): milestone 2: Sentry-compatible and plain JSON
+  ingest, grouping (SPEC 5.4), issues with resolve, ignore, regression, rate limit, 90-day pruning,
+  rom/work visibility, issue and app pages; verified with the real Python sentry-sdk. Daily backup.
+  Decision: Camille's events must be scrubbed of media names before they reach Ciel, because Ciel's
+  data is backed up off-site and Camille's never is.
