@@ -18,6 +18,8 @@ How to run the scripts: `/opt/dotfiles/README.md`. Agent config is a separate re
 
 ## Facts
 
+- A second account (work) runs `bootstrap/user-setup.sh` as itself, no sudo: the per-user part the
+  ii installer only did for rom (default files, font, quickshell venv), links, user units.
 - `bootstrap/links.manifest` is the single source of what is linked where; `link.sh` applies it
   for the calling user (`--dry-run`, `--adopt`). `sudo -u work link.sh` works without a user bus.
 - `link.sh` enables per-user timers by symlink (restic-*, hypr-session-save) and starts them when

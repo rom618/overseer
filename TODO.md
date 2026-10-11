@@ -18,6 +18,9 @@ on their page. rom's personal list is `9s/TODO.md`.
       `sudo ~/claude/issues/ciel/pending/work-user-reset.sh` (shows what is there, asks you to type
       "delete work", recreates work passwordless without sudo, links the shared config, makes work
       the Tailscale operator); then log in as work with an empty password (since 2026-10-11)
+- [ ] work: in a work terminal, `/opt/dotfiles/bootstrap/user-setup.sh` (no sudo: ii default
+      files, font, quickshell venv, links, user units), then log out and in; anything still missing,
+      ask work's Claude Code to compare with this list (since 2026-10-11)
 - [ ] After the reset: work's Ciel token (ciel topic Open), work's restic backup (rclone remote and
       `~/.config/backup/restic.env` like rom's, see backups topic), the Tailscale node is still named
       `camille` on the vesscam tailnet (`tailscale set --hostname=mikaela` once the tailnet admin
