@@ -14,6 +14,19 @@ on their page. rom's personal list is `9s/TODO.md`.
       `ssh-agent.socket` for work, add Host blocks for both with that key, have the key registered
       on both (Forgejo profile > SSH keys; vesscam-dev through its admin), and make work the
       operator of the vesscam tailnet (`sudo tailscale set --operator=work`) (since 2026-10-10)
+- [ ] rom: reset the work account (forgotten password): in a real terminal,
+      `sudo ~/claude/issues/ciel/pending/work-user-reset.sh` (shows what is there, asks you to type
+      "delete work", recreates work passwordless without sudo, links the shared config, makes work
+      the Tailscale operator); then log in as work with an empty password (since 2026-10-11)
+- [ ] After the reset: work's Ciel token (ciel topic Open), work's restic backup (rclone remote and
+      `~/.config/backup/restic.env` like rom's, see backups topic), the Tailscale node is still named
+      `camille` on the vesscam tailnet (`tailscale set --hostname=mikaela` once the tailnet admin
+      agrees), and the mikaela page's user table (work: no sudo, no password) (since 2026-10-11)
+- [ ] Remove the media-vault passphrase prompt at rom's login (obsolete since Camille moved to
+      roberta): `config/hypr/custom/execs.lua` runs `scripts/media-vault-unlock.sh`; decide what
+      happens to `~/Media.vault` and the laptop's old Camille files first (since 2026-10-11)
+- [ ] Later, when rom has usage: Dockge retirement after trying the Stacks and Journal pages (ciel
+      topic Open) (since 2026-10-11)
 
 ## Passwords
 
