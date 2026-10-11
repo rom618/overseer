@@ -160,7 +160,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [network](topics/network.md)
 
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS). One tailscaled holds one tailnet at a time (`tailscale switch` only swaps), so on mikaela the vesscam tailnet then moves to a second, userspace tailscaled run by work; both users reach the own tailnet, only work reaches vesscam (decided 2026-10-11) (since 2026-10-10)
-- [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Move to tailscaled-work: run `sudo ~work/claude/issues/set-up/pending/tailnet-to-work.sh`, add `ProxyCommand ~/.local/bin/tsw nc %h %p` under Host mirador, enable the user unit (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups. Ask vesscam to rename node camille and open ssh to mirador; re-check DNS if they add resolvers (since 2026-10-10)
+- [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md); left: add `ProxyCommand ~/.local/bin/tsw nc %h %p` under Host mirador. DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups. Ask vesscam to rename node camille and open ssh to mirador; re-check DNS if they add resolvers (since 2026-10-10)
 - [ ] Pi-hole (since 2026-10-10)
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
 
