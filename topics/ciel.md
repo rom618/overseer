@@ -59,7 +59,8 @@ reporting to it.
 - [x] (2026-10-11) rom's Ciel account set and used
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
 - [x] (2026-10-11, home-server 75d159d) `/srv/data/ciel` backed up daily (restic, off-site)
-- [ ] Camille reports its errors to Ciel (app 1), scrubbed of every media name, path and query (handed to the camille session 2026-10-11) (since 2026-10-11)
+- [x] (2026-10-11, camille 22962ce, home-server 3a23afd) Camille reports to Ciel (backend and frontend, scrubbed client-side, app private): milestone 2 done
+- [ ] rom: `! sudo ~/claude/issues/ciel/pending/install-ciel-agent.sh` installs the Ciel agent on mikaela (token prepared next to it, removed by the script) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)

@@ -46,7 +46,11 @@ port, plus `host-firewall.service` for host processes). Data `/srv/data/<stack>`
 local restic repos `/backup/<stack>` (117 GB), deployed checkout `/srv/home-server`. Host units
 from `host/systemd/`: cpu-cap, gpu-metrics, mc-restart (daily 10:00), offsite-backup (04:30,
 latest Minecraft snapshot + Terraria to `gdrive:backups/home-server`), terraria-backup (disabled by
-setup.sh while the Terraria stack is stopped).
+setup.sh while the Terraria stack is stopped), vaultwarden-backup, ciel-backup, backup-budget.
+`ciel-agent.service` (root, since 2026-10-11) reports failed services and timer runs to Ciel; its
+binary and unit come out of the `ciel` container (home-server README, Ciel section).
+Gotcha: the Flybox resolver answers names with a NAT64 address (`64:ff9b::...`) first, which
+cannot reach the LAN; clients must try IPv4 first (curl does, the Ciel agent does since 2026-10-11).
 
 Gotcha: `docker.service` stops with `TimeoutStopSec` 90 s, but the minecraft container's
 `stop_grace_period` is 3 min. Before a reboot or a Docker upgrade, `save-all flush` over RCON and stop
