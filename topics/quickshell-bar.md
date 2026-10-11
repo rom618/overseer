@@ -24,6 +24,9 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   `docker` CLI is absent or `docker info` fails; a user not in the `docker` group sees nothing (root
   cause of the missing icon for rom). It sits right of the weather bubble. The bar's right section is
   RTL: declared before X means visually right of X.
+- Battery bubble: `BatteryIndicator` moved out of the crowded center-right group into its own `BarGroup`
+  in `bar/BarContent.qml`, just left of the system tray (declared after `SysTray`). Hidden in the
+  shortest bar form or without a battery.
 - Ciel: `bar/CielIndicator.qml` and `services/Ciel.qml` (new files) plus one block in
   `bar/BarContent.qml` after the Claude indicator. Reads `$XDG_RUNTIME_DIR/ciel/state.json`, written by
   the user unit `ciel-notify.service` (dotfiles `config/hypr/custom/systemd/`); hidden when the file is
@@ -87,3 +90,4 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
 - 2026-09-26: `claude-usage.py` fixed: Opus priced 0, duplicate stream lines counted twice, subagents skipped.
 - 2026-10-09: Claude limits rows shown per window, reset day shown over 20 h away (c1c0370).
 - 2026-10-10: notification click-to-focus (975b42b).
+- 2026-10-11: battery given its own bubble next to the tray (center group was crowded).
