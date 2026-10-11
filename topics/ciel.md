@@ -65,7 +65,7 @@ reporting to it.
 - [x] (2026-10-11, rom) Agents update themselves from the hub (rom accepted that ciel.wuling.dev becomes as trusted as root on the devices)
 - [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` once more: mikaela's agent gets the unit line that lets it update itself (afterwards it follows the hub on its own) (since 2026-10-11)
 - [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
-- [ ] Milestone 4b: desktop notifier (ciel-notify), bar widget, agents watching the hub (since 2026-10-11)
+- [x] (2026-10-11, ciel de9c410, dotfiles 4b33951) Milestone 4b: desktop notifier, bar indicator, agents paging when the hub is unreachable: milestone 4 done
 - [ ] Unlock Camille from the Ciel UI after a roberta reboot: a passphrase field whose value goes only to roberta's agent, which unlocks the box; never stored or logged (rom's wish 2026-10-11; with the actions milestone) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`

@@ -6,7 +6,7 @@ owner: shared
 host: mikaela
 repos: /opt/dotfiles
 folder: none
-verified: 2026-10-10
+verified: 2026-10-11
 source: config/quickshell/ii/ (modules/ii/bar, services), /opt/nier/tools/qs-known-warnings.txt, history.md 2026-09-12 to 2026-10-10
 ---
 
@@ -24,6 +24,11 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   `docker` CLI is absent or `docker info` fails; a user not in the `docker` group sees nothing (root
   cause of the missing icon for rom). It sits right of the weather bubble. The bar's right section is
   RTL: declared before X means visually right of X.
+- Ciel: `bar/CielIndicator.qml` and `services/Ciel.qml` (new files) plus one block in
+  `bar/BarContent.qml` after the Claude indicator. Reads `$XDG_RUNTIME_DIR/ciel/state.json`, written by
+  the user unit `ciel-notify.service` (dotfiles `config/hypr/custom/systemd/`); hidden when the file is
+  missing or all is fine, a cloud with the count when something needs attention (red when failing), a
+  crossed cloud when the hub is unreachable; click opens Ciel in Firefox. Details: ciel repo README.
 - Claude usage: `ClaudeIndicator.qml`, `ClaudePopup.qml`, `services/ClaudeUsage.qml`, hides when the
   tools are absent. Data from `/opt/nier/tools/claude-usage.py` summing `input + output + cache_creation + cache_read`
   tokens from every assistant `usage` entry in `~/.claude/projects/*/*.jsonl` (subagent transcripts included, streamed
