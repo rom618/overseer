@@ -11,8 +11,8 @@ source: /opt/nier/CLAUDE.md before the 2026-10-10 split, notes/history.md
 
 # mikaela (the laptop)
 
-Arch Linux laptop shared by two accounts, `rom` and `work`. Both can sudo, so either can read the
-other's home through root: a convenience setup, not an isolation boundary. Hostname was `camille`
+Arch Linux laptop shared by two accounts, `rom` and `work`. Only rom can sudo (work is not in `wheel`, checked 2026-10-11), so rom can read
+work's home through root: a convenience setup, not an isolation boundary. Sudo scripts for work run from rom. Hostname was `camille`
 until 2026-10-10. The app Camille moved to roberta on 2026-10-10 (camille.wuling.dev); camille.local
 is retired (avahi stops announcing it once `setup-machine.sh` has run).
 
@@ -105,7 +105,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 | Ciel docs feed | post-commit hook in every watched repo (commits into the Ciel journal through the local agent); rom's user timer `ciel-docs-sync.timer` (journal and inventory into overseer and 9s, daily 00:30); rom's read-only Ciel API token in `~/.config/ciel/token`, also read by `nier context` for the live brief | rom |
 | Surfshark | autostart for rom; Docker bridges need MTU 1280 while it is up | rom |
 | ssh | one key per purpose (`id_ed25519_github`, `_roberta`, `_epita_forge`), random passphrases in the login keyring, loaded at login into `ssh-agent.socket` by `custom/scripts/ssh-keys-load.sh`; `~/.ssh/config` aliases `github.com`, `roberta`, `git.forge.epita.fr`. New keys: `/opt/nier/tools/ssh-key-new.sh NAME [ALIAS HOSTNAME [USER]]` (needs a `login` keyring collection; work had none on 2026-10-11, autologin creates none) | rom; work: `_github`, `_mirador` (tailnet 100.64.0.1) |
-| Tailscale | `tailscaled`; tailnet `hs.vesscam.com` (someone else's Headscale, for a Forgejo), connected (3 peers on 2026-10-10 afternoon; its control server timed out that morning) | work-to-be |
+| Tailscale | `tailscaled`; tailnet `hs.vesscam.com` (someone else's Headscale, for a Forgejo), connected, node `camille` (old hostname) under tailnet user `romain`, `OperatorUser` work; `mirador` (100.64.0.1) answers `tailscale ping` (2026-10-11); `~/.ssh/config` alias `mirador` for work, remote username unknown | work |
 
 ## User differences
 
