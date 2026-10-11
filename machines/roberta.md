@@ -49,6 +49,8 @@ latest Minecraft snapshot + Terraria to `gdrive:backups/home-server`), terraria-
 setup.sh while the Terraria stack is stopped), vaultwarden-backup, ciel-backup, backup-budget.
 `ciel-agent.service` (root, since 2026-10-11) reports failed services and timer runs to Ciel; its
 binary and unit come out of the `ciel` container (home-server README, Ciel section).
+Editor: vim is installed and is the default `editor` (setup.sh, since 2026-10-11); nano is still there.
+
 Gotcha: the Flybox resolver answers names with a NAT64 address (`64:ff9b::...`) first, which
 cannot reach the LAN; clients must try IPv4 first (curl does, the Ciel agent does since 2026-10-11).
 
