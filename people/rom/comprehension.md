@@ -10,3 +10,5 @@ date | concept | level | evidence | what worked
 2026-10-10 | scripts-in-a-config-repo | 1 | asked how a repo command runs on a device that is not registered, thought it a binary | it is a script in the cloned repo; registration only changes what it finds
 2026-10-10 | device-enrollment | 1 | asked how the monitoring app would register devices | one-time code, agent reports, user approves
 2026-10-10 | magicdns | 2 | used the term correctly when asking for the rename | -
+2026-10-11 | vpn-is-machine-wide-not-per-user | 0 | surprised the tailnet stayed up across reboots and users, linked it to ssh keys | cable between machines vs key to an account
+2026-10-11 | ssh-public-key-access | 1 | asked what giving a public key grants | only the account it is added to, nothing else
