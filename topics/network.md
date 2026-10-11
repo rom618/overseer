@@ -53,7 +53,7 @@ is on `machines/roberta.md`.
 ## Open
 
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS) (since 2026-10-10)
-- [ ] vesscam Headscale tailnet (Forgejo): operator is work (done by 2026-10-11). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups. Decide `--shields-up=true`; re-check DNS if they add resolvers (since 2026-10-10)
+- [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups. Ask vesscam to rename node camille and open ssh to mirador; re-check DNS if they add resolvers (since 2026-10-10)
 - [x] (2026-10-10) `camille.local` retired; apps are named under wuling.dev
 - [ ] Pi-hole (since 2026-10-10)
 - [x] (2026-10-11) Laptop Caddy gone with the laptop Camille stack

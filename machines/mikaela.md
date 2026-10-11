@@ -11,8 +11,8 @@ source: /opt/nier/CLAUDE.md before the 2026-10-10 split, notes/history.md
 
 # mikaela (the laptop)
 
-Arch Linux laptop shared by two accounts, `rom` and `work`. Only rom can sudo (work is not in `wheel`, checked 2026-10-11), so rom can read
-work's home through root: a convenience setup, not an isolation boundary. Sudo scripts for work run from rom. Hostname was `camille`
+Arch Linux laptop shared by two accounts, `rom` and `work`. Both can sudo (work joined `wheel` on 2026-10-11), so either can read the
+other's home through root: a convenience setup, not an isolation boundary. Hostname was `camille`
 until 2026-10-10. The app Camille moved to roberta on 2026-10-10 (camille.wuling.dev); camille.local
 is retired (avahi stops announcing it once `setup-machine.sh` has run).
 
