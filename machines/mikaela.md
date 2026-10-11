@@ -104,7 +104,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 | Ciel notifier | user unit `ciel-notify.service` (dotfiles, linked by link.sh): desktop notifications that open Ciel in Firefox, `$XDG_RUNTIME_DIR/ciel/state.json` for the bar's Ciel indicator | per user |
 | Ciel docs feed | post-commit hook in every watched repo (commits into the Ciel journal through the local agent); rom's user timer `ciel-docs-sync.timer` (journal and inventory into overseer and 9s, daily 00:30); rom's read-only Ciel API token in `~/.config/ciel/token`, also read by `nier context` for the live brief | rom |
 | Surfshark | autostart for rom; Docker bridges need MTU 1280 while it is up | rom |
-| ssh | one key per purpose (`id_ed25519_github`, `_roberta`, `_epita_forge`), random passphrases in the login keyring, loaded at login into `ssh-agent.socket` by `custom/scripts/ssh-keys-load.sh`; `~/.ssh/config` aliases `github.com`, `roberta`, `git.forge.epita.fr` | rom |
+| ssh | one key per purpose (`id_ed25519_github`, `_roberta`, `_epita_forge`), random passphrases in the login keyring, loaded at login into `ssh-agent.socket` by `custom/scripts/ssh-keys-load.sh`; `~/.ssh/config` aliases `github.com`, `roberta`, `git.forge.epita.fr`. New keys: `/opt/nier/tools/ssh-key-new.sh NAME [ALIAS HOSTNAME [USER]]` (needs a `login` keyring collection; work had none on 2026-10-11, autologin creates none) | rom; work: `_github`, `_mirador` (tailnet 100.64.0.1) |
 | Tailscale | `tailscaled`; tailnet `hs.vesscam.com` (someone else's Headscale, for a Forgejo), connected (3 peers on 2026-10-10 afternoon; its control server timed out that morning) | work-to-be |
 
 ## User differences
