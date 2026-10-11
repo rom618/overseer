@@ -63,6 +63,9 @@ reporting to it.
 - [x] (2026-10-11, rom ran it) Ciel agent installed on mikaela; both machines linked
 - [x] (2026-10-11, rom ran setup-machine.sh) mikaela's agent updated (sees user timer jobs)
 - [x] (2026-10-11, rom) Agents update themselves from the hub (rom accepted that ciel.wuling.dev becomes as trusted as root on the devices)
+- [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` once more: mikaela's agent gets the unit line that lets it update itself (afterwards it follows the hub on its own) (since 2026-10-11)
+- [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
+- [ ] Milestone 4b: desktop notifier (ciel-notify), bar widget, agents watching the hub (since 2026-10-11)
 - [ ] Unlock Camille from the Ciel UI after a roberta reboot: a passphrase field whose value goes only to roberta's agent, which unlocks the box; never stored or logged (rom's wish 2026-10-11; with the actions milestone) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
@@ -94,3 +97,9 @@ reporting to it.
   Decision: Camille's events must never carry media names into Ciel, because Ciel's data is backed
   up off-site and Camille's never is. Enforced in the hub (ciel 30be7f2): apps flagged private keep
   only error types and code locations; camille is private. Client-side scrubbing stays as a second layer.
+- 2026-10-11 (ciel dfcb4e7 and fixes, e07f22b): milestone 3 agent live on both machines (rustls needed an
+  explicit crypto provider; the Flybox resolver answers with a NAT64 address first, so the agent connects
+  IPv4 first; user timer jobs log "Finished", not "Deactivated"). Agents update themselves from the hub
+  (rom's decision); proven on roberta at the 4a deploy. Milestone 4a: checks, incidents, alerts, ntfy;
+  roberta's 15 timer jobs got heartbeats automatically; web checks for every *.wuling.dev site and
+  Minecraft's port; mikaela marked away-ok.
