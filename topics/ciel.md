@@ -61,8 +61,9 @@ reporting to it.
 - [x] (2026-10-11, home-server 75d159d) `/srv/data/ciel` backed up daily (restic, off-site)
 - [x] (2026-10-11, camille 22962ce, home-server 3a23afd) Camille reports to Ciel (backend and frontend, scrubbed client-side, app private): milestone 2 done
 - [x] (2026-10-11, rom ran it) Ciel agent installed on mikaela; both machines linked
-- [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` updates mikaela's agent to the build that also sees user timer jobs (since 2026-10-11)
-- [ ] Decide how the laptop agent updates: by hand with setup-machine.sh (today), or a self-update from the hub (root code from ciel.wuling.dev, so the hub's domain becomes as trusted as root on the laptop) (since 2026-10-11)
+- [x] (2026-10-11, rom ran setup-machine.sh) mikaela's agent updated (sees user timer jobs)
+- [x] (2026-10-11, rom) Agents update themselves from the hub (rom accepted that ciel.wuling.dev becomes as trusted as root on the devices)
+- [ ] Unlock Camille from the Ciel UI after a roberta reboot: a passphrase field whose value goes only to roberta's agent, which unlocks the box; never stored or logged (rom's wish 2026-10-11; with the actions milestone) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)

@@ -23,6 +23,9 @@ on their page. rom's personal list is `9s/TODO.md`.
       over the tailnet (HTTPS and backups done 2026-10-10) (since 2026-10-10)
 - [ ] Pass over every password into it (inventory: security audit, 2026-10-10); machine secrets
       read by timers stay 0600 files, with a recovery copy in the vault (since 2026-10-10)
+- [ ] Way later: Vaultwarden moves to a Raspberry Pi (if it is powerful enough), roberta keeps
+      backups of it, and the Google Drive copy stays as the fallback when both fail at once (today:
+      Vaultwarden on roberta, daily restic on roberta plus the nightly off-site copy) (since 2026-10-11)
 
 ## GitHub
 
@@ -103,8 +106,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 - [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
-- [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` updates mikaela's agent to the build that also sees user timer jobs (since 2026-10-11)
-- [ ] Decide how the laptop agent updates: by hand with setup-machine.sh (today), or a self-update from the hub (root code from ciel.wuling.dev, so the hub's domain becomes as trusted as root on the laptop) (since 2026-10-11)
+- [ ] Unlock Camille from the Ciel UI after a roberta reboot: a passphrase field whose value goes only to roberta's agent, which unlocks the box; never stored or logged (rom's wish 2026-10-11; with the actions milestone) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
