@@ -47,8 +47,9 @@ local restic repos `/backup/<stack>` (117 GB), deployed checkout `/srv/home-serv
 from `host/systemd/`: cpu-cap, gpu-metrics, mc-restart (daily 10:00), offsite-backup (04:30,
 latest Minecraft snapshot + Terraria to `gdrive:backups/home-server`), terraria-backup (disabled by
 setup.sh while the Terraria stack is stopped), vaultwarden-backup, ciel-backup, backup-budget.
-`ciel-agent.service` (root, since 2026-10-11) reports failed services and timer runs to Ciel; its
-binary and unit come out of the `ciel` container (home-server README, Ciel section).
+`ciel-agent.service` (root, since 2026-10-11) reports failed services, timer runs and changes to Ciel,
+and runs what Ciel asks within its allowlist (stack start, stop, restart and logs; Camille's unlock from
+`/etc/ciel/actions.json`); its binary and unit come out of the `ciel` container (home-server README, Ciel section).
 Editor: vim is installed and is the default `editor` (setup.sh, since 2026-10-11); nano is still there.
 
 Gotcha: the Flybox resolver answers names with a NAT64 address (`64:ff9b::...`) first, which

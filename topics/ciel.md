@@ -1,6 +1,6 @@
 ---
 name: ciel
-summary: Ciel, the self-built sysadmin app (failures, health, management, network); spec draft 2, no code yet
+summary: Ciel, the self-built sysadmin app at ciel.wuling.dev; milestones 1 to 6 live (failures to containers)
 status: active
 owner: shared
 host: roberta, mikaela
@@ -16,8 +16,8 @@ One app that receives the failures of all the user's apps and shows and manages 
 every device, app and the network: a personal sysadmin. Repo rom618/ciel at `~/Playground/ciel`
 (renamed from nexus, which collides with Sonatype Nexus). The product spec is its `SPEC.md`; how
 to build, run and deploy is its `README.md`. Live at https://ciel.wuling.dev (roberta, home-server
-`stacks/ciel`): milestones 1 (foundation) and 2 (failures) done on 2026-10-11, except Camille
-reporting to it.
+`stacks/ciel`): milestones 1 to 6 done on 2026-10-11 (foundation, failures, agent, health and
+alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafana retired).
 
 ## Facts
 
@@ -54,7 +54,10 @@ reporting to it.
 ## Open
 
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
-- [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
+- [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
+- [ ] rom: try the Stacks page (restart a harmless stack such as portal, open some logs) and the Journal page; then say go and Dockge is retired (stack, dockge.wuling.dev, its DNS record and data) (since 2026-10-11)
+- [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
+- [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [x] (2026-10-11, home-server fd5610e) Milestone 1 deployed at https://ciel.wuling.dev
 - [x] (2026-10-11) rom's Ciel account set and used
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
@@ -66,7 +69,7 @@ reporting to it.
 - [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` once more: mikaela's agent gets the unit line that lets it update itself (afterwards it follows the hub on its own) (since 2026-10-11)
 - [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
 - [x] (2026-10-11, ciel de9c410, dotfiles 4b33951) Milestone 4b: desktop notifier, bar indicator, agents paging when the hub is unreachable: milestone 4 done
-- [ ] Unlock Camille from the Ciel UI after a roberta reboot: a passphrase field whose value goes only to roberta's agent, which unlocks the box; never stored or logged (rom's wish 2026-10-11; with the actions milestone) (since 2026-10-11)
+- [x] (2026-10-11, ciel 25ead6f, home-server 771eb07) Unlock Camille from the Ciel UI (Stacks, camille, Unlock); first real use after the next roberta reboot
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
@@ -103,3 +106,17 @@ reporting to it.
   (rom's decision); proven on roberta at the 4a deploy. Milestone 4a: checks, incidents, alerts, ntfy;
   roberta's 15 timer jobs got heartbeats automatically; web checks for every *.wuling.dev site and
   Minecraft's port; mikaela marked away-ok.
+- 2026-10-11 (ciel 25ead6f, home-server 771eb07): milestone 6. The hub sends requests over the agent
+  link (containers, start/stop/restart, logs, custom actions) and never touches Docker itself.
+  Decisions: no `up` and no pulls from the UI (deploys stay `bin/hs push`); Minecraft needs its name
+  typed; the proxy and Ciel's own stack cannot be stopped from Ciel; the agent refuses to touch
+  itself, ssh, docker, the display manager, logind and other `systemd-*` units; custom actions run
+  through `systemd-run` (outside the agent's sandbox, so a mount reaches the host); the Camille
+  passphrase is never stored or logged. Private stacks' logs are viewable live by rom and never stored.
+  Tested end to end on the laptop against real Docker and with a sandboxed dry run on roberta.
+- 2026-10-11 (ciel 0ef5fda, nier af5e509, dotfiles d43492e, home-server 1fe707c): milestone 5.
+  Journal sources: commits (shared post-commit hook, owner column in watched-repos.txt), deploys,
+  pacman/apt transactions, Docker events per stack, systemd unit states and /etc unit files, Ciel
+  actions. Read-only API tokens; rom's lives in `~/.config/ciel/token` on the laptop. `nier context`
+  appends the live brief; `ciel-docs-sync.timer` (rom) writes journal/ and inventory/ daily into
+  overseer and 9s. Not done: session lines and the session registry (Open).

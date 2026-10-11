@@ -104,11 +104,13 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [ciel](topics/ciel.md)
 
-- [ ] Code it from the SPEC milestones; retire Dockge (milestone 6) and Grafana (7) (since 2026-10-10)
+- [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
+- [ ] rom: try the Stacks page (restart a harmless stack such as portal, open some logs) and the Journal page; then say go and Dockge is retired (stack, dockge.wuling.dev, its DNS record and data) (since 2026-10-11)
+- [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
+- [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
 - [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` once more: mikaela's agent gets the unit line that lets it update itself (afterwards it follows the hub on its own) (since 2026-10-11)
 - [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
-- [ ] Unlock Camille from the Ciel UI after a roberta reboot: a passphrase field whose value goes only to roberta's agent, which unlocks the box; never stored or logged (rom's wish 2026-10-11; with the actions milestone) (since 2026-10-11)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)

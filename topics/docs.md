@@ -24,7 +24,10 @@ on every device, so a change is written down where the next session will look. T
   (state, facts, Open, Log) then detail where the work lives (code repo README, issue folder, git
   log), linked and never copied. A page over about 150 lines becomes `topics/<name>/index.md`.
 - Layout of overseer: `INDEX.md`, `TODO.md`, `topics/`, `machines/<host>.md`, `runbooks/`,
-  `people/rom/` (the comprehension profile). Later Ciel writes `inventory/` and `journal/` (generated, never edited by hand).
+  `people/rom/` (the comprehension profile). Ciel writes `inventory/index.md` and
+  `journal/YYYY/MM/YYYY-MM-DD.md` (generated, never edited by hand) in both repos, routed by owner
+  (rom's items to 9s, shared and work to overseer), daily at 00:30 through rom's
+  `ciel-docs-sync.timer` (`/opt/nier/tools/ciel-docs-sync.sh`), since 2026-10-11.
 - Topic front matter: name, summary (one line, under 120 chars), status (active, dormant, done),
   owner (rom, work, shared), host, repos, folder, verified (date), source. Template:
   `~/claude/issues/ciel/drafts/topic-page-template.md`. Machine pages have their own front matter.
