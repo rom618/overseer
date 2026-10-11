@@ -87,5 +87,6 @@ reporting to it.
 - 2026-10-11 (ciel c985682, home-server 75d159d): milestone 2: Sentry-compatible and plain JSON
   ingest, grouping (SPEC 5.4), issues with resolve, ignore, regression, rate limit, 90-day pruning,
   rom/work visibility, issue and app pages; verified with the real Python sentry-sdk. Daily backup.
-  Decision: Camille's events must be scrubbed of media names before they reach Ciel, because Ciel's
-  data is backed up off-site and Camille's never is.
+  Decision: Camille's events must never carry media names into Ciel, because Ciel's data is backed
+  up off-site and Camille's never is. Enforced in the hub (ciel 30be7f2): apps flagged private keep
+  only error types and code locations; camille is private. Client-side scrubbing stays as a second layer.
