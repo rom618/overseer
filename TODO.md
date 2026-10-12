@@ -60,6 +60,8 @@ on their page. rom's personal list is `9s/TODO.md`.
       leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
       each kind of thing; unused JetBrains IDEs (~18 GB, Toolbox) and its 8.9 GB download cache,
       pacman cache 5.5 GB (since 2026-10-10)
+- [ ] rom's list: preserve mikaela's battery: stop charging at a threshold automatically (sysfs `charge_control_end_threshold` if the firmware has it, else the vendor tool); look up the usual charge-limit strategies first (since 2026-10-12)
+- [ ] rom's list: a local replica of every GitHub repo, kept in sync both ways (a Forgejo on a server with push mirrors) (since 2026-10-12)
 
 ## Done
 
@@ -131,7 +133,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [ciel](topics/ciel.md)
 
 - [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
-- [ ] Dockge retirement (stack, dockge.wuling.dev, its DNS record and data): rom tried Stacks and Journal (2026-10-12, fine); the container terminal now covers what Dockge's console did; waits for rom's go (since 2026-10-11)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
@@ -147,12 +148,16 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 - [ ] The server gets overseer and 9s read-only (since 2026-10-10)
 - [ ] Session start shows the topic's Open block and the top of TODO (since 2026-10-10)
+- [ ] rom's list (naming): French names for apps, English names for devices (as roberta); the laptop/app name clash is fixed (mikaela, Camille, 2026-10-10) (since 2026-10-12)
 
 ### [dotfiles](topics/dotfiles.md)
 
 - [ ] `packages-aur.txt` still lists `illogical-impulse-*` metapackage names: fixed by the next `ii-update.sh --deps` (since 2026-09-12)
 - [ ] Uncommitted work of other sessions: `bootstrap/packages.txt`, `config/fish/config.fish`
       (`alias cd-mcs` with a hard-coded home path): commit or drop (since 2026-10-10)
+- [ ] rom's list: light mode: terminals already open stay white-background while the text colour changes (kitty does not reload its theme in running windows) (since 2026-10-12)
+- [ ] rom's list: the config repo installs on any Linux, choosing the variant (Linux Mint and Arch first) (since 2026-10-12)
+- [ ] rom's list: count every manual step it took to set up work, and every step to set up all apps on all devices; reduce them for resets and losses (since 2026-10-12)
 
 ### [home-server](topics/home-server.md)
 
@@ -163,6 +168,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Disk clean-up: old Docker images (about 5 GB of old tModLoader tags), `/srv/staging`, leftover networks, logs; a disk budget per data dir watched by Ciel (since 2026-10-10)
 - [ ] Ethernet instead of Wi-Fi if possible (many retries, no UPS, dead battery); the README's memory figures are stale (live heap 16 GB, limit 20 GB) (since 2026-10-10)
 - [ ] Agent access: agents should run as a scoped `agent` user, not the NOPASSWD `server` (since 2026-10-10)
+- [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
+- [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
@@ -179,6 +186,9 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Device registration and per-device access through Ciel (Tailscale API: one-time keys, device list, tags in the tailnet policy); review what each device type may reach; Ciel milestones 8 and 9 (since 2026-10-12)
 - [ ] Pi-hole (since 2026-10-10)
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
+- [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
+- [ ] rom's list: refuse cookies network-wide if possible (Pi-hole cannot answer cookie banners; a filter list or a browser extension per device can), else one choice per browser per device (since 2026-10-12)
+- [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
 
 ### [nier](topics/nier.md)
 
@@ -192,6 +202,12 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Spare quota: a user timer reads `~/.claude/claude-rate-limits.json` and, when much of the 5h/7d quota is left, runs queued `claude -p` tasks one at a time, logged, never pushing without review (00:00 to 05:00 daily, 08:00 to 19:00 weekdays). Ideas: docs audit, Camille and Ciel dependency updates as review branches, security sweep, review of the day's commits, research items, monthly restore test (since 2026-10-10)
 - [ ] Multi-device: `nier register` (machine page from detection, on a device branch), `nier install --profile minimal|server|desktop-arch`, `$NIER_HOME` instead of hard-coded paths, laptop-only parts in a desktop module, host paths in `policy/paths.d/`, enrollment through Ciel, macOS and Windows undecided (since 2026-10-10)
 - [ ] Session registry: append-only JSONL per device (agent, device, user, cwd/topic, status, resume command) fed by hooks, later synced to Ciel (since 2026-10-10)
+- [ ] rom's list: not depend on Claude: switch easily between AI providers (aether already routes Codex and OpenAI accounts; the agent-agnostic nier above) (since 2026-10-12)
+- [ ] rom's list: use Claude Code from the phone (the tailnet reaches the laptop and roberta; options: Remote Control, a web session, ssh from the phone) (since 2026-10-12)
+- [ ] rom's list: the dotfiles installer asks whether to set up the agent config and then clones and links nier (since 2026-10-12)
+- [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
+- [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
+- [ ] rom's list: automatic runners that use spare tokens on chosen tasks (one aether key per runner, so their usage shows apart from development in Ciel's charts) (since 2026-10-12)
 
 ### [quickshell-bar](topics/quickshell-bar.md)
 

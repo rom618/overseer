@@ -60,6 +60,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [x] (2026-10-10) Terraria backup timer disabled by setup.sh while the stack is stopped
 - [ ] Ethernet instead of Wi-Fi if possible (many retries, no UPS, dead battery); the README's memory figures are stale (live heap 16 GB, limit 20 GB) (since 2026-10-10)
 - [ ] Agent access: agents should run as a scoped `agent` user, not the NOPASSWD `server` (since 2026-10-10)
+- [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
+- [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 
 ## Log
 

@@ -70,6 +70,10 @@ is on `machines/roberta.md`.
 - [ ] Pi-hole (since 2026-10-10)
 - [x] (2026-10-11) Laptop Caddy gone with the laptop Camille stack
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
+- [x] (2026-10-12) From rom's list: ssh to roberta from outside the home network works through the own tailnet (mikaela reaches roberta on 22 by the access rules)
+- [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
+- [ ] rom's list: refuse cookies network-wide if possible (Pi-hole cannot answer cookie banners; a filter list or a browser extension per device can), else one choice per browser per device (since 2026-10-12)
+- [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
 
 ## Log
 

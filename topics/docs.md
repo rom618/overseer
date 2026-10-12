@@ -73,6 +73,7 @@ on every device, so a change is written down where the next session will look. T
 - [ ] The server gets overseer and 9s read-only (since 2026-10-10)
 - [x] (2026-10-11) Issue folders: READMEs cut, nexus split and its scratch-rescue triaged
 - [ ] Session start shows the topic's Open block and the top of TODO (since 2026-10-10)
+- [ ] rom's list (naming): French names for apps, English names for devices (as roberta); the laptop/app name clash is fixed (mikaela, Camille, 2026-10-10) (since 2026-10-12)
 
 ## Log
 

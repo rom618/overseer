@@ -95,6 +95,13 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 - [ ] Multi-device: `nier register` (machine page from detection, on a device branch), `nier install --profile minimal|server|desktop-arch`, `$NIER_HOME` instead of hard-coded paths, laptop-only parts in a desktop module, host paths in `policy/paths.d/`, enrollment through Ciel, macOS and Windows undecided (since 2026-10-10)
 - [ ] Session registry: append-only JSONL per device (agent, device, user, cwd/topic, status, resume command) fed by hooks, later synced to Ciel (since 2026-10-10)
 - [x] (2026-10-11) CLAUDE.md is AGENTS.md (rules only, about 2.6k tokens); `notes/history.md` triaged and frozen
+- [ ] rom's list: not depend on Claude: switch easily between AI providers (aether already routes Codex and OpenAI accounts; the agent-agnostic nier above) (since 2026-10-12)
+- [ ] rom's list: use Claude Code from the phone (the tailnet reaches the laptop and roberta; options: Remote Control, a web session, ssh from the phone) (since 2026-10-12)
+- [x] (2026-10-12) From rom's list: agent config separate from the desktop config repo: done since 2026-10-11 (`/opt/nier`, its own `bootstrap/link.sh`); the install prompt in the config repo is the open part
+- [ ] rom's list: the dotfiles installer asks whether to set up the agent config and then clones and links nier (since 2026-10-12)
+- [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
+- [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
+- [ ] rom's list: automatic runners that use spare tokens on chosen tasks (one aether key per runner, so their usage shows apart from development in Ciel's charts) (since 2026-10-12)
 
 ## Log
 

@@ -58,7 +58,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
-- [ ] Dockge retirement (stack, dockge.wuling.dev, its DNS record and data): rom tried Stacks and Journal (2026-10-12, fine); the container terminal now covers what Dockge's console did; waits for rom's go (since 2026-10-11)
+- [x] (2026-10-12, home-server, night) Dockge retired: container, image, /srv/data/dockge, dockge.wuling.dev DNS record (hosts.txt `retired` rule), proxy entry, start-page card, Ciel's web check; Ciel's Stacks page and container terminal replace it
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [x] (2026-10-11, home-server fd5610e) Milestone 1 deployed at https://ciel.wuling.dev
