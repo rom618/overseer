@@ -59,7 +59,8 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
   (else `~/claude/issues/_unfiled/handoffs/<start-dir-slug>.md`), overwritten. Decisions go to topic pages.
 - Skills (shared via `~/.claude/skills`, authoring rules in `skills/README.md`): `config`
   (device config changes, thin pointer plus scripts), `comprehension` (profile in
-  `people/rom/comprehension.md`), `chat-review` (Claude-only, reads `~/.claude` transcripts).
+  `people/rom/comprehension.md`), `chat-review` (Claude-only, reads `~/.claude` transcripts), `burn` (unattended work while rom is away:
+  one round of questions, a budget on weekly usage, a morning report; since 2026-10-12).
   Retired 2026-10-10 as unused: agent-review, cold-review, skill-review, inbox; their scripts live
   on as `tools/collect-changes.sh` and `tools/skill-lint.sh`. `skills/synced/` (Anthropic
   skills) stays out of the shared set. Do not name a skill like a bundled command (`code-review`,
