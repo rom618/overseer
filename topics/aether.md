@@ -66,6 +66,14 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-13 night (aether, home-server): ported from the fork: client gone aborts the provider
+  call, the pin wait and the stream (proxy part of efae4abe); error reports in Sentry format sent
+  to Ciel (app `aether`, `bin/hs aether-dsn`; a test event arrived). Skipped as not worth it for
+  one user: the large-body chain (f90ed0b2, 2eaf4f62, f51ba92d, 87938595, 210e8ed7, then the
+  cache-ttl splice fixes of 10-02: memory protection under team load), 1eb4e081 (type hygiene),
+  7d798edd (529 wording). Still open: direct vs proxy usage, statusline totals, reset notice,
+  per-model weekly cap (usage and cost work, deferred by rom).
+
 - 2026-10-13 (aether, nier): a session hit the limit of both accounts and stopped for good:
   aether answered a 503, which Claude Code reads as a server failure. Now aether answers 429 with
   `anthropic-ratelimit-unified-reset` (earliest reset) and nier sets `CLAUDE_CODE_RETRY_WATCHDOG=1`,
