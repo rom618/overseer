@@ -55,6 +55,9 @@ is on `machines/roberta.md`.
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS). One tailscaled holds one tailnet at a time (`tailscale switch` only swaps), so on mikaela the vesscam tailnet then moves to a second, userspace tailscaled run by work; both users reach the own tailnet, only work reaches vesscam (decided 2026-10-11) (since 2026-10-10)
 - [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
 - [x] (2026-10-10) `camille.local` retired; apps are named under wuling.dev
+- [ ] Own tailnet, how the wuling.dev names are reached (decided 2026-10-12): roberta announces the home subnet to the tailnet (subnet router), the names keep their LAN address 192.168.1.53, so devices without Tailscale still work at home. Devices: iPhone, mikaela, the desktop, the servers. To test: Surfshark together with Tailscale on mikaela; on the iPhone only one VPN is active at a time (since 2026-10-12)
+- [ ] Public access: Minecraft stays on playit (Cloudflare Tunnel carries web traffic only; a game client cannot use it without Cloudflare's client on every player's machine). Cloudflare Tunnel is a candidate for public web pages only (map, modpack portal); not decided (since 2026-10-12)
+- [ ] Device registration and per-device access through Ciel (Tailscale API: one-time keys, device list, tags in the tailnet policy); review what each device type may reach; Ciel milestones 8 and 9 (since 2026-10-12)
 - [ ] Pi-hole (since 2026-10-10)
 - [x] (2026-10-11) Laptop Caddy gone with the laptop Camille stack
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)

@@ -73,6 +73,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 - [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
 - [x] (2026-10-11, ciel de9c410, dotfiles 4b33951) Milestone 4b: desktop notifier, bar indicator, agents paging when the hub is unreachable: milestone 4 done
 - [x] (2026-10-11, ciel 25ead6f, home-server 771eb07) Unlock Camille from the Ciel UI (Stacks, camille, Unlock); first real use after the next roberta reboot
+- [ ] Practices seen in other repos (review 2026-10-12, list in rom's `~/claude/issues/ciel/out/repo-review-2026-10-12.md`): not picked as a batch; propose each one to rom at the moment its area is worked on (checks catalogue, "prove the work", window since last run, exit reports and memory guard at checks and alerts; token expiry and drift charts at milestone 7; risk register, guard warnings and `harvest` when nier is touched; docs lint, incident template, `merge=union` when the docs rules are touched) (since 2026-10-12)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)

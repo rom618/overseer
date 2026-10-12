@@ -5,6 +5,7 @@ Format: name (owner, verified): summary.
 
 ## Topics: active
 
+- [aether](topics/aether.md) (shared, 2026-10-12): Aether, the own proxy in front of the AI provider accounts (fork of ccflare); decided, not built yet
 - [ai-sidebar](topics/ai-sidebar.md) (shared, 2026-10-10): Quickshell left-sidebar AI chat on local Ollama (iGPU via Vulkan), models, fixes, aiconfig helper
 - [backups](topics/backups.md) (shared, 2026-10-10): Laptop restic backup to Google Drive per user, git snapshots, and the server off-site copy
 - [ciel](topics/ciel.md) (shared, 2026-10-11): Ciel, the self-built sysadmin app at ciel.wuling.dev; milestones 1 to 6 live (failures to containers)

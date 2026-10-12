@@ -105,6 +105,14 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ## Open items of the topic pages
 
+### [aether](topics/aether.md)
+
+- [ ] Create the repo as a new fork of the public upstream; diff the company fork against it and list what is worth carrying over (first candidates: client keys per machine if not upstream, the abnormal-exit report, the memory guard, the spend alert on the slope); leave out fleet management, the message bus and the rules engine (since 2026-10-12)
+- [ ] Decide where it runs (a `stacks/aether` in home-server on roberta is the default), data folder root-only, whether it is backed up given the clear-text tokens (since 2026-10-12)
+- [ ] Reachable at home and on the tailnet only (aether.wuling.dev through the proxy stack), never public; depends on the own tailnet (`topics/network.md`) (since 2026-10-12)
+- [ ] Link the two accounts, one client key per device and user, then point the agents at it (nier `settings.json` env); check the statusline and cache-keepalive still read their limits (since 2026-10-12)
+- [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
+
 ### [ai-sidebar](topics/ai-sidebar.md)
 
 - [ ] "UI broke after /key, fixed by reopening" never reproduced; ask for a description if it recurs (since 2026-09-13)
@@ -127,6 +135,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
 - [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` once more: mikaela's agent gets the unit line that lets it update itself (afterwards it follows the hub on its own) (since 2026-10-11)
 - [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
+- [ ] Practices seen in other repos (review 2026-10-12, list in rom's `~/claude/issues/ciel/out/repo-review-2026-10-12.md`): not picked as a batch; propose each one to rom at the moment its area is worked on (checks catalogue, "prove the work", window since last run, exit reports and memory guard at checks and alerts; token expiry and drift charts at milestone 7; risk register, guard warnings and `harvest` when nier is touched; docs lint, incident template, `merge=union` when the docs rules are touched) (since 2026-10-12)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
@@ -161,6 +170,9 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 - [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS). One tailscaled holds one tailnet at a time (`tailscale switch` only swaps), so on mikaela the vesscam tailnet then moves to a second, userspace tailscaled run by work; both users reach the own tailnet, only work reaches vesscam (decided 2026-10-11) (since 2026-10-10)
 - [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
+- [ ] Own tailnet, how the wuling.dev names are reached (decided 2026-10-12): roberta announces the home subnet to the tailnet (subnet router), the names keep their LAN address 192.168.1.53, so devices without Tailscale still work at home. Devices: iPhone, mikaela, the desktop, the servers. To test: Surfshark together with Tailscale on mikaela; on the iPhone only one VPN is active at a time (since 2026-10-12)
+- [ ] Public access: Minecraft stays on playit (Cloudflare Tunnel carries web traffic only; a game client cannot use it without Cloudflare's client on every player's machine). Cloudflare Tunnel is a candidate for public web pages only (map, modpack portal); not decided (since 2026-10-12)
+- [ ] Device registration and per-device access through Ciel (Tailscale API: one-time keys, device list, tags in the tailnet policy); review what each device type may reach; Ciel milestones 8 and 9 (since 2026-10-12)
 - [ ] Pi-hole (since 2026-10-10)
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
 
