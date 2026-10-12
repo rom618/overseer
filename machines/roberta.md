@@ -50,6 +50,9 @@ setup.sh while the Terraria stack is stopped), vaultwarden-backup, ciel-backup, 
 `ciel-agent.service` (root, since 2026-10-11) reports failed services, timer runs and changes to Ciel,
 and runs what Ciel asks within its allowlist (stack start, stop, restart and logs; Camille's unlock from
 `/etc/ciel/actions.json`); its binary and unit come out of the `ciel` container (home-server README, Ciel section).
+Tailscale (since 2026-10-12, `setup.sh`): `tailscaled` announces the home network 192.168.1.0/24 to the
+own tailnet (subnet router), takes no DNS and no routes from it, Tailscale ssh off; how to join and
+check: home-server README "Remote access". Not joined until rom signs in (`overseer/topics/network.md`).
 Editor: vim is installed and is the default `editor` (setup.sh, since 2026-10-11); nano is still there.
 
 Gotcha: the Flybox resolver answers names with a NAT64 address (`64:ff9b::...`) first, which
