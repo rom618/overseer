@@ -52,7 +52,8 @@ and runs what Ciel asks within its allowlist (stack start, stop, restart and log
 `/etc/ciel/actions.json`); its binary and unit come out of the `ciel` container (home-server README, Ciel section).
 Tailscale (since 2026-10-12, `setup.sh`): `tailscaled` announces the home network 192.168.1.0/24 to the
 own tailnet (subnet router), takes no DNS and no routes from it, Tailscale ssh off; how to join and
-check: home-server README "Remote access". Not joined until rom signs in (`overseer/topics/network.md`).
+check: home-server README "Remote access". Joined 2026-10-12 as `roberta`, 100.75.27.34, route approved,
+key expiry off (`overseer/topics/network.md`).
 Editor: vim is installed and is the default `editor` (setup.sh, since 2026-10-11); nano is still there.
 
 Gotcha: the Flybox resolver answers names with a NAT64 address (`64:ff9b::...`) first, which
