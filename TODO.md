@@ -157,7 +157,6 @@ on their page. rom's personal list is `9s/TODO.md`.
       (`alias cd-mcs` with a hard-coded home path): commit or drop (since 2026-10-10)
 - [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme (since 2026-10-12)
 - [ ] rom's list: the config repo installs on any Linux, choosing the variant (Linux Mint and Arch first) (since 2026-10-12)
-- [ ] rom's list: count every manual step it took to set up work, and every step to set up all apps on all devices; reduce them for resets and losses (since 2026-10-12)
 
 ### [home-server](topics/home-server.md)
 
@@ -221,6 +220,12 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
 - [ ] work: `systemctl --user disable --now hypr-session-save.service` if the old service was ever
       enabled there; the unit is now a timer (since 2026-10-10)
+
+### [setup-steps](topics/setup-steps.md)
+
+- [ ] Fold the one-off `pending/` scripts that describe lasting state into `setup-machine.sh` or `user-setup.sh` (hostname, ssh layout, tailnet join), and delete the rest (since 2026-10-13)
+- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives (Vaultwarden), so a reset is "install, restore secrets, run setup" (since 2026-10-13)
+- [ ] A per-user first-login script that does the manual items above in order and checks each (ssh keys registered, backup works, Ciel token, aether key) (since 2026-10-13)
 
 ### [clovis](topics/clovis.md)
 

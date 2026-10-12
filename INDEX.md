@@ -17,6 +17,7 @@ Format: name (owner, verified): summary.
 - [nier](topics/nier.md) (shared, 2026-10-11): Agent config repo /opt/nier (was claude-config): AGENTS.md rules, hooks, skills; going agent-agnostic
 - [quickshell-bar](topics/quickshell-bar.md) (shared, 2026-10-11): Local customizations of the Quickshell (illogical-impulse) bar and popups, and which upstream files were edited
 - [session-restore](topics/session-restore.md) (shared, 2026-10-10): Per-minute window/terminal/Claude session save and login restore for both users, Firefox own tab restore
+- [setup-steps](topics/setup-steps.md) (shared, 2026-10-13): How many manual steps a reset or a new device costs today, per device and user, and how to cut them
 
 ## Topics: dormant
 
