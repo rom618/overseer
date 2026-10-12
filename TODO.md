@@ -60,7 +60,7 @@ on their page. rom's personal list is `9s/TODO.md`.
       leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
       each kind of thing; unused JetBrains IDEs (~18 GB, Toolbox) and its 8.9 GB download cache,
       pacman cache 5.5 GB (since 2026-10-10)
-- [ ] rom's list: preserve mikaela's battery: stop charging at a threshold automatically (sysfs `charge_control_end_threshold` if the firmware has it, else the vendor tool); look up the usual charge-limit strategies first (since 2026-10-12)
+- [ ] rom: battery charge limit at 80% is written (dotfiles: udev rule and after-sleep hook, `system/README.md`); it applies when rom runs `sudo /opt/dotfiles/bootstrap/setup-machine.sh` in a real terminal (since 2026-10-12)
 - [ ] rom's list: a local replica of every GitHub repo, kept in sync both ways (a Forgejo on a server with push mirrors) (since 2026-10-12)
 
 ## Done
