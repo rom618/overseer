@@ -52,7 +52,7 @@ is on `machines/roberta.md`.
 
 ## Open
 
-- [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS). One tailscaled holds one tailnet at a time (`tailscale switch` only swaps), so on mikaela the vesscam tailnet then moves to a second, userspace tailscaled run by work; both users reach the own tailnet, only work reaches vesscam (decided 2026-10-11) (since 2026-10-10)
+- [x] (2026-10-12) Own tailnet for remote access to the self-hosted apps: hosted Tailscale, roberta subnet router, iPhone and mikaela joined; vesscam stays on work's own tailscaled
 - [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
 - [x] (2026-10-10) `camille.local` retired; apps are named under wuling.dev
 - [x] (2026-10-12, home-server 6161d05, 55d66f9) Own tailnet exists (hosted Tailscale, rom's personal Google account `romainteyssier1@`): roberta 100.75.27.34 joined, route 192.168.1.0/24 approved, key expiry off; iPhone `iphone-14` 100.73.199.29 joined. Verified from roberta (`tailscale status`)

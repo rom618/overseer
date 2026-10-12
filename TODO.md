@@ -28,8 +28,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Remove the media-vault passphrase prompt at rom's login (obsolete since Camille moved to
       roberta): `config/hypr/custom/execs.lua` runs `scripts/media-vault-unlock.sh`; decide what
       happens to `~/Media.vault` and the laptop's old Camille files first (since 2026-10-11)
-- [ ] Later, when rom has usage: Dockge retirement after trying the Stacks and Journal pages (ciel
-      topic Open) (since 2026-10-11)
+- [x] (2026-10-13) Dockge retired (ciel topic Log)
 
 ## Passwords
 
@@ -175,7 +174,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [network](topics/network.md)
 
-- [ ] Own Tailscale tailnet for remote access to the self-hosted apps (Headscale later needs a VPS). One tailscaled holds one tailnet at a time (`tailscale switch` only swaps), so on mikaela the vesscam tailnet then moves to a second, userspace tailscaled run by work; both users reach the own tailnet, only work reaches vesscam (decided 2026-10-11) (since 2026-10-10)
 - [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
 - [ ] Other devices (the desktop, further servers) join the own tailnet later, registered from Ciel once Ciel and aether are done (rom, 2026-10-12); nothing to do before (since 2026-10-12)
 - [ ] mikaela on the own tailnet (needed only away from home): the system `tailscaled` is disabled and still holds the old vesscam node state, to set aside first; a pending script, then the Surfshark test; `--accept-routes` on only when away (since 2026-10-12)
