@@ -56,6 +56,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 ## Open
 
+- [ ] Unit failures of a user's graphical services within a minute of that user's logout (portals, notification daemon) are noise: let the agent skip them instead of opening issues (since 2026-10-13)
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones: 7 charts (first part live 2026-10-13: rom to look at /charts; then laptop metrics and Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
 - [x] (2026-10-12, home-server, night) Dockge retired: container, image, /srv/data/dockge, dockge.wuling.dev DNS record (hosts.txt `retired` rule), proxy entry, start-page card, Ciel's web check; Ciel's Stacks page and container terminal replace it
@@ -81,6 +82,12 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
 
 ## Log
+
+- 2026-10-13 night: Ciel's 9 "needs attention" items cleared: docs-sync fixed (retries when Ciel
+  is unreachable), work's session-save heartbeat now unknown while work is logged out (hub change),
+  the desktop portal and notification unit failures of 2026-10-11 were logout noise (the Wayland
+  display went away under them; all active since) and were resolved. Camille's two panics stay open
+  until its fix is deployed.
 
 - 2026-10-13 night (ciel, home-server): milestone 7 first part live: `/charts` (admins) with server
   health, containers and Minecraft from Prometheus (Prometheus joined the proxy network) and AI usage
