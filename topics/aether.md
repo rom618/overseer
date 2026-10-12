@@ -54,8 +54,10 @@ continue on the other account when one is limited.
 - [x] (2026-10-12) Reachable at home and on the tailnet only: the name points at the LAN address and the tailnet rules cover port 443
 - [x] (2026-10-12, rom) Admin key made, both accounts linked from the dashboard (health: 2 accounts, 2 usable)
 - [x] (2026-10-12, home-server 4ed3064) First device key `mikaela-rom`, saved by `bin/hs aether-key-save` to rom's `~/.config/aether/key` (never displayed); one real agent request answered through aether and counted on that key. The agent's address is `https://aether.wuling.dev/v1/claude-code` (the bare host answers "model does not exist")
-- [x] (2026-10-12, dotfiles `conf.d/aether.fish`) rom accepted losing the account's connectors; rom's agents on mikaela go through aether from the next shell (falls back to the account when aether does not answer)
-- [ ] After rom restarts a session through aether: check the statusline limits and cache-keepalive still work, pick `session` or `conversation` routing, work's key once the work account is reset (since 2026-10-12)
+- [x] (2026-10-12, nier 7ebbaf1) rom accepted losing the account's connectors; on rom's request every session goes through aether through the shared nier `settings.json` (`ANTHROPIC_BASE_URL` + `apiKeyHelper` reading `~/.config/aether/key`); the fish snippet tried first was removed (dotfiles df7a3e9). Tested with one real request. No fallback when aether is down
+- [ ] work: before work's next agent session, a key at `~/.config/aether/key` (rom runs `bin/hs aether-key-save mikaela-work /tmp/k`, work moves it in, or work runs it with ssh access); without it work's sessions fail (since 2026-10-12)
+- [ ] Aether down means no agent at all: decide on a fallback (the helper could print nothing when aether does not answer, but the address stays set) or accept it; Ciel already watches aether.wuling.dev (since 2026-10-12)
+- [ ] After rom restarts a session through aether: check the statusline limits and cache-keepalive still work, pick `session` or `conversation` routing (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - Company fork last commit: 2026-10-12 00:19 (still about 50 commits a day); our base is its state of 2026-09-11.
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
