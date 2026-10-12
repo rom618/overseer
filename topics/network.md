@@ -74,6 +74,8 @@ is on `machines/roberta.md`.
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
 - [ ] rom's list: refuse cookies network-wide if possible (Pi-hole cannot answer cookie banners; a filter list or a browser extension per device can), else one choice per browser per device (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
+- [ ] rom's list: link the email sender Sweego to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
+- [ ] rom's list: make Cloudflare verification checkboxes appear less often (they come from IP reputation, Surfshark exits trigger them; maybe nothing to do) (since 2026-10-12)
 
 ## Log
 
