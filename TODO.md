@@ -107,9 +107,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [aether](topics/aether.md)
 
-- [ ] rom: create an empty private GitHub repo `rom618/aether` (no gh CLI on mikaela); the agent then points origin at it and keeps upstream as a second remote (since 2026-10-12)
-- [ ] Access control for version 1, proposed 2026-10-12, not decided: the public code unchanged, the check done by the proxy stack in front (one secret token per device and user, sent by the agent as its key), reachable at home and on the tailnet only; own client keys in aether later if per-device usage is wanted (since 2026-10-12)
-- [ ] From the company fork, later and one at a time: limit windows (5 h and weekly) shown per account, the abnormal-exit report, the memory guard, the spend alert on the slope; left out: fleet management, the message bus, the rules engine (since 2026-10-12)
+- [ ] rom: accept the base `961c1ffa` plus the ledger's lists, and settle the flagged `ccf_` example key in the base history (ask the company, or import as one commit with the line replaced); nothing is pushed before (since 2026-10-12)
+- [ ] After the base: port the ledger's "by hand" list one item at a time, clean the company's names out of docs and deploy files, point error reports at Ciel (since 2026-10-12)
 - [ ] Decide where it runs (a `stacks/aether` in home-server on roberta is the default), data folder root-only, whether it is backed up given the clear-text tokens (since 2026-10-12)
 - [ ] Reachable at home and on the tailnet only (aether.wuling.dev through the proxy stack), never public; depends on the own tailnet (`topics/network.md`) (since 2026-10-12)
 - [ ] Link the two accounts, one client key per device and user, then point the agents at it (nier `settings.json` env); check the statusline and cache-keepalive still read their limits (since 2026-10-12)
