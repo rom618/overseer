@@ -56,7 +56,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 ## Open
 
-- [ ] Unit failures of a user's graphical services within a minute of that user's logout (portals, notification daemon) are noise: let the agent skip them instead of opening issues (since 2026-10-13)
+- [x] (2026-10-13, ciel) Graphical-unit failures at logout are dropped by the agent (held a minute, dropped if the user's graphical session ended)
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones: 7 charts (first part live 2026-10-13: rom to look at /charts; then laptop metrics and Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
 - [x] (2026-10-12, home-server, night) Dockge retired: container, image, /srv/data/dockge, dockge.wuling.dev DNS record (hosts.txt `retired` rule), proxy entry, start-page card, Ciel's web check; Ciel's Stacks page and container terminal replace it
