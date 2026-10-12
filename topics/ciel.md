@@ -58,7 +58,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
-- [ ] rom: try the Stacks page (restart a harmless stack such as portal, open some logs) and the Journal page; then say go and Dockge is retired (stack, dockge.wuling.dev, its DNS record and data) (since 2026-10-11)
+- [ ] Dockge retirement (stack, dockge.wuling.dev, its DNS record and data): rom tried Stacks and Journal (2026-10-12, fine); the container terminal now covers what Dockge's console did; waits for rom's go (since 2026-10-11)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [x] (2026-10-11, home-server fd5610e) Milestone 1 deployed at https://ciel.wuling.dev
@@ -81,6 +81,11 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
 
 ## Log
+
+- 2026-10-12 (ciel ade9d9d): decision by rom: a terminal inside containers from Ciel (admins only;
+  rom judged the tailnet plus the login enough), and rename and remove of containers (stopped ones
+  only, never Ciel's own or the proxy). Spec 2.4 and the security section changed. Tested end to end
+  on the laptop against real Docker; both agents updated themselves. Keystrokes are never stored.
 
 - 2026-10-10: spec draft 1 written, then draft 2 (users, hub watchdog, network scope, Tailscale vs Headscale, documentation repos). Commits 3bc9380, 2f5773c, b13663b, a49b44c in the ciel repo.
 - 2026-10-10: name Ciel chosen; built in-house with Sentry-compatible ingest, so existing SDKs work unchanged.

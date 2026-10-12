@@ -133,7 +133,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [ciel](topics/ciel.md)
 
 - [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
-- [ ] rom: try the Stacks page (restart a harmless stack such as portal, open some logs) and the Journal page; then say go and Dockge is retired (stack, dockge.wuling.dev, its DNS record and data) (since 2026-10-11)
+- [ ] Dockge retirement (stack, dockge.wuling.dev, its DNS record and data): rom tried Stacks and Journal (2026-10-12, fine); the container terminal now covers what Dockge's console did; waits for rom's go (since 2026-10-11)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
