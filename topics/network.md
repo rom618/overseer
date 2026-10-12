@@ -75,7 +75,7 @@ is on `machines/roberta.md`.
 - [ ] rom's list: refuse cookies network-wide if possible (Pi-hole cannot answer cookie banners; a filter list or a browser extension per device can), else one choice per browser per device (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
 - [ ] rom's list: link the email sender Sweego to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
-- [ ] rom's list: make Cloudflare verification checkboxes appear less often (they come from IP reputation, Surfshark exits trigger them; maybe nothing to do) (since 2026-10-12)
+- [ ] rom's list: reduce captchas one way or another (Cloudflare checkboxes, DataDome on Leboncoin, Google): they come from IP reputation and browser signals; Surfshark exits trigger them, so options are a cleaner exit (no VPN at home, a residential exit), Privacy Pass tokens, or fewer anti-fingerprint settings (since 2026-10-12)
 
 ## Log
 
