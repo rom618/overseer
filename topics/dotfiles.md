@@ -58,7 +58,7 @@ How to run the scripts: `/opt/dotfiles/README.md`. Agent config is a separate re
 - [x] (2026-10-11) `system/README.md` lid.conf text found already corrected
 - [ ] Uncommitted work of other sessions: `bootstrap/packages.txt`, `config/fish/config.fish`
       (`alias cd-mcs` with a hard-coded home path): commit or drop (since 2026-10-10)
-- [ ] rom's list: light mode: terminals already open stay white-background while the text colour changes (kitty does not reload its theme in running windows) (since 2026-10-12)
+- [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme (since 2026-10-12)
 - [ ] rom's list: the config repo installs on any Linux, choosing the variant (Linux Mint and Arch first) (since 2026-10-12)
 - [ ] rom's list: count every manual step it took to set up work, and every step to set up all apps on all devices; reduce them for resets and losses (since 2026-10-12)
 

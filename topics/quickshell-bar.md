@@ -68,6 +68,9 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
 - Known warnings: baseline list `/opt/nier/tools/qs-known-warnings.txt` (AiChat/Anime `commandPrefix` of
   null on sidebar teardown, `Ai.qml` undefined value, `NotificationPopup` enable, `BarContent` undefined to
   double, translation file missing). Update it only for cosmetic ones.
+- Upstream script edited (2026-10-13): `scripts/colors/applycolor.sh` also pushes the new colours into every
+  open kitty window (`kitty @ set-colors --all --configured`): the escape sequences sent to each terminal changed
+  the text but left the old background in kitty windows already open.
 - Upstream files edited directly (from `ii-diff.sh`, re-apply after a merge): common `Appearance`, `Config`,
   `Persistent`, `NotificationGroup`, `NotificationItem`; bar `ActiveWindow`, `BarContent`, `Resources`,
   `ResourcesPopup`, `SysTray`; `Cheatsheet`; sidebarLeft `AiChat`, `AiMessage`, `SidebarLeftContent`;
