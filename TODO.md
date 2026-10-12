@@ -185,7 +185,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Pi-hole (since 2026-10-10)
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
-- [ ] rom's list: refuse cookies network-wide if possible (Pi-hole cannot answer cookie banners; a filter list or a browser extension per device can), else one choice per browser per device (since 2026-10-12)
+- [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
 - [ ] rom's list: link the email sender Sweego to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
 - [ ] rom's list: reduce captchas one way or another (Cloudflare checkboxes, DataDome on Leboncoin, Google): they come from IP reputation and browser signals; Surfshark exits trigger them, so options are a cleaner exit (no VPN at home, a residential exit), Privacy Pass tokens, or fewer anti-fingerprint settings (since 2026-10-12)
