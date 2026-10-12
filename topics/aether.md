@@ -66,6 +66,12 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-13 (aether, nier): a session hit the limit of both accounts and stopped for good:
+  aether answered a 503, which Claude Code reads as a server failure. Now aether answers 429 with
+  `anthropic-ratelimit-unified-reset` (earliest reset) and nier sets `CLAUDE_CODE_RETRY_WATCHDOG=1`,
+  Claude Code's persistent retry mode, which waits until that reset (at most 6 h) and continues.
+  Checked against a fake server: the session keeps retrying instead of ending its turn.
+
 - 2026-10-12: decided by rom: ccflare becomes aether; built from a new fork of the public
   upstream, keeping from the company fork only what is relevant here (the company agrees to the
   reuse). Pooling the two accounts is accepted by rom as the only user.
