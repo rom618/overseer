@@ -109,11 +109,9 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 - [ ] Port by hand, one at a time, the ledger's "by hand" list, and the Codex and GPT fixes rom wants kept that did not apply as they are (`fd8a4609`, `f260eefc`, `8c1d7770`, `8d650348`, `122a2178`, `653cdcac`, `1eeae924` with its test `99ec6a56`, `03296fc6`, `80c09bf2`, `5f96c598`); they need the fork's history, which is in `~/Downloads/ccflare.zip` (remote `keepers` of the clone points at a scratch copy) (since 2026-10-12)
 - [ ] Clean the company's names out of docs and deploy files, rename to aether, point error reports at Ciel, write the README (how to build, run, deploy); add the repo to nier `watched-repos.txt` (since 2026-10-12)
-- [ ] Back up `/srv/data/aether` or not (clear-text account tokens; losing it only costs the two logins and the usage history) (since 2026-10-12)
 - [ ] work: before work's next agent session, a key at `~/.config/aether/key` (rom runs `bin/hs aether-key-save mikaela-work /tmp/k`, work moves it in, or work runs it with ssh access); without it work's sessions fail (since 2026-10-12)
-- [ ] Aether down means no agent at all: decide on a fallback (the helper could print nothing when aether does not answer, but the address stays set) or accept it; Ciel already watches aether.wuling.dev (since 2026-10-12)
+- [ ] Fallback decided by rom 2026-10-12: when aether does not answer, sessions use the account login directly (key helper prints nothing, base URL not forced); to build (since 2026-10-12)
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
-- [ ] Pick `session` or `conversation` routing; one account at 100% weekly while the other serves (2026-10-12) (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
 

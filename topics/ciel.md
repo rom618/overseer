@@ -82,6 +82,10 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 ## Log
 
+- 2026-10-12: milestone 7 scope by rom: server health (roberta and the laptop), containers (per
+  container and stack), Minecraft (players, tick time, memory), AI usage from aether, split between
+  development use and the automatic runners planned later (one aether key per runner).
+
 - 2026-10-12 (ciel ade9d9d): decision by rom: a terminal inside containers from Ciel (admins only;
   rom judged the tailnet plus the login enough), and rename and remove of containers (stopped ones
   only, never Ciel's own or the proxy). Spec 2.4 and the security section changed. Tested end to end
