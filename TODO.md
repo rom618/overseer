@@ -132,7 +132,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [ciel](topics/ciel.md)
 
-- [ ] Code it from the SPEC milestones: 7 charts (Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
+- [ ] Code it from the SPEC milestones: 7 charts (first part live 2026-10-13: rom to look at /charts; then laptop metrics and Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
