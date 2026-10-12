@@ -36,7 +36,7 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   tools are absent. Data from `/opt/nier/tools/claude-usage.py` summing `input + output + cache_creation + cache_read`
   tokens from every assistant `usage` entry in `~/.claude/projects/*/*.jsonl` (subagent transcripts included, streamed
   duplicates counted once). Cost uses the script's per-model `PRICING` table with cache read/write multipliers;
-  an unknown model prices at 0, so add new models there. Shown per type, today and all time.
+  an unknown model prices at 0, so add new models there. Shown per type, today and all time. Since 2026-10-12, when sessions go through aether, the icon shows aether's cost today and the 5h usage left over both accounts; the popup lists each account's 5h and 7d and aether's cost (API prices and dollars counted on the limits), from `claude-usage.py` reading aether (`/opt/nier/tools/aether_status.py`).
 - Limits (5h/7d percent and reset time) come from `claude-statusline.py` writing
   `~/.claude/claude-rate-limits.json` while a session renders; push-only, flagged stale after 6 h.
   No use of the undocumented OAuth usage endpoint.
