@@ -49,9 +49,11 @@ continue on the other account when one is limited.
 - [x] (2026-10-12, aether eeca4e5a and 10 picks) Base accepted by rom and landed on `main` as one commit (the flagged example key replaced, rom's choice), plus 10 later fixes applied as they are (7 general, 3 for Codex and GPT accounts). Typecheck passes, 575 tests pass, 1 fails for lack of `curl` in the test image; gitleaks clean; pushed
 - [ ] Port by hand, one at a time, the ledger's "by hand" list, and the Codex and GPT fixes rom wants kept that did not apply as they are (`fd8a4609`, `f260eefc`, `8c1d7770`, `8d650348`, `122a2178`, `653cdcac`, `1eeae924` with its test `99ec6a56`, `03296fc6`, `80c09bf2`, `5f96c598`); they need the fork's history, which is in `~/Downloads/ccflare.zip` (remote `keepers` of the clone points at a scratch copy) (since 2026-10-12)
 - [ ] Clean the company's names out of docs and deploy files, rename to aether, point error reports at Ciel, write the README (how to build, run, deploy); add the repo to nier `watched-repos.txt` (since 2026-10-12)
-- [ ] Decide where it runs (a `stacks/aether` in home-server on roberta is the default), data folder root-only, whether it is backed up given the clear-text tokens (since 2026-10-12)
-- [ ] Reachable at home and on the tailnet only (aether.wuling.dev through the proxy stack), never public; depends on the own tailnet (`topics/network.md`) (since 2026-10-12)
-- [ ] Link the two accounts, one client key per device and user, then point the agents at it (nier `settings.json` env); check the statusline and cache-keepalive still read their limits (since 2026-10-12)
+- [x] (2026-10-12, home-server 069b880, aether c93b8a51) Runs on roberta as `stacks/aether`, https://aether.wuling.dev behind the proxy stack, data `/srv/data/aether` (0700), access control on; health answers, the API refuses without a key (checked)
+- [ ] Back up `/srv/data/aether` or not (clear-text account tokens; losing it only costs the two logins and the usage history) (since 2026-10-12)
+- [x] (2026-10-12) Reachable at home and on the tailnet only: the name points at the LAN address and the tailnet rules cover port 443
+- [ ] rom: first use: in the home-server repo `bin/hs aether-key rom-admin admin` (key shown once), open https://aether.wuling.dev, sign in with it, add the two accounts (provider claude-code, one browser login each); then tell the agent (since 2026-10-12)
+- [ ] Then: one client key per device and user, the agents pointed at aether (the key must not go into the shared nier `settings.json`: a helper reading a file under `~/.config/aether/`), routing strategy `session` or `conversation`, check the statusline and cache-keepalive still read their limits (since 2026-10-12)
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
 
 ## Log
