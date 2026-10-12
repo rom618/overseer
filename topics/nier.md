@@ -98,7 +98,8 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 - [ ] rom's list: not depend on Claude: switch easily between AI providers (aether already routes Codex and OpenAI accounts; the agent-agnostic nier above) (since 2026-10-12)
 - [ ] rom's list: use Claude Code from the phone (the tailnet reaches the laptop and roberta; options: Remote Control, a web session, ssh from the phone) (since 2026-10-12)
 - [x] (2026-10-12) From rom's list: agent config separate from the desktop config repo: done since 2026-10-11 (`/opt/nier`, its own `bootstrap/link.sh`); the install prompt in the config repo is the open part
-- [ ] rom's list: the dotfiles installer asks whether to set up the agent config and then clones and links nier (since 2026-10-12)
+- [x] (2026-10-13, checked) The dotfiles installer already asks for the agent config (`bootstrap/install.sh` step 9 clones rom618/nier and runs its installer); nothing to do
+- [ ] New device or user: the nier installer should also make the aether key (`hs aether-key-save NAME`, needs ssh to roberta) or warn that sessions fail without `~/.config/aether/key` (settings.json sends every session to aether since 2026-10-12) (since 2026-10-13)
 - [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
 - [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
 - [ ] rom's list: automatic runners that use spare tokens on chosen tasks (one aether key per runner, so their usage shows apart from development in Ciel's charts) (since 2026-10-12)

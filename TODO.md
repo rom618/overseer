@@ -206,7 +206,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Session registry: append-only JSONL per device (agent, device, user, cwd/topic, status, resume command) fed by hooks, later synced to Ciel (since 2026-10-10)
 - [ ] rom's list: not depend on Claude: switch easily between AI providers (aether already routes Codex and OpenAI accounts; the agent-agnostic nier above) (since 2026-10-12)
 - [ ] rom's list: use Claude Code from the phone (the tailnet reaches the laptop and roberta; options: Remote Control, a web session, ssh from the phone) (since 2026-10-12)
-- [ ] rom's list: the dotfiles installer asks whether to set up the agent config and then clones and links nier (since 2026-10-12)
+- [ ] New device or user: the nier installer should also make the aether key (`hs aether-key-save NAME`, needs ssh to roberta) or warn that sessions fail without `~/.config/aether/key` (settings.json sends every session to aether since 2026-10-12) (since 2026-10-13)
 - [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
 - [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
 - [ ] rom's list: automatic runners that use spare tokens on chosen tasks (one aether key per runner, so their usage shows apart from development in Ciel's charts) (since 2026-10-12)
