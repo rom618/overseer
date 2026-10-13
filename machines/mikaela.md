@@ -47,7 +47,7 @@ greeter, SilentSDDM theme), yay. Markdown files open in Apostrophe (installed). 
 ## Shared configuration
 
 Two repos owned `rom:dots`, group writable with default ACLs, so neither user needs sudo:
-`/opt/dotfiles` (rom618/config, the desktop) and `/opt/nier` (rom618/nier, agent config). Each
+`/opt/dotfiles` (rom618/mikaela, renamed from rom618/config on 2026-10-13; the desktop) and `/opt/nier` (rom618/nier, agent config). Each
 has `bootstrap/links.manifest` (what is linked where) and `bootstrap/link.sh` (applies it for the
 calling user). Changes: commit and push; both pre-commit hooks run gitleaks.
 

@@ -12,7 +12,7 @@ source: /opt/dotfiles (README, system/README.md, bootstrap/, git log), notes/his
 
 # dotfiles
 
-`/opt/dotfiles` (remote rom618/config) holds the desktop for both accounts on mikaela plus the
+`/opt/dotfiles` (remote rom618/mikaela, was rom618/config until 2026-10-13) holds the desktop for both accounts on mikaela plus the
 backup tooling. Owned `rom:dots`, group writable. Layout and link table: `overseer/machines/mikaela.md`.
 How to run the scripts: `/opt/dotfiles/README.md`. Agent config is a separate repo, `/opt/nier`.
 
