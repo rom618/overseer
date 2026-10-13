@@ -49,6 +49,9 @@ is on `machines/roberta.md`.
 
 ## Open
 
+- [ ] rom's list: on the iPhone only one VPN runs at a time, so Surfshark and the tailnet cannot both be on as on the laptop; options to compare: an exit node on the tailnet that goes out through Surfshark (roberta or a Pi), or Surfshark only on untrusted Wi-Fi (since 2026-10-13)
+- [ ] rom's list: research how others give a home server behind CGNAT a public address under its own domain (Minecraft and similar), e.g. the Reddit threads on Cloudflare Tunnel for Minecraft, a cheap VPS relay, playit with a custom domain; rom has a thread in mind (link to ask) (since 2026-10-13)
+- [ ] rom's list: a local network between rom's devices that keeps working with no internet (Flybox down): what still works today, and what it takes (local DNS, the GitHub replica, aether cannot) (since 2026-10-13)
 - [x] (2026-10-12) Own tailnet for remote access to the self-hosted apps: hosted Tailscale, roberta subnet router, iPhone and mikaela joined; vesscam stays on work's own tailscaled
 - [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
 - [x] (2026-10-10) `camille.local` retired; apps are named under wuling.dev
@@ -71,7 +74,7 @@ is on `machines/roberta.md`.
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
 - [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device, later (2026-10-13) (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
-- [ ] rom's list: link the email sender Sweego to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
+- [ ] rom's list: link the email senders Sweego and Resend to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
 - [ ] rom's list: reduce captchas one way or another (Cloudflare checkboxes, DataDome on Leboncoin, Google): they come from IP reputation and browser signals; Surfshark exits trigger them, so options are a cleaner exit (no VPN at home, a residential exit), Privacy Pass tokens, or fewer anti-fingerprint settings (since 2026-10-12)
 
 ## Log

@@ -60,7 +60,7 @@ on their page. rom's personal list is `9s/TODO.md`.
       each kind of thing; unused JetBrains IDEs (~18 GB, Toolbox) and its 8.9 GB download cache,
       pacman cache 5.5 GB (since 2026-10-10)
 - [x] (2026-10-13) Battery charge limit at 80% applied (`charge_control_end_threshold` reads 80)
-- [ ] rom's list: a local replica of every GitHub repo, kept in sync both ways (a Forgejo on a server with push mirrors) (since 2026-10-12)
+- [ ] rom's list: a local replica of every GitHub repo, kept in sync both ways (a Forgejo on a server with push mirrors, or an alternative); every machine falls back to it when GitHub fails or there is no internet, which needs the local network to keep working without the provider (network topic) (since 2026-10-12)
 
 ## Done
 
@@ -128,6 +128,10 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [ciel](topics/ciel.md)
 
+- [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
+- [ ] rom's list: Health review (2026-10-13): 39 checks, no duplicates left (qBittorrent port check removed, the https one stays); every timer job of both machines and both users is there, agents appear as the two `device` checks; missing: the public Minecraft path through playit, containers one by one, Prometheus. Many heartbeats are OS housekeeping (man-db, shadow, logrotate): group or hide them (since 2026-10-13)
+- [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
+- [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
@@ -156,6 +160,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [home-server](topics/home-server.md)
 
+- [ ] rom's list: stacks to add: Forgejo (GitHub replica, TODO), Pi-hole (network topic) and two of rom's own apps (9s); rom's own apps get French names (docs topic, naming) (since 2026-10-13)
 - [ ] Split into personal and work servers (roberta shared only for now): own restic password, repo, Drive account and proxy; parameterize `offsite-backup.sh` (since 2026-10-10)
 - [ ] Hardening left on purpose: sudo NOPASSWD until the scoped agent user exists (the docker group is
   root-equivalent anyway, decision 2026-10-11); cAdvisor privileged (no port, Ciel replaces it) (since 2026-10-11)
@@ -172,6 +177,9 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [network](topics/network.md)
 
+- [ ] rom's list: on the iPhone only one VPN runs at a time, so Surfshark and the tailnet cannot both be on as on the laptop; options to compare: an exit node on the tailnet that goes out through Surfshark (roberta or a Pi), or Surfshark only on untrusted Wi-Fi (since 2026-10-13)
+- [ ] rom's list: research how others give a home server behind CGNAT a public address under its own domain (Minecraft and similar), e.g. the Reddit threads on Cloudflare Tunnel for Minecraft, a cheap VPS relay, playit with a custom domain; rom has a thread in mind (link to ask) (since 2026-10-13)
+- [ ] rom's list: a local network between rom's devices that keeps working with no internet (Flybox down): what still works today, and what it takes (local DNS, the GitHub replica, aether cannot) (since 2026-10-13)
 - [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
 - [ ] Other devices (the desktop, further servers) join the own tailnet later, registered from Ciel once Ciel and aether are done (rom, 2026-10-12); nothing to do before (since 2026-10-12)
 - [ ] Own tailnet, how the wuling.dev names are reached (decided 2026-10-12): roberta announces the home subnet to the tailnet (subnet router), the names keep their LAN address 192.168.1.53, so devices without Tailscale still work at home. Devices: iPhone, mikaela, the desktop, the servers. To test: Surfshark together with Tailscale on mikaela; on the iPhone only one VPN is active at a time (since 2026-10-12)
@@ -182,7 +190,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
 - [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device, later (2026-10-13) (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
-- [ ] rom's list: link the email sender Sweego to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
+- [ ] rom's list: link the email senders Sweego and Resend to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
 - [ ] rom's list: reduce captchas one way or another (Cloudflare checkboxes, DataDome on Leboncoin, Google): they come from IP reputation and browser signals; Surfshark exits trigger them, so options are a cleaner exit (no VPN at home, a residential exit), Privacy Pass tokens, or fewer anti-fingerprint settings (since 2026-10-12)
 
 ### [nier](topics/nier.md)
@@ -217,7 +225,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [setup-steps](topics/setup-steps.md)
 
 - [ ] Fold the one-off `pending/` scripts that describe lasting state into `setup-machine.sh` or `user-setup.sh` (hostname, ssh layout, tailnet join), and delete the rest (since 2026-10-13)
-- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: later, keep every machine secret and ssh key in one encrypted store (sops files encrypted with an age key proposed; passwords people type stay in Vaultwarden); first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
+- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: passwords and API keys people use go to Bitwarden (Vaultwarden); open question: if a device is lost, what has to be revoked and what restored, and where each piece lives. Later, keep every machine secret and ssh key in one encrypted store (sops files encrypted with an age key proposed; passwords people type stay in Vaultwarden); first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
 - [ ] A per-user first-login script that does the manual items above in order and checks each (ssh keys registered, backup works, Ciel token, aether key) (since 2026-10-13)
 
 ### [system](topics/system/index.md)

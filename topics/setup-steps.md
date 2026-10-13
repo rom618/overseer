@@ -38,7 +38,7 @@ Goal (rom, 2026-10-12): a reset or a lost device costs as few manual steps as po
 ## Open
 
 - [ ] Fold the one-off `pending/` scripts that describe lasting state into `setup-machine.sh` or `user-setup.sh` (hostname, ssh layout, tailnet join), and delete the rest (since 2026-10-13)
-- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: later, keep every machine secret and ssh key in one encrypted store (sops files encrypted with an age key proposed; passwords people type stay in Vaultwarden); first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
+- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: passwords and API keys people use go to Bitwarden (Vaultwarden); open question: if a device is lost, what has to be revoked and what restored, and where each piece lives. Later, keep every machine secret and ssh key in one encrypted store (sops files encrypted with an age key proposed; passwords people type stay in Vaultwarden); first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
 - [ ] A per-user first-login script that does the manual items above in order and checks each (ssh keys registered, backup works, Ciel token, aether key) (since 2026-10-13)
 
 ## Log
