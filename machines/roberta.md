@@ -28,8 +28,10 @@ personal and work servers will replace it.
   sshd settings goes through setup.sh, which reverts it after 5 minutes unless a new login confirms.
 - Private, never read, listed, probed or backed up, by any route (ssh, `docker exec`, the app's API):
   everything under `/srv/data/camille` (Camille's 1 TB LUKS container `box.luks`, its mount point
-  `box` with media and app data, and Camille's local CA in `caddy`), plus the proxy's certificate
-  keys under `/srv/data/proxy`. The guard blocks commands that name the Camille folder.
+  `box` with media and app data, and Camille's local CA in `caddy`), everything under
+  `/srv/data/clipboard` (rom's clipboard app: files passed between devices), plus the proxy's
+  certificate keys under `/srv/data/proxy`. The guard blocks commands that name the Camille or
+  clipboard folder, and `docker exec` into the `clipboard` container.
 - HTTPS front door: the `proxy` stack (Caddy, port 443, Let's Encrypt wildcard `*.wuling.dev` by
   DNS challenge; token root-only in `/etc/home-server/cloudflare-api-token`). Names and their DNS
   records: `stacks/proxy/hosts.txt` + `caddy/Caddyfile`, records kept by `scripts/dns-records.sh`
