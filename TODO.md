@@ -32,6 +32,13 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ## Passwords
 
+- [ ] rom: copy the sops admin age key into Vaultwarden (a secure note "sops admin key, laptop"):
+      in a terminal, `cat ~/.config/sops/age/keys.txt` and paste it; it opens the servers' secrets
+      (home-server `secrets/roberta.yaml`), the restic backup has a copy too (since 2026-10-13)
+- [ ] rom: `sudo pacman -S sops` in a real terminal (needed for `bin/hs secrets-edit` and
+      `sops updatekeys`); then `sops` goes into dotfiles `bootstrap/packages.txt` (since 2026-10-13)
+- [ ] rom: should Camille's `.env` (VPN key, TMDB key, PIN) go into the sops file too? Kept out
+      for now because Camille is never backed up in any form (since 2026-10-13)
 - [ ] Decide whether ssh keys go into Vaultwarden (Bitwarden's ssh agent) and how keys are handled:
       one per device and purpose, passphrases, rotation, revocation when a device is lost (since 2026-10-10)
 - [ ] Vaultwarden: 2FA, the master password and a recovery copy offline; reachable only at home or
@@ -218,7 +225,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [setup-steps](topics/setup-steps.md)
 
 - [ ] Fold the one-off `pending/` scripts that describe lasting state into `setup-machine.sh` or `user-setup.sh` (hostname, ssh layout, tailnet join), and delete the rest (since 2026-10-13)
-- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: passwords and API keys people use go to Bitwarden (Vaultwarden); open question: if a device is lost, what has to be revoked and what restored, and where each piece lives. Later, keep every machine secret in sops files in the repos; decided 2026-10-13 (rom): one age key per machine, its public key recorded with the machine when it registers in Ciel, the laptop re-encrypts for each (`sops updatekeys`), a lost device only exposes its own secrets; a rebuilt machine gets its new key, is added, then `bin/hs push` writes every `.env` from the sops file. Where ssh keys go (sops or Bitwarden's ssh agent) still open; passwords people type stay in Vaultwarden; first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
+- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: passwords and API keys people use go to Bitwarden (Vaultwarden); open question: if a device is lost, what has to be revoked and what restored, and where each piece lives. Later, keep every machine secret in sops files in the repos; decided 2026-10-13 (rom): one age key per machine, its public key recorded with the machine when it registers in Ciel, the laptop re-encrypts for each (`sops updatekeys`), a lost device only exposes its own secrets; a rebuilt machine gets its new key, is added, then `bin/hs push` writes every `.env` from the sops file. Roberta done 2026-10-13 (home-server b0b5c83: `secrets/roberta.yaml`, `bin/hs secrets-pull`, README Secrets; both keys checked to open it). Left: the laptop's own secrets, kuro, Ciel recording each machine's age public key; Camille's `.env` kept out until rom decides. Where ssh keys go (sops or Bitwarden's ssh agent) still open; passwords people type stay in Vaultwarden; first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
 - [ ] A per-user first-login script that does the manual items above in order and checks each (ssh keys registered, backup works, Ciel token, aether key) (since 2026-10-13)
 
 ### [system](topics/system/index.md)
@@ -226,8 +233,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] 1, roberta down goes unnoticed: Ciel moves to its own box later and watches roberta
   (`topics/ciel.md`, "Dedicated Ciel box") (since 2026-10-13)
 - [ ] 3, one remembered password: restore rehearsal later (`topics/backups.md`) (since 2026-10-13)
-- [ ] 4, stale copy of roberta's secrets: later, with one encrypted store for every secret and
-  ssh key (`topics/setup-steps.md`, "secrets restore") (since 2026-10-13)
 
 ### [clovis](topics/clovis.md)
 

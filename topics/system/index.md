@@ -120,5 +120,5 @@ Decisions on the audit's four HIGH findings (rom, 2026-10-13), each kept on its 
   (`topics/ciel.md`, "Dedicated Ciel box") (since 2026-10-13)
 - [x] (2026-10-13, rom) 2, AI work depends on roberta and the uplink: accepted
 - [ ] 3, one remembered password: restore rehearsal later (`topics/backups.md`) (since 2026-10-13)
-- [ ] 4, stale copy of roberta's secrets: later, with one encrypted store for every secret and
-  ssh key (`topics/setup-steps.md`, "secrets restore") (since 2026-10-13)
+- [x] (2026-10-13, home-server b0b5c83) 4, stale copy of roberta's secrets: replaced by the sops
+  file `secrets/roberta.yaml` in the home-server repo, refreshed with `bin/hs secrets-pull`
