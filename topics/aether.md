@@ -66,6 +66,10 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-13: the fork's later dashboard work (provider logos, account order and "closed", time
+  zone) is built on its i18n layer, absent from our base: every string would need rewriting, so it
+  is left until rom wants those pages; not urgent for one user.
+
 - 2026-10-13 01:10 to 04:50: verified live: this session hit the 5 h limit of the serving account,
   waited (retry watchdog on aether's 429 with reset time) and continued by itself after the reset,
   without ending its turn.
