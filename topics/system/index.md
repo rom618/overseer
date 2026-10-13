@@ -112,3 +112,13 @@ Read it as three loops:
 10. Backups: laptop restic per user and the server's nightly off-site copy share one 15 GB
     Google Drive. Camille and aether are never backed up. The laptop restic password exists only
     with rom and opens the copy of the server's secrets.
+
+## Open
+
+Decisions on the audit's four HIGH findings (rom, 2026-10-13), each kept on its owner's page:
+- [ ] 1, roberta down goes unnoticed: Ciel moves to its own box later and watches roberta
+  (`topics/ciel.md`, "Dedicated Ciel box") (since 2026-10-13)
+- [x] (2026-10-13, rom) 2, AI work depends on roberta and the uplink: accepted
+- [ ] 3, one remembered password: restore rehearsal later (`topics/backups.md`) (since 2026-10-13)
+- [ ] 4, stale copy of roberta's secrets: later, with one encrypted store for every secret and
+  ssh key (`topics/setup-steps.md`, "secrets restore") (since 2026-10-13)

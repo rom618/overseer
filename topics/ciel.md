@@ -81,7 +81,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
-- [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD) (since 2026-10-10)
+- [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD), later: Ciel and roberta then watch each other, so roberta going down raises an alert (rom, 2026-10-13; system audit finding 1) (since 2026-10-10)
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
 
 ## Log

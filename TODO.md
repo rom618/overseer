@@ -125,7 +125,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom: re-run `sudo /opt/dotfiles/backup/system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (since 2026-09-26)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
-- [ ] Rehearse a restore of roberta's backups on another machine (since 2026-10-10)
+- [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
 
 ### [ciel](topics/ciel.md)
 
@@ -140,7 +140,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Which topics go to overseer and which to 9s: proposal in SPEC 17.1, rule in `topics/docs.md`
 - [ ] Watch Vaultwarden and the other self-hosted apps; network gear (Flybox) later (since 2026-10-10)
-- [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD) (since 2026-10-10)
+- [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD), later: Ciel and roberta then watch each other, so roberta going down raises an alert (rom, 2026-10-13; system audit finding 1) (since 2026-10-10)
 
 ### [docs](topics/docs.md)
 
@@ -218,8 +218,16 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [setup-steps](topics/setup-steps.md)
 
 - [ ] Fold the one-off `pending/` scripts that describe lasting state into `setup-machine.sh` or `user-setup.sh` (hostname, ssh layout, tailnet join), and delete the rest (since 2026-10-13)
-- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives (Vaultwarden), so a reset is "install, restore secrets, run setup" (since 2026-10-13)
+- [ ] One "secrets restore" step: every secret a reset needs listed in one place with where its recovery copy lives, so a reset is "install, restore secrets, run setup". rom 2026-10-13: later, keep every machine secret and ssh key in one encrypted store (sops files encrypted with an age key proposed; passwords people type stay in Vaultwarden); first fix the stale laptop copy of roberta's secrets (system audit finding 4) (since 2026-10-13)
 - [ ] A per-user first-login script that does the manual items above in order and checks each (ssh keys registered, backup works, Ciel token, aether key) (since 2026-10-13)
+
+### [system](topics/system/index.md)
+
+- [ ] 1, roberta down goes unnoticed: Ciel moves to its own box later and watches roberta
+  (`topics/ciel.md`, "Dedicated Ciel box") (since 2026-10-13)
+- [ ] 3, one remembered password: restore rehearsal later (`topics/backups.md`) (since 2026-10-13)
+- [ ] 4, stale copy of roberta's secrets: later, with one encrypted store for every secret and
+  ssh key (`topics/setup-steps.md`, "secrets restore") (since 2026-10-13)
 
 ### [clovis](topics/clovis.md)
 

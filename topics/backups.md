@@ -68,7 +68,7 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 - [ ] rom: re-run `sudo /opt/dotfiles/backup/system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (since 2026-09-26)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
-- [ ] Rehearse a restore of roberta's backups on another machine (since 2026-10-10)
+- [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
 - [x] (2026-10-10, home-server) Server backups: worlds-archive weekly, Vaultwarden daily plus off-site; Prometheus, Grafana, Dockge declared disposable; server secrets copied into the laptop backup
 
 ## Log
