@@ -56,7 +56,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 ## Open
 
-- [ ] Network checks on top of the read view (Tailscale down or key expiring under 14 days, VPN expected up): needs a new check kind, and the `checks.kind` CHECK constraint means a table rebuild with incidents pointing at it; not done unattended at night (since 2026-10-13)
+- [ ] Network checks (ciel e338bef, 2026-10-13): built and pushed, NOT deployed (auto mode refused `bin/deploy`; live DB copied to roberta `~/ciel-pre-0011.db` first, migration tested on a copy: 37 checks, 8 incidents kept). One `network` check per agent: fails on a lost Tailscale login or expired key, warns 14 days before expiry. After deploy: `ssh roberta docker exec ciel ciel-hub check network roberta tailscale-up` (roberta carries the home route). rom to decide: is Surfshark expected up on mikaela (`vpn=surfshark_wg`, alerts whenever it is off)? DNS-failing check not built (since 2026-10-13)
 - [x] (2026-10-13, ciel) Graphical-unit failures at logout are dropped by the agent (held a minute, dropped if the user's graphical session ended)
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; left: Grafana retired once rom has looked, later by rom's choice 2026-10-13), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
