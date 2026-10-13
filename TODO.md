@@ -158,7 +158,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Split into personal and work servers (roberta shared only for now): own restic password, repo, Drive account and proxy; parameterize `offsite-backup.sh` (since 2026-10-10)
 - [ ] Hardening left on purpose: sudo NOPASSWD until the scoped agent user exists (the docker group is
   root-equivalent anyway, decision 2026-10-11); cAdvisor privileged (no port, Ciel replaces it) (since 2026-10-11)
-- [ ] Docker repo in unattended-upgrades or a monthly upgrade; pin image versions (now `:latest`, pulled daily) and prune old ones (since 2026-10-10)
+- [ ] Docker repo in unattended-upgrades or a monthly upgrade; pin image versions (2026-10-13: monitoring stack pinned, newest releases at least two weeks old, no daily pulls; left: bluemap (pinning means a downgrade from 5.29), mc-backup in the minecraft stack and the pot provider in camille's, not touched at night) and prune old ones (since 2026-10-10)
 - [ ] Disk clean-up (2026-10-13: 15.8 GB freed, untagged images left by deploys, two old tModLoader tags, Vaultwarden 1.33.2, build cache over 24 h; deploy scripts now prune by themselves; left: /srv/staging, networks, logs, a disk budget): old Docker images (about 5 GB of old tModLoader tags), `/srv/staging`, leftover networks, logs; a disk budget per data dir watched by Ciel (since 2026-10-10)
 - [ ] Ethernet instead of Wi-Fi if possible (many retries, no UPS, dead battery); the README's memory figures are stale (live heap 16 GB, limit 20 GB) (since 2026-10-10)
 - [ ] Agent access: agents should run as a scoped `agent` user, not the NOPASSWD `server` (since 2026-10-10)
