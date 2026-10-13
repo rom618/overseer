@@ -69,7 +69,7 @@ is on `machines/roberta.md`.
 - [ ] Device registration and per-device access through Ciel (Tailscale API: one-time keys, device list, tags in the tailnet policy); review what each device type may reach; Ciel milestones 8 and 9 (since 2026-10-12)
 - [ ] Pi-hole (since 2026-10-10)
 - [x] (2026-10-11) Laptop Caddy gone with the laptop Camille stack
-- [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
+- [x] (2026-10-13, checked) Surfshark up and working (`surfshark_wg` active all day, direct path to roberta)
 - [x] (2026-10-12) From rom's list: ssh to roberta from outside the home network works through the own tailnet (mikaela reaches roberta on 22 by the access rules)
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
 - [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device, later (2026-10-13) (since 2026-10-12)

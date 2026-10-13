@@ -38,8 +38,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [x] (2026-10-13, rom) sops admin age key copied into Vaultwarden ("sops admin key (mikaela)")
 - [x] (2026-10-13) sops installed on the laptop and in `bootstrap/packages.txt` (dotfiles b77f1cc)
 - [x] (2026-10-13, rom) Camille's `.env` is in the sops file too (home-server 1404c21)
-- [ ] Decide whether ssh keys go into Vaultwarden (Bitwarden's ssh agent) and how keys are handled:
-      one per device and purpose, passphrases, rotation, revocation when a device is lost (since 2026-10-10)
+- [x] (2026-10-13, rom) ssh keys go into sops with their passphrases (dotfiles `sops/mikaela-rom.yaml`)
 - [ ] Vaultwarden: 2FA, the master password and a recovery copy offline; reachable only at home or
       over the tailnet (HTTPS and backups done 2026-10-10) (since 2026-10-10)
 - [ ] Pass over every password into it (inventory: security audit, 2026-10-10); machine secrets
@@ -185,7 +184,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Public access: Minecraft stays on playit (Cloudflare Tunnel carries web traffic only; a game client cannot use it without Cloudflare's client on every player's machine). Cloudflare Tunnel is a candidate for public web pages only (map, modpack portal); not decided (since 2026-10-12)
 - [ ] Device registration and per-device access through Ciel (Tailscale API: one-time keys, device list, tags in the tailnet policy); review what each device type may reach; Ciel milestones 8 and 9 (since 2026-10-12)
 - [ ] Pi-hole (since 2026-10-10)
-- [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
 - [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device, later (2026-10-13) (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
