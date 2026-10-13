@@ -33,8 +33,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ## Passwords
 
 - [x] (2026-10-13, rom ran it) Laptop secrets in dotfiles `sops/mikaela-rom.yaml`, root files to the admin key, deny rules installed
-- [ ] rom: in a real terminal, `/opt/dotfiles/bootstrap/user-sops.py pull` once more (adds the ssh keys and
-      their passphrases to `sops/mikaela-rom.yaml`; no sudo); then tell the agent, who commits it (since 2026-10-13)
+- [x] (2026-10-13, dotfiles 32d4a03) rom's 3 ssh keys, ssh config and the keys' passphrases in `sops/mikaela-rom.yaml`
 - [ ] rom: copy the sops admin age key into Vaultwarden (a secure note "sops admin key, laptop"):
       in a terminal, `cat ~/.config/sops/age/keys.txt` and paste it; it opens the servers' secrets
       (home-server `secrets/roberta.yaml`), the restic backup has a copy too (since 2026-10-13)
