@@ -58,7 +58,7 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 - [x] (2026-10-13, ciel) Graphical-unit failures at logout are dropped by the agent (held a minute, dropped if the user's graphical session ended)
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
-- [ ] Code it from the SPEC milestones: 7 charts (first part live 2026-10-13: rom to look at /charts; then laptop metrics and Grafana retired), 8 network read, 9 network act, 10 more sources (since 2026-10-10)
+- [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; left: Grafana retired once rom has looked), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
 - [x] (2026-10-12, home-server, night) Dockge retired: container, image, /srv/data/dockge, dockge.wuling.dev DNS record (hosts.txt `retired` rule), proxy entry, start-page card, Ciel's web check; Ciel's Stacks page and container terminal replace it
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
@@ -82,6 +82,11 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
 
 ## Log
+
+- 2026-10-13 (ciel): agents send host metrics (laptop now in Charts, Devices group; private
+  mounts left out) and milestone 8's read part is live: a Network card per device (Wi-Fi, routes,
+  DNS, connections, WireGuard peers without keys, Tailscale nodes with key expiry), read live from
+  both agents. Charts checked in a headless Firefox on a test page (light and dark).
 
 - 2026-10-13: checks added for aether.wuling.dev, Ciel's own health and qBittorrent's port 8090;
   Dockge's check removed with it.
