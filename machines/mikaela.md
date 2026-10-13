@@ -87,7 +87,7 @@ Per user, restic to Google Drive (rclone remote `gdrive`), repo pinned in
 (`restic-backup.timer`), weekly forget/prune/check (`restic-maintain.timer`), desktop
 notification on failure. Git repos with a remote are replaced by a small state snapshot
 (`backup/git-snapshot.sh`, `git-restore.sh`). `backup/never.txt`: never backed up in any form
-(Camille, the media vault). Wi-Fi secrets: `sudo backup/system-secrets.sh` (age). The restic
+(Camille, the media vault). Wi-Fi secrets: `sudo backup/system-secrets.sh` (age, to the sops admin key). The user's own secret files: `sops/mikaela-<user>.yaml` in dotfiles (`bootstrap/user-sops.py`). The restic
 password (`~/.config/restic/password`) is never readable by agents. Details:
 `/opt/dotfiles/backup/README.md`.
 
