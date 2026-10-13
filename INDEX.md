@@ -18,6 +18,7 @@ Format: name (owner, verified): summary.
 - [quickshell-bar](topics/quickshell-bar.md) (shared, 2026-10-11): Local customizations of the Quickshell (illogical-impulse) bar and popups, and which upstream files were edited
 - [session-restore](topics/session-restore.md) (shared, 2026-10-10): Per-minute window/terminal/Claude session save and login restore for both users, Firefox own tab restore
 - [setup-steps](topics/setup-steps.md) (shared, 2026-10-13): How many manual steps a reset or a new device costs today, per device and user, and how to cut them
+- [system](topics/system/index.md) (shared, 2026-10-13): Wiki of how everything fits together (devices, agents, docs, Ciel, aether, server, backups, failures)
 
 ## Topics: dormant
 
