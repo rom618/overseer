@@ -18,3 +18,4 @@ date | concept | level | evidence | what worked
 2026-10-13 | sops-age-secret-files | 2 | picked one key per machine and gave the reason (each machine is recorded on its own) | concrete rebuild walkthrough, numbered steps
 2026-10-13 | user-key-vs-machine-key | 1 | asked whether the laptop already had an age key (it had the user key, not a machine key) | a key that follows the person vs a key that belongs to the computer
 2026-10-13 | user-key-vs-machine-key | 1 | asked again why there are two keys after the first explanation | master key of a person vs the lock of one computer; said plainly the laptop one is unused today
+2026-10-13 | llm-subscription-vs-api-key | 2 | asked why the billing question was needed, then picked the claude -p option knowing it shares quota | plain two-ways-to-reach-Claude framing, then the trade-off
