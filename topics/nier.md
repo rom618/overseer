@@ -44,6 +44,10 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
   - `stop-docs-check.sh` (Stop): files edited this turn (Edit, Write, NotebookEdit since the last
     user message) that are uncommitted or unpushed in a git repo send the session back once
     (`stop_hook_active` stops a loop). Edits made through Bash are not seen.
+  - `claude-state.sh` (UserPromptSubmit, PostToolUse(Failure): running; PermissionRequest,
+    Notification permission/elicitation, PreToolUse AskUserQuestion/ExitPlanMode: waiting; Stop:
+    done; SessionEnd: removed): writes `$XDG_RUNTIME_DIR/claude-state/<KITTY_PID>-<KITTY_WINDOW_ID>`
+    for the bar's workspace icons (`quickshell-bar` topic); does nothing outside kitty (since 2026-10-13).
 - Git hooks `bootstrap/githooks/`: pre-commit (gitleaks; docs repos: `gen-index.sh --check`),
   commit-msg (a `Docs:` line is required). Applied by `link.sh` to the repos in
   `bootstrap/watched-repos.txt` that have no hooks of their own (since 2026-10-11).

@@ -6,7 +6,7 @@ owner: shared
 host: mikaela
 repos: /opt/dotfiles
 folder: none
-verified: 2026-10-11
+verified: 2026-10-13
 source: config/quickshell/ii/ (modules/ii/bar, services), /opt/nier/tools/qs-known-warnings.txt, history.md 2026-09-12 to 2026-10-10
 ---
 
@@ -39,6 +39,15 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   tokens from every assistant `usage` entry in `~/.claude/projects/*/*.jsonl` (subagent transcripts included, streamed
   duplicates counted once). Cost uses the script's per-model `PRICING` table with cache read/write multipliers;
   an unknown model prices at 0, so add new models there. Shown per type, today and all time. Since 2026-10-12, when sessions go through aether, the icon shows aether's cost today; the popup lists each account's 5h and 7d and aether's cost (API prices and dollars counted on the limits), from `claude-usage.py` reading aether (`/opt/nier/tools/aether_status.py`).
+- Claude in workspace icons (2026-10-13): when a workspace's biggest window is a kitty window with
+  `claude` as its foreground process, the icon becomes the Claude logo (`assets/icons/claude-symbolic.svg`,
+  simple-icons 16.32.0) with the most urgent state of that workspace's Claude terminals: spinning =
+  running, red pulsing "!" = waiting for approval or an answer, green check = done. Hook
+  `/opt/nier/tools/claude-state.sh` writes the state per kitty window; `scripts/claude/claude-windows.py`
+  (started by `services/ClaudeWindows.qml`, exits when quickshell dies) polls every second, maps kitty
+  OS windows to Hyprland windows by title over the kitty and Hyprland sockets, prints `{address: state}`.
+  Sessions started before the hook fall back to Claude's title glyph (a star = done, else running).
+  Edits in `bar/Workspaces.qml` (appsGrid delegate: icon source, rotation, badge).
 - Limits (5h/7d percent and reset time) come from `claude-statusline.py` writing
   `~/.claude/claude-rate-limits.json` while a session renders; push-only, flagged stale after 6 h.
   No use of the undocumented OAuth usage endpoint.
@@ -72,11 +81,11 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   open kitty window (`kitty @ set-colors --all --configured`): the escape sequences sent to each terminal changed
   the text but left the old background in kitty windows already open.
 - Upstream files edited directly (from `ii-diff.sh`, re-apply after a merge): common `Appearance`, `Config`,
-  `Persistent`, `NotificationGroup`, `NotificationItem`; bar `ActiveWindow`, `BarContent`, `Resources`,
+  `Persistent`, `NotificationGroup`, `NotificationItem`; bar `ActiveWindow`, `BarContent`, `Workspaces`, `Resources`,
   `ResourcesPopup`, `SysTray`; `Cheatsheet`; sidebarLeft `AiChat`, `AiMessage`, `SidebarLeftContent`;
   services `Ai`, `ai/ApiStrategy`, `ai/OpenAiApiStrategy`, `Brightness`, `Hyprsunset`, `Notifications`,
   `ResourceUsage`, `Weather`. New local files: Docker/Claude bar files, `Docker`, `ClaudeUsage`,
-  `FishAliases`, `CheatsheetAliases`.
+  `FishAliases`, `CheatsheetAliases`, `ClaudeWindows`, `scripts/claude/`, `assets/icons/claude-symbolic.svg`.
 
 ## Open
 
