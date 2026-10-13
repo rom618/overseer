@@ -25,9 +25,10 @@ on their page. rom's personal list is `9s/TODO.md`.
       `~/.config/backup/restic.env` like rom's, see backups topic), the Tailscale node is still named
       `camille` on the vesscam tailnet (`tailscale set --hostname=mikaela` once the tailnet admin
       agrees), and the mikaela page's user table (work: no sudo, no password) (since 2026-10-11)
-- [ ] Remove the media-vault passphrase prompt at rom's login (obsolete since Camille moved to
-      roberta): `config/hypr/custom/execs.lua` runs `scripts/media-vault-unlock.sh`; decide what
-      happens to `~/Media.vault` and the laptop's old Camille files first (since 2026-10-11)
+- [x] (2026-10-13, dotfiles 60e101f) The media vault passphrase prompt at rom's login is removed
+- [ ] rom: in a real terminal, `~/claude/issues/ciel/pending/camille-laptop-remove.sh` (asks "yes"):
+      removes `~/srv/camille`, `~/srv/data/camille`, `~/Media.vault`, `~/Playground/media-library`
+      after unmounting any open vault (rom: "tous", 2026-10-13); then tell the agent (since 2026-10-13)
 - [x] (2026-10-13) Dockge retired (ciel topic Log)
 
 ## Passwords

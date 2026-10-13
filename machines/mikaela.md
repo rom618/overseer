@@ -95,7 +95,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 
 | What | Where | Owner |
 |---|---|---|
-| Camille (media app) | moved to roberta 2026-10-10; laptop containers and images removed 2026-10-11; the files in `~/srv/camille` and the vaults in `~/srv/data/camille` remain as a fallback until rom removes them | rom (9s: camille) |
+| Camille (media app) | moved to roberta 2026-10-10; laptop containers and images removed 2026-10-11; the laptop files and vaults are deleted by rom with `~/claude/issues/ciel/pending/camille-laptop-remove.sh` (rom, 2026-10-13) | rom (9s: camille) |
 | location tools | containers `location-chromium`, `location-cdp-proxy` (Chromium in a closed container, allowed) | rom (9s: location) |
 | Session restore | `hypr-session-save.timer` + `session-restore.py` at login, both users | shared |
 | Agent hooks | guard, session-start, cache-keepalive, statusline (`/opt/nier/CLAUDE.md`) | shared |
@@ -112,7 +112,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 
 | Area | rom | work | Where |
 |---|---|---|---|
-| Autostart | session restore + Spotify, Surfshark, Firefox (`session-restore.py --ensure`); vault passphrase prompt (`scripts/media-vault-unlock.sh`) | session restore only | `config/hypr/custom/execs.lua` |
+| Autostart | session restore + Spotify, Surfshark, Firefox (`session-restore.py --ensure`) | session restore only | `config/hypr/custom/execs.lua` |
 | Idle suspend | never, unless on battery below 20% (`custom/scripts/idle-suspend.sh`); lid ignored machine-wide (`system/etc/systemd/logind.conf.d/lid.conf`); lid close with Keep awake on plays a warning | idle suspends as before; lid ignored | `config/hypr/hypridle.conf` |
 | Session audio | normal | boots muted | `config/hypr/custom/execs.lua` |
 | Docker | in group `docker` (docker without sudo, root-equivalent) | not in the group | `usermod -aG docker`, set by hand in 2026-09, no script |
