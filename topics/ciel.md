@@ -58,7 +58,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 ## Open
 
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
-- [ ] rom's list: Health review (2026-10-13): 39 checks, no duplicates left (qBittorrent port check removed, the https one stays); every timer job of both machines and both users is there, agents appear as the two `device` checks; missing: the public Minecraft path through playit, containers one by one, Prometheus. Many heartbeats are OS housekeeping (man-db, shadow, logrotate): group or hide them (since 2026-10-13)
+- [x] (2026-10-13, ciel dc1ae79) Health review done: a check per stack container (23, made and pruned by the hub), the public Minecraft path checked with a real status request through playit, OS housekeeping folded on the Health page; no duplicates left. Still not watched: Prometheus itself
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [x] (2026-10-13, ciel e338bef, 93f5d32, 161712c) Network checks live: one `network` check per agent (lost Tailscale login, key expiry); roberta must have Tailscale up, mikaela must have Surfshark up (`vpn=surfshark_wg`, rom 2026-10-13: alert whenever it is off). DNS-failing check not built. Ingest no longer loses events to "database is locked"

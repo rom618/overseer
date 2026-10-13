@@ -129,7 +129,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [ciel](topics/ciel.md)
 
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
-- [ ] rom's list: Health review (2026-10-13): 39 checks, no duplicates left (qBittorrent port check removed, the https one stays); every timer job of both machines and both users is there, agents appear as the two `device` checks; missing: the public Minecraft path through playit, containers one by one, Prometheus. Many heartbeats are OS housekeeping (man-db, shadow, logrotate): group or hide them (since 2026-10-13)
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
