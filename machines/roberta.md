@@ -33,13 +33,13 @@ personal and work servers will replace it.
 - HTTPS front door: the `proxy` stack (Caddy, port 443, Let's Encrypt wildcard `*.wuling.dev` by
   DNS challenge; token root-only in `/etc/home-server/cloudflare-api-token`). Names and their DNS
   records: `stacks/proxy/hosts.txt` + `caddy/Caddyfile`, records kept by `scripts/dns-records.sh`
-  (DNS-only, LAN address 192.168.1.53). Today: wuling.dev (start page), map, grafana, dockge,
-  vault, camille; home redirects to wuling.dev.
+  (DNS-only, LAN address 192.168.1.53). Today: wuling.dev (start page), map, vault, camille,
+  ciel, aether, qbit (to the published 8090); home redirects to wuling.dev.
 
 ## Layout
 
 Stacks under `stacks/` (Docker Compose): minecraft (+ minecraft-backup), playit (public tunnels),
-bluemap, portal, dockge, monitoring (prometheus, grafana, node-exporter, cadvisor, mc-monitor),
+bluemap, portal, monitoring (prometheus, node-exporter, cadvisor, mc-monitor),
 vaultwarden, camille, ciel, aether (since 2026-10-12, `overseer/topics/aether.md`), proxy, registry, terraria (stopped). Open to the LAN: 22, 443, Minecraft
 25565 and 24454/udp, qBittorrent 8090; everything else is closed (no published
 port, plus `host-firewall.service` for host processes). Data `/srv/data/<stack>` (1.8 TB),

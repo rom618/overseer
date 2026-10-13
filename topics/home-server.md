@@ -20,21 +20,20 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 ## Facts
 
 - Stacks (`stacks/`): minecraft (+ minecraft-backup), playit (tunnels, host network), bluemap,
-  portal (start page), dockge, monitoring (prometheus, grafana, node-exporter, cadvisor,
-  mc-monitor), vaultwarden, camille, proxy, registry, terraria (stopped). Web apps only through
+  portal (start page), monitoring (prometheus, node-exporter, cadvisor, mc-monitor), vaultwarden,
+  camille, ciel, aether, proxy, registry, terraria (stopped). Web apps only through
   https://*.wuling.dev (no LAN ports since 2026-10-11, except Camille 8081 for AirPlay and
   qBittorrent 8090); host firewall lets only ssh reach host processes. Data `/srv/data/<stack>`,
   restic repos `/backup/<stack>`, checkout `/srv/home-server`.
 - Deploy: edit and commit in the repo on the laptop, then `bin/hs push` (git push into the
   server's checked-out branch, then idempotent `host/setup.sh` owning timezone, swap, sleep
   settings, Docker, unattended security updates, timers, secrets generation). The push refuses if
-  files were edited on the server. Editing compose files in Dockge makes the server differ from
-  git: edit in the repo instead.
+  files were edited on the server.
 - Secrets: `stacks/*/.env` (0600, generated, not in git), `/etc/home-server/restic.pw`, the rclone
   config; they exist only on the box. `bin/hs secrets` shows them to the owner. Never copy values
   into a doc.
-- Monitoring: Prometheus keeps 365 days; Grafana (anonymous read-only) shows node, container and
-  game metrics. Wall power is not measured. Both are to be replaced by Ciel (`topics/ciel.md`).
+- Monitoring: Prometheus keeps 365 days; Ciel's charts show node, container and game metrics
+  (Dockge retired 2026-10-12, Grafana 2026-10-13). Wall power is not measured.
 - Public access: the Flybox 4G is behind CGNAT, so nothing can be port-forwarded; players reach the
   servers through playit.gg tunnels, and every player appears with a playit address (no IP bans).
 - Backups: local restic repos per stack; off-site copy of the latest game snapshot to Google Drive
