@@ -83,6 +83,9 @@ alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafa
 
 ## Log
 
+- 2026-10-13: checks added for aether.wuling.dev, Ciel's own health and qBittorrent's port 8090;
+  Dockge's check removed with it.
+
 - 2026-10-13 night: Ciel's 9 "needs attention" items cleared: docs-sync fixed (retries when Ciel
   is unreachable), work's session-save heartbeat now unknown while work is logged out (hub change),
   the desktop portal and notification unit failures of 2026-10-11 were logout noise (the Wayland
