@@ -57,7 +57,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 
 ## Open
 
-- [ ] Candidate (clipboard session, 2026-10-13): Ciel as the sign-in for rom's apps (Caddy forward_auth against Ciel's session, or per-device app keys issued by Ciel); apps build their own access meanwhile (since 2026-10-13)
+- [ ] Ciel as the device sign-in for rom's apps (proposed 2026-10-13 to the clipboard session, rom wants Ciel devices to get in without a PIN): the hub signs short-lived Ed25519 tokens (user, device, app, exp) for devices linked to it, each app verifies them with Ciel's public key (no call to Ciel per request, no app keys stored in Ciel); ciel-notify writes `~/.config/<app>/token` per user and refreshes it; a browser trades it for a cookie through the app's one-time sign-in link. Hub and notifier code to write. rom to decide: may the iPhone become an agentless Ciel device with a Pair QR (the phone is out of Ciel's scope since 2026-10-10) (since 2026-10-13)
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
 - [x] (2026-10-13, ciel dc1ae79) Health review done: a check per stack container (23, made and pruned by the hub), the public Minecraft path checked with a real status request through playit, OS housekeeping folded on the Health page; no duplicates left. Still not watched: Prometheus itself
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
