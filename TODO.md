@@ -34,9 +34,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 - [x] (2026-10-13, rom ran it) Laptop secrets in dotfiles `sops/mikaela-rom.yaml`, root files to the admin key, deny rules installed
 - [x] (2026-10-13, dotfiles 32d4a03) rom's 3 ssh keys, ssh config and the keys' passphrases in `sops/mikaela-rom.yaml`
-- [ ] rom: copy the sops admin age key into Vaultwarden (a secure note "sops admin key, laptop"):
-      in a terminal, `cat ~/.config/sops/age/keys.txt` and paste it; it opens the servers' secrets
-      (home-server `secrets/roberta.yaml`), the restic backup has a copy too (since 2026-10-13)
+- [x] (2026-10-13, rom) sops admin age key copied into Vaultwarden ("sops admin key (mikaela)")
 - [x] (2026-10-13) sops installed on the laptop and in `bootstrap/packages.txt` (dotfiles b77f1cc)
 - [x] (2026-10-13, rom) Camille's `.env` is in the sops file too (home-server 1404c21)
 - [ ] Decide whether ssh keys go into Vaultwarden (Bitwarden's ssh agent) and how keys are handled:
