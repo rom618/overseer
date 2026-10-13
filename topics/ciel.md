@@ -57,6 +57,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 
 ## Open
 
+- [ ] Candidate (clipboard session, 2026-10-13): Ciel as the sign-in for rom's apps (Caddy forward_auth against Ciel's session, or per-device app keys issued by Ciel); apps build their own access meanwhile (since 2026-10-13)
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
 - [x] (2026-10-13, ciel dc1ae79) Health review done: a check per stack container (23, made and pruned by the hub), the public Minecraft path checked with a real status request through playit, OS housekeeping folded on the Health page; no duplicates left. Still not watched: Prometheus itself
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
