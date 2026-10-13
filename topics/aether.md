@@ -66,6 +66,10 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-13 01:10 to 04:50: verified live: this session hit the 5 h limit of the serving account,
+  waited (retry watchdog on aether's 429 with reset time) and continued by itself after the reset,
+  without ending its turn.
+
 - 2026-10-13 night (aether, home-server): ported from the fork: client gone aborts the provider
   call, the pin wait and the stream (proxy part of efae4abe); error reports in Sentry format sent
   to Ciel (app `aether`, `bin/hs aether-dsn`; a test event arrived). Skipped as not worth it for
