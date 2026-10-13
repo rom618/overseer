@@ -129,8 +129,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [ciel](topics/ciel.md)
 
-- [ ] Network checks (ciel e338bef, 2026-10-13): built and pushed, NOT deployed (auto mode refused `bin/deploy`; live DB copied to roberta `~/ciel-pre-0011.db` first, migration tested on a copy: 37 checks, 8 incidents kept). One `network` check per agent: fails on a lost Tailscale login or expired key, warns 14 days before expiry. After deploy: `ssh roberta docker exec ciel ciel-hub check network roberta tailscale-up` (roberta carries the home route). rom to decide: is Surfshark expected up on mikaela (`vpn=surfshark_wg`, alerts whenever it is off)? DNS-failing check not built (since 2026-10-13)
-- [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; left: Grafana retired once rom has looked, later by rom's choice 2026-10-13), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
+- [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
