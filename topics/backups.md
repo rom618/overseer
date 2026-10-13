@@ -65,7 +65,7 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 
 - [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots`, delete `/home/work/.local/state/dotfiles-backup/*` (since 2026-10-10)
 - [x] (2026-10-13, dotfiles) `git-restore.sh` returns to the recorded commit and keeps a patch that fails (`.git/restore-failed.patch`, WARN line); tested on throwaway repos (`backup/tests/git-restore.test.sh`)
-- [ ] rom: re-run `sudo /opt/dotfiles/backup/system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (since 2026-09-26)
+- [x] (2026-10-13 19:36, rom) system-secrets.sh re-run; age generated the passphrase (Enter at the prompt): it must go to Vaultwarden, it is the only way to open the file
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)

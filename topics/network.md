@@ -21,7 +21,7 @@ is on `machines/roberta.md`.
 - Wi-Fi profiles: Flybox-319A, Freebox-753BAF, iPhone (hotspot), TheKeepers. `ipv6.method` is `disabled`
   on all but Flybox-319A (`auto`). A new network that breaks Surfshark gets
   `nmcli connection modify "<name>" ipv6.method disabled`. Wi-Fi secrets are backed up by
-  `sudo backup/system-secrets.sh` (stale since 2026-09-12; see Open).
+  `sudo backup/system-secrets.sh` (refreshed 2026-10-13).
 - Flybox-319A is Orange's 4G box (not Bouygues), behind CGNAT (hop 192.0.0.1, shared public IPv4):
   IPv4 port forwarding can never work there. It gives the laptop a public IPv6 /64 and outbound IPv6
   works; inbound is dropped by the box's IPv6 firewall until a rule is opened in its web UI

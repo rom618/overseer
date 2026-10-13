@@ -77,7 +77,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [x] (2026-10-11, rom ran setup-machine.sh) mikaela's agent updated (sees user timer jobs)
 - [x] (2026-10-11, rom) Agents update themselves from the hub (rom accepted that ciel.wuling.dev becomes as trusted as root on the devices)
 - [x] (2026-10-13, rom ran setup-machine.sh) mikaela's agent has the self-update unit line
-- [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
+- [x] (before 2026-10-13, rom; checked 2026-10-13: an ntfy topic is saved in Ciel Settings) Phone alerts through ntfy
 - [x] (2026-10-11, ciel de9c410, dotfiles 4b33951) Milestone 4b: desktop notifier, bar indicator, agents paging when the hub is unreachable: milestone 4 done
 - [x] (2026-10-11, ciel 25ead6f, home-server 771eb07) Unlock Camille from the Ciel UI (Stacks, camille, Unlock); first real use after the next roberta reboot
 - [ ] Candidates from the company fork's aether dashboards (read 2026-10-13, `keepers/main` in `~/Playground/aether`, `apps/web/src/components`), best first: provider status pages (Anthropic Statuspage, OpenAI incident.io; SPEC milestone 10), usage headroom over time per account and window (5h, 7d, per-model), a capacity card per account with reset times, AI usage split per device key, aether's live load (in flight, queue, memory), speed and latency per model. Propose each when the charts are worked on (since 2026-10-13)

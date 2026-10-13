@@ -8,7 +8,8 @@ that misleads; LOW = tidiness. Paths: `ov/` = `/opt/overseer/`, `hs/` =
 
 1. HIGH: if roberta goes down, nobody is alerted. The hub, roberta's agent and every web check run
    on roberta. The laptop agent pages ntfy only while it is on the hub's /24
-   (`ciel/README.md:153-156`), and no ntfy topic exists yet (`ov/topics/ciel.md:75`). roberta has
+   (`ciel/README.md:153-156`). (Correction 2026-10-13: an ntfy topic was already set up; the
+   Open line saying otherwise was stale.) roberta has
    no UPS and is on Wi-Fi only (`ov/machines/roberta.md:15-16`). The only signal is the laptop
    bar's crossed cloud (gap acknowledged in `ciel/SPEC.md:150-151`).
 2. HIGH: all AI work depends on roberta and its 4G uplink (`nier/settings.json:156-160`). If the

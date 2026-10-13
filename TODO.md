@@ -51,10 +51,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 - [ ] Issue folders left: trim the location and perfect_plot READMEs to method + rerun (from their
       own sessions), prune location's 1.3 GB of raw data (since 2026-10-10)
-- [ ] rom: `! rm -r ~/claude/issues/ciel/scratch-rescue` (triaged 2026-10-11: every change in it is
-      tracked in dotfiles `system/`, `setup-machine.sh`, `packages.txt`, home-server `setup.sh` or a
-      topic page; `build-test-media.sh` is in the camille repo since 62040f6; the agent's delete was
-      blocked by the permission check) (since 2026-10-11)
+- [x] (checked 2026-10-13) `~/claude/issues/ciel/scratch-rescue` is gone
 - [ ] Clean up the laptop's file system: home layout (Desktop, Playground, Documents, Downloads),
       leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
       each kind of thing; unused JetBrains IDEs (~18 GB, Toolbox) and its 8.9 GB download cache,
@@ -120,7 +117,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [backups](topics/backups.md)
 
 - [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots`, delete `/home/work/.local/state/dotfiles-backup/*` (since 2026-10-10)
-- [ ] rom: re-run `sudo /opt/dotfiles/backup/system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (since 2026-09-26)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
@@ -135,7 +131,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
-- [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
 - [ ] Candidates from the company fork's aether dashboards (read 2026-10-13, `keepers/main` in `~/Playground/aether`, `apps/web/src/components`), best first: provider status pages (Anthropic Statuspage, OpenAI incident.io; SPEC milestone 10), usage headroom over time per account and window (5h, 7d, per-model), a capacity card per account with reset times, AI usage split per device key, aether's live load (in flight, queue, memory), speed and latency per model. Propose each when the charts are worked on (since 2026-10-13)
 - [ ] Practices seen in other repos (review 2026-10-12, list in rom's `~/claude/issues/ciel/out/repo-review-2026-10-12.md`): not picked as a batch; propose each one to rom at the moment its area is worked on (checks catalogue, "prove the work", window since last run, exit reports and memory guard at checks and alerts; token expiry and drift charts at milestone 7; risk register, guard warnings and `harvest` when nier is touched; docs lint, incident template, `merge=union` when the docs rules are touched) (since 2026-10-12)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
