@@ -144,7 +144,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [docs](topics/docs.md)
 
 - [ ] The server gets overseer and 9s read-only (since 2026-10-10)
-- [ ] Session start shows the topic's Open block and the top of TODO (since 2026-10-10)
 - [ ] rom's list (naming): French names for apps, English names for devices (as roberta); the laptop/app name clash is fixed (mikaela, Camille, 2026-10-10) (since 2026-10-12)
 
 ### [dotfiles](topics/dotfiles.md)
