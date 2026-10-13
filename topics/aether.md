@@ -44,7 +44,7 @@ continue on the other account when one is limited.
 ## Open
 
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
-- [x] (2026-10-13, rom, through the pantry-cook session) rom's apps call the AI by running genuine Claude Code (`claude -p --model haiku|sonnet`) through aether with their own client key (`app-<name>`), on the subscription accounts; no pay-per-use account for now (9s topics/pantry-cook.md)
+- [x] (2026-10-13, rom, through the pantry-cook session) rom's apps call the AI by running genuine Claude Code (`claude -p --model haiku|sonnet`) through aether with their own client key (`app-<name>`), on the subscription accounts; no pay-per-use account for now
 - [x] (2026-10-13) Ciel issues 14 and 15 (aether noise) resolved; no event since the fixes
 - [x] (2026-10-12) Public upstream cloned to `~/Playground/aether` and compared with the company fork (Facts)
 - [x] (2026-10-12) Repo rom618/aether created by rom, public version pushed to `main`
