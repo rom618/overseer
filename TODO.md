@@ -122,7 +122,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [backups](topics/backups.md)
 
 - [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots`, delete `/home/work/.local/state/dotfiles-backup/*` (since 2026-10-10)
-- [ ] `git-restore.sh` checks out the remote tip, not the recorded HEAD, and `git apply ... || true` drops patches silently (since 2026-10-10)
 - [ ] rom: re-run `sudo /opt/dotfiles/backup/system-secrets.sh`: Wi-Fi profiles changed since 2026-09-12 (since 2026-09-26)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
