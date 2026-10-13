@@ -43,6 +43,7 @@ continue on the other account when one is limited.
 
 ## Open
 
+- [ ] rom: deploy aether `22d830aa` (`~/Playground/aether/bin/deploy`; an agent's deploy was refused by auto mode): an account at its own limit no longer files an error in Ciel; then resolve Ciel issue 14 (`RateLimitError`, the agents' token is read-only) (since 2026-10-13)
 - [x] (2026-10-12) Public upstream cloned to `~/Playground/aether` and compared with the company fork (Facts)
 - [x] (2026-10-12) Repo rom618/aether created by rom, public version pushed to `main`
 - [x] (2026-10-12, rom) Access: behind the proxy stack, reachable at home and through Tailscale only; usage per device wanted (comes with the base: keys per machine)
