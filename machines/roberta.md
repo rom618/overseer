@@ -45,8 +45,9 @@ vaultwarden, camille, ciel, aether (since 2026-10-12, `overseer/topics/aether.md
 port, plus `host-firewall.service` for host processes). Data `/srv/data/<stack>` (1.8 TB),
 local restic repos `/backup/<stack>` (117 GB), deployed checkout `/srv/home-server`. Host units
 from `host/systemd/`: cpu-cap, gpu-metrics, mc-restart (daily 10:00), offsite-backup (04:30,
-latest Minecraft snapshot + Terraria to `gdrive:backups/home-server`), terraria-backup (disabled by
-setup.sh while the Terraria stack is stopped), vaultwarden-backup, ciel-backup, backup-budget.
+latest Minecraft snapshot + Vaultwarden, Ciel, worlds-archive and Terraria repos to
+`gdrive:backups/home-server`), terraria-backup (disabled by setup.sh while the Terraria stack is
+stopped), archive-backup (Sundays 03:30), vaultwarden-backup, ciel-backup, backup-budget.
 `ciel-agent.service` (root, since 2026-10-11) reports failed services, timer runs and changes to Ciel,
 and runs what Ciel asks within its allowlist (stack start, stop, restart and logs; Camille's unlock from
 `/etc/ciel/actions.json`); its binary and unit come out of the `ciel` container (home-server README, Ciel section).
@@ -66,4 +67,4 @@ container stopped by hand).
 
 ## Open
 
-Hardening and backups before hosting Ciel or Vaultwarden: see `overseer/TODO.md` (Servers).
+Hardening and backups before Ciel and Vaultwarden: done 2026-10-11 (`topics/home-server.md` Log).

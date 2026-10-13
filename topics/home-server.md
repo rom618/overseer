@@ -22,8 +22,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - Stacks (`stacks/`): minecraft (+ minecraft-backup), playit (tunnels, host network), bluemap,
   portal (start page), monitoring (prometheus, node-exporter, cadvisor, mc-monitor), vaultwarden,
   camille, ciel, aether, proxy, registry, terraria (stopped). Web apps only through
-  https://*.wuling.dev (no LAN ports since 2026-10-11, except Camille 8081 for AirPlay and
-  qBittorrent 8090); host firewall lets only ssh reach host processes. Data `/srv/data/<stack>`,
+  https://*.wuling.dev (no LAN ports since 2026-10-11, except qBittorrent 8090, also at
+  https://qbit.wuling.dev); host firewall lets only ssh reach host processes. Data `/srv/data/<stack>`,
   restic repos `/backup/<stack>`, checkout `/srv/home-server`.
 - Deploy: edit and commit in the repo on the laptop, then `bin/hs push` (git push into the
   server's checked-out branch, then idempotent `host/setup.sh` owning timezone, swap, sleep
@@ -40,10 +40,11 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   (see `topics/backups.md`). Restic on the Minecraft repo only through the backup container
   (`docker exec minecraft-backup restic`), because a root restic leaves root-owned locks that break
   the next backup. The off-site job runs as uid 1000, never root on `/backup/minecraft`.
-- Timers: `offsite-backup` (04:30), `mc-restart` (10:00), `terraria-backup` (hourly, still running
-  although the Terraria stack is stopped).
+- Timers: `offsite-backup` (04:30), `mc-restart` (10:00), `archive-backup` (Sundays 03:30),
+  `vaultwarden-backup`, `ciel-backup`, `backup-budget`; `terraria-backup` is disabled while the
+  Terraria stack is stopped.
 - Personal and work today: games, playit, BlueMap and the Drive account are personal; Docker,
-  monitoring, Dockge, the `server` user, the `hs` tooling and the off-site script are shared; one
+  monitoring, the `server` user, the `hs` tooling and the off-site script are shared; one
   restic password covers everything.
 - Memory (2026-10-10 night): 22 of 31 GB used, of which Minecraft 18.3 GB (16 GB heap, 20 GB
   limit) and BlueMap 2.3 GB; the Camille stack about 0.4 GB.

@@ -1,6 +1,6 @@
 ---
 name: ciel
-summary: Ciel, the self-built sysadmin app at ciel.wuling.dev; milestones 1 to 6 live (failures to containers)
+summary: Ciel, the self-built sysadmin app at ciel.wuling.dev; milestones 1 to 7 and the read part of 8 live
 status: active
 owner: shared
 host: roberta, mikaela
@@ -17,7 +17,8 @@ every device, app and the network: a personal sysadmin. Repo rom618/ciel at `~/P
 (renamed from nexus, which collides with Sonatype Nexus). The product spec is its `SPEC.md`; how
 to build, run and deploy is its `README.md`. Live at https://ciel.wuling.dev (roberta, home-server
 `stacks/ciel`): milestones 1 to 6 done on 2026-10-11 (foundation, failures, agent, health and
-alerts, change journal and docs, containers and actions). Next: 7 (charts, Grafana retired).
+alerts, change journal and docs, containers and actions); 7 (charts, Grafana retired) and the
+read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 10 (more sources).
 
 ## Facts
 

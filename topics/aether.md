@@ -1,10 +1,10 @@
 ---
 name: aether
-summary: Aether, the own proxy in front of the AI provider accounts (fork of ccflare); decided, not built yet
+summary: Aether, the own proxy in front of the AI accounts (fork of ccflare); live at aether.wuling.dev since 2026-10-12
 status: active
 owner: shared
 host: roberta
-repos: none yet
+repos: ~/Playground/aether (rom618/aether)
 folder: ~/claude/issues/ciel
 verified: 2026-10-12
 source: review of the public ccflare and of the company fork, 2026-10-12 (rom's ~/claude/issues/ciel/out/repo-review-2026-10-12.md)

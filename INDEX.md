@@ -5,10 +5,10 @@ Format: name (owner, verified): summary.
 
 ## Topics: active
 
-- [aether](topics/aether.md) (shared, 2026-10-12): Aether, the own proxy in front of the AI provider accounts (fork of ccflare); decided, not built yet
+- [aether](topics/aether.md) (shared, 2026-10-12): Aether, the own proxy in front of the AI accounts (fork of ccflare); live at aether.wuling.dev since 2026-10-12
 - [ai-sidebar](topics/ai-sidebar.md) (shared, 2026-10-10): Quickshell left-sidebar AI chat on local Ollama (iGPU via Vulkan), models, fixes, aiconfig helper
 - [backups](topics/backups.md) (shared, 2026-10-10): Laptop restic backup to Google Drive per user, git snapshots, and the server off-site copy
-- [ciel](topics/ciel.md) (shared, 2026-10-11): Ciel, the self-built sysadmin app at ciel.wuling.dev; milestones 1 to 6 live (failures to containers)
+- [ciel](topics/ciel.md) (shared, 2026-10-11): Ciel, the self-built sysadmin app at ciel.wuling.dev; milestones 1 to 7 and the read part of 8 live
 - [docs](topics/docs.md) (shared, 2026-10-11): How the docs repos overseer (shared, work) and 9s (rom only) work: levels, ownership, TODO, split
 - [dotfiles](topics/dotfiles.md) (shared, 2026-10-10): /opt/dotfiles, the shared desktop config repo: install, link, VM test, ii-update, packages, system files
 - [home-server](topics/home-server.md) (shared, 2026-10-11): roberta as a project: Docker stacks deployed with bin/hs push, audited 2026-10-10, to be split personal/work

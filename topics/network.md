@@ -38,17 +38,14 @@ is on `machines/roberta.md`.
   drop (TLS handshakes, downloads time out while DNS and TCP connect work). Fix per project: compose
   `networks.default.driver_opts."com.docker.network.driver.mtu": "1280"` and `build.network: host`
   (or `docker build --network host`).
-- avahi: `/etc/avahi/avahi-daemon.conf` has `host-name=camille` and `allow-interfaces=wlo1`, so
-  `camille.local` still resolves for the app Camille after the 2026-10-10 rename, announced on Wi-Fi only
-  (it had announced Docker's 172.18.0.1 first). `camille.local` on the laptop itself needs `nss-mdns`
-  with `mdns_minimal` (in `packages.txt`).
-- Tailscale: `tailscaled` runs. The machine page says the laptop is logged out of the Headscale
-  tailnet `hs.vesscam.com` (Forgejo) and that it should become work-owned
-  (`tailscale set --operator=work`). On 2026-10-10 `tailscale status` showed BackendState Running with
-  peers on 100.64.0.0/10, which contradicts that; re-check before relying on either.
+- avahi: `camille.local` is retired (apps are named under wuling.dev); avahi stops announcing it
+  once `setup-machine.sh` has run (machines/mikaela.md).
+- Tailscale: the system `tailscaled` is on rom's own tailnet; work's vesscam tailnet runs on work's
+  own userspace `tailscaled-work` (since 2026-10-11). Current state: machines/mikaela.md.
 - Old WireGuard profile `wg0` (a link into another network, peer never answered) was deleted on
   2026-10-10 with the leftovers of the old game-server setup. No other VPN profile besides `surfshark_wg`.
-- Caddy for the media app listens on 80/443 on every interface, also on untrusted Wi-Fi (see Open).
+- The laptop no longer runs the media app or its Caddy (moved to roberta 2026-10-10, containers
+  removed 2026-10-11).
 
 ## Open
 

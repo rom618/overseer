@@ -4,7 +4,7 @@ summary: How the docs repos overseer (shared, work) and 9s (rom only) work: leve
 status: active
 owner: shared
 host: mikaela
-repos: ~/Playground/overseer, ~/Playground/9s, /opt/nier
+repos: /opt/overseer, ~/Playground/9s, /opt/nier
 folder: ~/claude/issues/ciel
 verified: 2026-10-11
 source: /opt/nier/AGENTS.md section 2, /opt/nier/tools/gen-index.sh, ciel SPEC.md section 17, nexus README and audit-2026-10-10.md sections 1 and 7, overseer TODO.md
