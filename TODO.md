@@ -35,10 +35,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom: copy the sops admin age key into Vaultwarden (a secure note "sops admin key, laptop"):
       in a terminal, `cat ~/.config/sops/age/keys.txt` and paste it; it opens the servers' secrets
       (home-server `secrets/roberta.yaml`), the restic backup has a copy too (since 2026-10-13)
-- [ ] rom: `sudo pacman -S sops` in a real terminal (needed for `bin/hs secrets-edit` and
-      `sops updatekeys`); then `sops` goes into dotfiles `bootstrap/packages.txt` (since 2026-10-13)
-- [ ] rom: should Camille's `.env` (VPN key, TMDB key, PIN) go into the sops file too? Kept out
-      for now because Camille is never backed up in any form (since 2026-10-13)
+- [x] (2026-10-13) sops installed on the laptop and in `bootstrap/packages.txt` (dotfiles b77f1cc)
+- [x] (2026-10-13, rom) Camille's `.env` is in the sops file too (home-server 1404c21)
 - [ ] Decide whether ssh keys go into Vaultwarden (Bitwarden's ssh agent) and how keys are handled:
       one per device and purpose, passphrases, rotation, revocation when a device is lost (since 2026-10-10)
 - [ ] Vaultwarden: 2FA, the master password and a recovery copy offline; reachable only at home or
