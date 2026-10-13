@@ -59,7 +59,7 @@ on their page. rom's personal list is `9s/TODO.md`.
       leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
       each kind of thing; unused JetBrains IDEs (~18 GB, Toolbox) and its 8.9 GB download cache,
       pacman cache 5.5 GB (since 2026-10-10)
-- [ ] rom: battery charge limit at 80% is written (dotfiles: udev rule and after-sleep hook, `system/README.md`); it applies when rom runs `sudo /opt/dotfiles/bootstrap/setup-machine.sh` in a real terminal (since 2026-10-12)
+- [x] (2026-10-13) Battery charge limit at 80% applied (`charge_control_end_threshold` reads 80)
 - [ ] rom's list: a local replica of every GitHub repo, kept in sync both ways (a Forgejo on a server with push mirrors) (since 2026-10-12)
 
 ## Done
@@ -129,7 +129,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [ciel](topics/ciel.md)
 
 - [ ] Network checks on top of the read view (Tailscale down or key expiring under 14 days, VPN expected up): needs a new check kind, and the `checks.kind` CHECK constraint means a table rebuild with incidents pointing at it; not done unattended at night (since 2026-10-13)
-- [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; left: Grafana retired once rom has looked), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
+- [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; left: Grafana retired once rom has looked, later by rom's choice 2026-10-13), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
@@ -151,7 +151,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] `packages-aur.txt` still lists `illogical-impulse-*` metapackage names: fixed by the next `ii-update.sh --deps` (since 2026-09-12)
 - [ ] Uncommitted work of other sessions: `bootstrap/packages.txt`, `config/fish/config.fish`
       (`alias cd-mcs` with a hard-coded home path): commit or drop (since 2026-10-10)
-- [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme (since 2026-10-12)
+- [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme; rom, 2026-10-13: only when the need comes up (since 2026-10-12)
 - [ ] rom's list: the config repo installs on any Linux, choosing the variant (Linux Mint and Arch first) (since 2026-10-12)
 
 ### [home-server](topics/home-server.md)
@@ -180,7 +180,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Pi-hole (since 2026-10-10)
 - [ ] Verify Surfshark after the stale-kernel reboot (since 2026-09-13)
 - [ ] rom's list: what does a Cloudflare Tunnel give that the tailnet does not? Answer given 2026-10-12: public web pages for people outside the tailnet (no app to install); not games. Decide whether any page should be public (since 2026-10-12)
-- [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device (since 2026-10-12)
+- [ ] rom's list: refuse cookies network-wide: not possible at the DNS or router level (banners are page scripts, Pi-hole can only block domains). Per browser: Firefox (laptop) can reject banners itself (`cookiebanners.service.mode = 1`) or with the Consent-O-Matic extension, both installable for both users through `dotfiles/system/etc/firefox/policies/policies.json`; iPhone Safari needs an extension. rom: pick one per device, later (2026-10-13) (since 2026-10-12)
 - [ ] rom's list: Pi-hole becomes the home router's DNS (and possibly the own router later), with its own name under wuling.dev (since 2026-10-12)
 - [ ] rom's list: link the email sender Sweego to the domain wuling.dev (the DNS records it asks for: SPF, DKIM, return path) (since 2026-10-12)
 - [ ] rom's list: reduce captchas one way or another (Cloudflare checkboxes, DataDome on Leboncoin, Google): they come from IP reputation and browser signals; Surfshark exits trigger them, so options are a cleaner exit (no VPN at home, a residential exit), Privacy Pass tokens, or fewer anti-fingerprint settings (since 2026-10-12)
@@ -194,7 +194,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Media privacy at OS level for every agent, not only Claude deny rules (since 2026-10-10)
 - [ ] Phone access: Tailscale + tmux on an always-on host + Termius; Claude Remote Control for laptop sessions; laptop sleeps, roberta is tight on RAM (since 2026-10-10)
 - [ ] Conversations hub: per-agent adapters into SQLite FTS5 plus Markdown mirror, claude.ai exports, rom/work split, never in docs repos (since 2026-10-10)
-- [ ] Spare quota: a user timer reads `~/.claude/claude-rate-limits.json` and, when much of the 5h/7d quota is left, runs queued `claude -p` tasks one at a time, logged, never pushing without review (00:00 to 05:00 daily, 08:00 to 19:00 weekdays). Ideas: docs audit, Camille and Ciel dependency updates as review branches, security sweep, review of the day's commits, research items, monthly restore test (since 2026-10-10)
+- [ ] Spare quota: a user timer reads `~/.claude/claude-rate-limits.json` and, when much of the 5h/7d quota is left, runs queued `claude -p` tasks one at a time, logged, never pushing without review (00:00 to 05:00 daily, 08:00 to 19:00 weekdays); one aether key per runner (`runner-*`), so their usage shows apart from development in Ciel's charts (rom's list, 2026-10-12). The 11 task ideas (nexus session, 2026-10-10): (1) docs audit, topic and machine pages against reality, stale `verified` dates; (2) tests and (3) dependency updates of Camille and Ciel (cargo, npm) as review branches; (4) security sweep: gitleaks over every repo, open ports, server drift vs its repo; (5) review of the day's commits; (6) research items from the TODO (Vaultwarden plan, iPhone recovery, GitHub repos inventory); (7) Ciel milestones in a worktree; (8) mod update changelogs for the Minecraft pack; (9) monthly restore test of the backups; (10) refresh of the apartment search and (11) of the plot search (since 2026-10-10)
 - [ ] Multi-device: `nier register` (machine page from detection, on a device branch), `nier install --profile minimal|server|desktop-arch`, `$NIER_HOME` instead of hard-coded paths, laptop-only parts in a desktop module, host paths in `policy/paths.d/`, enrollment through Ciel, macOS and Windows undecided (since 2026-10-10)
 - [ ] Session registry: append-only JSONL per device (agent, device, user, cwd/topic, status, resume command) fed by hooks, later synced to Ciel (since 2026-10-10)
 - [ ] rom's list: not depend on Claude: switch easily between AI providers (aether already routes Codex and OpenAI accounts; the agent-agnostic nier above) (since 2026-10-12)
@@ -202,7 +202,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] New device or user: the nier installer should also make the aether key (`hs aether-key-save NAME`, needs ssh to roberta) or warn that sessions fail without `~/.config/aether/key` (settings.json sends every session to aether since 2026-10-12) (since 2026-10-13)
 - [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
 - [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
-- [ ] rom's list: automatic runners that use spare tokens on chosen tasks (one aether key per runner, so their usage shows apart from development in Ciel's charts) (since 2026-10-12)
 
 ### [quickshell-bar](topics/quickshell-bar.md)
 
