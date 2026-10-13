@@ -76,7 +76,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [x] (2026-10-11, rom ran it) Ciel agent installed on mikaela; both machines linked
 - [x] (2026-10-11, rom ran setup-machine.sh) mikaela's agent updated (sees user timer jobs)
 - [x] (2026-10-11, rom) Agents update themselves from the hub (rom accepted that ciel.wuling.dev becomes as trusted as root on the devices)
-- [ ] rom: in a laptop terminal, `sudo /opt/dotfiles/bootstrap/setup-machine.sh` once more: mikaela's agent gets the unit line that lets it update itself (afterwards it follows the hub on its own) (since 2026-10-11)
+- [x] (2026-10-13, rom ran setup-machine.sh) mikaela's agent has the self-update unit line
 - [ ] rom: phone alerts: install the ntfy app on the iPhone, in Ciel Settings press "New topic", subscribe to it in the app, save, "Send a test" (since 2026-10-11)
 - [x] (2026-10-11, ciel de9c410, dotfiles 4b33951) Milestone 4b: desktop notifier, bar indicator, agents paging when the hub is unreachable: milestone 4 done
 - [x] (2026-10-11, ciel 25ead6f, home-server 771eb07) Unlock Camille from the Ciel UI (Stacks, camille, Unlock); first real use after the next roberta reboot
