@@ -114,6 +114,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
+- [ ] rom's list (2026-10-14): usage does not show on the iPhone even on the tailnet; ask rom what the page does (does not load, or asks for a key: the dashboard needs the admin key, a device key is refused); Ciel's Charts page already shows the same usage after the Ciel login (since 2026-10-14)
 
 ### [ai-sidebar](topics/ai-sidebar.md)
 
@@ -131,6 +132,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Ciel as the device sign-in for rom's apps (proposed 2026-10-13 to the clipboard session, rom wants Ciel devices to get in without a PIN): the hub signs short-lived Ed25519 tokens (user, device, app, exp) for devices linked to it, each app verifies them with Ciel's public key (no call to Ciel per request, no app keys stored in Ciel); ciel-notify writes `~/.config/<app>/token` per user and refreshes it; a browser trades it for a cookie through the app's one-time sign-in link. Hub and notifier code to write. rom 2026-10-14: yes, the iPhone becomes an agentless Ciel device (reverses the 2026-10-10 scope decision for sign-in only). rom 2026-10-14, later: no Pair QR; signing in to Ciel once on a browser makes it a Ciel device, and every app trusts it ("Sign in with Ciel": the app sends the browser to Ciel, Ciel sends it back with a one-time signed pass for that app only, never a cookie shared by all of wuling.dev, never the Ciel login itself). The app then keeps its own sign-in until the device is removed in Ciel (rom: more control in case of breach); apps pull Ciel's list of removed devices (since 2026-10-13)
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
+- [ ] rom's list (2026-10-14): the Runner page offers the model `fable` (`crates/hub/src/runner.rs:234`, `frontend/src/runner.tsx:129`); remove it until aether serves it (since 2026-10-14)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
 - [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
@@ -155,6 +157,7 @@ on their page. rom's personal list is `9s/TODO.md`.
       (`alias cd-mcs` with a hard-coded home path): commit or drop (since 2026-10-10)
 - [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme; rom, 2026-10-13: only when the need comes up (since 2026-10-12)
 - [ ] rom's list: the config repo installs on any Linux, choosing the variant (Linux Mint and Arch first) (since 2026-10-12)
+- [ ] rom's list (2026-10-14): customize Firefox, starting with removing the useless pinned sites on the new tab page (`system/etc/firefox/policies/policies.json` for both users, or per user) (since 2026-10-14)
 
 ### [home-server](topics/home-server.md)
 
@@ -168,6 +171,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Agent access: agents should run as a scoped `agent` user, not the NOPASSWD `server` (since 2026-10-10)
 - [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
+- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one (since 2026-10-14)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
@@ -195,7 +199,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
 - [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (since 2026-10-10)
 - [ ] Agent-agnostic, deferred until a second agent is adopted (decision 2026-10-11): `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/`, the comprehension skill for every agent, the dotfiles installer asking for which agents (since 2026-10-10)
-- [ ] Try pi (pi-coding-agent) on a throwaway repo; it has no permission system or sandbox, so deny rules need an extension or OS isolation (since 2026-10-10)
+- [ ] Try pi (pi-coding-agent) on a throwaway repo; it has no permission system or sandbox, so deny rules need an extension or OS isolation. rom's list (2026-10-14): pi as the runners' engine instead of `claude -p` (pi now, its durable mode once stable); a runner runs unattended, so the missing sandbox matters more there (container only) (since 2026-10-10)
 - [ ] Media privacy at OS level for every agent, not only Claude deny rules (since 2026-10-10)
 - [ ] Phone access: Tailscale + tmux on an always-on host + Termius; Claude Remote Control for laptop sessions; laptop sleeps, roberta is tight on RAM (since 2026-10-10)
 - [ ] Conversations hub: per-agent adapters into SQLite FTS5 plus Markdown mirror, claude.ai exports, rom/work split, never in docs repos (since 2026-10-10)

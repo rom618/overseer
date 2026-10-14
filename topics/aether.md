@@ -67,6 +67,7 @@ continue on the other account when one is limited.
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - Company fork last commit: 2026-10-12 00:19 (still about 50 commits a day); our base is its state of 2026-09-11.
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
+- [ ] rom's list (2026-10-14): usage does not show on the iPhone even on the tailnet; ask rom what the page does (does not load, or asks for a key: the dashboard needs the admin key, a device key is refused); Ciel's Charts page already shows the same usage after the Ciel login (since 2026-10-14)
 
 ## Log
 

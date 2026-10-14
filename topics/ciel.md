@@ -61,6 +61,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p` (since 2026-10-13)
 - [x] (2026-10-13, ciel dc1ae79) Health review done: a check per stack container (23, made and pruned by the hub), the public Minecraft path checked with a real status request through playit, OS housekeeping folded on the Health page; no duplicates left. Still not watched: Prometheus itself
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
+- [ ] rom's list (2026-10-14): the Runner page offers the model `fable` (`crates/hub/src/runner.rs:234`, `frontend/src/runner.tsx:129`); remove it until aether serves it (since 2026-10-14)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [x] (2026-10-13, ciel e338bef, 93f5d32, 161712c) Network checks live: one `network` check per agent (lost Tailscale login, key expiry); roberta must have Tailscale up, mikaela must have Surfshark up (`vpn=surfshark_wg`, rom 2026-10-13: alert whenever it is off). DNS-failing check not built. Ingest no longer loses events to "database is locked"
 - [x] (2026-10-13, ciel) Graphical-unit failures at logout are dropped by the agent (held a minute, dropped if the user's graphical session ended)
