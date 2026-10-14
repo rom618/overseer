@@ -33,8 +33,12 @@ on every device, so a change is written down where the next session will look. T
   `~/claude/issues/ciel/drafts/topic-page-template.md`. Machine pages have their own front matter.
 - `/opt/nier/tools/gen-index.sh <repo> [--check]` builds `INDEX.md` from the front matter, warns
   about active topics not verified for 30 days and pages over 150 lines, and reports front matter
-  errors (missing keys, bad status or owner, summary over 120 characters). `--check` fails on a
-  stale index or an error; the pre-commit hook runs it in overseer and 9s. Never edit `INDEX.md` by hand.
+  errors (missing keys, bad status or owner, summary over 120 characters), and system wiki lines
+  that state an open status ("not set up yet", "still open") without linking the topic that owns
+  it. `--check` fails on a stale index or an error; the pre-commit hook runs it in overseer and 9s
+  with `GEN_INDEX_ONLY` set to the staged files, so only staged pages can block and a stale
+  index only warns (another session's unstaged edit never blocks a commit, 2026-10-14). Never
+  edit `INDEX.md` by hand.
 - One owner per fact; elsewhere link: rules for agents in AGENTS.md; machine facts in
   `overseer/machines/<host>.md`; how to build, run and deploy a project in its repo README;
   decisions, open items and current state in the topic page; change history in git log (later the

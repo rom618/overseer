@@ -71,8 +71,8 @@ Sources: home-server `README.md:37-52`, `bin/hs:45-47`; `ciel/bin/deploy`; `aeth
 
 Some changes cannot finish from an agent: anything with sudo. The agent writes a script into the
 issue folder's `pending/` and a TODO item; rom runs it in a real terminal (`AGENTS.md:63-80`).
-Examples still open: `sudo setup-machine.sh` for the laptop agent's unit
-(`topics/ciel.md:74`), the Wi-Fi secrets re-run (`topics/backups.md:68`). Tailnet policy
+Examples (both run by rom on 2026-10-13): `sudo setup-machine.sh` for the laptop agent's unit,
+the Wi-Fi secrets re-run. Tailnet policy
 changes are pasted by hand into the Tailscale console (home-server README:181-184).
 
 ## A change in one repo that needs another
