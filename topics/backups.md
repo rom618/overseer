@@ -54,7 +54,7 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
   (`rclone cleanup`, `deletefile`, `purge`): the user runs those by hand.
 - Server off-site: `offsite-backup.timer` (04:30) restic-copies only the latest Minecraft snapshot
   into `/backup/minecraft-offsite` (keep-last 1) and rclone-syncs it, plus the Vaultwarden, Ciel,
-  worlds-archive and Terraria repos, to `gdrive:backups/home-server` (`scripts/offsite-backup.sh`). Details: `topics/home-server.md` and the home-server README.
+  worlds-archive and Terraria repos and Camille's encrypted metadata exports (`camille-export.timer`, ciphertext only, since 2026-10-14), to `gdrive:backups/home-server` (`scripts/offsite-backup.sh`). Details: `topics/home-server.md` and the home-server README.
 - Restore tested 2026-10-10: `restic-backup.sh restore latest` into scratch took 45 s (496 MiB),
   byte-identical to live except files changed since. `git-restore.sh` reproduced HEAD and uncommitted
   changes on three repos but has a bug (Open).
