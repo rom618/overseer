@@ -21,3 +21,4 @@ date | concept | level | evidence | what worked
 2026-10-13 | llm-subscription-vs-api-key | 2 | asked why the billing question was needed, then picked the claude -p option knowing it shares quota | plain two-ways-to-reach-Claude framing, then the trade-off
 2026-10-14 | tailscale-traffic-path | 1 | asked again whether the tailnet goes through someone's server, after the 2026-10-13 explanation | phone book vs direct call, relay as a sealed envelope
 2026-10-14 | proxy-client-keys | 0 | said they did not understand how signing in to the AI proxy works | -
+2026-10-14 | source-address-through-proxy | 0 | asked why the server cannot just allow every connection from the tailnet | concierge restamping letters with the building address; separate door only the tailnet reaches
