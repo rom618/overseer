@@ -114,7 +114,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
-- [ ] rom's list (2026-10-14): usage does not show on the iPhone even on the tailnet; ask rom what the page does (does not load, or asks for a key: the dashboard needs the admin key, a device key is refused); Ciel's Charts page already shows the same usage after the Ciel login (since 2026-10-14)
+- [ ] rom's list (2026-10-14): usage does not show on the iPhone even on the tailnet (the dashboard needs the admin key). Decided (rom, via the overseer session): any device on the tailnet or home LAN opens the dashboard with no key; the proxy API keeps its key. Built, NOT committed (uncommitted in `~/Playground/aether`: auth-middleware.ts, fetch-handler.ts, viewer-access.test.ts, README.md): keyless GET only on usage views (stats, accounts, analytics, charts, usage series, request list without bodies, config); bodies, conversations, logs, client keys, pins and writes keep the admin key, because payload bodies (prompts) are stored and the LAN includes guests. The agent's permission check blocked the commit as a security weakening: rom confirms in a session, then commit and deploy. No Caddy source-IP filter (Caddy in Docker does not see it) (since 2026-10-14)
 
 ### [ai-sidebar](topics/ai-sidebar.md)
 
@@ -172,7 +172,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
-- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one (since 2026-10-14)
+- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deploy pending) (since 2026-10-14)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
