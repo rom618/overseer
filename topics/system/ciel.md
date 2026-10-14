@@ -40,7 +40,7 @@ machine's agent, including roberta (SPEC 4.1). The hub is meant to move to a Ras
 | To | How | Source |
 |---|---|---|
 | laptop desktop and bar | over the agent link to `ciel-agent notify` | README:144-152 |
-| phone | ntfy.sh topic per user; push names only what and where, never the error text | README:134-136; setup still Open (`topics/ciel.md:75`) |
+| phone | ntfy.sh topic per user; push names only what and where, never the error text | README:163-165; set up (topic saved in Ciel Settings, iPhone app subscribed; `topics/ciel.md` Open, phone alerts) |
 | docs repos | `ciel-docs-sync.sh` pulls `/api/journal/day`, `/api/inventory` nightly | README:248-252 |
 | agent sessions | `nier context` pulls `/api/brief` | README:253-254 |
 | devices | requests over the agent link: stack start/stop/restart, unit run/stop, logs, custom actions, container terminal, rename/remove | README:158-201 |
@@ -66,8 +66,8 @@ machine's agent, including roberta (SPEC 4.1). The hub is meant to move to a Ras
 - Each agent that cannot reach the hub for 5 minutes, while its own address is in the hub's
   /24, pushes "Ciel hub unreachable" to the ntfy topics it cached (README:153-156).
 - So: the laptop away from home (tailnet address, not 192.168.1.x) does not page; roberta's
-  own agent cannot page if roberta itself is down; and no ntfy topic exists until rom sets up
-  the phone (`topics/ciel.md:75`). See `failure-modes.md`.
+  own agent cannot page if roberta itself is down. The ntfy topic is set up (Ciel Settings).
+  See `failure-modes.md`.
 - The laptop's bar shows a crossed cloud when the hub is unreachable (README:152): this is
   today's only signal that roberta is gone.
 

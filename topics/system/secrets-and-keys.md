@@ -59,7 +59,7 @@ Sources: home-server `README.md:19, 54-58, 137-139, 155-160, 186-199, 212-216, 2
 | Cloudflare account | rom | DNS for wuling.dev |
 | GitHub account | rom | every repo; the only off-machine copy of most code |
 | Anthropic accounts (rom and work) | linked into aether by browser login | tokens live in aether's database |
-| ntfy topic | Ciel settings, cached by agents | not created yet (`topics/ciel.md:75`) |
+| ntfy topic | Ciel settings, cached by agents | set up; the topic name acts as a password, never write it in a doc |
 
 ## Observations
 

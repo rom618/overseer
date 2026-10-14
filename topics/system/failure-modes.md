@@ -21,7 +21,7 @@ Derived from the connections on the other pages. Each row names the mechanism an
 |---|---|---|
 | All `*.wuling.dev` apps gone: Ciel, aether, Vaultwarden, Camille, map, start page | one host, one Caddy | home-server README:135-147 |
 | Agent sessions: as "aether down" above | aether runs there | |
-| No alerts at all, except the laptop bar's crossed cloud | the hub is down; roberta's own agent is down; the laptop agent pages ntfy only on the hub's /24 and no ntfy topic exists yet | Ciel README:152-156, `topics/ciel.md:75` |
+| No alerts at all, except the laptop bar's crossed cloud | the hub is down; roberta's own agent is down; the laptop agent pages ntfy only on the hub's /24 | Ciel README:152-156 |
 | Laptop agents spool; nothing is lost | local SQLite spool | Ciel README:99-101 |
 | Laptop backups keep working | they go to Google Drive directly | `backup/README.md:1-4` |
 | Vaultwarden clients work offline with their cache; no sync, no new device login | server down | Bitwarden client behavior, not tested here |

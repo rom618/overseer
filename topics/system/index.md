@@ -39,7 +39,7 @@ in rom's own docs.
    |        | away from home:                   | tailscaled = subnet router         | |
    |        +--- tailnet (hosted Tailscale) --->+------------------------------------+ |
    +------------------------------------------------------------------------------------+
-   iPhone: tailnet node, reaches the same names; ntfy app for Ciel alerts (not set up yet)
+   iPhone: tailnet node, reaches the same names; ntfy app for Ciel alerts (set up)
 ```
 
 Read it as three loops:
