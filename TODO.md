@@ -172,7 +172,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
-- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deploy pending); Camille has one (camille 9722702, deploy pending: 9s camille topic) (since 2026-10-14)
+- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deploy pending); Camille has one (camille 9722702, deployed 2026-10-14) (since 2026-10-14)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
