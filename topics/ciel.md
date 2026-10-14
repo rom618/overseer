@@ -92,6 +92,10 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 
 ## Log
 
+- 2026-10-14 (ciel c830c5a): Overview, Apps: red now means down (the app's own container or
+  site check fails), amber means up with open issues ("1 error") or another container of its stack
+  failing ("partly down"). Before, any open issue turned an app red (rom read it as offline).
+
 - 2026-10-13 (ciel): agents send host metrics (laptop now in Charts, Devices group; private
   mounts left out) and milestone 8's read part is live: a Network card per device (Wi-Fi, routes,
   DNS, connections, WireGuard peers without keys, Tailscale nodes with key expiry), read live from
