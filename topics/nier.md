@@ -108,6 +108,7 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 - [ ] New device or user: the nier installer should also make the aether key (`hs aether-key-save NAME`, needs ssh to roberta) or warn that sessions fail without `~/.config/aether/key` (settings.json sends every session to aether since 2026-10-12) (since 2026-10-13)
 - [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
 - [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
+- [ ] rom: pick from the chat review of 2026-10-13/14 (7 proposals: deploy allow rules, Edit-after-Read rule, deploy lock and staged-only front matter check, stale-status lint, 9s path, `.env.example`, `gh`), in rom's `~/claude/issues/overseer/out/chat-review-2026-10-14.md` (since 2026-10-14)
 
 ## Log
 
