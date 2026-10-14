@@ -67,7 +67,7 @@ continue on the other account when one is limited.
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - Company fork last commit: 2026-10-12 00:19 (still about 50 commits a day); our base is its state of 2026-09-11.
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
-- [ ] rom's list (2026-10-14): usage does not show on the iPhone even on the tailnet (the dashboard needs the admin key). Decided (rom, 2026-10-14, in the aether session): a device on the tailnet gets the whole dashboard with no key, every right; the home Wi-Fi does not (keys as today). Not built: aether cannot tell tailnet from LAN by source address (subnet route SNAT, Caddy in Docker), so it needs a tailnet-only entry; proposed: a second aether port where every request is admin, published on roberta's 127.0.0.1 only and exposed by `tailscale serve` (Tailscale's HTTPS name for roberta). Waiting for rom's go-ahead for the roberta change (the LAN-wide keyless change was reverted, never committed) (since 2026-10-14)
+- [x] (2026-10-14, rom: "forget it") Dropped: keyless dashboard for the iPhone. Wanted tailnet only, not the home Wi-Fi; aether cannot tell them apart by source address (subnet route SNAT, Caddy in Docker), so it would need a tailnet-only entry (`tailscale serve` to a second aether port on roberta's 127.0.0.1). Nothing built or deployed; the dashboard still needs the admin key, which the browser keeps after the first paste
 
 ## Log
 
