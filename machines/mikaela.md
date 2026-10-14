@@ -117,7 +117,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 | Session audio | normal | boots muted | `config/hypr/custom/execs.lua` |
 | Docker | in group `docker` (docker without sudo, root-equivalent) | not in the group | `usermod -aG docker`, set by hand in 2026-09, no script |
 | Clipboard app | Super+Shift+V sends what is copied (`~/.local/bin/clip`); user unit `clipboard-listen` shows arrivals from other devices; key in `~/.config/clipboard/key` | none | `config/hypr/custom/keybinds.lua`; `clients/linux/install.sh` in the clipboard repo (9s: clipboard) |
-| Clipboard history (Super+V) | wiped every day at 08:00 by `clipboard-wipe.timer` (`cliphist wipe`; `Persistent=true` runs it at the next login or wake when 08:00 was missed). The `;` in the search box on Super+V is ii's clipboard search prefix (`search.prefix.clipboard`), needed: without it the overview searches apps | history kept (cliphist keeps the last 750) | `config/hypr/custom/systemd/clipboard-wipe.*`, `custom/scripts/clipboard-wipe.sh`, enabled by `bootstrap/link.sh` for rom only |
+| Clipboard history (Super+V) | wiped every day at 08:00 by `clipboard-wipe.timer` (deletes the cliphist db so the `#N` item numbers restart at 1; `cliphist wipe` keeps the counter; `Persistent=true` runs it at the next login or wake when 08:00 was missed). The `;` in the search box on Super+V is ii's clipboard search prefix (`search.prefix.clipboard`), needed: without it the overview searches apps | history kept (cliphist keeps the last 750) | `config/hypr/custom/systemd/clipboard-wipe.*`, `custom/scripts/clipboard-wipe.sh`, enabled by `bootstrap/link.sh` for rom only |
 
 ## Useful checks
 
