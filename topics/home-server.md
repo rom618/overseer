@@ -65,7 +65,7 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [x] (2026-10-14, home-server b4a5f4b, deployed) Hub: status dots through same-origin `/probe/<name>` (a 502 shows down), page renamed Hub; every probe answered live (200, or 403 from Camille and clipboard: up). Red on a stopped app not seen live yet
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
-- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deploy pending); Camille has one (camille 9722702, deployed 2026-10-14) (since 2026-10-14)
+- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deployed 2026-10-14); Camille has one (camille 9722702, deployed 2026-10-14) (since 2026-10-14)
 
 ## Log
 
