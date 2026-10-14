@@ -30,7 +30,7 @@ back on their workspaces. Scripts in `/opt/dotfiles/config/hypr/custom/scripts/`
   launched pid, so a shared process fails, see Log), `fish -C 'claude --resume <id>'` for Claude tabs,
   other apps once per process, then moves late or extra windows (Firefox) to their saved
   workspace by address for 90 s.
-- Per user: rom calls `session-restore.py --ensure spotify --ensure surfshark --ensure firefox`
+- Per user: rom calls `session-restore.py --ensure feishin --ensure surfshark --ensure firefox`
   (an app already restored is not opened twice); work calls it plain. Details in `machines/mikaela.md`.
 - Firefox restores its own tabs: `system/etc/firefox/policies/policies.json` sets
   `Homepage.StartPage = previous-session` (not locked). Installed by `sudo bootstrap/setup-machine.sh`.

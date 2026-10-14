@@ -112,7 +112,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 
 | Area | rom | work | Where |
 |---|---|---|---|
-| Autostart | session restore + Spotify, Surfshark, Firefox (`session-restore.py --ensure`) | session restore only | `config/hypr/custom/execs.lua` |
+| Autostart | session restore + Feishin (music player for Mephisto; replaced Spotify 2026-10-14; the window rule sends a new Feishin window to the special workspace), Surfshark, Firefox (`session-restore.py --ensure`) | session restore only | `config/hypr/custom/execs.lua` |
 | Idle suspend | never, unless on battery below 20% (`custom/scripts/idle-suspend.sh`); lid ignored machine-wide (`system/etc/systemd/logind.conf.d/lid.conf`); lid close with Keep awake on plays a warning | idle suspends as before; lid ignored | `config/hypr/hypridle.conf` |
 | Session audio | normal | boots muted | `config/hypr/custom/execs.lua` |
 | Docker | in group `docker` (docker without sudo, root-equivalent) | not in the group | `usermod -aG docker`, set by hand in 2026-09, no script |
