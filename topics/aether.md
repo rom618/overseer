@@ -43,6 +43,7 @@ continue on the other account when one is limited.
 
 ## Open
 
+- [ ] Rename `.env.example` to `example.env` at the next aether commit (the managed deny rule `Read(**/.env.*)` hides it from agents; home-server did it in 7c819f7); fix references in README, Dockerfile and scripts (since 2026-10-14)
 - [x] (2026-10-13, aether 0a076ff9, home-server 4fbbcd0) Key policies: allowed model families and 5h/7d pause thresholds per client key (`bin/hs aether-key-policy`), the base for the runners
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
 - [x] (2026-10-13, rom, through the pantry-cook session) rom's apps call the AI by running genuine Claude Code (`claude -p --model haiku|sonnet`) through aether with their own client key (`app-<name>`), on the subscription accounts; no pay-per-use account for now
