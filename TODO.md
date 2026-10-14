@@ -26,9 +26,7 @@ on their page. rom's personal list is `9s/TODO.md`.
       `camille` on the vesscam tailnet (`tailscale set --hostname=mikaela` once the tailnet admin
       agrees), and the mikaela page's user table (work: no sudo, no password) (since 2026-10-11)
 - [x] (2026-10-13, dotfiles 60e101f) The media vault passphrase prompt at rom's login is removed
-- [ ] rom: in a real terminal, `~/claude/issues/ciel/pending/camille-laptop-remove.sh` (asks "yes"):
-      removes `~/srv/camille`, `~/srv/data/camille`, `~/Media.vault`, `~/Playground/media-library`
-      after unmounting any open vault (rom: "tous", 2026-10-13); then tell the agent (since 2026-10-13)
+- [x] (2026-10-14, rom) The laptop's Camille leftovers are deleted
 - [x] (2026-10-13) Dockge retired (ciel topic Log)
 
 ## Passwords
@@ -194,7 +192,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [nier](topics/nier.md)
 
-- [ ] rom: add the runner's public key to GitHub (Settings, SSH and GPG keys, New SSH key, title "roberta runner"): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+p3g2oATN3FxGlXqkqN5FnQLWzcpiy9DzyxwQUHRuA roberta runner`; then tell the agent, who checks it from roberta (since 2026-10-14)
 - [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
 - [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (since 2026-10-10)
 - [ ] Agent-agnostic, deferred until a second agent is adopted (decision 2026-10-11): `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/`, the comprehension skill for every agent, the dotfiles installer asking for which agents (since 2026-10-10)

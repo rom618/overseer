@@ -95,7 +95,7 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 
 | What | Where | Owner |
 |---|---|---|
-| Camille (media app) | moved to roberta 2026-10-10; laptop containers and images removed 2026-10-11; the laptop files and vaults are deleted by rom with `~/claude/issues/ciel/pending/camille-laptop-remove.sh` (rom, 2026-10-13) | rom (9s: camille) |
+| Camille (media app) | moved to roberta 2026-10-10; laptop containers and images removed 2026-10-11; the laptop files and vaults were deleted on 2026-10-14 (rom) | rom (9s: camille) |
 | location tools | containers `location-chromium`, `location-cdp-proxy` (Chromium in a closed container, allowed) | rom (9s: location) |
 | Session restore | `hypr-session-save.timer` + `session-restore.py` at login, both users | shared |
 | Agent hooks | guard, session-start, cache-keepalive, statusline (`/opt/nier/CLAUDE.md`) | shared |

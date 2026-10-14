@@ -88,7 +88,7 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 
 ## Open
 
-- [ ] rom: add the runner's public key to GitHub (Settings, SSH and GPG keys, New SSH key, title "roberta runner"): `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+p3g2oATN3FxGlXqkqN5FnQLWzcpiy9DzyxwQUHRuA roberta runner`; then tell the agent, who checks it from roberta (since 2026-10-14)
+- [x] (2026-10-14, rom; checked from roberta: "Hi rom618") The runner's GitHub key is on rom's account
 - [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
 - [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (since 2026-10-10)
 - [ ] Agent-agnostic, deferred until a second agent is adopted (decision 2026-10-11): `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/`, the comprehension skill for every agent, the dotfiles installer asking for which agents (since 2026-10-10)
