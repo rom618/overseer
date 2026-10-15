@@ -109,6 +109,7 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 - [ ] rom's list: one app holding every conversation, reachable from every computer, nothing lost (9s conversations topic has the archive of 2026-10-09) (since 2026-10-12)
 - [ ] rom's list: a `claude -p` always running that rom talks to from an app, which runs commands on every app on request and queues jobs (Ciel's agents and actions are the safe channel) (since 2026-10-12)
 - [x] (2026-10-14, nier, home-server 31f9b6d and 7c819f7, dotfiles 83b2798) Chat review of 2026-10-13/14 (rom's `~/claude/issues/overseer/out/chat-review-2026-10-14.md`), all 7 done: deploy commands allowed in `settings.json` (`bin/hs push`, `bin/deploy`, Caddy reload; first `hs push` after it ran unblocked); AGENTS.md: Read before Edit, both docs paths, diff a file before staging it, deploys chained with `&&`; `hs push` one at a time (local lock, server lock) and lists what it deploys; pre-commit judges only staged pages, stale-status lint on the system wiki (docs topic); stack env examples renamed `example.env` (aether's `.env.example` left to its session); `gh` installed and signed in by rom
+- [ ] The deploy allow rules do not stop the auto mode classifier: on 2026-10-15 camille's `bin/deploy --roberta` was still refused as "Production Deploy" (`bin/hs push` passes). Until a fix is found, rom says "deploy" in the session that built the change; never deploy another session's refused build from here (since 2026-10-15)
 
 ## Log
 
