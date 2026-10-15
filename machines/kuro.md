@@ -42,6 +42,7 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 - [x] (2026-10-15, rom) The port on 127.0.0.1:8743 is the Ciel agent's own (local only)
 - [ ] Optional virus scan, mainly for Windows files run through Wine (and the gacha skin tools later): rom does it with Claude on kuro (`sudo apt install clamav`, then `clamscan -r` on the home folder) (since 2026-10-15)
 - [ ] Second monitor: menus in Korean (the monitor's own menu: rom, with its buttons; Mint's: the agent) and it often turns off (Mint power settings: the agent; the monitor's eco or auto-off: rom); rom does it with Claude on kuro (since 2026-10-12)
+- [ ] rom: `sudo ~/claude/issues/mephisto-taste/pending/remove-spotify.sh` in a real terminal (purges `spotify-client`, its apt source and keys; Mephisto + Feishin replace it, as on mikaela); the agent already deleted `~/.cache/spotify` and `~/.config/spotify`; then the agent drops Spotify from the package sources above (since 2026-10-15)
 - [ ] Later: gpu-queue (9s), gacha skin tools for Wuthering Waves and Endfield (9s TODO) (since 2026-10-12)
 
 ## Detected at registration
