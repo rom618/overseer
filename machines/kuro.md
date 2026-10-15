@@ -33,6 +33,10 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
   (home-server `host/tailnet-policy.hujson`). Tailscale address 100.73.251.98, no accept-routes.
 - Keys: aether key `kuro-rom` in `~/.config/aether/key`, Ciel read token `kuro-agents` in
   `~/.config/ciel/token`; no recovery copy (a lost kuro gets new ones).
+- Music: Feishin (player for Mephisto, 9s mephisto topic) as the AppImage
+  `~/.local/opt/feishin/Feishin.AppImage` (installed 2026-10-15 at 1.17.0, updates itself),
+  launcher `~/.local/share/applications/feishin.desktop`, icon in `~/.local/share/icons`. Media
+  keys reach it through MPRIS (`org.mpris.MediaPlayer2.Feishin`), Cinnamon's default bindings.
 
 ## Open
 
