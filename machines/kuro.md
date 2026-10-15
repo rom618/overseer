@@ -36,13 +36,12 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 
 ## Open
 
-- [ ] rom: Tailscale admin console, kuro, Disable key expiry (since 2026-10-15)
-- [ ] rom: in kuro's Firefox, "Sign in with Ciel" once (since 2026-10-15)
+- [x] (2026-10-15, rom) Tailscale key expiry off for kuro; kuro's Firefox signed in with Ciel
 - [x] (2026-10-15) Claude Code 2.1.3 in `~/.local/bin/claude` (official installer), a test request answered through aether; Ciel shows kuro online with its age key
 - [x] (2026-10-15) Look-only check (rom's `~/claude/issues/overseer/kuro-survey.sh`, run over ssh): nothing suspicious. Package sources: Mint, Ubuntu, Spotify, the OBS PPA, Prism Launcher, Tailscale; hand-installed apps known (OBS, Wine, QEMU/libvirt, CurseForge in `/opt`, flatpaks such as Discord, Surfshark, Tor Browser, ProtonPlus); autostart: Surfshark, Emote, Firefox; no custom timers or cron; Firefox extensions uBlock Origin and Bitwarden; no Chrome; 0 updates pending; ufw on; Surfshark's WireGuard runs beside Tailscale
-- [ ] rom: one port is open on 127.0.0.1:8743 (this machine only, not reachable from outside) by a root process the agent cannot name; in a terminal, `sudo ss -tlpn | grep 8743`, and say what it is (since 2026-10-15)
-- [ ] Optional virus scan, mainly for Windows files run through Wine (and the gacha skin tools later): rom runs `sudo apt install clamav`, then the agent runs `clamscan -r` on the home folder over ssh and reports (since 2026-10-15)
-- [ ] Second monitor: menus in Korean (the monitor's own menu: rom, with its buttons; Mint's: the agent) and it often turns off (Mint power settings: the agent; the monitor's eco or auto-off: rom) (since 2026-10-12)
+- [x] (2026-10-15, rom) The port on 127.0.0.1:8743 is the Ciel agent's own (local only)
+- [ ] Optional virus scan, mainly for Windows files run through Wine (and the gacha skin tools later): rom does it with Claude on kuro (`sudo apt install clamav`, then `clamscan -r` on the home folder) (since 2026-10-15)
+- [ ] Second monitor: menus in Korean (the monitor's own menu: rom, with its buttons; Mint's: the agent) and it often turns off (Mint power settings: the agent; the monitor's eco or auto-off: rom); rom does it with Claude on kuro (since 2026-10-12)
 - [ ] Later: gpu-queue (9s), gacha skin tools for Wuthering Waves and Endfield (9s TODO) (since 2026-10-12)
 
 ## Detected at registration
