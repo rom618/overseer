@@ -51,6 +51,7 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 
 ## Open
 
+- [ ] Bug (2026-10-15): `hs push` silently reverts any secret set on the box since the last `hs secrets-pull` (`host/secrets.py apply` writes `secrets/roberta.yaml` over the `.env`); `hs mephisto-password`, `mephisto-key`, `clipboard-pin`, the `*-dsn` and `*-aether-key` commands never update the record. It undid rom's Mephisto password reset (9s mephisto). Fix to decide with rom: `hs push` refuses when `secrets.py check` finds the box newer, and each secret-writing `hs` command runs `secrets-pull` itself (since 2026-10-15)
 - [ ] rom's list: stacks to add: Forgejo (GitHub replica, TODO), Pi-hole (network topic) and two of rom's own apps (9s); rom's own apps get French names (docs topic, naming) (since 2026-10-13)
 - [ ] Split into personal and work servers (roberta shared only for now): own restic password, repo, Drive account and proxy; parameterize `offsite-backup.sh` (since 2026-10-10)
 - [ ] Hardening left on purpose: sudo NOPASSWD until the scoped agent user exists (the docker group is
