@@ -6,7 +6,7 @@ owner: shared
 host: roberta
 repos: ~/Playground/aether (rom618/aether)
 folder: ~/claude/issues/ciel
-verified: 2026-10-12
+verified: 2026-10-15
 source: review of the public ccflare and of the company fork, 2026-10-12 (rom's ~/claude/issues/ciel/out/repo-review-2026-10-12.md)
 ---
 
@@ -40,9 +40,20 @@ continue on the other account when one is limited.
 - Repo: rom618/aether (private), clone `~/Playground/aether`, `main` = the public version plus the
   imported base and picked fixes, remote `upstream` = snipeship/ccflare. Local branches `import`
   and `trial` hold the company's original commits and are never pushed.
+- Courier (2026-10-15, aether f1e91fec): the fork's "La Poste" ported and renamed on rom's
+  request: Claude Code sessions on different machines write to each other through aether. A
+  device is a client key (`mikaela-rom`, `kuro-rom`); each machine runs the `courier` binary
+  (zero-tool MCP companion, per-machine daemon, CLI) and the user unit `courier.service`; the
+  nier skill `courier` tells sessions how to use it. rom's choice: between rom's own machines
+  mail goes through without a popup (rules `*-rom -> *-rom` and `rom-admin -> *-rom` allow);
+  anything else waits for a yes on the receiving machine or on the dashboard page Courier.
+  How it works and what was left out: aether `docs/courier.md`.
 
 ## Open
 
+- [ ] Courier go-live (since 2026-10-15): (1) deploy aether f1e91fec (`cd ~/Playground/aether && bin/deploy`; the agent's deploy was held for rom's go); (2) set the rules on the dashboard page Courier, Rules, Edit: `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; (3) `bin/courier-install` for rom on mikaela; (4) kuro, when it is on: copy `apps/courier/dist/courier` and `bin/courier-install` there and run it as rom (kuro needs `claude` installed for rom; it was not in PATH over ssh on 2026-10-15); (5) send a message mikaela to kuro and back
+- [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
+- [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
 - [ ] Rename `.env.example` to `example.env` at the next aether commit (the managed deny rule `Read(**/.env.*)` hides it from agents; home-server did it in 7c819f7); fix references in README, Dockerfile and scripts (since 2026-10-14)
 - [x] (2026-10-13, aether 0a076ff9, home-server 4fbbcd0) Key policies: allowed model families and 5h/7d pause thresholds per client key (`bin/hs aether-key-policy`), the base for the runners
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
@@ -71,6 +82,13 @@ continue on the other account when one is limited.
 - [x] (2026-10-14, rom: "forget it") Dropped: keyless dashboard for the iPhone. Wanted tailnet only, not the home Wi-Fi; aether cannot tell them apart by source address (subnet route SNAT, Caddy in Docker), so it would need a tailnet-only entry (`tailscale serve` to a second aether port on roberta's 127.0.0.1). Nothing built or deployed; the dashboard still needs the admin key, which the browser keeps after the first paste
 
 ## Log
+
+- 2026-10-15: Courier ported from the fork's La Poste (aether f1e91fec, pushed, not yet
+  deployed); 703 tests, typecheck and lint pass. Not live-tested: delivery through `claude -p`
+  and `SendMessage` was verified by the company on Claude Code 2.1.269, here 2.1.301.
+
+- 2026-10-14 (rom, aether 0613c582): a conversation stays on the account holding its warm
+  cache (1 h) until that account is rate limited.
 
 - 2026-10-13: the fork's later dashboard work (provider logos, account order and "closed", time
   zone) is built on its i18n layer, absent from our base: every string would need rewriting, so it
