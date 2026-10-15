@@ -26,8 +26,9 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 - Kept as installed (rom, 2026-10-15): no reinstall, Cinnamon stays, no dotfiles (dotfiles is
   mikaela only), no backup for now.
 - Gaming: Steam libraries `~/.steam/steam/steamapps` and `/mnt/GAMES/SteamLibrary`; extra Proton
-  builds in `~/.steam/steam/compatibilitytools.d`; monitors DP-0 2560x1440 at 165 Hz (primary)
-  and HDMI-0 1920x1080 at 144 Hz on X11. Cinnamon `org.cinnamon.muffin
+  builds in `~/.steam/steam/compatibilitytools.d`; monitors DP-0 Samsung Odyssey G5 2560x1440 at
+  165 Hz (primary) and HDMI-0 LG UltraGear (Korean model, menus in Korean) 1920x1080 at 144 Hz on
+  X11. Wallpapers: one per monitor through HydraPaper (flatpak), files in `~/Pictures/wallpapers`. Cinnamon `org.cinnamon.muffin
   unredirect-fullscreen-windows` set to true (2026-10-15, against in-game micro-stutter).
   Flatpak apps need the `org.freedesktop.Platform.GL.nvidia-<driver>` runtime matching the
   NVIDIA driver (`flatpak update` installs it); without it they fail with an X BadDrawable error.
@@ -53,7 +54,7 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 - [x] (2026-10-15) Look-only check (rom's `~/claude/issues/overseer/kuro-survey.sh`, run over ssh): nothing suspicious. Package sources: Mint, Ubuntu, Spotify, the OBS PPA, Prism Launcher, Tailscale; hand-installed apps known (OBS, Wine, QEMU/libvirt, CurseForge in `/opt`, flatpaks such as Discord, Surfshark, Tor Browser, ProtonPlus); autostart: Surfshark, Emote, Firefox; no custom timers or cron; Firefox extensions uBlock Origin and Bitwarden; no Chrome; 0 updates pending; ufw on; Surfshark's WireGuard runs beside Tailscale
 - [x] (2026-10-15, rom) The port on 127.0.0.1:8743 is the Ciel agent's own (local only)
 - [ ] Optional virus scan, mainly for Windows files run through Wine (and the gacha skin tools later): rom does it with Claude on kuro (`sudo apt install clamav`, then `clamscan -r` on the home folder) (since 2026-10-15)
-- [ ] Second monitor: menus in Korean (the monitor's own menu: rom, with its buttons; Mint's: the agent) and it often turns off (Mint power settings: the agent; the monitor's eco or auto-off: rom); rom does it with Claude on kuro (since 2026-10-12)
+- [ ] rom: the LG UltraGear (HDMI-0) often turns off. Checked 2026-10-15: Xorg never saw it lose signal, and Mint's settings (screensaver after 15 min, screens off after 60 min) act on both monitors, so the likely cause is LG's own Automatic Standby (turns off after about 4 h without a button press). With the joystick: 메뉴 > 일반 > 자동 대기 > 끄기 (Menu > General > Automatic Standby > Off); language: 일반 > 언어 > English. If it still turns off alone, tell the agent the time it happens (since 2026-10-12)
 - [ ] rom: `sudo ~/claude/issues/mephisto-taste/pending/remove-spotify.sh` in a real terminal (purges `spotify-client`, its apt source and keys; Mephisto + Feishin replace it, as on mikaela); the agent already deleted `~/.cache/spotify` and `~/.config/spotify`; then the agent drops Spotify from the package sources above (since 2026-10-15)
 - [ ] rom: Feishin login to Mephisto failed on kuro and mikaela (Amperfy works); reset in progress (9s mephisto topic Open); then log in (type Subsonic, user `rom`) and press the media keys while music plays so the agent checks they reach Feishin (since 2026-10-15)
 - [ ] Later: gpu-queue (9s), gacha skin tools for Wuthering Waves and Endfield (9s TODO) (since 2026-10-12)
