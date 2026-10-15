@@ -60,8 +60,8 @@ Evening, in order:
    `~/.config/ciel/device-token` (join.sh moves it to `/etc/ciel/token` and installs the agent);
    the aether key `kuro-rom` to `~/.config/aether/key`; a Ciel read token to `~/.config/ciel/token`;
    `nier register --role desktop --owner rom`. Recovery copies in a sops file: later.
-8. kuro: Claude Code installed, one test request through aether; Firefox "Sign in with Ciel".
-9. A Claude session on kuro (`~/claude/issues/kuro`): clean-up and malware check, look-only
+5. kuro: Claude Code installed, one test request through aether; Firefox "Sign in with Ciel".
+6. A Claude session on kuro (`~/claude/issues/kuro`): clean-up and malware check, look-only
    first (packages, package sources, autostart, timers, browser extensions, open ports), then
    ClamAV and rkhunter, report; nothing removed without rom's yes. Second monitor: OS language and
    power saving by the agent, the monitor's own menu language and eco setting by rom.
