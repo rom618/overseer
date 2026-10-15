@@ -26,6 +26,7 @@ Format: name (owner, verified): summary.
 
 ## Machines
 
+- [kuro](machines/kuro.md): linuxmint desktop, owner rom
 - [mikaela](machines/mikaela.md): arch desktop, owner shared
 - [roberta](machines/roberta.md): debian server, owner shared
 
