@@ -65,7 +65,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [x] (2026-10-14, home-server b4a5f4b, deployed) Hub: status dots through same-origin `/probe/<name>` (a 502 shows down), page renamed Hub; every probe answered live (200, or 403 from Camille and clipboard: up). Red on a stopped app not seen live yet
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
-- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deployed 2026-10-14); Camille has one (camille 9722702, deployed 2026-10-14); Ciel has one (ciel e23f8d7, deployed 2026-10-14); clipboard already ships one (icon-180, manifest) (since 2026-10-14)
+- [ ] rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deployed 2026-10-14); Camille has one (camille 9722702, deployed 2026-10-14); Ciel has one (ciel e23f8d7, deployed 2026-10-14); clipboard already ships one (icon-180, manifest); Hub has one (home-server 99f1e08); left: Mephisto (sent to its session 2026-10-15) (since 2026-10-14)
+- [ ] rom (2026-10-15): pull down at the top to reload, in every Home Screen app (no address bar there): Hub done (home-server 9145634, standalone mode only; rom to try it on the iPhone); sent to the Ciel, Camille, clipboard and Mephisto sessions (since 2026-10-15)
 
 ## Log
 
