@@ -61,7 +61,7 @@ How to run the scripts: `/opt/dotfiles/README.md`. Agent config is a separate re
       83b2798, all five packages installed) (since 2026-10-10)
 - [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme; rom, 2026-10-13: only when the need comes up (since 2026-10-12)
 - [ ] rom's list: the config repo installs on any Linux, choosing the variant (Linux Mint and Arch first) (since 2026-10-12)
-- [ ] rom's list (2026-10-15): Claude notifications in the dotfiles, and some desktop UI changes; both to be defined with rom (since 2026-10-15)
+- [ ] rom's list (2026-10-15): some desktop UI changes, to be defined with rom; Claude notifications are disabled for now (rom, 2026-10-15), nothing to build (since 2026-10-15)
 - [ ] rom's list (2026-10-14): customize Firefox, starting with removing the useless pinned sites on the new tab page (`system/etc/firefox/policies/policies.json` for both users, or per user) (since 2026-10-14)
 - [x] (2026-10-13) Manual setup steps counted: `topics/setup-steps.md` (reductions in its Open block)
 
