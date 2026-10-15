@@ -61,7 +61,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p`. Live 2026-10-15 as the Help page (ciel f701ab2; access through Ciel, actions approved by rom, decision in topics/nier.md Runners). Left: rom's first real conversation; later the Ciel box (since 2026-10-13)
 - [x] (2026-10-13, ciel dc1ae79) Health review done: a check per stack container (23, made and pruned by the hub), the public Minecraft path checked with a real status request through playit, OS housekeeping folded on the Health page; no duplicates left. Still not watched: Prometheus itself
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
-- [ ] rom's list (2026-10-15): roberta shows offline in Ciel every time something is deployed to it; find why (hub container recreated by the deploy, agent restart, or the heartbeat gap during `setup.sh`) and stop the false offline (since 2026-10-15)
+- [x] (2026-10-15, ciel a1247d5) roberta showed offline after each Ciel deploy: the hub restart drops every agent link for up to a minute and the first device check opened an incident (9 incidents of 60 s, each right after a Ciel deploy, none from home-server pushes). A link down under 3 min is now "reconnecting"; real outages alert after 3 min. Checked: no incident at the deploy that shipped it
 - [ ] rom's list (2026-10-14): the Runner page offers the model `fable` (`crates/hub/src/runner.rs:234`, `frontend/src/runner.tsx:129`); remove it until aether serves it (since 2026-10-14)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [x] (2026-10-13, ciel e338bef, 93f5d32, 161712c) Network checks live: one `network` check per agent (lost Tailscale login, key expiry); roberta must have Tailscale up, mikaela must have Surfshark up (`vpn=surfshark_wg`, rom 2026-10-13: alert whenever it is off). DNS-failing check not built. Ingest no longer loses events to "database is locked"
@@ -92,6 +92,10 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
 
 ## Log
+
+- 2026-10-15 (ciel 1629249): pull to refresh in the Home Screen app, the start page's approach
+  (only in standalone mode; not from text fields, the terminal or logs). Not yet tried on the
+  iPhone.
 
 - 2026-10-14 (ciel c830c5a): Overview, Apps: red now means down (the app's own container or
   site check fails), amber means up with open issues ("1 error") or another container of its stack
