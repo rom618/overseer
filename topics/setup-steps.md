@@ -51,14 +51,15 @@ Evening, in order:
    openssh-server`; `gh auth login`.
 2. rom at kuro: Tailscale install, `sudo tailscale up --operator=$USER`, browser sign-in; key
    expiry off in the admin console; no `--accept-routes` (kuro stays at home).
-3. ssh from the laptop: `ssh-key-new.sh kuro kuro <tailnet IP> rom` on mikaela, public key into
-   kuro's `~/.ssh/authorized_keys`, sshd keys only (no passwords).
-4. nier and overseer cloned to `/opt`, nier `bootstrap/install.sh` (sudo once), then
-   `nier register --role desktop --owner rom` (machine page with kuro's own Open list).
-5. kuro's machine key made by setup-machine; rom reads out its public key (safe to share).
-6. Laptop: `ciel-hub device add kuro rom`, the aether key `kuro-rom`, a Ciel read token; all three
-   into kuro's sops file, pushed.
-7. kuro: pull, apply the sops file, setup-machine again: Ciel agent installed and reporting.
+3. rom at kuro, one command (rom 2026-10-15: "a simple script"; nier `bootstrap/join.sh`):
+   `gh repo clone rom618/nier /tmp/nier && bash /tmp/nier/bootstrap/join.sh`. It clones overseer
+   and nier to `/opt`, runs nier's install (machine age key made where dotfiles is absent), allows
+   the laptop's key `id_ed25519_kuro` (ssh alias `kuro`, sshd keys only), prints the age public
+   key, then waits for the Ciel device token.
+4. Laptop agent over ssh: `ciel-hub device add kuro rom`, token to kuro's
+   `~/.config/ciel/device-token` (join.sh moves it to `/etc/ciel/token` and installs the agent);
+   the aether key `kuro-rom` to `~/.config/aether/key`; a Ciel read token to `~/.config/ciel/token`;
+   `nier register --role desktop --owner rom`. Recovery copies in a sops file: later.
 8. kuro: Claude Code installed, one test request through aether; Firefox "Sign in with Ciel".
 9. A Claude session on kuro (`~/claude/issues/kuro`): clean-up and malware check, look-only
    first (packages, package sources, autostart, timers, browser extensions, open ports), then
