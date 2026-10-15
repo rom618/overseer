@@ -25,6 +25,13 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 
 - Kept as installed (rom, 2026-10-15): no reinstall, Cinnamon stays, no dotfiles (dotfiles is
   mikaela only), no backup for now.
+- Gaming: Steam libraries `~/.steam/steam/steamapps` and `/mnt/GAMES/SteamLibrary`; extra Proton
+  builds in `~/.steam/steam/compatibilitytools.d`; monitors DP-0 2560x1440 at 165 Hz (primary)
+  and HDMI-0 1920x1080 at 144 Hz on X11. Cinnamon `org.cinnamon.muffin
+  unredirect-fullscreen-windows` set to true (2026-10-15, against in-game micro-stutter).
+  Flatpak apps need the `org.freedesktop.Platform.GL.nvidia-<driver>` runtime matching the
+  NVIDIA driver (`flatpak update` installs it); without it they fail with an X BadDrawable error.
+  Game mod setup: 9s `topics/gacha-skins.md`.
 - Joined 2026-10-15 with nier `bootstrap/join.sh` (overseer `topics/setup-steps.md`, kuro plan):
   `/opt/nier` and `/opt/overseer`, machine age key `/etc/age/machine.key`, Ciel agent
   (`ciel-agent.service`, device `kuro`, owner rom).
