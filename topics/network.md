@@ -49,7 +49,7 @@ is on `machines/roberta.md`.
 
 ## Open
 
-- [ ] rom's list: on the iPhone only one VPN runs at a time, so Surfshark and the tailnet cannot both be on as on the laptop; options to compare: an exit node on the tailnet that goes out through Surfshark (roberta or a Pi), or Surfshark only on untrusted Wi-Fi (since 2026-10-13)
+- [ ] rom's list: on the iPhone only one VPN runs at a time, so Surfshark and the tailnet cannot both be on as on the laptop; options to compare: an exit node on the tailnet that goes out through Surfshark (roberta or a Pi), or Surfshark only on untrusted Wi-Fi. rom 2026-10-15: leaning to the exit node, maybe on the future Pi-hole box (a Tailscale container sharing a Surfshark container's network, as Camille's qBittorrent does with gluetun); away from home the phone's traffic then goes through home's 4G uplink first (since 2026-10-13)
 - [ ] rom's list: research how others give a home server behind CGNAT a public address under its own domain (Minecraft and similar), e.g. the Reddit threads on Cloudflare Tunnel for Minecraft, a cheap VPS relay, playit with a custom domain; rom has a thread in mind (link to ask) (since 2026-10-13)
 - [ ] rom's list: a local network between rom's devices that keeps working with no internet (Flybox down): what still works today, and what it takes (local DNS, the GitHub replica, aether cannot) (since 2026-10-13)
 - [x] (2026-10-12) Own tailnet for remote access to the self-hosted apps: hosted Tailscale, roberta subnet router, iPhone and mikaela joined; vesscam stays on work's own tailscaled
