@@ -68,7 +68,9 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   1 s (`bar/Media.qml`; upstream used the 3 s resources interval, so it moved in 3 s jumps).
 - Clock/Claude/Ciel bubble (`rightCenterGroup` in `bar/BarContent.qml`): width is the larger of
   `barCenterSideModuleWidth` (360) and its content; a fixed 360 let the Ciel cloud spill over the weather
-  bubble when it appeared (2026-10-16).
+  bubble when it appeared (2026-10-16). The middle section slides left (`horizontalCenterOffset`) when the
+  right section would get less than its content plus 24 px, taking the room from the window-title area
+  (rom asked, 2026-10-16); otherwise it stays centered.
 - Cheatsheet (SUPER+/): tabs Keybinds and Aliases (periodic table removed). `services/FishAliases.qml`
   parses `alias` lines and `function ... --description` blocks from `config.fish` and `conf.d/*.fish`.
   `WlrKeyboardFocus.OnDemand` is on (needed for Escape, slower to open); SwipeView is non-interactive.
