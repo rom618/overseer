@@ -81,6 +81,11 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   `default` action to every OSC 99 notification and focuses the sending tab. Works only while the
   server still tracks the notification (not after a qs restart).
 - SysTray separator dot shows only when both groups are non-empty.
+- Workspace slot showing a plain dot while a window is there (2026-10-16, Firefox): the running qs
+  process's icon lookup lost that one name (`Quickshell.iconPath("firefox", true)` empty in the bar,
+  found in a fresh `qs -p` process; data, desktop entry and icon files were fine). A config reload does
+  not clear it; restarting the bar does: `qs kill -c ii; hyprctl dispatch "hl.dsp.exec_cmd('qs -c ii')"`.
+  Trigger unknown; nothing in the icon theme or packages changed that day.
 - Persistent state fields (`Persistent.states.*`) must be declared on the JsonObject schema in
   `Persistent.qml`, or a write lands in the file but bindings never react.
 - Known warnings: baseline list `/opt/nier/tools/qs-known-warnings.txt` (AiChat/Anime `commandPrefix` of
