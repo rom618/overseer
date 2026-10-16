@@ -109,6 +109,9 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [aether](topics/aether.md)
 
+- [ ] Courier go-live (since 2026-10-15): (1) deploy aether f1e91fec (`cd ~/Playground/aether && bin/deploy`; the agent's deploy was held for rom's go); (2) set the rules on the dashboard page Courier, Rules, Edit: `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; (3) `bin/courier-install` for rom on mikaela; (4) kuro, when it is on: copy `apps/courier/dist/courier` and `bin/courier-install` there and run it as rom (kuro needs `claude` installed for rom; it was not in PATH over ssh on 2026-10-15); (5) send a message mikaela to kuro and back
+- [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
+- [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
 - [ ] Rename `.env.example` to `example.env` at the next aether commit (the managed deny rule `Read(**/.env.*)` hides it from agents; home-server did it in 7c819f7); fix references in README, Dockerfile and scripts (since 2026-10-14)
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
 - [ ] work: an aether key at `~/.config/aether/key` (rom runs `bin/hs aether-key-save mikaela-work /tmp/k`, work moves it in); until then work's sessions started from fish use the account directly (2026-10-13 fallback), so nothing breaks (since 2026-10-12)
@@ -162,6 +165,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [home-server](topics/home-server.md)
 
+- [ ] Bug (2026-10-15): `hs push` silently reverts any secret set on the box since the last `hs secrets-pull` (`host/secrets.py apply` writes `secrets/roberta.yaml` over the `.env`); `hs mephisto-password`, `mephisto-key`, `clipboard-pin`, the `*-dsn` and `*-aether-key` commands never update the record. It undid rom's Mephisto password reset (9s mephisto). Fix to decide with rom: `hs push` refuses when `secrets.py check` finds the box newer, and each secret-writing `hs` command runs `secrets-pull` itself (since 2026-10-15)
 - [ ] rom's list: stacks to add: Forgejo (GitHub replica, TODO), Pi-hole (network topic) and two of rom's own apps (9s); rom's own apps get French names (docs topic, naming) (since 2026-10-13)
 - [ ] Split into personal and work servers (roberta shared only for now): own restic password, repo, Drive account and proxy; parameterize `offsite-backup.sh` (since 2026-10-10)
 - [ ] Hardening left on purpose: sudo NOPASSWD until the scoped agent user exists (the docker group is
@@ -227,6 +231,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
 - [ ] work: `systemctl --user disable --now hypr-session-save.service` if the old service was ever
       enabled there; the unit is now a timer (since 2026-10-10)
+- [ ] At the next reboot: restored Claude windows are titled with their session name and the bar
+      shows them done, not spinning (since 2026-10-16)
 
 ### [setup-steps](topics/setup-steps.md)
 

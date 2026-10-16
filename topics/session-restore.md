@@ -27,7 +27,10 @@ back on their workspaces. Scripts in `/opt/dotfiles/config/hypr/custom/scripts/`
   tab's cwd plus its Claude session id (from `~/.claude/sessions/<pid>.json`) or an allowlisted program.
 - Restore: `execs.lua` runs `session-restore.py` at Hyprland start. It starts one
   `kitty --session` process per saved OS window with an `exec_cmd` workspace rule (the rule matches the
-  launched pid, so a shared process fails, see Log), `fish -C 'claude --resume <id>'` for Claude tabs,
+  launched pid, so a shared process fails, see Log), `fish -C 'claude --resume <id>'` for Claude tabs
+  (preceded by an OSC 2 title "star + session name", saved from `~/.claude/sessions/<pid>.json` `name`:
+  a resumed Claude sets no terminal title until its next message, so the window and the bar's
+  top-left read "fish" otherwise),
   other apps once per process, then moves late or extra windows (Firefox) to their saved
   workspace by address for 90 s.
 - Per user: rom calls `session-restore.py --ensure feishin --ensure surfshark --ensure firefox`
@@ -46,6 +49,8 @@ back on their workspaces. Scripts in `/opt/dotfiles/config/hypr/custom/scripts/`
 - [ ] Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
 - [ ] work: `systemctl --user disable --now hypr-session-save.service` if the old service was ever
       enabled there; the unit is now a timer (since 2026-10-10)
+- [ ] At the next reboot: restored Claude windows are titled with their session name and the bar
+      shows them done, not spinning (since 2026-10-16)
 
 ## Log
 
@@ -59,3 +64,5 @@ back on their workspaces. Scripts in `/opt/dotfiles/config/hypr/custom/scripts/`
   (dotfiles ffa7ca5), verified against 4 live kitty windows and a test session on a special workspace.
 - 2026-10-09: containers need no change: the media app is `on-failure` on purpose (a PIN lockout exit
   stays down), others are `unless-stopped`.
+- 2026-10-16: after a battery-out shutdown, restored Claude windows read "fish" and the bar showed them
+  running; restore now titles them with the session name, the bar reads Claude's idle/busy status.

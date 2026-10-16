@@ -46,7 +46,10 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   `/opt/nier/tools/claude-state.sh` writes the state per kitty window; `scripts/claude/claude-windows.py`
   (started by `services/ClaudeWindows.qml`, exits when quickshell dies) polls every second, maps kitty
   OS windows to Hyprland windows by title over the kitty and Hyprland sockets, prints `{address: state}`.
-  Sessions started before the hook fall back to Claude's title glyph (a star = done, else running).
+  Without a state file newer than the claude process (sessions started before the hook, or after a
+  reboot: the files live in `$XDG_RUNTIME_DIR`), it reads Claude's own `status` in
+  `~/.claude/sessions/<pid>.json` (idle = done, busy = running), then the title glyph (a star = done,
+  else running). Before 2026-10-16 the title came first, and resumed sessions (title "fish") showed as running.
   Edits in `bar/Workspaces.qml` (appsGrid delegate: icon source, rotation, badge).
 - Limits (5h/7d percent and reset time) come from `claude-statusline.py` writing
   `~/.claude/claude-rate-limits.json` while a session renders; push-only, flagged stale after 6 h.
