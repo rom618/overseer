@@ -64,7 +64,11 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   (`/proc/*/fdinfo/*`, `drm-cycles-rcs` / `drm-total-cycles-rcs`). `intel_gpu_top` refuses Xe devices and
   `gputop` has no machine output. Low engine-busy during LLM decoding is normal (memory-bound).
 - Media bubble: own width `Appearance.sizes.barMediaWidth` (230 verbose / 140), so the active-window
-  title gets more room. Clicking the active window toggles the overview.
+  title gets more room. Clicking the active window toggles the overview. Its progress ring refreshes every
+  1 s (`bar/Media.qml`; upstream used the 3 s resources interval, so it moved in 3 s jumps).
+- Clock/Claude/Ciel bubble (`rightCenterGroup` in `bar/BarContent.qml`): width is the larger of
+  `barCenterSideModuleWidth` (360) and its content; a fixed 360 let the Ciel cloud spill over the weather
+  bubble when it appeared (2026-10-16).
 - Cheatsheet (SUPER+/): tabs Keybinds and Aliases (periodic table removed). `services/FishAliases.qml`
   parses `alias` lines and `function ... --description` blocks from `config.fish` and `conf.d/*.fish`.
   `WlrKeyboardFocus.OnDemand` is on (needed for Escape, slower to open); SwipeView is non-interactive.
@@ -84,7 +88,7 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   open kitty window (`kitty @ set-colors --all --configured`): the escape sequences sent to each terminal changed
   the text but left the old background in kitty windows already open.
 - Upstream files edited directly (from `ii-diff.sh`, re-apply after a merge): common `Appearance`, `Config`,
-  `Persistent`, `NotificationGroup`, `NotificationItem`; bar `ActiveWindow`, `BarContent`, `Workspaces`, `Resources`,
+  `Persistent`, `NotificationGroup`, `NotificationItem`; bar `ActiveWindow`, `BarContent`, `Media`, `Workspaces`, `Resources`,
   `ResourcesPopup`, `SysTray`; `Cheatsheet`; sidebarLeft `AiChat`, `AiMessage`, `SidebarLeftContent`;
   services `Ai`, `ai/ApiStrategy`, `ai/OpenAiApiStrategy`, `Brightness`, `Hyprsunset`, `Notifications`,
   `ResourceUsage`, `Weather`. New local files: Docker/Claude bar files, `Docker`, `ClaudeUsage`,
