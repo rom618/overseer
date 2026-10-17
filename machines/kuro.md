@@ -5,7 +5,7 @@ os: linuxmint
 role: desktop
 owner: rom
 users: romai (1000)
-verified: 2026-10-15
+verified: 2026-10-17
 source: nier register (detected); add what detection cannot know
 ---
 
@@ -40,8 +40,23 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
   `/opt/nier` and `/opt/overseer`, machine age key `/etc/age/machine.key`, Ciel agent
   (`ciel-agent.service`, device `kuro`, owner rom).
 - Access: the laptop's `ssh kuro` (key `id_ed25519_kuro`, sshd keys only, `/etc/ssh/sshd_config.d/10-nier.conf`);
-  ufw is on and opens 22 on `tailscale0` only; the tailnet policy lets only mikaela reach kuro:22
-  (home-server `host/tailnet-policy.hujson`). Tailscale address 100.73.251.98, no accept-routes.
+  ufw is on and opens 22 on `tailscale0` only. rom decided 2026-10-17 to close it (privacy): the
+  tailnet policy of record no longer lets mikaela reach kuro:22 (home-server
+  `host/tailnet-policy.hujson`, not yet pasted in the console), the kuro side waits for rom (Open).
+  Note: sshd listens on 0.0.0.0:22 through `ssh.socket` (Ubuntu 24.04 base), ufw is what limits it.
+  Tailscale address 100.73.251.98, no accept-routes, shields down, Tailscale SSH off.
+- Exposure seen 2026-10-17 (read-only check): avahi (mDNS 5353), cups and cups-browsed (no
+  printer configured), bluetooth (powered, pairable, not discoverable), libvirt (`virbr0` DNS/DHCP
+  on 192.168.122.1, one VM shut off; libvirt-guests enabled). Disk: `/` and swap on LUKS
+  (`nvme0n1p4_crypt`); `/mnt/GAMES` and two unmounted ext4 disks (`sda1`, `sdb1`) are not
+  encrypted. LightDM autologin to `romai` (the LUKS passphrase is the only boot prompt);
+  Cinnamon locks on screensaver, idle after 15 min, lock delay 0. Firefox: no enterprise policy, no
+  telemetry prefs changed (defaults on). Ciel agent runs as root with `/home` and `/root`
+  inaccessible; it reports failed units, timer runs, journal lines on request, host metrics,
+  network and apt history; an admin on Ciel can start, stop or restart system and user units
+  (not ssh.service, ciel-agent, dbus, systemd-*, getty), no custom actions
+  (`/etc/ciel/actions.json` absent), no terminal (Docker only, none here); it updates its own
+  binary from the hub.
 - Keys: aether key `kuro-rom` in `~/.config/aether/key`, Ciel read token `kuro-agents` in
   `~/.config/ciel/token`; no recovery copy (a lost kuro gets new ones).
 - Music: Feishin (player for Mephisto, 9s mephisto topic) as the AppImage
@@ -65,6 +80,8 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 - [ ] rom: `sudo ~/claude/issues/mephisto-taste/pending/remove-spotify.sh` in a real terminal (purges `spotify-client`, its apt source and keys; Mephisto + Feishin replace it, as on mikaela); the agent already deleted `~/.cache/spotify` and `~/.config/spotify`; then the agent drops Spotify from the package sources above (since 2026-10-15)
 - [ ] rom: Feishin login to Mephisto failed on kuro and mikaela (Amperfy works); reset in progress (9s mephisto topic Open); then log in (type Subsonic, user `rom`) and press the media keys while music plays so the agent checks they reach Feishin (since 2026-10-15)
 - [ ] Later: gpu-queue (9s), gacha skin tools for Wuthering Waves and Endfield (9s TODO) (since 2026-10-12)
+- [ ] Close ssh into kuro (rom's privacy brief, 2026-10-17): (1) before ssh closes, the agent copies to kuro on rom's ok whatever still needs it (`~/claude/issues/aether/pending/kuro-close-ssh.sh`, and the Courier binary and `bin/courier-install` if Courier goes on kuro, aether topic); (2) rom on kuro's own screen: `sudo bash kuro-close-ssh.sh` (add `--shields-up` to refuse every incoming tailnet connection): removes `10-nier.conf`, deletes ufw's 22/tcp on tailscale0, stops, disables and masks `ssh.socket` and `ssh.service`, removes the laptop key from `~/.ssh/authorized_keys` last; (3) rom pastes home-server `host/tailnet-policy.hujson` into https://login.tailscale.com/admin/acls/file; (4) agent on mikaela removes the `Host kuro` ssh entry and `~/.ssh/id_ed25519_kuro*`, and nier `bootstrap/ssh/kuro.pub` (so a rerun of `join.sh` does not put it back), then updates Access above. The gpu-queue plan (9s) relied on this ssh and needs another path (since 2026-10-17)
+- [ ] Privacy, rom to pick (proposed 2026-10-17, facts under "Exposure"): disable avahi-daemon, cups and cups-browsed (no printer), bluetooth if unused, libvirtd/libvirt-guests until the VM is needed; turn LightDM autologin off or keep it (LUKS prompt already guards boot); Firefox telemetry off via `/etc/firefox/policies/policies.json` (`DisableTelemetry`, `DisableFirefoxStudies`); Ciel agent: keep reporting, consider denying unit actions for kuro; move personal detail of this page (games, mods, music, apps) from overseer, which work can read, to 9s, leaving machine facts here (since 2026-10-17)
 
 ## Detected at registration
 

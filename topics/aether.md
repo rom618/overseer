@@ -6,7 +6,7 @@ owner: shared
 host: roberta
 repos: ~/Playground/aether (rom618/aether)
 folder: ~/claude/issues/ciel
-verified: 2026-10-15
+verified: 2026-10-17
 source: review of the public ccflare and of the company fork, 2026-10-12 (rom's ~/claude/issues/ciel/out/repo-review-2026-10-12.md)
 ---
 
@@ -51,7 +51,8 @@ continue on the other account when one is limited.
 
 ## Open
 
-- [ ] Courier go-live (since 2026-10-15): (1) deploy aether f1e91fec (`cd ~/Playground/aether && bin/deploy`; the agent's deploy was held for rom's go); (2) set the rules on the dashboard page Courier, Rules, Edit: `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; (3) `bin/courier-install` for rom on mikaela; (4) kuro, when it is on: copy `apps/courier/dist/courier` and `bin/courier-install` there and run it as rom (kuro needs `claude` installed for rom; it was not in PATH over ssh on 2026-10-15); (5) send a message mikaela to kuro and back
+- [ ] Courier go-live (since 2026-10-15): (1) deploy aether f1e91fec (`cd ~/Playground/aether && bin/deploy`; the agent's deploy was held for rom's go); (2) set the rules on the dashboard page Courier, Rules, Edit: `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; (3) `bin/courier-install` for rom on mikaela; (4) kuro, when it is on: copy `apps/courier/dist/courier` and `bin/courier-install` there and run it as rom (kuro needs `claude` installed for rom; it was not in PATH over ssh on 2026-10-15); (5) send a message mikaela to kuro and back. Checked 2026-10-17: still not deployed (health `startedAt` 2026-10-14 20:44 UTC, i.e. 95dfb756); kuro has no `courier` and no `courier.service`. Step (4) uses ssh, which rom is closing on kuro (machines/kuro.md Open): copy the files before, or skip (4) if kuro stays send-only
+- [ ] Courier guard for kuro, rom to pick before go-live (2026-10-17): with `*-rom -> *-rom` allow, a session on mikaela can open a conversation on kuro in `auto` mode with no popup, a remote shell back into kuro. Options, all supported by the code: (a) a first rule `{"label":"kuro asks","fromPattern":"*","toPattern":"kuro-rom","decision":"ask"}` before the two allows (a device pattern covers its conversations; kuro has zenity, so the popup shows there; note "Accept and talk freely for 1 h" opens the exchange and skips later asks for that hour); (b) `COURIER_NEW_MODE=default` in kuro's `courier.service` environment, so a conversation opened by mail asks for each tool on kuro's screen; (c) kuro send-only: no `courier.service`; kuro is then reachable only while a session there runs the companion (its daemon stays 5 min after the last session). Proposed: (a) and (b) together (since 2026-10-17)
 - [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
 - [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
 - [ ] Rename `.env.example` to `example.env` at the next aether commit (the managed deny rule `Read(**/.env.*)` hides it from agents; home-server did it in 7c819f7); fix references in README, Dockerfile and scripts (since 2026-10-14)
@@ -82,6 +83,9 @@ continue on the other account when one is limited.
 - [x] (2026-10-14, rom: "forget it") Dropped: keyless dashboard for the iPhone. Wanted tailnet only, not the home Wi-Fi; aether cannot tell them apart by source address (subnet route SNAT, Caddy in Docker), so it would need a tailnet-only entry (`tailscale serve` to a second aether port on roberta's 127.0.0.1). Nothing built or deployed; the dashboard still needs the admin key, which the browser keeps after the first paste
 
 ## Log
+
+- 2026-10-17 (brief from a kuro session, done from mikaela): Courier still not deployed; rom is
+  closing ssh into kuro, which makes Courier the only way into kuro; guard options listed in Open.
 
 - 2026-10-15: Courier ported from the fork's La Poste (aether f1e91fec, pushed, not yet
   deployed); 703 tests, typecheck and lint pass. Not live-tested: delivery through `claude -p`
