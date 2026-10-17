@@ -88,6 +88,10 @@ continue on the other account when one is limited.
 
 - 2026-10-17: Courier live (aether 62ebe2d0, receive-only machines); mikaela and kuro
   installed, kuro receive-only; first message mikaela to kuro shown there. Rules left to rom.
+  Delivery into an open session fixed (aether 0a39818e, 180f44a0): a resumed or fresh session
+  records no mode, the relay now takes the settings' `defaultMode` (`auto` through nier; a relay
+  in another mode is refused), and a delivery gives up after 3 failures (each retry was a haiku
+  call). The privacy list reached kuro's session `privacy-ea`.
 - 2026-10-17 (brief from a kuro session, done from mikaela): Courier still not deployed; rom is
   closing ssh into kuro, which makes Courier the only way into kuro; guard options listed in Open.
 
