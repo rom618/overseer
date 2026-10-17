@@ -46,8 +46,9 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - Personal and work today: games, playit, BlueMap and the Drive account are personal; Docker,
   monitoring, the `server` user, the `hs` tooling and the off-site script are shared; one
   restic password covers everything.
-- Memory (2026-10-10 night): 22 of 31 GB used, of which Minecraft 18.3 GB (16 GB heap, 20 GB
-  limit) and BlueMap 2.3 GB; the Camille stack about 0.4 GB.
+- Memory (2026-10-17): 12 of 31 GB used after Minecraft moved from a fixed 16 GB heap (18 GB
+  used) to a 4-12 GB heap that shrinks when idle, 16 GB limit (7 GB right after boot; home-server
+  README "Minecraft"); BlueMap 2.2 GB, qBittorrent 1.6 GB.
 
 ## Open
 

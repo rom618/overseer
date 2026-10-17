@@ -12,7 +12,7 @@ source: ~/Desktop/perso/projects/home-server (README, stacks/, host/), read-only
 # roberta (home server)
 
 MSI GT72S laptop running headless Debian 13, `server@192.168.1.53` (key `~/.ssh/id_ed25519_roberta` (ssh alias `roberta`; passphrase from the login keyring through the agent)
-on mikaela), i7-6820HK, 31 GB RAM (about 22 GB used, mostly the Minecraft heap), Wi-Fi only
+on mikaela), i7-6820HK, 31 GB RAM (about 12 GB used with Minecraft idle, 2026-10-17; Minecraft is the largest user), Wi-Fi only
 (Ethernet down), dead battery (no UPS). Shared by personal and work use only for now; separate
 personal and work servers will replace it.
 
