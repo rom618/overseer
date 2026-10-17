@@ -43,7 +43,9 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   `claude` as its foreground process, the icon becomes the Claude logo (`assets/icons/claude-symbolic.svg`,
   simple-icons 16.32.0) with the most urgent state of that workspace's Claude terminals: spinning =
   running, red pulsing "!" = waiting for approval or an answer, green check = done. Hook
-  `/opt/nier/tools/claude-state.sh` writes the state per kitty window; `scripts/claude/claude-windows.py`
+  `/opt/nier/tools/claude-state.sh` writes the state per kitty window (events from subagents, which carry
+  `agent_id`, only count when they are "waiting": since 2026-10-17, a background agent's tool calls no
+  longer turn a pending question back into "running"); `scripts/claude/claude-windows.py`
   (started by `services/ClaudeWindows.qml`, exits when quickshell dies) polls every second, maps kitty
   OS windows to Hyprland windows by title over the kitty and Hyprland sockets, prints `{address: state}`.
   Without a state file newer than the claude process (sessions started before the hook, or after a
