@@ -33,6 +33,9 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
   Flatpak apps need the `org.freedesktop.Platform.GL.nvidia-<driver>` runtime matching the
   NVIDIA driver (`flatpak update` installs it); without it they fail with an X BadDrawable error.
   Game mod setup: 9s `topics/gacha-skins.md`.
+- Pull tracker watcher: user service `pulls-watch.service` (`~/.local/bin/pulls-watch`, state in
+  `~/.local/state/pulls-watch/`, since 2026-10-17) reads the WuWa and Endfield history links from
+  the game files and posts them to https://pulls.wuling.dev; how it works: the pulls repo README.
 - Joined 2026-10-15 with nier `bootstrap/join.sh` (overseer `topics/setup-steps.md`, kuro plan):
   `/opt/nier` and `/opt/overseer`, machine age key `/etc/age/machine.key`, Ciel agent
   (`ciel-agent.service`, device `kuro`, owner rom).
