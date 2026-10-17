@@ -49,6 +49,10 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
   launcher `~/.local/share/applications/feishin.desktop`, icon in `~/.local/share/icons`, starts at login
   (`~/.config/autostart/feishin.desktop`). Media
   keys reach it through MPRIS (`org.mpris.MediaPlayer2.Feishin`), Cinnamon's default bindings.
+- Dev tools: Rust 1.98.1 through rustup in `~/.cargo` (minimal profile, not on PATH: call
+  `~/.cargo/bin/cargo`; installed 2026-10-17 for the pulls tests); Node is Mint's 18 (too old for
+  Vite builds: `npx tsc --noEmit` works). No Docker and no ssh to roberta, so deploys run from
+  mikaela; `courier` (nier skill) not installed yet.
 
 ## Open
 
