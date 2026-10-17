@@ -6,7 +6,7 @@ owner: shared
 host: mikaela
 repos: /opt/dotfiles
 folder: none
-verified: 2026-10-13
+verified: 2026-10-17
 source: config/quickshell/ii/ (modules/ii/bar, services), /opt/nier/tools/qs-known-warnings.txt, history.md 2026-09-12 to 2026-10-10
 ---
 
@@ -83,6 +83,10 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
   `default` action to every OSC 99 notification and focuses the sending tab. Works only while the
   server still tracks the notification (not after a qs restart).
 - SysTray separator dot shows only when both groups are non-empty.
+- Util buttons (screenshot, color picker, record, toggles; `bar/UtilButtons.qml`, left of the Claude
+  icon): each is a per-user switch `bar.utilButtons.show*` in `~/.config/illogical-impulse/config.json`,
+  read live. All off for rom since 2026-10-17 (the region-screenshot icon was the last one shown);
+  work's file is separate.
 - Workspace slot showing a plain dot while a window is there (2026-10-16, Firefox): the running qs
   process's icon lookup lost that one name (`Quickshell.iconPath("firefox", true)` empty in the bar,
   found in a fresh `qs -p` process; data, desktop entry and icon files were fine). A config reload does
@@ -121,3 +125,4 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
 - 2026-10-09: Claude limits rows shown per window, reset day shown over 20 h away (c1c0370).
 - 2026-10-10: notification click-to-focus (975b42b).
 - 2026-10-11: battery given its own bubble next to the tray (center group was crowded).
+- 2026-10-17: screenshot (crop) icon hidden for rom (`showScreenSnip: false`, per-user config, no repo change).
