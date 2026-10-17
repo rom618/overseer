@@ -93,6 +93,8 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 
 ## Log
 
+- 2026-10-17: kuro marked away-ok (`ciel-hub device away kuro on`), like mikaela: rom says kuro
+  being offline is normal, so its device and network checks go neutral instead of failing.
 - 2026-10-15 (ciel 1629249): pull to refresh in the Home Screen app, the start page's approach
   (only in standalone mode; not from text fields, the terminal or logs). Not yet tried on the
   iPhone.
