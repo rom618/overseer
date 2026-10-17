@@ -60,7 +60,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   root-equivalent anyway, decision 2026-10-11); cAdvisor privileged (no port, Ciel replaces it) (since 2026-10-11)
 - [x] (2026-10-11, camille session) Camille 8081 closed, AirPlay over https
 - [ ] Docker repo in unattended-upgrades or a monthly upgrade; pin image versions (2026-10-13: monitoring stack pinned, newest releases at least two weeks old, no daily pulls; left: bluemap (pinning means a downgrade from 5.29), mc-backup in the minecraft stack and the pot provider in camille's, not touched at night) and prune old ones (since 2026-10-10)
-- [ ] Disk clean-up (2026-10-13: 15.8 GB freed, untagged images left by deploys, two old tModLoader tags, Vaultwarden 1.33.2, build cache over 24 h; deploy scripts now prune by themselves; left: /srv/staging, networks, logs, a disk budget; 2026-10-17 outage: `/var` (37 GB) hit 100% because Docker's containerd image store lives in `/var/lib/containerd`, the aether deploy crash-looped on ENOSPC and every Claude session got 502 through aether; rom pruned 19.9 GB of untagged images and build cache by hand. The apps' `bin/deploy` prune runs on the laptop, not on roberta (aether, ciel, aether-courier, line 14). To decide with rom: prune on roberta after each deploy and/or move the containerd store to `/srv` (586 GB free), plus a `/var` disk alert in Ciel): old Docker images (about 5 GB of old tModLoader tags), `/srv/staging`, leftover networks, logs; a disk budget per data dir watched by Ciel (since 2026-10-10)
+- [ ] Disk clean-up (2026-10-13: 15.8 GB freed, untagged images left by deploys, two old tModLoader tags, Vaultwarden 1.33.2, build cache over 24 h; the `/var` part is done, see Log 2026-10-17): left: `/srv/staging`, leftover networks, logs, a disk budget per data dir (since 2026-10-10)
+- [ ] rom: go for the one-time move of containerd's image store to `/srv` (`scripts/containerd-move.sh`, run detached as its header says): every container stops for a few minutes, aether too (running agent sessions wait and retry), Minecraft is saved and stopped first; best with no players on. Until then `/var` is protected by the daily prune and Ciel's disk alert only. After it: check `/var` use and the Hub (since 2026-10-18)
 - [x] (2026-10-10) Terraria backup timer disabled by setup.sh while the stack is stopped
 - [ ] Ethernet instead of Wi-Fi if possible (many retries, no UPS, dead battery) (README memory figures fixed 2026-10-13) (since 2026-10-10)
 - [ ] Agent access: agents should run as a scoped `agent` user, not the NOPASSWD `server` (since 2026-10-10)
@@ -97,3 +98,12 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   `host-firewall.service` drops everything from outside to host processes except ssh and ping
   (node-exporter :9100 closed). Checked from the laptop: all names answer, 80/3000/5001/8100/9100
   closed, 25565/8081/8090 open, Prometheus targets up.
+- 2026-10-17 outage, `/var` full: `/var` (37 GB) hit 100% because Docker uses the containerd image
+  store, which lives in `/var/lib/containerd` whatever Docker's `data-root` says; untagged images
+  and build cache from deploys piled up there (the apps' `bin/deploy` prune runs on the laptop, not
+  on roberta). aether's deploy crash-looped 18 times on ENOSPC and every Claude session got 502
+  through aether; nothing alerted on the disk. rom pruned 19.9 GB by hand. Fixes 2026-10-18: Ciel
+  `disk` check on every device, warn 85%, fail 95% (ciel 23e3738, deployed, all three devices ok);
+  `docker-prune.timer` daily 04:40 on roberta (home-server 8747d9e, deployed); `setup.sh` puts the
+  store in `/srv/containerd` on a fresh install and `scripts/containerd-move.sh` moves the current
+  one (waits for rom's go, Open).

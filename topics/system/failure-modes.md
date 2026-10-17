@@ -87,6 +87,7 @@ Camille unlock.
 | roberta's backup SSD | all local server backups (it dropped once) | `topics/home-server.md:81-84` |
 | `server` user's ssh key on the laptop | every deploy and `bin/hs` | `bin/hs:4` |
 | The `proxy` stack | every web app; Ciel cannot stop it on purpose | `stacks/ciel/compose.yaml` |
+| roberta's `/var` full (containerd image store, until moved to `/srv`) | image pulls and container starts: aether crash-looped, every agent session got 502 (2026-10-17); Ciel's `disk` check warns at 85% | `topics/home-server.md` Log 2026-10-17 |
 | The registry stack | no new deploys of ciel, aether, camille; running containers unaffected | `ciel/bin/deploy` |
 | Surfshark on the laptop with Docker builds | builds stall unless `--network host` | `topics/network.md:37-40` |
 | A kernel update without reboot (laptop) | Surfshark and Docker | `topics/network.md:29-33` |
