@@ -47,15 +47,17 @@ continue on the other account when one is limited.
   nier skill `courier` tells sessions how to use it. rom's choice: between rom's own machines
   mail goes through without a popup (rules `*-rom -> *-rom` and `rom-admin -> *-rom` allow);
   anything else waits for a yes on the receiving machine or on the dashboard page Courier.
-  How it works and what was left out: aether `docs/courier.md`.
+  kuro is receive-only (rom, 2026-10-17): anything may be sent to it, nothing reads from or runs
+  on it. How it works and what was left out: aether `docs/courier.md`.
 
 ## Open
 
-- [ ] Courier go-live (since 2026-10-15): (1) deploy aether f1e91fec (`cd ~/Playground/aether && bin/deploy`; the agent's deploy was held for rom's go); (2) set the rules on the dashboard page Courier, Rules, Edit: `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; (3) `bin/courier-install` for rom on mikaela; (4) kuro, when it is on: copy `apps/courier/dist/courier` and `bin/courier-install` there and run it as rom (kuro needs `claude` installed for rom; it was not in PATH over ssh on 2026-10-15); (5) send a message mikaela to kuro and back. Checked 2026-10-17: still not deployed (health `startedAt` 2026-10-14 20:44 UTC, i.e. 95dfb756); kuro has no `courier` and no `courier.service`. Step (4) uses ssh, which rom is closing on kuro (machines/kuro.md Open): copy the files before, or skip (4) if kuro stays send-only
-- [ ] Courier guard for kuro, rom to pick before go-live (2026-10-17): with `*-rom -> *-rom` allow, a session on mikaela can open a conversation on kuro in `auto` mode with no popup, a remote shell back into kuro. Options, all supported by the code: (a) a first rule `{"label":"kuro asks","fromPattern":"*","toPattern":"kuro-rom","decision":"ask"}` before the two allows (a device pattern covers its conversations; kuro has zenity, so the popup shows there; note "Accept and talk freely for 1 h" opens the exchange and skips later asks for that hour); (b) `COURIER_NEW_MODE=default` in kuro's `courier.service` environment, so a conversation opened by mail asks for each tool on kuro's screen; (c) kuro send-only: no `courier.service`; kuro is then reachable only while a session there runs the companion (its daemon stays 5 min after the last session). Proposed: (a) and (b) together (since 2026-10-17)
+- [x] (2026-10-17, aether 62ebe2d0) Courier live: deployed (with receive-only machines), installed for rom on mikaela and on kuro (`--receive-only`, over ssh before the cut), test mikaela to kuro shown on kuro's screen, no conversation opened
+- [ ] rom: Courier rules on the dashboard page Courier, Rules, Edit (the agent's direct database write was refused by the auto-mode classifier): `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; until then every message asks the recipient (kuro shows a popup, mikaela has none and waits for the dashboard); then a test kuro to mikaela (since 2026-10-17)
+- [x] (2026-10-17, rom: anything may be sent to kuro, nothing reads from or runs on it; aether 62ebe2d0) Courier guard for kuro: kuro is receive-only (`inbound: info` in its `~/.claude/courier/config.json`, set on kuro so no rule elsewhere undoes it): mail is shown, never opens a conversation, reaches a session as information only, and kuro publishes no session titles, folders or descriptions
 - [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
 - [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
-- [ ] Rename `.env.example` to `example.env` at the next aether commit (the managed deny rule `Read(**/.env.*)` hides it from agents; home-server did it in 7c819f7); fix references in README, Dockerfile and scripts (since 2026-10-14)
+- [x] (2026-10-17, aether 62ebe2d0) `.env.example` renamed `example.env` (no references to fix)
 - [x] (2026-10-13, aether 0a076ff9, home-server 4fbbcd0) Key policies: allowed model families and 5h/7d pause thresholds per client key (`bin/hs aether-key-policy`), the base for the runners
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
 - [x] (2026-10-13, rom, through the pantry-cook session) rom's apps call the AI by running genuine Claude Code (`claude -p --model haiku|sonnet`) through aether with their own client key (`app-<name>`), on the subscription accounts; no pay-per-use account for now
@@ -84,6 +86,8 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-17: Courier live (aether 62ebe2d0, receive-only machines); mikaela and kuro
+  installed, kuro receive-only; first message mikaela to kuro shown there. Rules left to rom.
 - 2026-10-17 (brief from a kuro session, done from mikaela): Courier still not deployed; rom is
   closing ssh into kuro, which makes Courier the only way into kuro; guard options listed in Open.
 
