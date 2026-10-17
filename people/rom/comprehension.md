@@ -22,3 +22,4 @@ date | concept | level | evidence | what worked
 2026-10-14 | tailscale-traffic-path | 1 | asked again whether the tailnet goes through someone's server, after the 2026-10-13 explanation | phone book vs direct call, relay as a sealed envelope
 2026-10-14 | proxy-client-keys | 0 | said they did not understand how signing in to the AI proxy works | -
 2026-10-14 | source-address-through-proxy | 0 | asked why the server cannot just allow every connection from the tailnet | concierge restamping letters with the building address; separate door only the tailnet reaches
+2026-10-17 | machine-identity-vs-browser-identity | 1 | asked why a browser signing in needs its own name when the machine is already known | agent holds the machine key in files, a web page cannot read them, so the browser is unlabeled
