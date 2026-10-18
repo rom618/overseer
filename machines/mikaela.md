@@ -80,6 +80,13 @@ stay per user (nvim plugins, fish history). `~/.config/hypr` is linked file by f
 | Personal, throwaway, machine-local | that user's home, outside `~/.config` |
 | Secrets | never a repo: a gitignored file under `~/.config/<tool>/`, covered by the backup |
 
+## Disk
+
+One pool per partition for both users, no quotas: `/home` (both homes, 823 GB) and `/` (system,
+`/opt`, Docker, 98 GB); `/tmp` is RAM. A user filling `/home` breaks the other user too. Decision
+2026-10-18 (user): no quota, Ciel's `disk` check (warn 85%, fail 95%) is the guard. Large task
+output goes in a folder the backup skips (`backup/excludes.txt`), or it is uploaded every 3 hours.
+
 ## Backups
 
 Per user, restic to Google Drive (rclone remote `gdrive`), repo pinned in

@@ -63,7 +63,7 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 
 ## Open
 
-- [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots`, delete `/home/work/.local/state/dotfiles-backup/*` (since 2026-10-10)
+- [ ] work has no backup. Decided 2026-10-18 (user): same Google Drive as rom, repo `gdrive:backups/mikaela-work`. work: in a real terminal, `~/claude/issues/set-up/pending/work-backup-setup.sh` (rclone sign-in with rom's Google account, restic password typed or generated, init, first backup, timers, work's sops age key and `sops/mikaela-work.yaml`); save the password and the age key in Vaultwarden when it shows them; then work's Claude commits the sops file. (Scratch timer enabled, group `dots` active and no `dotfiles-backup` folder: checked 2026-10-18) (since 2026-10-10)
 - [x] (2026-10-13, dotfiles) `git-restore.sh` returns to the recorded commit and keeps a patch that fails (`.git/restore-failed.patch`, WARN line); tested on throwaway repos (`backup/tests/git-restore.test.sh`)
 - [x] (2026-10-13 19:36, rom) system-secrets.sh re-run; age generated the passphrase (Enter at the prompt): it must go to Vaultwarden, it is the only way to open the file
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)

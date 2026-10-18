@@ -69,11 +69,11 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [x] (2026-10-11) Structure before coding: docs rules, issue folders, seeding, overseer in /opt, ssh keys done; agent-agnostic nier deferred until a second agent is adopted (decision 2026-10-11); work's relink stays on the nier page
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
 - [x] (2026-10-12, home-server, night) Dockge retired: container, image, /srv/data/dockge, dockge.wuling.dev DNS record (hosts.txt `retired` rule), proxy entry, start-page card, Ciel's web check; Ciel's Stacks page and container terminal replace it
-- [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
+- [x] (2026-10-18, user: "just don't register it to Ciel") Dropped: no Ciel token for work. The machine's ciel-agent still reports work's failed units, and work's `ciel-notify.service` still runs
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
 - [x] (2026-10-11, home-server fd5610e) Milestone 1 deployed at https://ciel.wuling.dev
 - [x] (2026-10-11) rom's Ciel account set and used
-- [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
+- [x] (2026-10-18, user) Dropped: no Ciel account for work
 - [x] (2026-10-11, home-server 75d159d) `/srv/data/ciel` backed up daily (restic, off-site)
 - [x] (2026-10-11, camille 22962ce, home-server 3a23afd) Camille reports to Ciel (backend and frontend, scrubbed client-side, app private): milestone 2 done
 - [x] (2026-10-11, rom ran it) Ciel agent installed on mikaela; both machines linked

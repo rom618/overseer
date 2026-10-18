@@ -7,9 +7,11 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ## Work account
 
-- [ ] work, still missing (checked 2026-10-18): the restic backup (backups topic Open), the Ciel
-      token and Ciel account (ciel topic Open), and work's secret files in
-      `sops/mikaela-work.yaml` (`bootstrap/user-sops.py pull`, once the backup files exist) (since 2026-10-11)
+- [ ] work, still missing (checked 2026-10-18): the restic backup and work's secret files in
+      `sops/mikaela-work.yaml`, both done by one script (backups topic Open). No Ciel for work
+      (user, 2026-10-18) (since 2026-10-11)
+- [ ] rom: in Ciel, check that mikaela's `disk` check covers `/home` (both users share it, no
+      quota; user 2026-10-18: an alert is enough), not only `/` (since 2026-10-18)
 - [x] (2026-10-18, checked from work) ssh done another way: keys `_github` and `_mirador` load at
       login; GitHub, `mirador-dev` and the Forgejo (`mirador` port 2222) answer; work's tailnet runs
       as its own user unit, so no `--operator` change was needed
@@ -117,7 +119,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [backups](topics/backups.md)
 
-- [ ] work has no backup: own restic password, `restic-backup.sh init`, enable both timers and `claude-scratch-clean.timer`, relogin for group `dots`, delete `/home/work/.local/state/dotfiles-backup/*` (since 2026-10-10)
+- [ ] work has no backup. Decided 2026-10-18 (user): same Google Drive as rom, repo `gdrive:backups/mikaela-work`. work: in a real terminal, `~/claude/issues/set-up/pending/work-backup-setup.sh` (rclone sign-in with rom's Google account, restic password typed or generated, init, first backup, timers, work's sops age key and `sops/mikaela-work.yaml`); save the password and the age key in Vaultwarden when it shows them; then work's Claude commits the sops file. (Scratch timer enabled, group `dots` active and no `dotfiles-backup` folder: checked 2026-10-18) (since 2026-10-10)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
@@ -130,9 +132,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list (2026-10-14): the Runner page offers the model `fable` (`crates/hub/src/runner.rs:234`, `frontend/src/runner.tsx:129`); remove it until aether serves it (since 2026-10-14)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
-- [ ] work: in a work terminal on the laptop, `ssh roberta docker exec ciel ciel-hub token add work mikaela-agents > ~/.config/ciel/token && chmod 600 ~/.config/ciel/token` gives work's agent sessions the live Ciel brief (needs work's ssh access to roberta; else rom creates it and hands it over) (since 2026-10-11)
 - [ ] Journal: a line per agent session that changed something (SPEC 17.4, from the handoff or a SessionEnd hook); the session registry (SPEC 18) (since 2026-10-11)
-- [ ] work's Ciel account: in a laptop terminal, `cd ~/Playground/ciel && bin/user work member` (since 2026-10-11)
 - [ ] Candidates from the company fork's aether dashboards (read 2026-10-13, `keepers/main` in `~/Playground/aether`, `apps/web/src/components`), best first: provider status pages (Anthropic Statuspage, OpenAI incident.io; SPEC milestone 10), usage headroom over time per account and window (5h, 7d, per-model), a capacity card per account with reset times, AI usage split per device key, aether's live load (in flight, queue, memory), speed and latency per model. Propose each when the charts are worked on (since 2026-10-13)
 - [ ] Practices seen in other repos (review 2026-10-12, list in rom's `~/claude/issues/ciel/out/repo-review-2026-10-12.md`): not picked as a batch; propose each one to rom at the moment its area is worked on (checks catalogue, "prove the work", window since last run, exit reports and memory guard at checks and alerts; token expiry and drift charts at milestone 7; risk register, guard warnings and `harvest` when nier is touched; docs lint, incident template, `merge=union` when the docs rules are touched) (since 2026-10-12)
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
