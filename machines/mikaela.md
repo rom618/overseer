@@ -125,6 +125,14 @@ holds everything of that job, so removing it leaves nothing behind; its facts li
   finds the job of the current folder, sets `CLAUDE_CONFIG_DIR=<job>/.claude`, takes the proxy
   from `<job>/.aether/{key,url}` (no `url`: aether) and exports `AETHER_KEY_FILE` for nier's key
   helper `tools/aether-key.sh`. Issue folders `<job>/claude/issues`, scratch `<job>/claude/scratch`.
+  `<job>/.claude/settings.json` is the job's own file (plugins, Claude's own writes); the shared
+  nier settings plus the job's URL are merged at each launch into `<job>/.claude/launch-settings.json`
+  and passed with `--settings` (2026-10-18: a link to the shared file let one job's plugin
+  installs land in every user's settings). Session start in a job injects the device's hard rules
+  only, no overseer, 9s, TODO or Ciel (`nier context` job mode), since a job's prompts may go
+  through that job's own proxy. General tools may be installed machine-wide by a job; paths a
+  tool forces outside are links into the job or `outside <path>` lines in `<job>/.job`, which
+  `job remove` deletes.
 - `docs/`: the job's pages.
 - `.ssh`: keys, Host blocks, known_hosts; pulled in by `Include ~/*/.ssh/config` at the top of
   `~/.ssh/config`, keys loaded at login by `ssh-keys-load.sh`; new key:
