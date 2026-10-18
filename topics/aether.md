@@ -49,13 +49,22 @@ continue on the other account when one is limited.
   anything else waits for a yes on the receiving machine or on the dashboard page Courier.
   kuro is receive-only (rom, 2026-10-17): anything may be sent to it, nothing reads from or runs
   on it. How it works and what was left out: aether `docs/courier.md`.
-- Endpoint per user (2026-10-18): the shared nier `settings.json` sets aether's URL and the key
-  helper (`tools/aether-key.sh`, reads `~/.config/aether/key`). A user whose proxy is elsewhere
-  writes its URL to `~/.config/aether/url` (mode 600, next to the key; both in `user-sops.py`);
-  the fish `claude` function then starts sessions with `--settings` carrying that URL and checks
-  that host's `/health`. Never put a URL or token for one user into the shared `settings.json`:
-  it applies to every user. Only fish launches see the override (every desktop launch and
-  session restore go through fish); a `claude` started from another shell uses aether's URL.
+- Endpoint per user and per folder (2026-10-18): the shared nier `settings.json` sets aether's URL
+  and the key helper (`tools/aether-key.sh`). Per user, under `~/.config/aether/` (mode 600, all
+  of it in `user-sops.py`): `key` (and optionally `url`) is the default; a profile is a folder
+  `<name>/` with its own `key` and `url`; `folders` maps work folders to a profile, one line
+  `NAME PATTERN...` (`~` and globs allowed, a pattern covers its subfolders). The fish `claude`
+  function picks the profile from the current folder, starts the session with `--settings`
+  carrying that URL, exports `AETHER_PROFILE` so the key helper reads that profile's key, and
+  checks that host's `/health`; no key means the account directly, never another profile.
+  Never put a URL or token for one user into the shared `settings.json`: it applies to every
+  user. Only fish launches see this (every desktop launch and session restore go through fish);
+  a `claude` started from another shell uses aether's URL and the default key.
+- work holds two jobs kept apart (user, 2026-10-18): The Keepers in `~/keepers` and issue
+  folders `~/claude/issues/keepers-*` (profile `keepers`: the company's ccflare,
+  `https://ccflare.thekeepers.dev/v1/claude-code`, work's own token); vesscam and everything
+  else on aether (default key `mikaela-work`), so vesscam work never passes through the company
+  proxy.
   The company's ccflare accepts the token only as `Authorization: Bearer`, which the key helper
   sends (with `x-api-key`).
 
@@ -84,7 +93,8 @@ continue on the other account when one is limited.
 - [x] (2026-10-12, rom) Admin key made, both accounts linked from the dashboard (health: 2 accounts, 2 usable)
 - [x] (2026-10-12, home-server 4ed3064) First device key `mikaela-rom`, saved by `bin/hs aether-key-save` to rom's `~/.config/aether/key` (never displayed); one real agent request answered through aether and counted on that key. The agent's address is `https://aether.wuling.dev/v1/claude-code` (the bare host answers "model does not exist")
 - [x] (2026-10-12, nier 7ebbaf1) rom accepted losing the account's connectors; on rom's request every session goes through aether through the shared nier `settings.json` (`ANTHROPIC_BASE_URL` + `apiKeyHelper` reading `~/.config/aether/key`); the fish snippet tried first was removed (dotfiles df7a3e9). Tested with one real request. No fallback when aether is down
-- [x] (2026-10-18, dotfiles) work's sessions go through the company's ccflare (`https://ccflare.thekeepers.dev/v1/claude-code`, work's own token), not aether: per-user endpoint, see Facts. To move work to aether instead: delete work's `~/.config/aether/url` and save a `mikaela-work` key (rom: `bin/hs aether-key-save mikaela-work /tmp/k`, work moves it to `~/.config/aether/key`)
+- [x] (2026-10-18, dotfiles, nier) Per-folder profiles (Facts): work's keepers folders on the company's ccflare, tested with a real request from `~/keepers`
+- [ ] rom: an aether key for work (vesscam and the rest of work; until then those sessions use the account directly): as rom, `bin/hs aether-key-save mikaela-work /tmp/mikaela-work.key && sudo install -o work -g work -m 600 /tmp/mikaela-work.key /home/work/.config/aether/key && rm /tmp/mikaela-work.key`; then work's Claude checks a request from `~/vesscam` and re-runs `user-sops.py pull` (since 2026-10-12)
 - [x] (2026-10-13, dotfiles `config/fish/conf.d/claude-aether.fish`) Fallback built: `claude` from a fish shell checks aether's health (2 s, 5 s since 2026-10-18: aether answers in about 1.7 s, the company's ccflare in about 3 s); when aether is down, or the user has no key (work today), the session starts with `--settings` pointing at api.anthropic.com and no key helper, so it uses the account login. Tested: a direct session answered through the account. A session already running when aether dies waits (retry watchdog)
 - [x] (2026-10-12, aether `/api/statusline`, nier 94547c0, dotfiles) Both bars show aether's view: the Claude Code status line (5h and 7d over the accounts in rotation, accounts serving, this session's cost) and the desktop bar icon and popup (cost today, usage left, per account). Through aether Claude Code gets no limits of its own, so they come from aether; the cache-keepalive guard now reads the pool average too
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
@@ -101,7 +111,7 @@ continue on the other account when one is limited.
   and token into the shared nier `settings.json` (uncommitted), which sent every user's new
   session there, rom's included, until about 14:15 (with work's token, which takes precedence
   over the key helper; rom's aether key should not have been sent, see Open). Fix: per-user endpoint (Facts), the token
-  moved to work's `~/.config/aether/key`, `settings.json` back to its committed state (the token
+  moved to work's `~/.config/aether/keepers/key` (used only in the keepers folders), `settings.json` back to its committed state (the token
   never reached git). Tested: a real `claude -p` from work's fish answered through the company
   ccflare.
 
