@@ -7,24 +7,17 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ## Work account
 
-- [ ] WORK SESSION: vesscam-dev (user `associe`) and forgejo (`mirador`, port 2222, user `git`) are
-      work's now and were removed from rom's ssh config on 2026-10-10. In the work account: create
-      `~/.ssh/id_ed25519_vesscam` the same way (random passphrase in work's login keyring:
-      `secret-tool store --label=... nier ssh-key path <file>`, then `ssh-keygen -N`), enable
-      `ssh-agent.socket` for work, add Host blocks for both with that key, have the key registered
-      on both (Forgejo profile > SSH keys; vesscam-dev through its admin), and make work the
-      operator of the vesscam tailnet (`sudo tailscale set --operator=work`) (since 2026-10-10)
-- [ ] rom: reset the work account (forgotten password): in a real terminal,
-      `sudo ~/claude/issues/ciel/pending/work-user-reset.sh` (shows what is there, asks you to type
-      "delete work", recreates work passwordless without sudo, links the shared config, makes work
-      the Tailscale operator); then log in as work with an empty password (since 2026-10-11)
-- [ ] work: in a work terminal, `/opt/dotfiles/bootstrap/user-setup.sh` (no sudo: ii default
-      files, font, quickshell venv, links, user units), then log out and in; anything still missing,
-      ask work's Claude Code to compare with this list (since 2026-10-11)
-- [ ] After the reset: work's Ciel token (ciel topic Open), work's restic backup (rclone remote and
-      `~/.config/backup/restic.env` like rom's, see backups topic), the Tailscale node is still named
-      `camille` on the vesscam tailnet (`tailscale set --hostname=mikaela` once the tailnet admin
-      agrees), and the mikaela page's user table (work: no sudo, no password) (since 2026-10-11)
+- [ ] work, still missing (checked 2026-10-18): the restic backup (backups topic Open), the Ciel
+      token and Ciel account (ciel topic Open), and work's secret files in
+      `sops/mikaela-work.yaml` (`bootstrap/user-sops.py pull`, once the backup files exist) (since 2026-10-11)
+- [x] (2026-10-18, checked from work) ssh done another way: keys `_github` and `_mirador` load at
+      login; GitHub, `mirador-dev` and the Forgejo (`mirador` port 2222) answer; work's tailnet runs
+      as its own user unit, so no `--operator` change was needed
+- [x] (2026-10-18) Reset dropped: work kept its account and joined `wheel` on 2026-10-11 (mikaela page)
+- [x] (2026-10-18, checked) `user-setup.sh` done for work: default files, font, venv, colors,
+      links, user units all in place
+- [x] (2026-10-18, checked) work's node is named `mikaela` on the vesscam tailnet; the mikaela
+      page already says both users can sudo
 - [x] (2026-10-13, dotfiles 60e101f) The media vault passphrase prompt at rom's login is removed
 - [x] (2026-10-14, rom) The laptop's Camille leftovers are deleted
 - [x] (2026-10-13) Dockge retired (ciel topic Log)
@@ -110,10 +103,10 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [aether](topics/aether.md)
 
 - [ ] rom: Courier rules on the dashboard page Courier, Rules, Edit (the agent's direct database write was refused by the auto-mode classifier): `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; until then every message asks the recipient (kuro shows a popup, mikaela has none and waits for the dashboard); then a test kuro to mikaela (since 2026-10-17)
+- [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to the company's ccflare (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
 - [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
 - [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
-- [ ] work: an aether key at `~/.config/aether/key` (rom runs `bin/hs aether-key-save mikaela-work /tmp/k`, work moves it in); until then work's sessions started from fish use the account directly (2026-10-13 fallback), so nothing breaks (since 2026-10-12)
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
