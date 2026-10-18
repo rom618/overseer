@@ -141,6 +141,8 @@ holds everything of that job, so removing it leaves nothing behind; its facts li
 - `.firefox`: own Firefox profile, launcher `firefox-<job>` ("Firefox (<job>)").
 - `.config/systemd`: the job's user units, linked into `~/.config/systemd/user/`.
 - fish history `job_<job>_history` inside a job (`conf.d/job-history.fish`), excluded from the backup.
+- fish functions of a job: `<job>/.config/fish/*.fish`, loaded in every interactive fish by
+  `conf.d/job-fish.fish` (work's: a short function per job that goes to its issue folders).
 - Never backed up.
 - `job list|new|remove` (dotfiles `bootstrap/job.py`, `~/.local/bin/job`). `remove` (real
   terminal, asks for the name) also clears the job's keyring entries, agent keys, units, links,
