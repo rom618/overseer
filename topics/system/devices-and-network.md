@@ -51,7 +51,7 @@ Both computers are laptops without a working battery on the server side (dead ba
 | Tailnet | Daemon | Who | Purpose | Source |
 |---|---|---|---|---|
 | own (hosted Tailscale) | system `tailscaled`, operator rom | rom, machine-wide | reach roberta and the apps away from home | `machines/mikaela.md:109` |
-| vesscam (someone else's Headscale) | work's user unit `tailscaled-work.service`, userspace, SOCKS5 localhost:1055 | work only | a work Forgejo and dev box | `machines/mikaela.md:109`, `topics/network.md:56` |
+| a work job's tailnet (someone else's coordination server) | a user unit from the job folder, userspace, own SOCKS5 port | work only | the job's servers | `machines/mikaela.md` (Job folders), the job's docs |
 
 Rule: never run both daemons on the same node state (`machines/mikaela.md:109`).
 

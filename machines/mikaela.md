@@ -110,15 +110,40 @@ password (`~/.config/restic/password`) is never readable by agents. Details:
 | Ciel agent | `ciel-agent.service` (root): failed services and timer runs of the system, rom and work to https://ciel.wuling.dev, spooled while away; installed and updated by `setup-machine.sh` once `/etc/ciel/token` exists; log lines mentioning the private media paths are removed before sending; it updates itself from the hub | shared |
 | Ciel notifier | user unit `ciel-notify.service` (dotfiles, linked by link.sh): desktop notifications that open Ciel in Firefox, `$XDG_RUNTIME_DIR/ciel/state.json` for the bar's Ciel indicator | per user |
 | Ciel docs feed | post-commit hook in every watched repo (commits into the Ciel journal through the local agent); rom's user timer `ciel-docs-sync.timer` (journal and inventory into overseer and 9s, daily 00:30); rom's read-only Ciel API token in `~/.config/ciel/token`, also read by `nier context` for the live brief | rom |
-| Aether client | every agent session goes through https://aether.wuling.dev (nier `settings.json` `env` + `apiKeyHelper` `tools/aether-key.sh`, since 2026-10-12); `claude` started from fish falls back to the account login when aether is down or the user has no `~/.config/aether/key` (`conf.d/claude-aether.fish`, 2026-10-13). Per-folder proxy profiles in `~/.config/aether/` (2026-10-18, aether topic Facts): rom uses aether everywhere; work uses the company's ccflare in `~/keepers` and `~/claude/issues/keepers-*`, aether elsewhere (vesscam in `~/vesscam`) | per user |
+| Aether client | every agent session goes through https://aether.wuling.dev (nier `settings.json` `env` + `apiKeyHelper` `tools/aether-key.sh`, since 2026-10-12); `claude` started from fish falls back to the account login when aether is down or the user has no `~/.config/aether/key` (`conf.d/claude-aether.fish`, 2026-10-13). Per user the default key is `~/.config/aether/key` (optional `url`); inside a job folder the job's `.aether/{key,url}` (Job folders below, aether topic Facts) | per user, per job |
 | Surfshark | autostart for rom; Docker bridges need MTU 1280 while it is up | rom |
-| ssh | one key per purpose (`id_ed25519_github`, `_roberta`, `_epita_forge`), random passphrases in the login keyring, loaded at login into `ssh-agent.socket` by `custom/scripts/ssh-keys-load.sh`; `~/.ssh/config` aliases `github.com`, `roberta`, `git.forge.epita.fr`. New keys: `/opt/nier/tools/ssh-key-new.sh NAME [ALIAS HOSTNAME [USER]]` (needs a `login` keyring collection; work had none on 2026-10-11, autologin creates none) | rom; work: `_github`, `_mirador` (tailnet 100.64.0.1) |
-| Tailscale | System `tailscaled`: rom's own tailnet since 2026-10-12 (node `mikaela`, 100.67.32.103, operator rom, key expiry off, no tailnet DNS, incoming blocked; the home route 192.168.1.0/24 through roberta is refused on the home Wi-Fi and accepted elsewhere by the NetworkManager hook `50-tailnet-home-route`, dotfiles `system/README.md`); direct connection to roberta with Surfshark on (2026-10-12); the old vesscam node state was removed 2026-10-12. work's vesscam tailnet, history: `tailscaled`; tailnet `hs.vesscam.com` (someone else's Headscale, for a Forgejo), connected, node `camille` (old hostname) under tailnet user `romain`, `OperatorUser` work; `mirador` (100.64.0.1) answers `tailscale ping` (2026-10-11); `~/.ssh/config` aliases for work: `mirador` (port 22 closed to us) and `mirador-dev` (100.64.0.5, user `admin`, key `_mirador`; work copy of the repo in `~/associe/inmarsee-vesscam` there, origin `forgejo:mirador/inmarsee-vesscam.git`, 2026-10-11). Since 2026-10-11 on work's user unit `tailscaled-work.service` (real file in work's `~/.config/systemd/user`, userspace networking, state `~/.local/share/tailscale-work`, SOCKS5 localhost:1055, CLI wrapper `~/.local/bin/tsw`, Firefox via PAC `~/.config/tailscale-work/proxy.pac` (tailnet names and 100.64.0.0/10 to the SOCKS5, rest direct), ssh through `ProxyCommand tsw nc %h %p`). Never run both on the same node state | rom (system daemon); work (vesscam) |
+| ssh | one key per purpose (`id_ed25519_github`, `_roberta`, `_epita_forge`), random passphrases in the login keyring, loaded at login into `ssh-agent.socket` by `custom/scripts/ssh-keys-load.sh`; `~/.ssh/config` aliases `github.com`, `roberta`, `git.forge.epita.fr`. New keys: `/opt/nier/tools/ssh-key-new.sh NAME [ALIAS HOSTNAME [USER]]` (needs a `login` keyring collection; work had none on 2026-10-11, autologin creates none). A job's keys, Host blocks and known_hosts live in that job's `.ssh` (Job folders below) | rom; work: `_github`, job keys in the job folders |
+| Tailscale | System `tailscaled`: rom's own tailnet since 2026-10-12 (node `mikaela`, 100.67.32.103, operator rom, key expiry off, no tailnet DNS, incoming blocked; the home route 192.168.1.0/24 through roberta is refused on the home Wi-Fi and accepted elsewhere by the NetworkManager hook `50-tailnet-home-route`, dotfiles `system/README.md`); direct connection to roberta with Surfshark on (2026-10-12); an old work tailnet node state was removed from it 2026-10-12. A job's tailnet never uses the system daemon: it runs as a userspace user unit from the job folder (state, PAC file and CLI wrapper in the job, own SOCKS5 port, ssh through `ProxyCommand <wrapper> nc %h %p`; details in that job's docs). Never run two daemons on the same node state | rom (system daemon); work (job units) |
+
+## Job folders (work)
+
+work holds separate jobs (user, 2026-10-18). A job is a folder `~/<job>/` with a `.job` file and
+holds everything of that job, so removing it leaves nothing behind; its facts live in
+`<job>/docs/`, never in overseer (rules: nier `AGENTS.md` section 7).
+
+- `.claude`: Claude Code data. The fish `claude` function (dotfiles `conf.d/claude-aether.fish`)
+  finds the job of the current folder, sets `CLAUDE_CONFIG_DIR=<job>/.claude`, takes the proxy
+  from `<job>/.aether/{key,url}` (no `url`: aether) and exports `AETHER_KEY_FILE` for nier's key
+  helper `tools/aether-key.sh`. Issue folders `<job>/claude/issues`, scratch `<job>/claude/scratch`.
+- `docs/`: the job's pages.
+- `.ssh`: keys, Host blocks, known_hosts; pulled in by `Include ~/*/.ssh/config` at the top of
+  `~/.ssh/config`, keys loaded at login by `ssh-keys-load.sh`; new key:
+  `SSH_KEY_DIR=<job>/.ssh /opt/nier/tools/ssh-key-new.sh NAME ...`.
+- `.gitconfig`: the job's git identity, included for repos under the job (`includeIf` in `~/.gitconfig`).
+- `.firefox`: own Firefox profile, launcher `firefox-<job>` ("Firefox (<job>)").
+- `.config/systemd`: the job's user units, linked into `~/.config/systemd/user/`.
+- fish history `job_<job>_history` inside a job (`conf.d/job-history.fish`), excluded from the backup.
+- Never backed up.
+- `job list|new|remove` (dotfiles `bootstrap/job.py`, `~/.local/bin/job`). `remove` (real
+  terminal, asks for the name) also clears the job's keyring entries, agent keys, units, links,
+  the git include, fish history, Firefox entries, recent files, thumbnails, clipboard history and
+  Claude traces in `~/.claude` and `/tmp`; traces outside the machine are listed, not deleted.
 
 ## User differences
 
 | Area | rom | work | Where |
 |---|---|---|---|
+| Job folders | none | one per job (Job folders above) | dotfiles `bootstrap/job.py` |
 | Autostart | session restore + Feishin (music player for Mephisto; replaced Spotify 2026-10-14; the window rule sends a new Feishin window to the special workspace), Surfshark, Firefox (`session-restore.py --ensure`) | session restore only | `config/hypr/custom/execs.lua` |
 | Idle suspend | never, unless on battery below 20% (`custom/scripts/idle-suspend.sh`); lid ignored machine-wide (`system/etc/systemd/logind.conf.d/lid.conf`); lid close with Keep awake on plays a warning | idle suspends as before; lid ignored | `config/hypr/hypridle.conf` |
 | Session audio | normal | boots muted | `config/hypr/custom/execs.lua` |

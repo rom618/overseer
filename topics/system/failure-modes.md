@@ -52,7 +52,7 @@ Camille unlock.
 | Away: no app, no aether (fish fallback to the account works), no Ciel; agent spools | names point at a LAN address | home-server README:164-169 |
 | Ciel `network` check fails when a node needs a login | | Ciel README:124-128 |
 | Existing direct connections often survive a short coordination outage | Tailscale design | not tested here |
-| work's vesscam tailnet unaffected | separate daemon | `machines/mikaela.md:109` |
+| work's job tailnets unaffected | separate daemons | `machines/mikaela.md:109` |
 
 ## Ciel down (hub container), roberta up
 

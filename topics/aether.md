@@ -49,32 +49,25 @@ continue on the other account when one is limited.
   anything else waits for a yes on the receiving machine or on the dashboard page Courier.
   kuro is receive-only (rom, 2026-10-17): anything may be sent to it, nothing reads from or runs
   on it. How it works and what was left out: aether `docs/courier.md`.
-- Endpoint per user and per folder (2026-10-18): the shared nier `settings.json` sets aether's URL
-  and the key helper (`tools/aether-key.sh`). Per user, under `~/.config/aether/` (mode 600, all
-  of it in `user-sops.py`): `key` (and optionally `url`) is the default; a profile is a folder
-  `<name>/` with its own `key` and `url`; `folders` maps work folders to a profile, one line
-  `NAME PATTERN...` (`~` and globs allowed, a pattern covers its subfolders). The fish `claude`
-  function picks the profile from the current folder, starts the session with `--settings`
-  carrying that URL, exports `AETHER_PROFILE` so the key helper reads that profile's key, and
-  checks that host's `/health`; no key means the account directly, never another profile.
-  Never put a URL or token for one user into the shared `settings.json`: it applies to every
-  user. Only fish launches see this (every desktop launch and session restore go through fish);
-  a `claude` started from another shell uses aether's URL and the default key.
-- work holds two jobs kept apart (user, 2026-10-18): The Keepers in `~/keepers` and issue
-  folders `~/claude/issues/keepers-*` (profile `keepers`: the company's ccflare,
-  `https://ccflare.thekeepers.dev/v1/claude-code`, work's own token); vesscam and everything
-  else on aether (default key `mikaela-work`), so vesscam work never passes through the company
-  proxy.
-  The company's ccflare accepts the token only as `Authorization: Bearer`, which the key helper
-  sends (with `x-api-key`).
+- Endpoint per user and per job (2026-10-18): the shared nier `settings.json` sets aether's URL
+  and the key helper (`tools/aether-key.sh`; its key goes out as `x-api-key` and
+  `Authorization: Bearer`). Per user the default is `~/.config/aether/key` (mode 600, in
+  `user-sops.py`), with an optional `url` beside it for another proxy. Inside a job folder the
+  job's `<job>/.aether/key` and optional `url` replace it (machines/mikaela.md, Job folders). The
+  fish `claude` function picks them from the current folder, starts the session with
+  `--settings` carrying the URL, exports `AETHER_KEY_FILE` for the key helper and checks that
+  host's `/health`; no key means the account directly, never another key. Never put a URL or
+  token for one user into the shared `settings.json`: it applies to every user. Only fish
+  launches see this (every desktop launch and session restore go through fish); a `claude`
+  started from another shell uses aether's URL and the default key.
 
 ## Open
 
 - [x] (2026-10-17, aether 62ebe2d0) Courier live: deployed (with receive-only machines), installed for rom on mikaela and on kuro (`--receive-only`, over ssh before the cut), test mikaela to kuro shown on kuro's screen, no conversation opened
 - [ ] rom: Courier rules on the dashboard page Courier, Rules, Edit (the agent's direct database write was refused by the auto-mode classifier): `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; until then every message asks the recipient (kuro shows a popup, mikaela has none and waits for the dashboard); then a test kuro to mikaela (since 2026-10-17)
 - [x] (2026-10-17, rom: anything may be sent to kuro, nothing reads from or runs on it; aether 62ebe2d0) Courier guard for kuro: kuro is receive-only (`inbound: info` in its `~/.claude/courier/config.json`, set on kuro so no rule elsewhere undoes it): mail is shown, never opens a conversation, reaches a session as information only, and kuro publishes no session titles, folders or descriptions
-- [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to the company's ccflare (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
-- [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
+- [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to a company proxy (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
+- [ ] Courier for work on mikaela: `bin/courier-install` as work once work has a default aether key (`~/.config/aether/key`; today work's only aether key is a job's) (since 2026-10-15)
 - [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
 - [x] (2026-10-17, aether 62ebe2d0) `.env.example` renamed `example.env` (no references to fix)
 - [x] (2026-10-13, aether 0a076ff9, home-server 4fbbcd0) Key policies: allowed model families and 5h/7d pause thresholds per client key (`bin/hs aether-key-policy`), the base for the runners
@@ -93,9 +86,9 @@ continue on the other account when one is limited.
 - [x] (2026-10-12, rom) Admin key made, both accounts linked from the dashboard (health: 2 accounts, 2 usable)
 - [x] (2026-10-12, home-server 4ed3064) First device key `mikaela-rom`, saved by `bin/hs aether-key-save` to rom's `~/.config/aether/key` (never displayed); one real agent request answered through aether and counted on that key. The agent's address is `https://aether.wuling.dev/v1/claude-code` (the bare host answers "model does not exist")
 - [x] (2026-10-12, nier 7ebbaf1) rom accepted losing the account's connectors; on rom's request every session goes through aether through the shared nier `settings.json` (`ANTHROPIC_BASE_URL` + `apiKeyHelper` reading `~/.config/aether/key`); the fish snippet tried first was removed (dotfiles df7a3e9). Tested with one real request. No fallback when aether is down
-- [x] (2026-10-18, dotfiles, nier) Per-folder profiles (Facts): work's keepers folders on the company's ccflare, tested with a real request from `~/keepers`
-- [ ] rom: an aether key for work (vesscam and the rest of work; until then those sessions use the account directly): as rom, `bin/hs aether-key-save mikaela-work /tmp/mikaela-work.key && sudo install -o work -g work -m 600 /tmp/mikaela-work.key /home/work/.config/aether/key && rm /tmp/mikaela-work.key`; then work's Claude checks a request from `~/vesscam` and re-runs `user-sops.py pull` (since 2026-10-12)
-- [x] (2026-10-13, dotfiles `config/fish/conf.d/claude-aether.fish`) Fallback built: `claude` from a fish shell checks aether's health (2 s, 5 s since 2026-10-18: aether answers in about 1.7 s, the company's ccflare in about 3 s); when aether is down, or the user has no key (work today), the session starts with `--settings` pointing at api.anthropic.com and no key helper, so it uses the account login. Tested: a direct session answered through the account. A session already running when aether dies waits (retry watchdog)
+- [x] (2026-10-18, dotfiles 7d8d82f, nier) Per-user and per-job endpoints (Facts), tested with a real request from a job folder
+- [x] (2026-10-18) An aether key for work exists, kept in the job folder that uses it (that job's docs); work has no default key, so work sessions outside a job use the account directly
+- [x] (2026-10-13, dotfiles `config/fish/conf.d/claude-aether.fish`) Fallback built: `claude` from a fish shell checks aether's health (2 s, 5 s since 2026-10-18: aether answers in about 1.7 s, other proxies can take about 3 s); when aether is down, or the user has no key (work today), the session starts with `--settings` pointing at api.anthropic.com and no key helper, so it uses the account login. Tested: a direct session answered through the account. A session already running when aether dies waits (retry watchdog)
 - [x] (2026-10-12, aether `/api/statusline`, nier 94547c0, dotfiles) Both bars show aether's view: the Claude Code status line (5h and 7d over the accounts in rotation, accounts serving, this session's cost) and the desktop bar icon and popup (cost today, usage left, per account). Through aether Claude Code gets no limits of its own, so they come from aether; the cache-keepalive guard now reads the pool average too
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
 - [x] (2026-10-12, rom) Routing stays `session`; a new session starts on the account whose weekly window resets first (rom 2026-10-13, aether 8647d5bc), an active session is not moved (its prompt cache)
@@ -106,14 +99,12 @@ continue on the other account when one is limited.
 
 ## Log
 
-- 2026-10-18 (work session): work's `claude` never used a proxy: work had no aether key, so the
-  fish fallback sent it to the account. A hand edit at 13:51 then put work's company ccflare URL
-  and token into the shared nier `settings.json` (uncommitted), which sent every user's new
-  session there, rom's included, until about 14:15 (with work's token, which takes precedence
-  over the key helper; rom's aether key should not have been sent, see Open). Fix: per-user endpoint (Facts), the token
-  moved to work's `~/.config/aether/keepers/key` (used only in the keepers folders), `settings.json` back to its committed state (the token
-  never reached git). Tested: a real `claude -p` from work's fish answered through the company
-  ccflare.
+- 2026-10-18 (work session): a hand edit at 13:51 put a company proxy's URL and work's token for
+  it into the shared nier `settings.json` (uncommitted), which sent every user's new session
+  there, rom's included, until about 14:15 (with work's token, which takes precedence over the
+  key helper; rom's aether key should not have been sent, see Open). Fix: per-user, then per-job
+  endpoints (Facts), the token moved into the job folder that uses it, `settings.json` back to its
+  committed state (the token never reached git). Details in that job's docs.
 
 - 2026-10-17: Courier live (aether 62ebe2d0, receive-only machines); mikaela and kuro
   installed, kuro receive-only; first message mikaela to kuro shown there. Rules left to rom.

@@ -42,8 +42,9 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
   all, work sees work and shared only.
 - Network is in scope (VPNs, tailnets, Wi-Fi profiles, DNS, firewall, Flybox, Pi-hole later); read
   first, every change guarded by automatic rollback. LAN only until Tailscale; hosted Tailscale
-  first (Headscale needs a VPS because of CGNAT). Tailscale on Linux is machine-wide, so moving
-  the vesscam tailnet to work means owner `work` plus `tailscale set --operator=work`.
+  first (Headscale needs a VPS because of CGNAT). Tailscale on Linux is machine-wide, so giving
+  work a tailnet on the system daemon means owner `work` plus `tailscale set --operator=work`
+  (work's job tailnets run as userspace user units instead, machines/mikaela.md).
 - A stack's owner is its `dev.ciel.owner` label, else the Ciel app with the same name, else the
   device's owner. A personal project's containers on a shared device need a rom-owned app (done for
   `location-browser` on 2026-10-11), or they count as shared and reach overseer's inventory.

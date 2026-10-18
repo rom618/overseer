@@ -60,9 +60,9 @@ that misleads; LOW = tidiness. Paths: `ov/` = `/opt/overseer/`, `hs/` =
 17. MEDIUM: `hs/README.md:190-191` says aether backup "decision open"; decided 2026-10-12 (no).
 18. MEDIUM: `ov/topics/home-server.md`: `:25-26` Camille 8081 open (closed per `:56`); `:43-44`
     terraria-backup hourly (disabled); `:46` lists Dockge.
-19. MEDIUM: `ov/topics/network.md:41-44` (avahi camille.local), `:45-48` (vesscam on the system
-    daemon), `:51` (laptop Caddy) superseded.
-20. MEDIUM: `ov/machines/mikaela.md:109` Tailscale row opens with the old vesscam state.
+19. MEDIUM: `ov/topics/network.md:41-44` (avahi camille.local), `:45-48` (a work tailnet on the
+    system daemon), `:51` (laptop Caddy) superseded.
+20. MEDIUM: `ov/machines/mikaela.md:109` Tailscale row opens with the old work tailnet state.
 21. MEDIUM: `mikaela.md:7` work is in wheel, `ov/TODO.md:17-20, 27` plans a reset "without sudo":
     target undecided.
 22. LOW: `hs/README.md:3` "Game servers"; `:132-133` stale Terraria power line; `:141` and

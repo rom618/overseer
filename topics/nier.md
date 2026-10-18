@@ -114,7 +114,7 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 ## Log
 
 - 2026-09-24: Claude config split out of dotfiles into its own repo (history kept by subtree split); dotfiles installer offers it. 587cb44.
-- 2026-09-26: overhaul from a review of the replicant repo: CLAUDE.md cut from 83 KB to 21 KB (log moved to history.md), commit attribution off, guard/session-start/keepalive/statusline hooks, skills hardened. 1b1889b.
+- 2026-09-26: overhaul from a review of a company repo: CLAUDE.md cut from 83 KB to 21 KB (log moved to history.md), commit attribution off, guard/session-start/keepalive/statusline hooks, skills hardened. 1b1889b.
 - 2026-09-26: keepalive switched to the upstream C port plus local patches (8c514ca); guards for subscription limits and "never while working" added (a4a5866); 100/100 upstream tests, tests-local.sh passes.
 - 2026-09-27: keepalive stale-busy fix: status re-read at the deadline. 51ba8ba.
 - 2026-10-08: sessions in `~/claude/issues/<name>` titled after the folder. 479308b.

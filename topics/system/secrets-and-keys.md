@@ -19,7 +19,7 @@ agent's behalf (`aether-key.sh`, `nier context`, `ciel-docs-sync.sh`).
 | Claude account login | `~/.claude/.credentials.json` | fallback when aether is down | yes (`~/.claude`) | log in again |
 | Ciel agent token (machine) | `/etc/ciel/token` (root) | `ciel-agent.service` | no | `ciel-hub device token mikaela` |
 | Wi-Fi secrets (machine) | NetworkManager, root | Wi-Fi | `system-secrets.sh` age file, stale | re-enter |
-| work's vesscam Tailscale state | `~work/.local/share/tailscale-work` | work's tailnet | work has no backup | rejoin |
+| work's job tailnet state | inside the job folder (that job's docs) | the job's tailnet | never (job folders are not backed up) | rejoin |
 
 Sources: `machines/mikaela.md:83-92, 103-109`; `backup/includes.txt`; `topics/backups.md:32-33,
 69`; `topics/ciel.md:64`; dotfiles `bootstrap/setup-machine.sh:94-100`.

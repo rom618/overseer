@@ -8,17 +8,18 @@ on their page. rom's personal list is `9s/TODO.md`.
 ## Work account
 
 - [ ] work, still missing (checked 2026-10-18): the restic backup and work's secret files in
-      `sops/mikaela-work.yaml`, both done by one script (backups topic Open). No Ciel for work
-      (user, 2026-10-18) (since 2026-10-11)
+      `sops/mikaela-work.yaml`, both done by one script run in a real terminal, then the sops
+      file committed (backups topic Open: run it only after a job folder's pending ssh move
+      script, see that job's docs). No Ciel for work (user, 2026-10-18) (since 2026-10-11)
 - [ ] rom: in Ciel, check that mikaela's `disk` check covers `/home` (both users share it, no
       quota; user 2026-10-18: an alert is enough), not only `/` (since 2026-10-18)
-- [x] (2026-10-18, checked from work) ssh done another way: keys `_github` and `_mirador` load at
-      login; GitHub, `mirador-dev` and the Forgejo (`mirador` port 2222) answer; work's tailnet runs
-      as its own user unit, so no `--operator` change was needed
+- [x] (2026-10-18, checked from work) ssh done another way: work's keys load at login; GitHub and
+      the job hosts answer (job docs); work's job tailnet runs as its own user unit, so no
+      `--operator` change was needed
 - [x] (2026-10-18) Reset dropped: work kept its account and joined `wheel` on 2026-10-11 (mikaela page)
 - [x] (2026-10-18, checked) `user-setup.sh` done for work: default files, font, venv, colors,
       links, user units all in place
-- [x] (2026-10-18, checked) work's node is named `mikaela` on the vesscam tailnet; the mikaela
+- [x] (2026-10-18, checked) work's node is named `mikaela` on its job tailnet; the mikaela
       page already says both users can sudo
 - [x] (2026-10-13, dotfiles 60e101f) The media vault passphrase prompt at rom's login is removed
 - [x] (2026-10-14, rom) The laptop's Camille leftovers are deleted
@@ -105,11 +106,10 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [aether](topics/aether.md)
 
 - [ ] rom: Courier rules on the dashboard page Courier, Rules, Edit (the agent's direct database write was refused by the auto-mode classifier): `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; until then every message asks the recipient (kuro shows a popup, mikaela has none and waits for the dashboard); then a test kuro to mikaela (since 2026-10-17)
-- [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to the company's ccflare (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
-- [ ] Courier for work on mikaela: `bin/courier-install` as work once work has an aether key (item below) (since 2026-10-15)
+- [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to a company proxy (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
+- [ ] Courier for work on mikaela: `bin/courier-install` as work once work has a default aether key (`~/.config/aether/key`; today work's only aether key is a job's) (since 2026-10-15)
 - [ ] Courier: mikaela has neither zenity nor kdialog, so a held message cannot be asked there (it waits for the dashboard); `zenity` in dotfiles `bootstrap/packages.txt` if rom wants the popup (since 2026-10-15)
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
-- [ ] rom: an aether key for work (vesscam and the rest of work; until then those sessions use the account directly): as rom, `bin/hs aether-key-save mikaela-work /tmp/mikaela-work.key && sudo install -o work -g work -m 600 /tmp/mikaela-work.key /home/work/.config/aether/key && rm /tmp/mikaela-work.key`; then work's Claude checks a request from `~/vesscam` and re-runs `user-sops.py pull` (since 2026-10-12)
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
@@ -120,7 +120,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [backups](topics/backups.md)
 
-- [ ] work has no backup. Decided 2026-10-18 (user): same Google Drive as rom, repo `gdrive:backups/mikaela-work`. work: in a real terminal, `~/claude/issues/set-up/pending/work-backup-setup.sh` (rclone sign-in with rom's Google account, restic password typed or generated, init, first backup, timers, work's sops age key and `sops/mikaela-work.yaml`); save the password and the age key in Vaultwarden when it shows them; then work's Claude commits the sops file. (Scratch timer enabled, group `dots` active and no `dotfiles-backup` folder: checked 2026-10-18) (since 2026-10-10)
+- [ ] work has no backup. Decided 2026-10-18 (user): same Google Drive as rom, repo `gdrive:backups/mikaela-work`. work: in a real terminal, `~/claude/issues/set-up/pending/work-backup-setup.sh` (fixed 2026-10-18 after a sign-in with an empty token; run it only after a job folder's pending ssh move script, see that job's docs, so no job key lands in the backup) (rclone sign-in with rom's Google account, restic password typed or generated, init, first backup, timers, work's sops age key and `sops/mikaela-work.yaml`); save the password and the age key in Vaultwarden when it shows them; then work's Claude commits the sops file. (Scratch timer enabled, group `dots` active and no `dotfiles-backup` folder: checked 2026-10-18) (since 2026-10-10)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
@@ -184,7 +184,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: on the iPhone only one VPN runs at a time, so Surfshark and the tailnet cannot both be on as on the laptop; options to compare: an exit node on the tailnet that goes out through Surfshark (roberta or a Pi), or Surfshark only on untrusted Wi-Fi. rom 2026-10-15: leaning to the exit node, maybe on the future Pi-hole box (a Tailscale container sharing a Surfshark container's network, as Camille's qBittorrent does with gluetun); away from home the phone's traffic then goes through home's 4G uplink first (since 2026-10-13)
 - [ ] rom's list: research how others give a home server behind CGNAT a public address under its own domain (Minecraft and similar), e.g. the Reddit threads on Cloudflare Tunnel for Minecraft, a cheap VPS relay, playit with a custom domain; rom has a thread in mind (link to ask) (since 2026-10-13)
 - [ ] rom's list: a local network between rom's devices that keeps working with no internet (Flybox down): what still works today, and what it takes (local DNS, the GitHub replica, aether cannot) (since 2026-10-13)
-- [ ] vesscam Headscale tailnet (Forgejo): operator is work, shields-up on (2026-10-11). Moved to tailscaled-work 2026-10-11 (machines/mikaela.md). DNS: the server pushes no upstream resolvers (`tailscale dns status`, 2026-10-11), so 100.100.100.100 answers `*.labo.internal` and forwards the rest to the system resolver; vesscam sees no lookups.; re-check DNS if they add resolvers (since 2026-10-10)
 - [ ] Other devices (the desktop, further servers) join the own tailnet later, registered from Ciel once Ciel and aether are done (rom, 2026-10-12); nothing to do before (since 2026-10-12)
 - [ ] Own tailnet, how the wuling.dev names are reached (decided 2026-10-12): roberta announces the home subnet to the tailnet (subnet router), the names keep their LAN address 192.168.1.53, so devices without Tailscale still work at home. Devices: iPhone, mikaela, the desktop, the servers. To test: Surfshark together with Tailscale on mikaela; on the iPhone only one VPN is active at a time (since 2026-10-12)
 - [ ] Public access: Minecraft stays on playit (Cloudflare Tunnel carries web traffic only; a game client cannot use it without Cloudflare's client on every player's machine). Cloudflare Tunnel is a candidate for public web pages only (map, modpack portal); not decided (since 2026-10-12)
