@@ -7,10 +7,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ## Work account
 
-- [ ] work, still missing (checked 2026-10-18): the restic backup and work's secret files in
-      `sops/mikaela-work.yaml`, both done by one script run in a real terminal, then the sops
-      file committed (backups topic Open: run it only after a job folder's pending ssh move
-      script, see that job's docs). No Ciel for work (user, 2026-10-18) (since 2026-10-11)
+- [x] (2026-10-18, dotfiles d1be649) work's restic backup runs (2 snapshots, both timers on) and
+      work's secret files are in `sops/mikaela-work.yaml` (no job keys in it). No Ciel for work
 - [ ] rom: in Ciel, check that mikaela's `disk` check covers `/home` (both users share it, no
       quota; user 2026-10-18: an alert is enough), not only `/` (since 2026-10-18)
 - [x] (2026-10-18, checked from work) ssh done another way: work's keys load at login; GitHub and
@@ -120,7 +118,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [backups](topics/backups.md)
 
-- [ ] work has no backup. Decided 2026-10-18 (user): same Google Drive as rom, repo `gdrive:backups/mikaela-work`. work: in a real terminal, `~/claude/issues/set-up/pending/work-backup-setup.sh` (fixed 2026-10-18 after a sign-in with an empty token; run it only after a job folder's pending ssh move script, see that job's docs, so no job key lands in the backup) (rclone sign-in with rom's Google account, restic password typed or generated, init, first backup, timers, work's sops age key and `sops/mikaela-work.yaml`); save the password and the age key in Vaultwarden when it shows them; then work's Claude commits the sops file. (Scratch timer enabled, group `dots` active and no `dotfiles-backup` folder: checked 2026-10-18) (since 2026-10-10)
 - [ ] Own Google OAuth client id for rclone (https://rclone.org/drive/#making-your-own-client-id), for rom's and work's `gdrive` remotes: rclone 1.75 says its shared client id is being retired during 2026, and work's first backup (2026-10-18) hit its shared rate limit (403 rateLimitExceeded, restic retried and succeeded). Needs the Google Cloud console in Firefox, then `rclone config update gdrive client_id=... client_secret=...` and a reconnect per user (since 2026-10-18)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
