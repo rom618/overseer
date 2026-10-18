@@ -197,6 +197,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [nier](topics/nier.md)
 
+- [ ] cache-keepalive: 6 of the upstream tests fail on the committed version too (handoff naming: "demande un Write", "nom + date" expects `CLAUDE-HANDOFF-vertige-DATE.md`, gets `work.md`, "prompt de rotation"; `KA_BIN=$PWD/keepalive bash upstream/tests.sh`); likely the local `issues_dir`/`handoff_dir` changes, check whether the tests or the code are out of date (since 2026-10-18)
 - [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
 - [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (since 2026-10-10)
 - [ ] Agent-agnostic, deferred until a second agent is adopted (decision 2026-10-11): `policy/` data generating each agent's deny rules (`adapters/claude`, `adapters/pi`), skills in spec format (no `${CLAUDE_SKILL_DIR}`, no tool names, own Hard rules block), Claude-only skills under `agents/claude/`, the comprehension skill for every agent, the dotfiles installer asking for which agents (since 2026-10-10)

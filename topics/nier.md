@@ -88,6 +88,7 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 
 ## Open
 
+- [ ] cache-keepalive: 6 of the upstream tests fail on the committed version too (handoff naming: "demande un Write", "nom + date" expects `CLAUDE-HANDOFF-vertige-DATE.md`, gets `work.md`, "prompt de rotation"; `KA_BIN=$PWD/keepalive bash upstream/tests.sh`); likely the local `issues_dir`/`handoff_dir` changes, check whether the tests or the code are out of date (since 2026-10-18)
 - [x] (2026-10-14, rom; checked from roberta: "Hi rom618") The runner's GitHub key is on rom's account
 - [ ] work: run `/opt/nier/bootstrap/link.sh` from a work session, then remove `/opt/claude-config`, `/opt/dotfiles/claude` and the old-path rules in settings.json (since 2026-10-10)
 - [ ] 2026-10-24: review cache-keepalive counters (`consumed.log`, "repris la main" lines in per-session logs): keep or drop exit background resume, 80% rotation, `relaunch_cmd` (since 2026-10-10)
