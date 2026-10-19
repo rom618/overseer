@@ -23,7 +23,7 @@ Screen locking, idle steps, suspend and lid behaviour on mikaela. Files: `config
 - hypridle steps: 5 min lock, 10 min dpms off, 15 min `idle-suspend.sh`. hypridle is started by
   `hl.exec_cmd`, not systemd: a config change needs a hypridle restart to take effect.
 - Idle suspend: `idle-suspend.sh` branches on `$USER`. rom never suspends unless on battery
-  below 20%; work suspends as before.
+  below 20%; work stays awake on AC and suspends on battery.
 - Lid: `/etc/systemd/logind.conf.d/lid.conf` (source `system/etc/systemd/logind.conf.d/`, installed
   by `setup-machine.sh`) sets `HandleLidSwitch`, `...ExternalPower` and `...Docked` to ignore, for
   both users. `HandleLidSwitchExternalPower` alone was ignore before 2026-09-20, which is why
@@ -59,6 +59,8 @@ Screen locking, idle steps, suspend and lid behaviour on mikaela. Files: `config
   (14573c7), so the media app stays reachable.
 - 2026-09-20: lid close on battery was the real cause of "not served when closed"; lid now ignored
   on battery (live `reload`, not restart).
+- 2026-10-19: work idle-suspend: stay awake on AC, so its message bus and remote task delivery
+  stay reachable while the user is away (an idle suspend took them offline for an hour).
 - 2026-10-09: Keep awake left the screen on overnight; lid alert script added (dfe5e01, c32af0a);
   hypridle had run with stale 15/20/25 min timings after an interrupted restart, restarted.
 - 2026-10-09: night light follows the sun (ba0bb5e); lid.conf tracked in `system/` (d2c5a59).

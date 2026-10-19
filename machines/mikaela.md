@@ -155,7 +155,7 @@ holds everything of that job, so removing it leaves nothing behind; its facts li
 |---|---|---|---|
 | Job folders | none | one per job (Job folders above) | dotfiles `bootstrap/job.py` |
 | Autostart | session restore + Feishin (music player for Mephisto; replaced Spotify 2026-10-14; the window rule sends a new Feishin window to the special workspace), Surfshark, Firefox (`session-restore.py --ensure`) | session restore only | `config/hypr/custom/execs.lua` |
-| Idle suspend | never, unless on battery below 20% (`custom/scripts/idle-suspend.sh`); lid ignored machine-wide (`system/etc/systemd/logind.conf.d/lid.conf`); lid close with Keep awake on plays a warning | idle suspends as before; lid ignored | `config/hypr/hypridle.conf` |
+| Idle suspend | never, unless on battery below 20% (`custom/scripts/idle-suspend.sh`); lid ignored machine-wide (`system/etc/systemd/logind.conf.d/lid.conf`); lid close with Keep awake on plays a warning | idle suspend on battery only (awake on AC); lid ignored | `config/hypr/hypridle.conf` |
 | Session audio | normal | boots muted | `config/hypr/custom/execs.lua` |
 | Docker | in group `docker` (docker without sudo, root-equivalent) | not in the group | `usermod -aG docker`, set by hand in 2026-09, no script |
 | Clipboard app | Super+Shift+V sends what is copied (`~/.local/bin/clip`); user unit `clipboard-listen` shows arrivals from other devices; key in `~/.config/clipboard/key` | none | `config/hypr/custom/keybinds.lua`; `clients/linux/install.sh` in the clipboard repo (9s: clipboard) |
