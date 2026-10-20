@@ -34,7 +34,12 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 - Retention: 24 hourly, 14 daily, 8 weekly, 12 monthly, 5 yearly; weekly prune and a 5% data check.
   Failures and "Drive under 2 GiB free after a backup" raise a desktop notification.
 - `backup/never.txt`: paths never backed up in any form (restic, git-snapshot patch, bundle or tar).
-  It holds the media library's app data and the media vault, by the user's rule of 2026-10-10.
+  It holds the media library's app data and the media vault, by the user's rule of 2026-10-10, and
+  since 2026-10-20 the Claude transcripts of sessions about them (`~/.claude/projects/*camille*`,
+  `*media-library*`). Other transcripts stay in the backup (user, 2026-10-20).
+- The restic password is protected from agents' reads, not from their use: `restic-backup.sh` and
+  `restic` are on the agent allow list, so an agent session can open the repo (it did on 2026-10-20
+  for the content review) without ever seeing the password.
 - Git repos with a remote are not uploaded: `git-snapshot.sh` records remote, branch, HEAD, plus
   bundle of unpushed commits, patch of uncommitted changes, tar of untracked files. Gitignored files
   of those repos are in no backup (by choice for the media app's `.env` and Caddy data; the mc-modpack
@@ -72,11 +77,11 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
   the Bitwarden copy by paste-back, swaps the password file, removes the old key, runs
   `user-sops.py pull`; rolls back before the swap on any failure). Then Claude commits
   `sops/mikaela-rom.yaml` and this item answers where the password's recovery copy lives (since 2026-10-20)
-- [ ] rom: decide on the 2026-10-20 content review (`~/claude/issues/mikaela/out/restic-contents.md`):
-  `.claude/projects` (Claude conversations, 584 of 902 MiB) includes sessions about the media app
-  (`-home-rom-claude-issues-camille`, `-Playground-media-library`, `-Desktop-perso-projects-camille`),
-  which may quote private names against the never-back-up rule; `.claude/file-history`, `plugins`,
-  `telemetry`, `paste-cache`, `.statusline-cache` look disposable (since 2026-10-20)
+- [x] (2026-10-20, dotfiles d74fa9c) content review: media-app transcripts into `never.txt`;
+  `.claude/file-history`, `plugins`, `telemetry`, `.statusline-cache` excluded; transcripts and
+  `paste-cache` kept. New snapshot 902 to 723 MiB, 0 matching transcripts
+- [ ] rom: decide whether to scrub the media-app transcripts from the snapshots taken before
+  2026-10-20 (`restic rewrite --exclude` then prune, as on 2026-10-10; cannot be undone) (since 2026-10-20)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)

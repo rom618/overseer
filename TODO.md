@@ -125,11 +125,8 @@ on their page. rom's personal list is `9s/TODO.md`.
   the Bitwarden copy by paste-back, swaps the password file, removes the old key, runs
   `user-sops.py pull`; rolls back before the swap on any failure). Then Claude commits
   `sops/mikaela-rom.yaml` and this item answers where the password's recovery copy lives (since 2026-10-20)
-- [ ] rom: decide on the 2026-10-20 content review (`~/claude/issues/mikaela/out/restic-contents.md`):
-  `.claude/projects` (Claude conversations, 584 of 902 MiB) includes sessions about the media app
-  (`-home-rom-claude-issues-camille`, `-Playground-media-library`, `-Desktop-perso-projects-camille`),
-  which may quote private names against the never-back-up rule; `.claude/file-history`, `plugins`,
-  `telemetry`, `paste-cache`, `.statusline-cache` look disposable (since 2026-10-20)
+- [ ] rom: decide whether to scrub the media-app transcripts from the snapshots taken before
+  2026-10-20 (`restic rewrite --exclude` then prune, as on 2026-10-10; cannot be undone) (since 2026-10-20)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
