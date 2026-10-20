@@ -33,6 +33,11 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
   micro-stutter). Flatpak apps need the `org.freedesktop.Platform.GL.nvidia-<driver>` runtime
   matching the NVIDIA driver (`flatpak update` installs it); without it they fail with an X
   BadDrawable error.
+- libvirt (qemu:///system, rom in group `libvirt`): second network `safe-web` (bridge
+  `virbr-safe`, 192.168.150.1/24, NAT, autostart) and nwfilter `safe-web-nolan` (drops private,
+  tailnet, link-local and multicast ranges) for the sandbox VM `safe-web` (2026-10-20); a user
+  service `safe-web-share` listens on 192.168.150.1:8765 only while rom opens it (9s
+  `topics/safe-web-vm.md`).
 - Joined 2026-10-15 with nier `bootstrap/join.sh` (overseer `topics/setup-steps.md`, kuro plan):
   `/opt/nier` and `/opt/overseer`, machine age key `/etc/age/machine.key`, Ciel agent
   (`ciel-agent.service`, device `kuro`, owner rom).
