@@ -126,3 +126,7 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
 - 2026-10-10: notification click-to-focus (975b42b).
 - 2026-10-11: battery given its own bubble next to the tray (center group was crowded).
 - 2026-10-17: screenshot (crop) icon hidden for rom (`showScreenSnip: false`, per-user config, no repo change).
+- 2026-10-20: bar down about 1 min (05:35 CEST) on mikaela: an agent closed a test Quickshell window
+  (Courier's popup, `qs -p`) with `pkill -x qs`, which also matches the bar (`qs -c ii`). Fixed with
+  `/opt/nier/tools/qs-restart.sh`. Keeps it from coming back: a test `qs` is stopped by its own pid,
+  never by name; `pkill -x qs` is only for restarting the bar itself (qs-restart.sh).
