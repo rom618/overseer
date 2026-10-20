@@ -46,10 +46,10 @@ back on their workspaces. Scripts in `/opt/dotfiles/config/hypr/custom/scripts/`
 
 ## Open
 
-- [ ] Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
+- [x] (2026-10-20, rom: "yes done") Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
 - [ ] work: `systemctl --user disable --now hypr-session-save.service` if the old service was ever
       enabled there; the unit is now a timer (since 2026-10-10)
-- [ ] At the next reboot: restored Claude windows are titled with their session name and the bar
+- [x] (2026-10-20, rom: "yes done") At the next reboot: restored Claude windows are titled with their session name and the bar
       shows them done, not spinning (since 2026-10-16)
 
 ## Log

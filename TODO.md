@@ -108,11 +108,9 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [aether](topics/aether.md)
 
 - [ ] rom: Courier rules on the dashboard page Courier, Rules, Edit (the agent's direct database write was refused by the auto-mode classifier): `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; until then every message asks the recipient (kuro shows a popup, mikaela has none and waits for the dashboard); then a test kuro to mikaela (since 2026-10-17)
-- [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to a company proxy (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
 - [ ] rom decides (2026-10-20): with `conversation`, aether balances headroom and no longer spends the account whose week ends first first (rom's 2026-10-13 rule). The week term partly makes up for it (an account near its weekly reset scores higher), and today the two weeks end 17 h apart (Rom Ciel Oct 26 22:00 UTC, Rom Oct 27 15:00 UTC), so little is lost. Options: keep as is; or break near-ties toward the sooner weekly reset; or, in a week's last day, favour the account whose week ends first. Proposed: keep, and re-check on Oct 26 how much of Rom Ciel's week was left at its reset (since 2026-10-20)
 - [ ] Follow-up (2026-10-20): nier's status line (`claude-statusline.py`) and the desktop bar do not yet print a red "blocked until HH:MM" with 0/2; the bars now show 100 % with its reset. Also "Rom" was outside the pool: its refresh token was rejected (`invalid_grant`, last served request 2026-10-18 03:05 UTC). Rom signed it in again through the dashboard's reauth (2026-10-20, rom); the pool shows 2 of 2 live at 16:49 UTC
 - [ ] Courier for work on mikaela: `bin/courier-install` as work once work has a default aether key (`~/.config/aether/key`; today work's only aether key is a job's). Everything from 2026-10-20 applies to work as is (fuzzel popup and Hyprland rule through the shared dotfiles links, the window and the `~/claude/issues/_unfiled` folder from the installer); if the installer prints "NOT trusted", work runs `claude` once in `~/claude/issues/_unfiled` and accepts the prompt (since 2026-10-15)
-- [ ] rom: ask kuro to resend its 2 messages of 2026-10-20 ~05:18 (both failed with "could not open a conversation"); check the popup is centered and a kitty window opens on accept (since 2026-10-20)
 - [ ] Bug (2026-10-13): a plain Messages API call (own system prompt, no Claude Code identity) on the subscription route `/v1/claude-code/...` is refused by Anthropic and aether takes the refusal for a quota limit: it benched "Rom Ciel" until its 5h reset (rate_limited_until 22:50 UTC, status rejected) after one test. Fix: record the refusal's shape and do not bench for it (reproduce only on a spare account, never on the two in use); until then no app may call the subscription route (since 2026-10-13)
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
 - [ ] Name (decided 2026-10-12): visible name to aether done (dashboard, terminal texts, server banner, README, docs: aether ad02a1f6, 2026-10-12); left: internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
@@ -127,13 +125,12 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Own Google OAuth client id for rclone (https://rclone.org/drive/#making-your-own-client-id), for rom's and work's `gdrive` remotes: rclone 1.75 says its shared client id is being retired during 2026, and work's first backup (2026-10-18) hit its shared rate limit (403 rateLimitExceeded, restic retried and succeeded). Needs the Google Cloud console in Firefox, then `rclone config update gdrive client_id=... client_secret=...` and a reconnect per user (since 2026-10-18)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
-- [ ] Ciel shows `restic-backup on mikaela` failing ("last success 2 days ago", seen 2026-10-20 during the TODO cleanup): find the cause, fix, and write the Log entry (since 2026-10-20)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
 
 ### [ciel](topics/ciel.md)
 
 - [ ] Ciel as the device sign-in for rom's apps (proposed 2026-10-13 to the clipboard session, rom wants Ciel devices to get in without a PIN): the hub signs short-lived Ed25519 tokens (user, device, app, exp) for devices linked to it, each app verifies them with Ciel's public key (no call to Ciel per request, no app keys stored in Ciel); ciel-notify writes `~/.config/<app>/token` per user and refreshes it; a browser trades it for a cookie through the app's one-time sign-in link. Hub and notifier code to write. rom 2026-10-14: yes, the iPhone becomes an agentless Ciel device (reverses the 2026-10-10 scope decision for sign-in only). rom 2026-10-14, later: no Pair QR; signing in to Ciel once on a browser makes it a Ciel device, and every app trusts it ("Sign in with Ciel": the app sends the browser to Ciel, Ciel sends it back with a one-time signed pass for that app only, never a cookie shared by all of wuling.dev, never the Ciel login itself). The app then keeps its own sign-in until the device is removed in Ciel (rom: more control in case of breach); apps pull Ciel's list of removed devices. Built 2026-10-14 for browsers (ciel 01caf01, clipboard c253ee2, home-server 58a9599: protocol in Ciel's README, Sign in with Ciel); a one-time code traded server to server replaced the Ed25519 tokens (nothing to verify in the apps, no key to manage). Live 2026-10-14 (deployed on rom's go; checked from outside: the clipboard offers it and trades codes with Ciel). Works on the iPhone Home Screen app (rom, 2026-10-14). Left: laptops through ciel-notify still to build (since 2026-10-13)
-- [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p`. Live 2026-10-15 as the Help page (ciel f701ab2; access through Ciel, actions approved by rom, decision in topics/nier.md Runners). Left: rom's first real conversation; later the Ciel box (since 2026-10-13)
+- [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p`. Live 2026-10-15 as the Help page (ciel f701ab2; access through Ciel, actions approved by rom, decision in topics/nier.md Runners). rom's first real conversation done (rom, 2026-10-20). Left: later the Ciel box (since 2026-10-13)
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
 - [ ] rom's list: per stack, the repos it uses and its backup method (local restic, plus Drive, none), shown in Ciel (since 2026-10-13)
 - [ ] Code it from the SPEC milestones: 7 charts (live 2026-10-13 incl. the laptop; Grafana retired 2026-10-13, home-server 67b2460, rom: charts are improved as we go), 8 network read (Network card live 2026-10-13; left: checks on top), 9 network act, 10 more sources (since 2026-10-10)
@@ -143,6 +140,10 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Watch network gear (Flybox), later; Vaultwarden and the other self-hosted apps are watched (container and http checks per app, ciel dc1ae79, seen ok 2026-10-20) (since 2026-10-10)
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD), later: Ciel and roberta then watch each other, so roberta going down raises an alert (rom, 2026-10-13; system audit finding 1) (since 2026-10-10)
+- [ ] rom: deploy ciel 954a04c (`bin/deploy` in `~/Playground/ciel`; the agent's deploy is refused by
+      the auto mode classifier); the mikaela agent then updates itself from the hub. After it: check
+      `journalctl -u ciel-agent` shows the new build, checks 30 and 31 turn ok on the next runs
+      (restic every 3 h, scratch-clean at 00:00) (since 2026-10-20)
 
 ### [docs](topics/docs.md)
 
@@ -175,7 +176,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
-- [ ] rom (2026-10-15): pull down at the top to reload, in every Home Screen app (no address bar there): Hub done (home-server 9145634, standalone mode only; rom to try it on the iPhone); Ciel live (ciel 1629249); Camille live (camille 5818868, in the deploys of 2026-10-16 and later); clipboard live (clipboard 596ba60, not armed while a draft, a send or the Devices sheet is open); Mephisto live (mephisto 7a326f2). Left: rom tries each on the iPhone (since 2026-10-15)
 - [ ] Apps' own `bin/deploy` scripts open their registry tunnel on a fixed laptop port (5056, 5057): two deploys at once fail (Mephisto, 2026-10-15, worked on retry); take the same lock as `hs push` (`$XDG_RUNTIME_DIR/hs-push.lock`) or pick a free port (since 2026-10-15)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
@@ -224,11 +224,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 
 ### [session-restore](topics/session-restore.md)
 
-- [ ] Verify at a real login (not only the synthetic test) that every window lands right (since 2026-10-10)
 - [ ] work: `systemctl --user disable --now hypr-session-save.service` if the old service was ever
       enabled there; the unit is now a timer (since 2026-10-10)
-- [ ] At the next reboot: restored Claude windows are titled with their session name and the bar
-      shows them done, not spinning (since 2026-10-16)
 
 ### [setup-steps](topics/setup-steps.md)
 

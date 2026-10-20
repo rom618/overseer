@@ -82,7 +82,7 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
   media-app transcripts in d74fa9c was reverted the same day; one snapshot lacks them, nothing lost)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
-- [ ] Ciel shows `restic-backup on mikaela` failing ("last success 2 days ago", seen 2026-10-20 during the TODO cleanup): find the cause, fix, and write the Log entry (since 2026-10-20)
+- [x] (2026-10-20, dotfiles timer fix, Log) Ciel shows `restic-backup on mikaela` failing ("last success 2 days ago", seen 2026-10-20 during the TODO cleanup): find the cause, fix, and write the Log entry (since 2026-10-20)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
 - [x] (2026-10-10, home-server) Server backups: worlds-archive weekly, Vaultwarden daily plus off-site; Prometheus, Grafana, Dockge declared disposable; server secrets copied into the laptop backup
 
@@ -100,3 +100,9 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 - 2026-10-20: Drive 5.6 of 15 GiB used (plus 0.7 GiB Gmail/Photos): `backups/home-server` 5.04 GiB
   (minecraft-latest 3.0, archive 2.0, the rest under 20 MiB each), `backups/camille-rom` 0.41,
   `mc-modpack` 0.15, `backups/mikaela-work` 0.01, `pulls` under 1 MiB. rom's restic password changed.
+- 2026-10-18 13:36 to 2026-10-20 22:57: no backup of rom on mikaela (about 57 h). Cause: the timer
+  used `OnBootSec` + `OnUnitActiveSec`; after the user manager restarted (re-login) the boot delay was
+  already past and the service had never run in that manager, so the timer had no next run. Not the
+  new password: a manual run at 22:57 worked (87 snapshots). Fix: `OnStartupSec=15min` (counted from
+  the user manager's start), dotfiles `backup/restic-backup.timer`, shared by rom and work. Ciel's
+  heartbeat (check 30) alerted after 24 h, as designed.

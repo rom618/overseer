@@ -59,7 +59,7 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 ## Open
 
 - [ ] Ciel as the device sign-in for rom's apps (proposed 2026-10-13 to the clipboard session, rom wants Ciel devices to get in without a PIN): the hub signs short-lived Ed25519 tokens (user, device, app, exp) for devices linked to it, each app verifies them with Ciel's public key (no call to Ciel per request, no app keys stored in Ciel); ciel-notify writes `~/.config/<app>/token` per user and refreshes it; a browser trades it for a cookie through the app's one-time sign-in link. Hub and notifier code to write. rom 2026-10-14: yes, the iPhone becomes an agentless Ciel device (reverses the 2026-10-10 scope decision for sign-in only). rom 2026-10-14, later: no Pair QR; signing in to Ciel once on a browser makes it a Ciel device, and every app trusts it ("Sign in with Ciel": the app sends the browser to Ciel, Ciel sends it back with a one-time signed pass for that app only, never a cookie shared by all of wuling.dev, never the Ciel login itself). The app then keeps its own sign-in until the device is removed in Ciel (rom: more control in case of breach); apps pull Ciel's list of removed devices. Built 2026-10-14 for browsers (ciel 01caf01, clipboard c253ee2, home-server 58a9599: protocol in Ciel's README, Sign in with Ciel); a one-time code traded server to server replaced the Ed25519 tokens (nothing to verify in the apps, no key to manage). Live 2026-10-14 (deployed on rom's go; checked from outside: the clipboard offers it and trades codes with Ciel). Works on the iPhone Home Screen app (rom, 2026-10-14). Left: laptops through ciel-notify still to build (since 2026-10-13)
-- [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p`. Live 2026-10-15 as the Help page (ciel f701ab2; access through Ciel, actions approved by rom, decision in topics/nier.md Runners). Left: rom's first real conversation; later the Ciel box (since 2026-10-13)
+- [ ] rom's list: reach an agent from Ciel, from outside: a page in Ciel to talk to a Claude session that has every access (on Ciel's own box once it exists), to fix problems from the phone; same idea as nier's always-on `claude -p`. Live 2026-10-15 as the Help page (ciel f701ab2; access through Ciel, actions approved by rom, decision in topics/nier.md Runners). rom's first real conversation done (rom, 2026-10-20). Left: later the Ciel box (since 2026-10-13)
 - [x] (2026-10-13, ciel dc1ae79) Health review done: a check per stack container (23, made and pruned by the hub), the public Minecraft path checked with a real status request through playit, OS housekeeping folded on the Health page; no duplicates left. Still not watched: Prometheus itself
 - [ ] rom's list: longer timelines (charts beyond 30 days, journal history) (since 2026-10-13)
 - [x] (2026-10-15, ciel a1247d5) roberta showed offline after each Ciel deploy: the hub restart drops every agent link for up to a minute and the first device check opened an incident (9 incidents of 60 s, each right after a Ciel deploy, none from home-server pushes). A link down under 3 min is now "reconnecting"; real outages alert after 3 min. Checked: no incident at the deploy that shipped it. 2026-10-17 (ciel edc48fe, rom saw it again): the agent's retry wait never reset after a link (sessions always end with an error), so it sat at 60 s and roberta stayed away 2 to 4 min per hub restart, past the grace; it now resets once a link was up. Checked: after a hub restart all three agents were back in 1 s. Other stacks' deploys (camille today) never dropped the link (no gap in roberta's metrics)
@@ -91,8 +91,19 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [ ] Watch network gear (Flybox), later; Vaultwarden and the other self-hosted apps are watched (container and http checks per app, ciel dc1ae79, seen ok 2026-10-20) (since 2026-10-10)
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD), later: Ciel and roberta then watch each other, so roberta going down raises an alert (rom, 2026-10-13; system audit finding 1) (since 2026-10-10)
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
+- [ ] rom: deploy ciel 954a04c (`bin/deploy` in `~/Playground/ciel`; the agent's deploy is refused by
+      the auto mode classifier); the mikaela agent then updates itself from the hub. After it: check
+      `journalctl -u ciel-agent` shows the new build, checks 30 and 31 turn ok on the next runs
+      (restic every 3 h, scratch-clean at 00:00) (since 2026-10-20)
 
 ## Log
+
+- 2026-10-20: checks 30 (restic-backup) and 31 (claude-scratch-clean) on mikaela failed with "last
+  success 2 days ago". Two causes. restic: its timer really stopped (backups topic Log, dotfiles
+  b3aa5e5). scratch-clean: it ran at 05:02 but the agent dropped the success: rom's user manager
+  started after the agent, the agent knows a user's timers only from a refresh every 10 min, and a
+  Persistent catch-up at login comes before that refresh. Fix ciel 954a04c: a success from an
+  unknown unit re-reads that scope's timers first (at most once a minute). Deploy pending (Open).
 
 - 2026-10-17: kuro marked away-ok (`ciel-hub device away kuro on`), like mikaela: rom says kuro
   being offline is normal, so its device and network checks go neutral instead of failing.
