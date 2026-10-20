@@ -6,7 +6,7 @@ owner: shared
 host: roberta
 repos: ~/Playground/aether (rom618/aether)
 folder: ~/claude/issues/ciel
-verified: 2026-10-17
+verified: 2026-10-20
 source: review of the public ccflare and of the company fork, 2026-10-12 (rom's ~/claude/issues/ciel/out/repo-review-2026-10-12.md)
 ---
 
@@ -26,8 +26,12 @@ continue on the other account when one is limited.
   browser login, once per account. Per machine: a client key (`--add-client-key <machine>`),
   the server started with `CCFLARE_REQUIRE_AUTH=true`, and `ANTHROPIC_BASE_URL` plus
   `ANTHROPIC_AUTH_TOKEN` in the agent settings env.
-- Strategy `session` (stay on one account for its 5 h window, move to the other when limited)
-  fits two accounts and one person.
+- Strategy `conversation` since 2026-10-20 (rom: the load must not sit on one account): each
+  conversation stays on one account for its prompt cache; a new conversation goes to the account
+  with the most headroom (5 h and week, less in-flight load, least recently used on a tie), so
+  two accounts share the work. Before, `session` kept every new session on one account until its
+  5 h window was spent. Set by `LB_STRATEGY` in home-server `stacks/aether/compose.yaml` (the
+  config API needs admin scope to read back).
 - The account tokens are stored in clear text in the SQLite file (ccflare's own security doc).
 - Comparison done 2026-10-12 from the fork's own history (1338 commits after the public `95c4c6a`,
   +302,000 lines): the public version has no access control at all and ignores `PORT`; the
@@ -67,7 +71,8 @@ continue on the other account when one is limited.
 - [ ] rom: Courier rules on the dashboard page Courier, Rules, Edit (the agent's direct database write was refused by the auto-mode classifier): `[{"label":"rom's machines","fromPattern":"*-rom","toPattern":"*-rom","decision":"allow"},{"label":"rom's dashboard","fromPattern":"rom-admin","toPattern":"*-rom","decision":"allow"}]`; until then every message asks the recipient (kuro shows a popup, mikaela has none and waits for the dashboard); then a test kuro to mikaela (since 2026-10-17)
 - [x] (2026-10-17, rom: anything may be sent to kuro, nothing reads from or runs on it; aether 62ebe2d0) Courier guard for kuro: kuro is receive-only (`inbound: info` in its `~/.claude/courier/config.json`, set on kuro so no rule elsewhere undoes it): mail is shown, never opens a conversation, reaches a session as information only, and kuro publishes no session titles, folders or descriptions
 - [ ] rom: if you started a Claude session on mikaela between 13:51 and 14:15 on 2026-10-18, it went to a company proxy (Log); to be safe, replace the `mikaela-rom` key (`bin/hs aether-key-save mikaela-rom`) (since 2026-10-18)
-- [ ] Bug (2026-10-20, rom): the limit bars lie when no account can serve. `summarizePool` (`/api/statusline`) then averages every account, a spent account included: on 2026-10-17 18:15 to 21:55 UTC "Rom" was 5h 100% 7d 84% and "Rom Ciel" 7d 100%, and the bars showed 5h 50% 7d 92% while aether refused every request (its 429 is not logged in `requests`). The same average feeds the desktop bar and the cache-keepalive guard. Proposed (waits for rom's yes): with an account serving, show the account serving this session (its 5h and 7d, its name, live/total), never an average; with none, show "blocked until HH:MM" in red, the earliest time an account has all its windows under 100% (for one account, the later of its full windows' resets). The other state seen, 5h 0% 7d 100%, is Rom Ciel alone: most likely a session that started straight on the account (fish fallback when aether's health check passes 5 s), whose status line shows Claude Code's own numbers for its login account; not proven, no transcript kept (since 2026-10-20)
+- [ ] Follow-up (2026-10-20): nier's status line (`claude-statusline.py`) and the desktop bar do not yet print a red "blocked until HH:MM" with 0/2; the bars now show 100 % with its reset. Also "Rom" has been outside the pool (not counted in live) since 2026-10-20 evening: paused or an auth error, reason not checked (rom: see the accounts page)
+- [x] (2026-10-20, rom; aether 9ea2e166, deployed) Bug: the limit bars lie when no account can serve. `summarizePool` (`/api/statusline`) then averages every account, a spent account included: on 2026-10-17 18:15 to 21:55 UTC "Rom" was 5h 100% 7d 84% and "Rom Ciel" 7d 100%, and the bars showed 5h 50% 7d 92% while aether refused every request (its 429 is not logged in `requests`). The same average feeds the desktop bar and the cache-keepalive guard. Proposed (waits for rom's yes): with an account serving, show the account serving this session (its 5h and 7d, its name, live/total), never an average; with none, show "blocked until HH:MM" in red, the earliest time an account has all its windows under 100% (for one account, the later of its full windows' resets). The other state seen, 5h 0% 7d 100%, is Rom Ciel alone: most likely a session that started straight on the account (fish fallback when aether's health check passes 5 s), whose status line shows Claude Code's own numbers for its login account; not proven, no transcript kept (since 2026-10-20)
 - [ ] Courier for work on mikaela: `bin/courier-install` as work once work has a default aether key (`~/.config/aether/key`; today work's only aether key is a job's). Everything from 2026-10-20 applies to work as is (fuzzel popup and Hyprland rule through the shared dotfiles links, the window and the `~/claude/issues/_unfiled` folder from the installer); if the installer prints "NOT trusted", work runs `claude` once in `~/claude/issues/_unfiled` and accepts the prompt (since 2026-10-15)
 - [x] (2026-10-20, aether courier fix, dotfiles Hyprland rule) Courier on mikaela: kuro's 2 messages got no popup (the systemd-started daemon had no display in its environment; it now reads it from the user manager), then failed after rom accepted (new conversations opened in `~`, which `claude --bg` refuses as untrusted; now `~/claude/issues/_unfiled`). Accepting now also opens a kitty window attached to the new session; the question floats centered and pinned. kdialog was installed all along (docs/courier.md)
 - [ ] rom: ask kuro to resend its 2 messages of 2026-10-20 ~05:18 (both failed with "could not open a conversation"); check the popup is centered and a kitty window opens on accept (since 2026-10-20)
@@ -93,7 +98,7 @@ continue on the other account when one is limited.
 - [x] (2026-10-13, dotfiles `config/fish/conf.d/claude-aether.fish`) Fallback built: `claude` from a fish shell checks aether's health (2 s, 5 s since 2026-10-18: aether answers in about 1.7 s, other proxies can take about 3 s); when aether is down, or the user has no key (work today), the session starts with `--settings` pointing at api.anthropic.com and no key helper, so it uses the account login. Tested: a direct session answered through the account. A session already running when aether dies waits (retry watchdog)
 - [x] (2026-10-12, aether `/api/statusline`, nier 94547c0, dotfiles) Both bars show aether's view: the Claude Code status line (5h and 7d over the accounts in rotation, accounts serving, this session's cost) and the desktop bar icon and popup (cost today, usage left, per account). Through aether Claude Code gets no limits of its own, so they come from aether; the cache-keepalive guard now reads the pool average too
 - [ ] Later (rom, 2026-10-12: aether works, other priorities first): port the company fork's latest usage and cost work, rewritten on our base since it builds on the left-out rules code: direct vs proxy usage (`898225eb` and 3 fixes), weekly per-model cap kept per request (`30747384`), token counts without cache reads (`992ca11b`), the meter model (`244feb7b`, `172055b4`, `c88c1be6`, `76e9986d`, `8fa68515`, `dc56439b`, `99dcb981`, `99e47c6d`, `498721a3`, head merge `071e0ed8`), Codex token counts (`f260eefc`); then the bars show the meter model's dollars (since 2026-10-12)
-- [x] (2026-10-12, rom) Routing stays `session`; a new session starts on the account whose weekly window resets first (rom 2026-10-13, aether 8647d5bc), an active session is not moved (its prompt cache)
+- [x] (2026-10-12, rom; superseded 2026-10-20, see Facts: `conversation`) Routing stays `session`; a new session starts on the account whose weekly window resets first (rom 2026-10-13, aether 8647d5bc), an active session is not moved (its prompt cache)
 - [ ] Name (decided 2026-10-12): visible name to aether now (dashboard, terminal texts, README, docs); internals (package names, setting names, key prefix accepting both) after the hand ports (since 2026-10-12)
 - Company fork last commit: 2026-10-12 00:19 (still about 50 commits a day); our base is its state of 2026-09-11.
 - [ ] rom and work see each other's usage through one proxy: accept, or hide per owner as Ciel does (since 2026-10-12)
@@ -101,6 +106,16 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-20 (rom, aether session): three reports from rom. (1) The 5 h bar showed 50 % with 0 of 2
+  accounts serving: `summarizePool` averaged every account when none served. Fixed (aether
+  9ea2e166, deployed): with none serving, the fullest window of each limit is shown with its reset,
+  and `blockedUntil` (earliest unblock) is in `/api/statusline`; the average over serving accounts is
+  kept. (2) A 5 h window is 15 % of a week, not 12.5: ciel's burn gate `WINDOW_SHARE_PCT` 15 (a week
+  holds about 6.7 windows, was 8), its test and README updated; nier topic updated. (3) Load balance:
+  the conversation strategy was already in aether (same scoring terms as the enterprise's zip; not
+  ported: the enterprise scores from its reported windows, aether from request headers and polls).
+  `LB_STRATEGY=conversation` set in home-server (47f77ec), deployed; the container reads it. Not yet
+  seen with two serving accounts: at deploy 1 of 2 was in the pool.
 - 2026-10-18 (work session): a hand edit at 13:51 put a company proxy's URL and work's token for
   it into the shared nier `settings.json` (uncommitted), which sent every user's new session
   there, rom's included, until about 14:15 (with work's token, which takes precedence over the
