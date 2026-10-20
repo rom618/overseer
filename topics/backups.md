@@ -67,6 +67,16 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 - [ ] Own Google OAuth client id for rclone (https://rclone.org/drive/#making-your-own-client-id), for rom's and work's `gdrive` remotes: rclone 1.75 says its shared client id is being retired during 2026, and work's first backup (2026-10-18) hit its shared rate limit (403 rateLimitExceeded, restic retried and succeeded). Needs the Google Cloud console in Firefox, then `rclone config update gdrive client_id=... client_secret=...` and a reconnect per user (since 2026-10-18)
 - [x] (2026-10-13, dotfiles) `git-restore.sh` returns to the recorded commit and keeps a patch that fails (`.git/restore-failed.patch`, WARN line); tested on throwaway repos (`backup/tests/git-restore.test.sh`)
 - [x] (2026-10-13 19:36, rom) system-secrets.sh re-run; age generated the passphrase (Enter at the prompt): it must go to Vaultwarden, it is the only way to open the file
+- [ ] rom: change the restic password and keep it in Bitwarden: in a real terminal,
+  `~/claude/issues/mikaela/pending/restic-change-password.sh` (adds a new key, shows it once, checks
+  the Bitwarden copy by paste-back, swaps the password file, removes the old key, runs
+  `user-sops.py pull`; rolls back before the swap on any failure). Then Claude commits
+  `sops/mikaela-rom.yaml` and this item answers where the password's recovery copy lives (since 2026-10-20)
+- [ ] rom: decide on the 2026-10-20 content review (`~/claude/issues/mikaela/out/restic-contents.md`):
+  `.claude/projects` (Claude conversations, 584 of 902 MiB) includes sessions about the media app
+  (`-home-rom-claude-issues-camille`, `-Playground-media-library`, `-Desktop-perso-projects-camille`),
+  which may quote private names against the never-back-up rule; `.claude/file-history`, `plugins`,
+  `telemetry`, `paste-cache`, `.statusline-cache` look disposable (since 2026-10-20)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
