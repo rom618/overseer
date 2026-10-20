@@ -82,6 +82,7 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
   media-app transcripts in d74fa9c was reverted the same day; one snapshot lacks them, nothing lost)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
+- [ ] Ciel shows `restic-backup on mikaela` failing ("last success 2 days ago", seen 2026-10-20 during the TODO cleanup): find the cause, fix, and write the Log entry (since 2026-10-20)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
 - [x] (2026-10-10, home-server) Server backups: worlds-archive weekly, Vaultwarden daily plus off-site; Prometheus, Grafana, Dockge declared disposable; server secrets copied into the laptop backup
 

@@ -110,7 +110,7 @@ The AI sidebar is in `topics/ai-sidebar.md`. Restart with `/opt/nier/tools/qs-re
 ## Open
 
 - [ ] Confirm the notification left click focuses the sender (reloaded cleanly, click not yet confirmed) (since 2026-10-10)
-- [ ] Kitty tab rename alias needs `allow_remote_control`; works only in kitty processes started after it was added (since 2026-09-13)
+- [x] (2026-10-20 check: `allow_remote_control yes` in dotfiles kitty config since 537e40b, 2026-09-13; mikaela rebooted since, last boot 2026-10-18, so every kitty has it; `kitty @ ls` answers; alias `renametab` in fish config.fish) Kitty tab rename alias needs `allow_remote_control`; works only in kitty processes started after it was added (since 2026-09-13)
 
 ## Log
 
