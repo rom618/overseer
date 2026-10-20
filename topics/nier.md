@@ -128,4 +128,4 @@ plan is to make it agent-agnostic (Open). Machine facts: `machines/mikaela.md`.
 - 2026-10-10: handoffs reshaped (state only, one `latest.md`, no chains), consumed counter added. Reason: 34 handoffs in 14 days, about 1 in 5 read, mixed languages, copy-forward chains as a second source of truth. 61b7a33.
 - 2026-10-10: keepalive kept (44 nudges, about half the idle episodes ended with the user back); heavy parts to be judged on 2026-10-24.
 - 2026-10-17: burn gate on the forecast of usage lost before the weekly reset, stop when another session starts; 5-hour window measured at 12.5 % of a week. ciel 571ac26, home-server f236230.
-- 2026-10-20: burn gate share of a 5-hour window corrected to 15 % of a week (rom); the forecast loses less, so the gate opens for less. ciel (see its commit), README updated.
+- 2026-10-20: burn gate share of a 5-hour window corrected to 15 % of a week (rom); the forecast loses less, so the gate opens for less. ciel 3124b0b, deployed 2026-10-20 (`bin/deploy`), README updated.
