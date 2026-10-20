@@ -120,8 +120,6 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [backups](topics/backups.md)
 
 - [ ] Own Google OAuth client id for rclone (https://rclone.org/drive/#making-your-own-client-id), for rom's and work's `gdrive` remotes: rclone 1.75 says its shared client id is being retired during 2026, and work's first backup (2026-10-18) hit its shared rate limit (403 rateLimitExceeded, restic retried and succeeded). Needs the Google Cloud console in Firefox, then `rclone config update gdrive client_id=... client_secret=...` and a reconnect per user (since 2026-10-18)
-- [ ] rom: decide whether to scrub the media-app transcripts from the snapshots taken before
-  2026-10-20 (`restic rewrite --exclude` then prune, as on 2026-10-10; cannot be undone) (since 2026-10-20)
 - [ ] `~/.config/mc-server/home-server-restic.pw` is not backed up; decide what in `~/.config`, `~/.ollama`, `~/Downloads` is disposable (since 2026-10-10)
 - [ ] Separate project: back up every GitHub repo and its commits (since 2026-10-10)
 - [ ] Rehearse a restore of roberta's backups on another machine, later (rom, 2026-10-13); with it, write where the restic password's recovery copy lives (system audit finding 3) (since 2026-10-10)
