@@ -106,6 +106,11 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-20 (rom, after the sign-in): the dashboard still showed "Rom" at 100 % of its 7-day
+  window. Cause: the last usage poll (2026-10-20 04:05 UTC, 7 d 100 %, reset 14:59 UTC) was shown
+  whatever its reset time; the request-derived window already dropped a passed reset, the poll did
+  not. Fixed (aether fa6066e7, deployed 16:53 UTC); tests in `serializers/account.test.ts`. Not
+  checked on the dashboard itself (its API needs admin scope): rom to reload the page.
 - 2026-10-20 (rom, aether session): three reports from rom. (1) The 5 h bar showed 50 % with 0 of 2
   accounts serving: `summarizePool` averaged every account when none served. Fixed (aether
   9ea2e166, deployed): with none serving, the fullest window of each limit is shown with its reset,
