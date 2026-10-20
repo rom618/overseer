@@ -106,6 +106,10 @@ continue on the other account when one is limited.
 
 ## Log
 
+- 2026-10-20 17:55 Paris (aether session): load balance checked live. Two new Haiku conversations
+  (different first messages) went to different accounts: one to "Rom", one to "Rom Ciel" (sessions
+  4a5ea1fd and 8b9228b3, requests at 16:55 UTC, status 200). Two conversations only, so this shows
+  the split, not its balance over time.
 - 2026-10-20 (rom, after the sign-in): the dashboard still showed "Rom" at 100 % of its 7-day
   window. Cause: the last usage poll (2026-10-20 04:05 UTC, 7 d 100 %, reset 14:59 UTC) was shown
   whatever its reset time; the request-derived window already dropped a passed reset, the poll did
