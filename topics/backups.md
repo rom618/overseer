@@ -29,8 +29,10 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
   host label `mikaela`). Reason: the default repo path and the forget grouping derived from
   `/etc/hostname`, so the 2026-10-10 hostname rename would have split the history. No automatic
   `init` any more. The repo keeps its old path on purpose.
-- The restic password is `~/.config/restic/password` (user-chosen, never readable by agents). It is
-  the only key to the repo. rclone remote is named `gdrive`.
+- The restic password is `~/.config/restic/password` (never readable by agents). It is the only key
+  to the repo. Recovery copies of rom's: Bitwarden (item "restic backup mikaela-rom", checked by
+  paste-back at the 2026-10-20 change) and `sops/mikaela-rom.yaml` in dotfiles (age key in
+  Vaultwarden). rclone remote is named `gdrive`.
 - Retention: 24 hourly, 14 daily, 8 weekly, 12 monthly, 5 yearly; weekly prune and a 5% data check.
   Failures and "Drive under 2 GiB free after a backup" raise a desktop notification.
 - `backup/never.txt`: paths never backed up in any form (restic, git-snapshot patch, bundle or tar).
@@ -72,11 +74,9 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 - [ ] Own Google OAuth client id for rclone (https://rclone.org/drive/#making-your-own-client-id), for rom's and work's `gdrive` remotes: rclone 1.75 says its shared client id is being retired during 2026, and work's first backup (2026-10-18) hit its shared rate limit (403 rateLimitExceeded, restic retried and succeeded). Needs the Google Cloud console in Firefox, then `rclone config update gdrive client_id=... client_secret=...` and a reconnect per user (since 2026-10-18)
 - [x] (2026-10-13, dotfiles) `git-restore.sh` returns to the recorded commit and keeps a patch that fails (`.git/restore-failed.patch`, WARN line); tested on throwaway repos (`backup/tests/git-restore.test.sh`)
 - [x] (2026-10-13 19:36, rom) system-secrets.sh re-run; age generated the passphrase (Enter at the prompt): it must go to Vaultwarden, it is the only way to open the file
-- [ ] rom: change the restic password and keep it in Bitwarden: in a real terminal,
-  `~/claude/issues/mikaela/pending/restic-change-password.sh` (adds a new key, shows it once, checks
-  the Bitwarden copy by paste-back, swaps the password file, removes the old key, runs
-  `user-sops.py pull`; rolls back before the swap on any failure). Then Claude commits
-  `sops/mikaela-rom.yaml` and this item answers where the password's recovery copy lives (since 2026-10-20)
+- [x] (2026-10-20, rom ran `~/claude/issues/mikaela/pending/restic-change-password.sh`; dotfiles aa169b1)
+  restic password changed, old key removed, copy in Bitwarden, sops file updated; new password opens
+  the repo (85 snapshots)
 - [x] (2026-10-20, dotfiles d74fa9c) content review: media-app transcripts into `never.txt`;
   `.claude/file-history`, `plugins`, `telemetry`, `.statusline-cache` excluded; transcripts and
   `paste-cache` kept. New snapshot 902 to 723 MiB, 0 matching transcripts
@@ -98,3 +98,6 @@ include logic: `/opt/dotfiles/backup/README.md` (the owner of how-to). Device su
 - 2026-10-10: user decisions: the media app's `.env` and Caddy data stay out of the backup; no git-snapshot rewrite (a separate GitHub backup project instead); Vaultwarden wanted for passwords.
 - 2026-10-10: media app data purged from restic. Cause: snapshot of 2026-09-13 contained the app's repo folder (it had no remote until 09-14) and later snapshots held a git-snapshot tar of its untracked files, against the user's no-backup rule. 36 snapshots rewritten with `restic rewrite --exclude`, pruned with `--max-unused 0`, `restic find` returns nothing. `never.txt` added and used by restic and git-snapshot. dotfiles 387c6a8.
 - 2026-10-10: hostname camille to mikaela; 39 snapshots relabelled host `mikaela`; repo path unchanged.
+- 2026-10-20: Drive 5.6 of 15 GiB used (plus 0.7 GiB Gmail/Photos): `backups/home-server` 5.04 GiB
+  (minecraft-latest 3.0, archive 2.0, the rest under 20 MiB each), `backups/camille-rom` 0.41,
+  `mc-modpack` 0.15, `backups/mikaela-work` 0.01, `pulls` under 1 MiB. rom's restic password changed.
