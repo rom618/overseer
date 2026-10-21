@@ -59,7 +59,7 @@ How to run the scripts: `/opt/dotfiles/README.md`. Agent config is a separate re
 - [ ] Uncommitted work of other sessions: `config/fish/config.fish` (`alias cd-mcs` with a
       hard-coded home path): commit or drop; `bootstrap/packages.txt` committed 2026-10-14 (dotfiles
       83b2798, all five packages installed) (since 2026-10-10)
-- [ ] rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme; rom, 2026-10-13: only when the need comes up (since 2026-10-12)
+- [x] (2026-10-21, rom: done) rom: check the light mode fix (dotfiles, 2026-10-13: a theme switch now also sets the colours of open kitty windows through kitty's remote control): switch light and dark with terminals open; tested only with the current theme; rom, 2026-10-13: only when the need comes up (since 2026-10-12)
 - [x] (2026-10-15, rom) Dropped: the config repo installing on any Linux. dotfiles is for mikaela only; kuro keeps Mint as it is, and what every device needs (machine key, Ciel agent) moves to nier (setup-steps topic, kuro plan)
 - [ ] rom's list (2026-10-15): some desktop UI changes, to be defined with rom; Claude notifications are disabled for now (rom, 2026-10-15), nothing to build (since 2026-10-15)
 - [ ] rom's list (2026-10-14): customize Firefox, starting with removing the useless pinned sites on the new tab page (`system/etc/firefox/policies/policies.json` for both users, or per user) (since 2026-10-14)
