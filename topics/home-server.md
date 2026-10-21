@@ -72,6 +72,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [x] (2026-10-15, every site done) rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deployed 2026-10-14); Camille has one (camille 9722702, deployed 2026-10-14); Ciel has one (ciel e23f8d7, deployed 2026-10-14); clipboard already ships one (icon-180, manifest); Hub has one (home-server 99f1e08); Mephisto has one (mephisto 7a326f2, deployed 2026-10-15) (since 2026-10-14)
 - [x] (2026-10-20, rom: "yes done", tried on the iPhone) rom (2026-10-15): pull down at the top to reload, in every Home Screen app (no address bar there): Hub done (home-server 9145634, standalone mode only; rom to try it on the iPhone); Ciel live (ciel 1629249); Camille live (camille 5818868, in the deploys of 2026-10-16 and later); clipboard live (clipboard 596ba60, not armed while a draft, a send or the Devices sheet is open); Mephisto live (mephisto 7a326f2). Left: rom tries each on the iPhone (since 2026-10-15)
 - [ ] Apps' own `bin/deploy` scripts open their registry tunnel on a fixed laptop port (5056, 5057): two deploys at once fail (Mephisto, 2026-10-15, worked on retry); take the same lock as `hs push` (`$XDG_RUNTIME_DIR/hs-push.lock`) or pick a free port (since 2026-10-15)
+- [ ] rom: roberta offline since 2026-10-21 11:52 CEST (Log). Someone at home checks: is the laptop on (fans, lights), is the Flybox online (other devices have internet)? Then power it on or reboot it. Once back, an agent reads `last -x | head`, `journalctl --list-boots`, `journalctl -b -1 -n 100` (clean shutdown or cut off mid-log) and `journalctl -b -1 -k | grep -iE 'thermal|mce|oom|wlo|wlan'` and fills in the cause (since 2026-10-21)
+- [ ] An alert when roberta itself goes down: Ciel runs on roberta, so nothing alerted on 2026-10-21; needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 
 ## Log
 
@@ -107,3 +109,10 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   `docker-prune.timer` daily 04:40 on roberta (home-server 8747d9e, deployed); `setup.sh` puts the
   store in `/srv/containerd` on a fresh install and `scripts/containerd-move.sh` moves the current
   one (waits for rom's go, Open).
+- 2026-10-21 outage: roberta last seen on the tailnet at 11:52 CEST (09:52 UTC); at 12:58 no answer
+  over Tailscale (offline, relay par) and its LAN address is not reachable from mikaela (mikaela was
+  on another network). No session or deploy touched roberta that day (transcripts, home-server git
+  log), and nothing is scheduled near 11:52 (mc-restart is 10:00). Cause not known yet; candidates
+  from the facts: a power cut (dead battery, no UPS, so it goes off at once), the Flybox losing 4G
+  or its data allowance, roberta's Wi-Fi dropping, or a freeze. Nothing alerted, since Ciel runs on
+  roberta. Next steps and the missing alert: Open.

@@ -177,6 +177,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
 - [ ] Apps' own `bin/deploy` scripts open their registry tunnel on a fixed laptop port (5056, 5057): two deploys at once fail (Mephisto, 2026-10-15, worked on retry); take the same lock as `hs push` (`$XDG_RUNTIME_DIR/hs-push.lock`) or pick a free port (since 2026-10-15)
+- [ ] rom: roberta offline since 2026-10-21 11:52 CEST (Log). Someone at home checks: is the laptop on (fans, lights), is the Flybox online (other devices have internet)? Then power it on or reboot it. Once back, an agent reads `last -x | head`, `journalctl --list-boots`, `journalctl -b -1 -n 100` (clean shutdown or cut off mid-log) and `journalctl -b -1 -k | grep -iE 'thermal|mce|oom|wlo|wlan'` and fills in the cause (since 2026-10-21)
+- [ ] An alert when roberta itself goes down: Ciel runs on roberta, so nothing alerted on 2026-10-21; needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
