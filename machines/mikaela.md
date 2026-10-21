@@ -87,6 +87,20 @@ One pool per partition for both users, no quotas: `/home` (both homes, 823 GB) a
 2026-10-18 (user): no quota, Ciel's `disk` check (warn 85%, fail 95%) is the guard. Large task
 output goes in a folder the backup skips (`backup/excludes.txt`), or it is uploaded every 3 hours.
 
+## rom's home layout (2026-10-21)
+
+| Kind of thing | Place |
+|---|---|
+| Real-life admin papers (was `~/Documents`) | `~/Papers` |
+| Downloads, screenshots, saved images | `~/Downloads` (`XDG_PICTURES_DIR` points here; no `~/Pictures`) |
+| Assets used by config (shell avatar, icons) | `~/.config/illogical-impulse/assets/` |
+| Wallpapers (both users) | `/opt/wallpapers` |
+| Repos and tools | `~/Playground`; personal app repos still in `~/Desktop/perso/projects` |
+
+`~/.config/user-dirs.dirs` (rom only) sets Desktop, Music, Videos, Templates and Public to `$HOME/`
+so apps do not recreate them. Removed: `~/srv`, `~/Apps`, `~/mnt`, `~/go` (Go was only a yay build
+dependency).
+
 ## Backups
 
 Per user, restic to Google Drive (rclone remote `gdrive`), repo pinned in

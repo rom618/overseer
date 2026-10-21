@@ -48,10 +48,11 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Issue folders left: trim the location and perfect_plot READMEs to method + rerun (from their
       own sessions), prune location's 1.3 GB of raw data (since 2026-10-10)
 - [x] (checked 2026-10-13) `~/claude/issues/ciel/scratch-rescue` is gone
-- [ ] Clean up the laptop's file system: home layout (Desktop, Playground, Documents, Downloads),
-      leftovers (old repo copies, ISOs, stray files like ~/.bash_profile.bak), a documented place for
-      each kind of thing; unused JetBrains IDEs (~18 GB, Toolbox) and its 8.9 GB download cache,
-      pacman cache 5.5 GB (since 2026-10-10)
+- [ ] Clean up the laptop's file system, rest of it (first pass 2026-10-21, layout in
+      machines/mikaela.md): run `~/claude/issues/mikaela/pending/home-cleanup-packages.sh` (VSCodium,
+      remove go); decide whether `~/Desktop/perso/projects` moves into `~/Playground` (then `~/Desktop`
+      goes); `~/Downloads` mc-worlds and kuro-worlds (33 GB, not backed up) and old zips; JetBrains
+      (~39 GB) and Rust `target` folders (~35 GB) kept for now; pacman cache 5.5 GB (since 2026-10-10)
 - [x] (2026-10-13) Battery charge limit at 80% applied (`charge_control_end_threshold` reads 80)
 - [ ] rom's list: a local replica of every GitHub repo, kept in sync both ways (a Forgejo on a server with push mirrors, or an alternative); every machine falls back to it when GitHub fails or there is no internet, which needs the local network to keep working without the provider (network topic) (since 2026-10-12)
 
