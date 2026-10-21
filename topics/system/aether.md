@@ -78,7 +78,7 @@ claude (mikaela)                         roberta                              pr
 ## Deploy
 
 `bin/deploy` builds the image on the laptop from the working tree (`--network host`), tags
-`127.0.0.1:5057/aether:latest`, tunnels to roberta's registry, pushes, then
+`127.0.0.1:<free port>/aether:latest`, tunnels to roberta's registry, pushes, then
 `docker compose up -d aether` on roberta (`~/Playground/aether/bin/deploy`). The stack
 definition (`stacks/aether`) lives in home-server and changes through `bin/hs push`.
 `bin/check` runs typecheck, tests and lint in the image's Bun (README:12-13).
