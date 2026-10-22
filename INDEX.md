@@ -12,7 +12,7 @@ Format: name (owner, verified): summary.
 - [docs](topics/docs.md) (shared, 2026-10-11): How the docs repos overseer (shared, work) and 9s (rom only) work: levels, ownership, TODO, split
 - [dotfiles](topics/dotfiles.md) (shared, 2026-10-10): /opt/dotfiles, the shared desktop config repo: install, link, VM test, ii-update, packages, system files
 - [home-server](topics/home-server.md) (shared, 2026-10-11): roberta as a project: Docker stacks deployed with bin/hs push, audited 2026-10-10, to be split personal/work
-- [lock-idle-lid](topics/lock-idle-lid.md) (shared, 2026-10-10): hyprlock, hypridle, idle suspend, lid policy, Keep-awake lid alert, night light following the sun
+- [lock-idle-lid](topics/lock-idle-lid.md) (shared, 2026-10-22): hyprlock, hypridle, idle suspend, lid policy, Keep-awake lid alert, night light following the sun
 - [network](topics/network.md) (shared, 2026-10-10): mikaela networking: Wi-Fi profiles, Flybox CGNAT, Surfshark issues, Docker MTU, avahi, Tailscale
 - [nier](topics/nier.md) (shared, 2026-10-11): Agent config repo /opt/nier (was claude-config): AGENTS.md rules, hooks, skills; going agent-agnostic
 - [quickshell-bar](topics/quickshell-bar.md) (shared, 2026-10-17): Local customizations of the Quickshell (illogical-impulse) bar and popups, and which upstream files were edited

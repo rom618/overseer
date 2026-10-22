@@ -6,7 +6,7 @@ owner: shared
 host: mikaela
 repos: /opt/dotfiles
 folder: none
-verified: 2026-10-10
+verified: 2026-10-22
 source: config/hypr/hypridle.conf, custom/keybinds.lua, custom/scripts/, /etc/systemd/logind.conf.d/lid.conf, history.md 2026-09-13/14/20, 2026-10-09
 ---
 
@@ -22,6 +22,10 @@ Screen locking, idle steps, suspend and lid behaviour on mikaela. Files: `config
   and `before_sleep_cmd`. The `pidof` guard must be on every call site, or locks stack.
 - hypridle steps: 5 min lock, 10 min dpms off, 15 min `idle-suspend.sh`. hypridle is started by
   `hl.exec_cmd`, not systemd: a config change needs a hypridle restart to take effect.
+- Wake key: Hyprland (`key_press_enables_dpms`) turns the screen on and still passes the key to
+  hyprlock, which has no option to drop it. The dpms listener's on-resume runs
+  `custom/scripts/idle-wake.sh`: dpms on, then, if hyprlock runs, `wtype -k Escape` after 0.1 s,
+  which clears hyprlock's field. Keys typed within that 0.1 s are cleared too.
 - Idle suspend: `idle-suspend.sh` branches on `$USER`. rom never suspends unless on battery
   below 20%; work stays awake on AC and suspends on battery.
 - Lid: `/etc/systemd/logind.conf.d/lid.conf` (source `system/etc/systemd/logind.conf.d/`, installed
@@ -46,6 +50,7 @@ Screen locking, idle steps, suspend and lid behaviour on mikaela. Files: `config
 ## Open
 
 - [ ] hyprlock crash of 2026-09-14: root cause unknown, investigate only if it recurs (since 2026-09-14)
+- [ ] Check the wake-key fix live: lock, wait 10 min for the screen to go off, press a key, the field should be empty (since 2026-10-22)
 - [x] (2026-10-11) `system/README.md` lid.conf text found already corrected
 
 ## Log
@@ -64,3 +69,5 @@ Screen locking, idle steps, suspend and lid behaviour on mikaela. Files: `config
 - 2026-10-09: Keep awake left the screen on overnight; lid alert script added (dfe5e01, c32af0a);
   hypridle had run with stale 15/20/25 min timings after an interrupted restart, restarted.
 - 2026-10-09: night light follows the sun (ba0bb5e); lid.conf tracked in `system/` (d2c5a59).
+- 2026-10-22: the key that woke the screen was typed into the password field; `idle-wake.sh`
+  clears it with an Escape on dpms resume. hypridle restarted.

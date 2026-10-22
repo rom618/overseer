@@ -182,6 +182,7 @@ on their page. rom's personal list is `9s/TODO.md`.
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
 - [ ] hyprlock crash of 2026-09-14: root cause unknown, investigate only if it recurs (since 2026-09-14)
+- [ ] Check the wake-key fix live: lock, wait 10 min for the screen to go off, press a key, the field should be empty (since 2026-10-22)
 
 ### [network](topics/network.md)
 
