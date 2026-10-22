@@ -91,13 +91,26 @@ read part of 8 (network view and checks) on 2026-10-13. Next: 9 (network act), 1
 - [ ] Watch network gear (Flybox), later; Vaultwarden and the other self-hosted apps are watched (container and http checks per app, ciel dc1ae79, seen ok 2026-10-20) (since 2026-10-10)
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD), later: Ciel and roberta then watch each other, so roberta going down raises an alert (rom, 2026-10-13; system audit finding 1) (since 2026-10-10)
 - [x] (2026-10-11, home-server a6cd350) Server hardening before the hub on roberta
-- [ ] rom: deploy ciel 954a04c (`bin/deploy` in `~/Playground/ciel`; the agent's deploy is refused by
+- [x] (2026-10-22, deployed with ciel 22beb87, agents on mikaela and roberta updated, checks 30 and 31 ok) rom: deploy ciel 954a04c (`bin/deploy` in `~/Playground/ciel`; the agent's deploy is refused by
       the auto mode classifier); the mikaela agent then updates itself from the hub. After it: check
       `journalctl -u ciel-agent` shows the new build, checks 30 and 31 turn ok on the next runs
       (restic every 3 h, scratch-clean at 00:00) (since 2026-10-20)
+- [ ] Check two fixes of 2026-10-22 live (both deployed, ciel 4530f9a and 22beb87, unit-tested only):
+      incident 142 (shadow on mikaela) closes after shadow's 00:00 run on 2026-10-23; at the next
+      10:00 Minecraft restart, checks 24 and 66 show "minecraft is starting" and open no incident
+      (since 2026-10-22)
 
 ## Log
 
+- 2026-10-22: two false alarms. (1) "Minecraft server is failing" at 10:02 every day: the 10:00
+  mc-restart recreates the container and the server needs 2 to 3 min to answer, so the two port
+  checks (24 local, 66 playit) failed twice in a row. Fix: an http or tcp check can name a
+  container (`"container": "roberta/minecraft"`, `ciel-hub check minecraft ... --container`);
+  while it is created or health `starting`, a failure is "unknown" (ciel 4530f9a). (2) "shadow on
+  mikaela" heartbeat (incident 142, last success 46 h): shadow.timer ran at boot 07:17:41, the agent
+  started at 07:17:48 and followed the journal from now, so the success was lost. Fix: the agent
+  saves the journal cursor and resumes after it (ciel 22beb87). Camille issues 23 and 25 resolved
+  after the camille 2e69419 deploy (9s topics/camille).
 - 2026-10-20: checks 30 (restic-backup) and 31 (claude-scratch-clean) on mikaela failed with "last
   success 2 days ago". Two causes. restic: its timer really stopped (backups topic Log, dotfiles
   b3aa5e5). scratch-clean: it ran at 05:02 but the agent dropped the success: rom's user manager

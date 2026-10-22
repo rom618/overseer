@@ -141,10 +141,10 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] Does the Flybox 4G expose an API usable for network changes? (SPEC section 16)
 - [ ] Watch network gear (Flybox), later; Vaultwarden and the other self-hosted apps are watched (container and http checks per app, ciel dc1ae79, seen ok 2026-10-20) (since 2026-10-10)
 - [ ] Dedicated Ciel box (Raspberry Pi 5 + SSD), later: Ciel and roberta then watch each other, so roberta going down raises an alert (rom, 2026-10-13; system audit finding 1) (since 2026-10-10)
-- [ ] rom: deploy ciel 954a04c (`bin/deploy` in `~/Playground/ciel`; the agent's deploy is refused by
-      the auto mode classifier); the mikaela agent then updates itself from the hub. After it: check
-      `journalctl -u ciel-agent` shows the new build, checks 30 and 31 turn ok on the next runs
-      (restic every 3 h, scratch-clean at 00:00) (since 2026-10-20)
+- [ ] Check two fixes of 2026-10-22 live (both deployed, ciel 4530f9a and 22beb87, unit-tested only):
+      incident 142 (shadow on mikaela) closes after shadow's 00:00 run on 2026-10-23; at the next
+      10:00 Minecraft restart, checks 24 and 66 show "minecraft is starting" and open no incident
+      (since 2026-10-22)
 
 ### [docs](topics/docs.md)
 
