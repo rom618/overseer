@@ -73,7 +73,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [x] (2026-10-20, rom: "yes done", tried on the iPhone) rom (2026-10-15): pull down at the top to reload, in every Home Screen app (no address bar there): Hub done (home-server 9145634, standalone mode only; rom to try it on the iPhone); Ciel live (ciel 1629249); Camille live (camille 5818868, in the deploys of 2026-10-16 and later); clipboard live (clipboard 596ba60, not armed while a draft, a send or the Devices sheet is open); Mephisto live (mephisto 7a326f2). Left: rom tries each on the iPhone (since 2026-10-15)
 - [x] Apps' own `bin/deploy` scripts open their registry tunnel on a fixed laptop port (5056, 5057): two deploys at once fail (Mephisto, 2026-10-15, worked on retry). Done 2026-10-21: each run picks a free local port, the exit trap closes the tunnel and drops the temporary tag; two tunnels at once tested against roberta. Commits: mephisto 724da70, camille 23582c3, routiner c1c939e, clipboard a642bf5, emile 7d1b60e, pulls f9edf52, ciel 6b02491, aether 6bd3db1b (the aether-courier worktree, branch courier, still has the old script until it merges main)
 - [x] (2026-10-22, cause found, see Log) rom: roberta offline since 2026-10-21 11:52 CEST: the Flybox lost its internet; roberta stayed on
-- [ ] An alert when roberta itself goes down or loses internet: Ciel runs on roberta, so nothing alerted on 2026-10-21 (the house's internet was down, so Ciel could not notify either); needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
+- [ ] rom: roberta offline again since 2026-10-22 20:56 CEST, this time gone from the LAN itself (see Log): look at the laptop (screen, power LED, fan, charger plugged in), power it on or hard reset; then an agent reads `journalctl -b -1 -e` and `last -x` for the cause (since 2026-10-22)
+- [ ] An alert when roberta itself goes down or loses internet: Ciel runs on roberta, so nothing alerted on 2026-10-21 or 2026-10-22 (the house's internet was down, so Ciel could not notify either); needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 
 ## Log
 
@@ -119,3 +120,10 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   UTC, and aether failed every token refresh on DNS timeouts (Ciel issue 31, resolved). Fix: none
   needed on roberta. Nothing alerted, since Ciel runs on roberta and could not reach out; the
   outside watcher is still Open.
+- 2026-10-22 outage: roberta last seen on the tailnet at 20:56 CEST (18:56 UTC); at 21:45 no
+  answer on ssh, 443 or 25565, and from mikaela on the same LAN its ARP entry stays INCOMPLETE, so
+  it is off the network entirely (unlike 2026-10-21: the Flybox and the internet were up, gateway
+  and google.com answered). No session, deploy or home-server commit touched it after 18:32 CEST.
+  Cause: not known yet (power loss with the dead battery, a crash or freeze, or Wi-Fi dropping);
+  needs someone at the laptop, then the previous boot's journal. Nothing alerted (outside watcher
+  still Open).
