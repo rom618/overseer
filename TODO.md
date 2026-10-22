@@ -174,7 +174,8 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: see what the Raspberry Pis can run (Ciel hub, Vaultwarden, Pi-hole are candidates) (since 2026-10-12)
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
-- [ ] rom: roberta offline again since 2026-10-22 20:56 CEST, this time gone from the LAN itself (see Log): look at the laptop (screen, power LED, fan, charger plugged in), power it on or hard reset; then an agent reads `journalctl -b -1 -e` and `last -x` for the cause (since 2026-10-22)
+- [ ] Wi-Fi self-heal on roberta: when `wlp3s0` has had no connection for about 5 minutes, reload `ath10k_pci` and reconnect, and reboot as a last resort; the 2026-10-22 outage needed someone at the laptop (proposed 2026-10-22, waits for rom's yes; Ethernet stays the real fix, item above) (since 2026-10-22)
+- [ ] rom: unlock Camille after the 2026-10-22 reboot (Ciel, Stacks, camille, Unlock, or `hs camille-unlock`); Camille, Mephisto, qbittorrent and prowlarr wait on it (since 2026-10-22)
 - [ ] rom: write down where the console password of `server` on roberta lives (rom did not remember it on 2026-10-22, roberta off the network); it must be reachable while roberta is down, so not only in Vaultwarden on roberta itself (since 2026-10-22)
 - [ ] An alert when roberta itself goes down or loses internet: Ciel runs on roberta, so nothing alerted on 2026-10-21 or 2026-10-22 (the house's internet was down, so Ciel could not notify either); needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 

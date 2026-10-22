@@ -73,7 +73,9 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [x] (2026-10-20, rom: "yes done", tried on the iPhone) rom (2026-10-15): pull down at the top to reload, in every Home Screen app (no address bar there): Hub done (home-server 9145634, standalone mode only; rom to try it on the iPhone); Ciel live (ciel 1629249); Camille live (camille 5818868, in the deploys of 2026-10-16 and later); clipboard live (clipboard 596ba60, not armed while a draft, a send or the Devices sheet is open); Mephisto live (mephisto 7a326f2). Left: rom tries each on the iPhone (since 2026-10-15)
 - [x] Apps' own `bin/deploy` scripts open their registry tunnel on a fixed laptop port (5056, 5057): two deploys at once fail (Mephisto, 2026-10-15, worked on retry). Done 2026-10-21: each run picks a free local port, the exit trap closes the tunnel and drops the temporary tag; two tunnels at once tested against roberta. Commits: mephisto 724da70, camille 23582c3, routiner c1c939e, clipboard a642bf5, emile 7d1b60e, pulls f9edf52, ciel 6b02491, aether 6bd3db1b (the aether-courier worktree, branch courier, still has the old script until it merges main)
 - [x] (2026-10-22, cause found, see Log) rom: roberta offline since 2026-10-21 11:52 CEST: the Flybox lost its internet; roberta stayed on
-- [ ] rom: roberta offline again since 2026-10-22 20:56 CEST, this time gone from the LAN itself (see Log): look at the laptop (screen, power LED, fan, charger plugged in), power it on or hard reset; then an agent reads `journalctl -b -1 -e` and `last -x` for the cause (since 2026-10-22)
+- [x] (2026-10-22, rom restarted it with the power button at 21:49, cause found, see Log) roberta offline 2026-10-22 20:56 to 21:51 CEST: its Wi-Fi card dropped and never reconnected
+- [ ] Wi-Fi self-heal on roberta: when `wlp3s0` has had no connection for about 5 minutes, reload `ath10k_pci` and reconnect, and reboot as a last resort; the 2026-10-22 outage needed someone at the laptop (proposed 2026-10-22, waits for rom's yes; Ethernet stays the real fix, item above) (since 2026-10-22)
+- [ ] rom: unlock Camille after the 2026-10-22 reboot (Ciel, Stacks, camille, Unlock, or `hs camille-unlock`); Camille, Mephisto, qbittorrent and prowlarr wait on it (since 2026-10-22)
 - [ ] rom: write down where the console password of `server` on roberta lives (rom did not remember it on 2026-10-22, roberta off the network); it must be reachable while roberta is down, so not only in Vaultwarden on roberta itself (since 2026-10-22)
 - [ ] An alert when roberta itself goes down or loses internet: Ciel runs on roberta, so nothing alerted on 2026-10-21 or 2026-10-22 (the house's internet was down, so Ciel could not notify either); needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 
@@ -125,6 +127,12 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
   answer on ssh, 443 or 25565, and from mikaela on the same LAN its ARP entry stays INCOMPLETE, so
   it is off the network entirely (unlike 2026-10-21: the Flybox and the internet were up, gateway
   and google.com answered). No session, deploy or home-server commit touched it after 18:32 CEST.
-  Cause: not known yet (power loss with the dead battery, a crash or freeze, or Wi-Fi dropping);
-  needs someone at the laptop, then the previous boot's journal. Nothing alerted (outside watcher
-  still Open).
+  Cause (previous boot's journal): at 20:56:20 the Wi-Fi card (Qualcomm QCA6174, driver
+  `ath10k_pci`) lost the Flybox's beacons, disconnected, and from then on every reconnect timed
+  out ("association took too long") while mikaela stayed connected to the same Flybox: the card or
+  driver got stuck, not the Flybox. The system itself kept running (Docker, ciel-agent logging)
+  until rom pressed the power button at 21:49, which shut it down cleanly; it came back at 21:51
+  with Wi-Fi up and every stack running, except the four that need the Camille box unlocked
+  (camille, mephisto, camille-qbittorrent, camille-prowlarr). Down 55 minutes. Fix: the reboot;
+  nothing on the box reconnects a stuck card by itself yet (self-heal and Ethernet in Open).
+  Nothing alerted (outside watcher still Open).
