@@ -72,8 +72,8 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - [x] (2026-10-15, every site done) rom's list (2026-10-14): an icon per site (Ciel, Camille, Mephisto, aether, clipboard, Emile) so Add to Home Screen shows it: a web manifest and an apple-touch-icon in each app; Emile has one; aether has one (aether 02301899, deployed 2026-10-14); Camille has one (camille 9722702, deployed 2026-10-14); Ciel has one (ciel e23f8d7, deployed 2026-10-14); clipboard already ships one (icon-180, manifest); Hub has one (home-server 99f1e08); Mephisto has one (mephisto 7a326f2, deployed 2026-10-15) (since 2026-10-14)
 - [x] (2026-10-20, rom: "yes done", tried on the iPhone) rom (2026-10-15): pull down at the top to reload, in every Home Screen app (no address bar there): Hub done (home-server 9145634, standalone mode only; rom to try it on the iPhone); Ciel live (ciel 1629249); Camille live (camille 5818868, in the deploys of 2026-10-16 and later); clipboard live (clipboard 596ba60, not armed while a draft, a send or the Devices sheet is open); Mephisto live (mephisto 7a326f2). Left: rom tries each on the iPhone (since 2026-10-15)
 - [x] Apps' own `bin/deploy` scripts open their registry tunnel on a fixed laptop port (5056, 5057): two deploys at once fail (Mephisto, 2026-10-15, worked on retry). Done 2026-10-21: each run picks a free local port, the exit trap closes the tunnel and drops the temporary tag; two tunnels at once tested against roberta. Commits: mephisto 724da70, camille 23582c3, routiner c1c939e, clipboard a642bf5, emile 7d1b60e, pulls f9edf52, ciel 6b02491, aether 6bd3db1b (the aether-courier worktree, branch courier, still has the old script until it merges main)
-- [ ] rom: roberta offline since 2026-10-21 11:52 CEST (Log). Someone at home checks: is the laptop on (fans, lights), is the Flybox online (other devices have internet)? Then power it on or reboot it. Once back, an agent reads `last -x | head`, `journalctl --list-boots`, `journalctl -b -1 -n 100` (clean shutdown or cut off mid-log) and `journalctl -b -1 -k | grep -iE 'thermal|mce|oom|wlo|wlan'` and fills in the cause (since 2026-10-21)
-- [ ] An alert when roberta itself goes down: Ciel runs on roberta, so nothing alerted on 2026-10-21; needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
+- [x] (2026-10-22, cause found, see Log) rom: roberta offline since 2026-10-21 11:52 CEST: the Flybox lost its internet; roberta stayed on
+- [ ] An alert when roberta itself goes down or loses internet: Ciel runs on roberta, so nothing alerted on 2026-10-21 (the house's internet was down, so Ciel could not notify either); needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 
 ## Log
 
@@ -112,7 +112,10 @@ Personal game content on it (Minecraft, Terraria) is documented in 9s; here only
 - 2026-10-21 outage: roberta last seen on the tailnet at 11:52 CEST (09:52 UTC); at 12:58 no answer
   over Tailscale (offline, relay par) and its LAN address is not reachable from mikaela (mikaela was
   on another network). No session or deploy touched roberta that day (transcripts, home-server git
-  log), and nothing is scheduled near 11:52 (mc-restart is 10:00). Cause not known yet; candidates
-  from the facts: a power cut (dead battery, no UPS, so it goes off at once), the Flybox losing 4G
-  or its data allowance, roberta's Wi-Fi dropping, or a freeze. Nothing alerted, since Ciel runs on
-  roberta. Next steps and the missing alert: Open.
+  log), and nothing is scheduled near 11:52 (mc-restart is 10:00). Cause (found 2026-10-22): the
+  Flybox lost its internet (4G or data allowance) from 11:52 to about 17:21 CEST, 5.5 hours.
+  roberta stayed on (uptime 11 days, same boot) and its Wi-Fi stayed associated, with LAN traffic
+  all along (Prometheus `node_network_carrier` 1 on wlp3s0); playit timed out from 09:52 to 15:21
+  UTC, and aether failed every token refresh on DNS timeouts (Ciel issue 31, resolved). Fix: none
+  needed on roberta. Nothing alerted, since Ciel runs on roberta and could not reach out; the
+  outside watcher is still Open.
