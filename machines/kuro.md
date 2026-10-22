@@ -25,6 +25,10 @@ RTX 3080 (10 GB). Disks: / 912G, /boot 1,7G, /mnt/GAMES 916G, /boot/efi 512M. Us
 
 - Kept as installed (rom, 2026-10-15): no reinstall, Cinnamon stays, no dotfiles (dotfiles is
   mikaela only), no backup for now.
+- Deleted files are not recoverable: the root SSD is TRIMmed (`luks,discard` in crypttab, LVM
+  `issue_discards = 1`, weekly `fstrim.timer`), so freed blocks read back empty after the next
+  trim. Without a backup a deletion on kuro is final (checked 2026-10-22: ext4magic and PhotoRec
+  found nothing).
 - rom's personal setup (games, mods, music, apps, their user services): 9s
   `topics/kuro-personal.md`, not here (overseer is readable by work).
 - Display: monitors DP-0 Samsung Odyssey G5 2560x1440 at 165 Hz (primary) and HDMI-0 LG
