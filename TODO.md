@@ -175,14 +175,12 @@ on their page. rom's personal list is `9s/TODO.md`.
 - [ ] rom's list: optimize performance on every server and PC (measure first: Ciel charts, milestone 7) (since 2026-10-12)
 - [ ] rom's list (2026-10-14): rename the home-server repo (not the machine roberta); rom has no name yet. When picked: GitHub repo, local clone path, `watched-repos.txt`, topic front matter `repos:` and every doc link (since 2026-10-14)
 - [ ] Wi-Fi self-heal on roberta: live 2026-10-22 (rom's yes; home-server 9064621, `wifi-heal.service` active, how it works: home-server README). Detection tested on roberta; the driver reload and the reboot path are not tested live yet (a reload cuts roberta's network for about 15 s): test once when nobody is on Minecraft, or tick when a real drop heals itself (`journalctl -u wifi-heal`). Ethernet stays the real fix (item above) (since 2026-10-22)
-- [ ] rom: unlock Camille after the 2026-10-22 reboot (Ciel, Stacks, camille, Unlock, or `hs camille-unlock`); Camille, Mephisto, qbittorrent and prowlarr wait on it (since 2026-10-22)
-- [ ] rom: write down where the console password of `server` on roberta lives (rom did not remember it on 2026-10-22, roberta off the network); it must be reachable while roberta is down, so not only in Vaultwarden on roberta itself (since 2026-10-22)
+- [ ] rom: set a new console password for `server` on roberta and keep it (rom did not remember it on 2026-10-22, roberta off the network; 2026-10-23: no Vaultwarden entry for it). In a real terminal: `ssh roberta`, then `sudo passwd server` (no sudo password asked); save it in Vaultwarden (the Bitwarden apps keep an offline copy, so it stays readable while roberta is down). Checkable: `sudo chage -l server` shows a change after Sep 26, 2026 (since 2026-10-22)
 - [ ] An alert when roberta itself goes down or loses internet: Ciel runs on roberta, so nothing alerted on 2026-10-21 or 2026-10-22 (the house's internet was down, so Ciel could not notify either); needs a watcher outside the house (mikaela, a Pi, or a free uptime service on a playit or tailnet probe) (since 2026-10-21)
 
 ### [lock-idle-lid](topics/lock-idle-lid.md)
 
 - [ ] hyprlock crash of 2026-09-14: root cause unknown, investigate only if it recurs (since 2026-09-14)
-- [ ] Check the wake-key fix live: lock, wait 10 min for the screen to go off, press a key, the field should be empty (since 2026-10-22)
 
 ### [network](topics/network.md)
 
